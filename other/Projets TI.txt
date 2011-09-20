@@ -1,0 +1,49 @@
+D,H, I.
+
+
+(C) Création d'un module de gestion pour les UEs dans la forge UCBL
+Contact: Emmanuel Coquery
+Ajout à la forge UCBL d'un module d'administration à destination des responsables d'UE.
+
+
+(D) Application de gestion de patrimoine immobilier pour l'UCBL
+Contact: Emmanuel Coquery ?
+Création d'une application BD/Web permettant de regrouper des données de patrimoine immobilier de l'UCBL actuellement gérées via des tableaux Excel.
+
+
+-------------------------------------------------------------------------------------------
+(H) Développement d'une architecture client-serveur pour un outil de gestion de traces d'interactions
+Contact: Yannick Prié, Amaury Belin
+TraceExplorer est un prototype permettant de gérer et visualiser les traces d'interaction produites par un utilisateur sur un ordinateur. Ces traces peuvent être synchronisées à des contenus multimédias consultables dans le logiciel (screencast de l'activité de l'utilisateur notamment).
+Ce prototype, codé en flex, fonctionne principalement côté client et ne permet pas de gérer des calculs lourds sur des traces importantes (plusieurs dizaines de milliers d'éléments), ni d'effectuer certaines manipulations sur les éléments vidéos ou bien de se connecter à un serveur de trace de type KTBS (ayant un API REST). Une architecture client-serveur devra être mise en place afin de pouvoir décentraliser ces traitements en respectant des contraintes importantes de performances, et de permettre une communication avec le serveur de trace KTBS. Ce travail sera encadré par développeur de TraceExplorer qui pourra participer aux développements côté client.
+
+(I) Traitement et visualisation de traces d'interactions
+Contact: Yannick Prié, Amaury Belin
+Le but de ce projet est de développer des composants de traitement et de visualisation de traces d'interactions. Ce travail s'intégrera à un projet de recherche orienté vers de nouveaux outils capables de soutenir l'utilisateur dans l'organisation de son activité numérique sur le long terme. Les traces d'interactions, riches et complexes, devront faire l'objet de calculs afin d'identifier dans un premier temps certains phénomènes dans l'activité de l'utilisateur, et serviront dans un second temps à construire une visualisation interactive qui sera soumise à des tests utilisateurs.
+Les développements devront être réalisés à partir d'un existant logiciel riche et relativement mature (technologies flex, java, python, rdf). Une méthodologie de développement permettant des tests utilisateurs réguliers devra être mise en place (Scrum, Agile..). Les composants créés devront être des prototypes flexibles, faciles à faire évoluer selon le retour des utilisateurs et les idées que nous pourrons développer à travers le stage.
+
+-------------------------------------------------------------------------------------------
+
+(K) Plateforme d’appariement de services web OWLS
+Contact: Hamida Lagraa
+Le but de cette application est de calculer la similarité entre deux services web décrits avec OWLS. La comparaison s’effectue sur la partie comportement (process model) des services web représentés en XML mais prend en compte la sémantique des entrées/sorties. Il prend en entrée deux fichiers XML encodant des modèles de processus OWLS et retourne le degré de similarité entre eux.
+L’application est basée sur l’approche d’appariement de services web décrite dans [1]. Le cœur de l’application est un algorithme de matching de graphes.
+L’application comporte cinq briques :
+    Parser : qui construit les graphes à partir des fichiers XML
+    Décomposition modulaire : s’appuie sur un algorithme linéaire proposé dans [2]. Cette étape a pour but de raffiner la précision de l’appariement en mettant en valeur les structures particulières (modules) des graphes à comparer. (code fourni)
+    Décomposition en sous graphes : décompose un graphe en sous graphes (étoiles, bi-étoiles, chemins) pour simplifier la comparaison des graphes (code fourni).
+    Calcul de la similarité structurelle : comparaison de sous graphes en utilisant un kernel de graphe [1] (code fourni)
+    Calcul de similarité sémantique : en utilisant une ontologie
+Il s’agit de mettre en place une interface facile à utiliser, le parser et d’intégrer le calcul de la similarité sémantique.
+
+
+(L) Second Life et le Web social : application pour la session posters de WWW'2012
+Contact: Lionel Medini
+Contexte et but :
+Depuis 2009, les conférences WWW ont un espace dédié dans Second Life (SL). Tous les ans, cet espace s'enrichit de nouvelles fonctionnalités. Cette année, un des objectifs est de permettre à des personnes n'ayant pas pu assister à la conférence de participer dans SL en visualisant des vidéos de certaines présentations et en interagissant avec les participants. En particulier, pour la session posters qui sera entièrement recréée dans SL, il s'agit d'exploiter les API des réseaux sociaux (FaceBook, Twitter, LinkedIn) pour permettre la communication entre les participants à la conférence et le partage d'informations en temps réel depuis et vers SL.
+Compétences techniques (certaines pourront être acquises au début du projet) :
+Linden Scripting Language (http://wiki.secondlife.com/wiki/LSL_Portal) + API des réseaux sociaux + outils de développement Web classiques.
+Déroulement du projet :
+Une connaissance - au moins théorique - du langage LSL est demandée au début du projet. Les étudiants débuteront le projet par un apprentissage pratique du langage et de l'environnement en développant des objets simples à rajouter dans l'espace SL de la session posters. La plus grande partie du projet sera ensuite dédiée à la phase de conception et de réalisation d'un ensemble de services “sociaux” pour la session posters. Ces services devront être à double sens : accéder aux réseaux sociaux, mettre en scène les services dans SL, et accéder depuis les applis Web des réseaux sociaux au contenu déposé dans SL.
+Valorisation :
+Les étudiants présenteront leur travail lors de la conférence WWW'2012. En tant que participants à la conférence, ils auront donc accès à la totalité des présentations.
