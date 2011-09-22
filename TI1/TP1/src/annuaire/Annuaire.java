@@ -70,6 +70,8 @@ public class Annuaire implements Startable{
 	public void start() {
 		// TODO Auto-generated method stub
 		initSites();
+		// Affichage des informations du serveur
+		System.out.println("Server started..."+dao.getInfos());
 	}
 
 	@Override
