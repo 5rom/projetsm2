@@ -2,6 +2,7 @@ package annuaire;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class AnnuaireUI {
 
@@ -9,7 +10,10 @@ public class AnnuaireUI {
 	static Annuaire annuaire;
 	
 	public static void main (String argv[]) {
-		annuaire = new Annuaire("test.xml");
+		//annuaire = new Annuaire("test.xml");
+		SiteXMLDAO xdao = new SiteXMLDAO("test.xml");
+		ArrayList<Site> sites = new ArrayList<Site>();
+		annuaire = new Annuaire(sites,xdao);
         annuaire.initSites();
 
 		String description = null;

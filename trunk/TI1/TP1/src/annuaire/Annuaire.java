@@ -3,17 +3,16 @@ package annuaire;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Annuaire {
+import org.picocontainer.Startable;
+
+public class Annuaire implements Startable{
 
     ArrayList<Site> sites = new ArrayList<Site>();
     SiteDAO dao;
 
-    public Annuaire(ArrayList<Site> sites, SiteXMLDAO dao) {
-        //dao = new SiteXMLDAO(d);
-    	MutablePicoContainer parent = new DefaultPicoContainer(); 
-    	MutablePicoContainer child = new DefaultPicoContainer(parent); 
-    	parent.addComponent(child);
-        
+    public Annuaire(ArrayList<Site> sites, SiteXMLDAO xdao) {
+    	dao = xdao;
+    	this.sites = sites;
     }
 
     public void addSite(String desc, String url) {
@@ -66,4 +65,16 @@ public class Annuaire {
         }
         return ls;
     }
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		initSites();
+	}
+
+	@Override
+	public void stop() {
+		// TODO Auto-generated method stub
+		
+	}
 }
