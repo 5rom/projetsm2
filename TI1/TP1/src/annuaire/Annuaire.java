@@ -8,8 +8,12 @@ public class Annuaire {
     ArrayList<Site> sites = new ArrayList<Site>();
     SiteDAO dao;
 
-    public Annuaire(String d) {
-        dao = new SiteXMLDAO(d);
+    public Annuaire(ArrayList<Site> sites, SiteXMLDAO dao) {
+        //dao = new SiteXMLDAO(d);
+    	MutablePicoContainer parent = new DefaultPicoContainer(); 
+    	MutablePicoContainer child = new DefaultPicoContainer(parent); 
+    	parent.addComponent(child);
+        
     }
 
     public void addSite(String desc, String url) {
