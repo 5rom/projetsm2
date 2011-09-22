@@ -3,6 +3,7 @@ package annuaire;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AnnuaireUI {
 
@@ -35,7 +36,12 @@ public class AnnuaireUI {
 					e.printStackTrace();
 				}
 				
-				annuaire.addSite(description, url);
+				//annuaire.addSite(description, url);
+				HashMap<String, String> hm = new HashMap<String, String>();
+				hm.put("desc", description);
+				hm.put("url", url);
+				System.out.println("Ajout du site :"+description+" "+url);
+				annuaire.process("addSite", hm);				
 				break;
 
 			case 2:
@@ -50,12 +56,17 @@ public class AnnuaireUI {
 					e.printStackTrace();
 				}
 				
-				annuaire.removeSite(description, url);
+				//annuaire.removeSite(description, url);
+				hm = new HashMap<String, String>();
+				hm.put("desc", description);
+				hm.put("url", url);
+				annuaire.process("removeSite", hm);
 				break;
 				
 			case 3:
 				System.out.println("Sites actuellement connus :\n\n");
-				System.out.println(annuaire.listSites());
+				//System.out.println(annuaire.listSites());
+				System.out.println(annuaire.process("listSites", null));
 				break;
 
 			case 4:

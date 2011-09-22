@@ -1,6 +1,7 @@
 package annuaire;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 import org.picocontainer.Startable;
@@ -15,7 +16,7 @@ public class Annuaire implements Startable{
     	this.sites = sites;
     }
 
-    public void addSite(String desc, String url) {
+    private void addSite(String desc, String url) {
         Site s = new Site(desc, url, dao);
 
         // ajout dans la liste
@@ -29,7 +30,7 @@ public class Annuaire implements Startable{
         sites.add(s);
     }
 
-    public void removeSite(String desc, String url) {
+    private void removeSite(String desc, String url) {
         Site s = new Site(desc, url, dao);
 
         // suppression dans la liste
@@ -56,7 +57,7 @@ public class Annuaire implements Startable{
         sites = temp.getAllSites();
     }
 
-    public String listSites() {
+    private String listSites() {
         String ls = new String();
         for (Iterator<Site> i = sites.iterator(); i.hasNext();) {
             Site s = (Site) i.next();
@@ -79,4 +80,20 @@ public class Annuaire implements Startable{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	// Methode d'appel de methode en fonction de la commande passee en parametre
+	public String process(String commande, HashMap<String, String> parametres){
+		if (commande!=null){
+			if (commande.equals("addSite")){
+				addSite(parametres.get("desc"), parametres.get("url"));
+			} else if (commande.equals("removeSite")){
+				removeSite(parametres.get("desc"), parametres.get("url"));
+			} else if (commande.equals("listSites")){
+				return listSites();
+			}
+		}
+		return "";
+	}
+	
 }

@@ -52,7 +52,7 @@ public class Serveur {
 	}
 	
 	public String traiteRequete(String commande, HashMap<String, String> parametres){
-		return null;
+		return annu.process(commande, parametres);
 	}
 	
 }
