@@ -15,6 +15,11 @@ public class main {
 		// Retiré volontairement à la partie 2 car dangereux
 		// d'envoyer la reference de l'annuaire du serveur à un client!
 		//cli.setAnnuaire(serv.getAnnuaire());
+		
+		
+		// Interface = aucun champs.
+		
+		// Classe abstraite = classe non instanciable. Pour récupérer des propriétés et méthodes à l'héritage.
 	}
 
 }
