@@ -11,15 +11,19 @@ public class main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ServeurImpl serv = new ServeurImpl();
-		Client cli = new Client(serv);
+
 		
 		// Retiré volontairement à la partie 2 car dangereux
 		// d'envoyer la reference de l'annuaire du serveur à un client!
 		//cli.setServer(serv);
 		
+		// Au lieu de cela on passe le ServeurImpl serv au client
+		// en sachant que le client, lui, ne connait que l'API
+		// du Serveur car il attend une interace. Donc il ne pourra appeler
+		// aux méthodes de l'interface.
 		
+		Client cli = new Client(serv);
 		// Interface = aucun champs.
-		
 		// Classe abstraite = classe non instanciable. Pour récupérer des propriétés et méthodes à l'héritage.
 	}
 

@@ -76,7 +76,7 @@ public class Annuaire implements Startable {
 		// TODO Auto-generated method stub
 		initSites();
 		// Affichage des informations du serveur
-		System.out.println("Annuaire AnnuaireInit démarré."+"Objet d'accès aux données: "+dao.toString());
+		System.out.println("Annuaire AnnuaireInit démarré. "+"Objet d'accès aux données: "+dao.toString());
 	}
 
 	@Override

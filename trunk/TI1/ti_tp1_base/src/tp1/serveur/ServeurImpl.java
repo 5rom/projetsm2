@@ -46,6 +46,7 @@ public class ServeurImpl implements Serveur {
 		// Ensuite l'arraylist sera remplacee par un sous conteneur.
 	}
 	
+	@Override
 	// Accesseur sur l'annuaire
 	public Annuaire getAnnuaire(){
 		return annu;
