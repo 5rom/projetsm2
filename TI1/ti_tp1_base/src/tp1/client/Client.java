@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import tp1.serveur.Annuaire;
+import tp1.serveur.Serveur;
 import tp1.serveur.ServeurImpl;
 
 import tp1.Site;
@@ -15,9 +16,9 @@ import tp1.SiteXMLDAO;
 public class Client {	
 	
 	// La reference du serveur (voir si necessaire de le garder)
-	ServeurImpl serv;
+	Serveur serv;
 	
-	public Client(ServeurImpl servI){
+	public Client(Serveur servI){
         this.setServer(servI);
 		String description = null;
 		String url = null;
@@ -144,7 +145,7 @@ public class Client {
 	         }
 	      }
 
-	public void setServer(ServeurImpl servI) {
+	public void setServer(Serveur servI) {
 		// TODO Auto-generated method stub
 		serv=servI;
 	}
