@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import tp1.Site;
+import tp1.SiteContext;
 import tp1.SiteXMLDAO;
 
 /**
@@ -14,8 +15,9 @@ import tp1.SiteXMLDAO;
  */
 public class ServiceRemove extends AbstractAnnuaire {
 
-	public ServiceRemove(ArrayList<Site> sites, SiteXMLDAO xdao) {
-		super(sites, xdao);
+	public ServiceRemove(ArrayList<Site> sites, SiteContext sc) {
+		//super(sites, xdao);
+		super(sites, sc);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -26,7 +28,8 @@ public class ServiceRemove extends AbstractAnnuaire {
 	}
 
     private void removeSite(String desc, String url) {
-        Site s = new Site(desc, url, dao);
+        //Site s = new Site(desc, url, dao);
+    	Site s = new Site(desc, url, sc);
         // suppression dans la liste
         for (Iterator<Site> i = sites.iterator(); i.hasNext();) {
             Site temp = (Site) i.next();
@@ -46,7 +49,8 @@ public class ServiceRemove extends AbstractAnnuaire {
 
 	@Override
 	public void start() {
-		System.out.println("Service de suppression de sites démarré. "+"Objet d'accès aux données: "+dao.toString());	
+		//System.out.println("Service de suppression de sites démarré. "+"Objet d'accès aux données: "+dao.toString());
+		System.out.println("Service de suppression de sites démarré. "+"Objet d'accès aux données: "+sc.getSiteDAO().toString());
 	}
 
 	@Override

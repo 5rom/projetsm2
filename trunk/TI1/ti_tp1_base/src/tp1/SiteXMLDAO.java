@@ -116,13 +116,14 @@ public class SiteXMLDAO implements SiteDAO {
 
     	String d = null;
     	String u = null;
-    	
+    	SiteContext sc = new SiteContextImpl();
+    	sc.setSiteDAO(this);
     	NodeList nl = document.getDocumentElement().getChildNodes();
     	for (int i = 0; i < nl.getLength(); i++) {
     		if (nl.item(i).getNodeType() == Node.ELEMENT_NODE) {
     			d = ((Element) nl.item(i).getChildNodes().item(0)).getTextContent();
     			u = ((Element) nl.item(i).getChildNodes().item(1)).getTextContent();
-    			liste.add(new Site (d, u, this));
+    			liste.add(new Site (d, u, sc));
     		}
     	}
     	return liste;

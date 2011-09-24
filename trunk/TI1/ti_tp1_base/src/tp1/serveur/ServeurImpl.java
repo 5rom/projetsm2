@@ -5,6 +5,8 @@ import static org.picocontainer.Characteristics.CACHE;
 
 import org.picocontainer.*;
 
+import tp1.SiteContextImpl;
+import tp1.SiteDAO;
 import tp1.SiteXMLDAO;
 
 /**
@@ -27,7 +29,7 @@ public class ServeurImpl implements Serveur {
     private ServiceListeSites serviceL;	
 	
 	// Constructeur
-	public ServeurImpl(){
+	public ServeurImpl(SiteDAO dao){
 		
 		// Instanciation du ContainerBuilder (DEPRECIE?)
 		//ContainerBuilder cB = new ContainerBuilder();
@@ -45,11 +47,13 @@ public class ServeurImpl implements Serveur {
 		pico.addComponent(ServiceInitSites.class);		
 		
 		// Ajout de composants dependants de l'annuaire
-		//Annuaire retire car eclate en 4 classes 
+		//Annuaire retire car eclate en 4 classes
 		//pico.addComponent(Annuaire.class);
 		pico.as(CACHE).addComponent(ArrayList.class);
-		pico.as(CACHE).addComponent(SiteXMLDAO.class);
-		pico.addComponent(new String("test.xml"));
+		//pico.as(CACHE).addComponent(SiteXMLDAO.class);
+		pico.as(CACHE).addComponent(SiteContextImpl.class);
+		
+		//pico.addComponent(new String("test.xml"));
 		
 		
 		// Création de l'annuaire
@@ -62,6 +66,11 @@ public class ServeurImpl implements Serveur {
 		serviceL= pico.getComponent(ServiceListeSites.class);
 	
 		
+		//initialisation de la variable dao
+		serviceI.sc.setSiteDAO(dao);
+		serviceA.sc.setSiteDAO(dao);
+		serviceR.sc.setSiteDAO(dao);
+		serviceL.sc.setSiteDAO(dao);
 		
 		
 		//Appel de la méthode start() de l'annuaire

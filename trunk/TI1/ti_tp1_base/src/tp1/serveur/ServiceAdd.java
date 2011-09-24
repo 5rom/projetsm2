@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import tp1.Site;
+import tp1.SiteContext;
 import tp1.SiteXMLDAO;
 
 /**
@@ -13,8 +14,9 @@ import tp1.SiteXMLDAO;
  */
 public class ServiceAdd extends AbstractAnnuaire{
 
-	public ServiceAdd(ArrayList<Site> sites, SiteXMLDAO xdao) {
-		super(sites, xdao);
+	public ServiceAdd(ArrayList<Site> sites, SiteContext sc) {
+		//super(sites, dao);
+		super(sites, sc);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -25,7 +27,8 @@ public class ServiceAdd extends AbstractAnnuaire{
 	}
 
     private void addSite(String desc, String url) {
-        Site s = new Site(desc, url, dao);
+        //Site s = new Site(desc, url, dao);
+    	Site s = new Site(desc, url, sc);
         // ajout dans la liste
         try {
             s.save();
@@ -39,7 +42,8 @@ public class ServiceAdd extends AbstractAnnuaire{
 	@Override
 	public void start() {
 			// Affichage des informations du serveur
-			System.out.println("Service d'ajout de sites démarré. "+"Objet d'accès aux données: "+dao.toString());
+			//System.out.println("Service d'ajout de sites démarré. "+"Objet d'accès aux données: "+dao.toString());
+		System.out.println("Service d'ajout de sites démarré. "+"Objet d'accès aux données: "+sc.getSiteDAO().toString());
 	}
 
 	@Override

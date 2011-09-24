@@ -11,7 +11,8 @@ public class main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ServeurImpl serv = new ServeurImpl();
+		SiteDAO dao = new SiteXMLDAO("test.xml");
+		ServeurImpl serv = new ServeurImpl(dao);
 
 		
 		// Retiré volontairement à la partie 2 car dangereux
