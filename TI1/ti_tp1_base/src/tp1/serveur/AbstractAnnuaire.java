@@ -8,6 +8,15 @@ import tp1.Site;
 import tp1.SiteDAO;
 import tp1.SiteXMLDAO;
 
+/**
+ * Classe abstraite AbstractAnnuaire
+ * Permettra d'implémenter des services lié à l'annuaire côté serveur
+ * (par ex. le service d'ajout d'un site à l'annuaire. Ex méthode addSite...)
+ * Implemente Startable pour pouvoir lance un service et AnnuaireInterface pour
+ * disposer de la methode de service du serveur (traite les requetes des clients)
+ * @author D. CRESCENCE et S. FAURE
+ *
+ */
 public abstract class AbstractAnnuaire implements Startable , AnnuaireInterface{
     /**
      * La liste de sites
@@ -33,19 +42,6 @@ public abstract class AbstractAnnuaire implements Startable , AnnuaireInterface{
 	
 	@Override
 	// Methode d'appel de methode en fonction de la commande passee en parametre
-	public abstract String process(String commande, HashMap<String, String> parametres);//{
-		/*if (commande!=null){
-			if (commande.equals("addSite")){
-				addSite(parametres.get("desc"), parametres.get("url"));
-			} else if (commande.equals("removeSite")){
-				removeSite(parametres.get("desc"), parametres.get("url"));
-			} else if (commande.equals("listSites")){
-				return listSites();
-			} else if (commande.equals("initSites")){
-				initSites();
-				return "";
-			}
-		}
-		return "";
-	}    	*/
+	public abstract String process(String commande, HashMap<String, String> parametres);
+
 }

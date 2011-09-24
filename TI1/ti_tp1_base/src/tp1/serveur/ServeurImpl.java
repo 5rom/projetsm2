@@ -17,7 +17,7 @@ import tp1.SiteXMLDAO;
 public class ServeurImpl implements Serveur {
 
 	// L'annuaire du serveur
-	private Annuaire annu;
+	//private Annuaire annu;
 	
     /**
      * Dépendances vers les classes de service
@@ -66,30 +66,24 @@ public class ServeurImpl implements Serveur {
 		
 		
 		//Appel de la méthode start() de l'annuaire
-		// De qui appelle-t-on start maintenant?  //annu.start();
 		serviceI.start();
 		serviceA.start();
 		serviceR.start();
 		serviceL.start();
 		
-		// PROBLEME!!! PICO N'INSTANCIE PAS LE SITES ET DAO DANS LES CLASSES SERVICES!!!!
-		// PAS NORMAL.
-		
-		
 		
 		// Ensuite l'arraylist sera remplacee par un sous conteneur.
 	}
 	
-	@Override
+	//@Override
 	// Accesseur sur l'annuaire
-	public Annuaire getAnnuaire(){
-		return annu;
-	}
+	//public Annuaire getAnnuaire(){
+	//	return annu;
+	//}
 	
 	@Override
 	public String traiteRequete(String commande, HashMap<String, String> parametres){
 		//return annu.process(commande, parametres);
-		System.out.println("Je traite la requete : "+commande);
 		// Aiguillage
 		return aiguilleRequete(commande, parametres);
 	}

@@ -9,7 +9,14 @@ import org.picocontainer.Startable;
 import tp1.Site;
 import tp1.SiteDAO;
 import tp1.SiteXMLDAO;
-
+/**
+ * Ancienne classe annuaire
+ * DEPRECIEE car uniformisee en utilisant Interface, classe
+ * abstraite dont heritent les services cote serveur
+ * @author D. CRESCENCE et S. FAURE
+ *
+ */
+@Deprecated
 public class Annuaire implements Startable {
 
     ArrayList<Site> sites;

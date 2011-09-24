@@ -7,6 +7,11 @@ import java.util.Iterator;
 import tp1.Site;
 import tp1.SiteXMLDAO;
 
+/**
+ * Implementation d'un service de suppression de sites a l'annuaire
+ * @author D. CRESCENCE et S. FAURE
+ *
+ */
 public class ServiceRemove extends AbstractAnnuaire {
 
 	public ServiceRemove(ArrayList<Site> sites, SiteXMLDAO xdao) {
@@ -41,7 +46,7 @@ public class ServiceRemove extends AbstractAnnuaire {
 
 	@Override
 	public void start() {
-		System.out.println("Service de suppression de sites démarré. "+"Objet d'accès aux données: "+dao.toString());
+		System.out.println("Service de suppression de sites démarré. "+"Objet d'accès aux données: "+dao.toString());	
 	}
 
 	@Override
