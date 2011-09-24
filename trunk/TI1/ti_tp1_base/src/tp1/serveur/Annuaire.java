@@ -12,7 +12,7 @@ import tp1.SiteXMLDAO;
 
 public class Annuaire implements Startable {
 
-    ArrayList<Site> sites = new ArrayList<Site>();
+    ArrayList<Site> sites;
     SiteDAO dao;
 
     public Annuaire(ArrayList<Site> sites, SiteXMLDAO xdao) {

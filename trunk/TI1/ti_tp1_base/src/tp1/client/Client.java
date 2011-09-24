@@ -15,7 +15,7 @@ import tp1.SiteXMLDAO;
 
 public class Client {	
 	
-	// La reference du serveur (voir si necessaire de le garder)
+	// La reference du serveur (interface seulement : donc API)
 	Serveur serv;
 	
 	public Client(Serveur servI){
