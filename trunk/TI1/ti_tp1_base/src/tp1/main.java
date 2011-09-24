@@ -6,6 +6,7 @@ import tp1.serveur.ServeurImpl;
 public class main {
 
 	/**
+	 * Le main du projet : Instancie Serveur et Client
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -21,10 +22,9 @@ public class main {
 		// en sachant que le client, lui, ne connait que l'API
 		// du Serveur car il attend une interace. Donc il ne pourra appeler
 		// aux méthodes de l'interface.
-		
 		Client cli = new Client(serv);
-		// Interface = aucun champs.
-		// Classe abstraite = classe non instanciable. Pour récupérer des propriétés et méthodes à l'héritage.
+		
+
 	}
 
 }

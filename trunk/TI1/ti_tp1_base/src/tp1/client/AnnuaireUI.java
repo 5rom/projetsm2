@@ -10,6 +10,14 @@ import tp1.SiteXMLDAO;
 
 import tp1.serveur.Annuaire;
 
+
+/**
+ * Classe AnnuaireUI : ancienne IHM
+ * DEPRECIEE car remplacée par la classe Client
+ * @author Seb
+ *
+ */
+@Deprecated
 public class AnnuaireUI {
 
 	//Variable globale (singleton)

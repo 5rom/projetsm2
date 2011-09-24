@@ -12,7 +12,12 @@ import tp1.serveur.ServeurImpl;
 
 import tp1.Site;
 import tp1.SiteXMLDAO;
-
+/**
+ * Classe Client
+ * IHM cote client permettant l'envoi de requetes au serveur
+ * @author D. CRESCENCE et S. FAURE
+ *
+ */
 public class Client {	
 	
 	// La reference du serveur (interface seulement : donc API)

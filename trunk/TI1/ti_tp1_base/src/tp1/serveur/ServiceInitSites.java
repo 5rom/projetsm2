@@ -6,6 +6,11 @@ import java.util.HashMap;
 import tp1.Site;
 import tp1.SiteXMLDAO;
 
+/**
+ * Implementation d'un service d'initialisation des sites de l'annuaire
+ * @author D. CRESCENCE et S. FAURE
+ *
+ */
 public class ServiceInitSites extends AbstractAnnuaire {
 	
 	public ServiceInitSites(ArrayList<Site> sites, SiteXMLDAO xdao) {
@@ -31,7 +36,7 @@ public class ServiceInitSites extends AbstractAnnuaire {
 			// initSites();
 			initSites();
 			// Affichage des informations du serveur
-			System.out.println("Service d'initialisation des sites démarré. "+"Objet d'accès aux données: "+dao.toString());
+			System.out.println("Service d'initialisation des sites démarré. "+"Objet d'accès aux données: "+dao.toString());		
 	}
 
 	@Override

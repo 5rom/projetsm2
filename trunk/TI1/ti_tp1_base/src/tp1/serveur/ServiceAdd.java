@@ -6,6 +6,11 @@ import java.util.HashMap;
 import tp1.Site;
 import tp1.SiteXMLDAO;
 
+/**
+ * Implementation d'un service d'ajout de sites a l'annuaire
+ * @author D. CRESCENCE et S. FAURE
+ *
+ */
 public class ServiceAdd extends AbstractAnnuaire{
 
 	public ServiceAdd(ArrayList<Site> sites, SiteXMLDAO xdao) {
@@ -21,7 +26,6 @@ public class ServiceAdd extends AbstractAnnuaire{
 
     private void addSite(String desc, String url) {
         Site s = new Site(desc, url, dao);
-
         // ajout dans la liste
         try {
             s.save();
