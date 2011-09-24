@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import org.picocontainer.Startable;
 import tp1.Site;
+import tp1.SiteContext;
 import tp1.SiteDAO;
 import tp1.SiteXMLDAO;
 
@@ -21,16 +22,21 @@ public abstract class AbstractAnnuaire implements Startable , AnnuaireInterface{
     /**
      * La liste de sites
      */
-	ArrayList<Site> sites;
+	public ArrayList<Site> sites;
 	
 	/**
 	 * Le SiteDAO (DAO = Direct Access Object)
 	 */
-    SiteDAO dao;
+	//SiteDAO dao;
+	
+	/**
+	 * Pattern context pour la communication avec les DAO
+	 */
+	public SiteContext  sc;
    
 
-    public AbstractAnnuaire(ArrayList<Site> sites, SiteXMLDAO xdao) {
-    	dao = xdao;
+    public AbstractAnnuaire(ArrayList<Site> sites, SiteContext sc) {
+    	this.sc = sc;
     	this.sites = sites;
     }        
     

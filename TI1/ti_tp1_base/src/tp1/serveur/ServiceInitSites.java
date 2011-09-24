@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import tp1.Site;
+import tp1.SiteContext;
 import tp1.SiteXMLDAO;
 
 /**
@@ -13,9 +14,9 @@ import tp1.SiteXMLDAO;
  */
 public class ServiceInitSites extends AbstractAnnuaire {
 	
-	public ServiceInitSites(ArrayList<Site> sites, SiteXMLDAO xdao) {
-		super(sites, xdao);
-		// TODO Auto-generated constructor stub
+	public ServiceInitSites(ArrayList<Site> sites, SiteContext sc) {
+		//super(sites, xdao);
+		super(sites,sc);
 	}
 
 	@Override
@@ -26,7 +27,8 @@ public class ServiceInitSites extends AbstractAnnuaire {
     
 	private void initSites() {
         // synchronisation de la liste et du support de persistance
-        Site temp = new Site(dao);
+		//Site temp = new Site(dao);
+		Site temp = new Site(sc);
         sites = temp.getAllSites(sites);
     }
 
@@ -36,7 +38,8 @@ public class ServiceInitSites extends AbstractAnnuaire {
 			// initSites();
 			initSites();
 			// Affichage des informations du serveur
-			System.out.println("Service d'initialisation des sites démarré. "+"Objet d'accès aux données: "+dao.toString());		
+			//System.out.println("Service d'initialisation des sites démarré. "+"Objet d'accès aux données: "+dao.toString());		
+			System.out.println("Service d'initialisation des sites démarré. "+"Objet d'accès aux données: "+sc.getSiteDAO().toString());
 	}
 
 	@Override

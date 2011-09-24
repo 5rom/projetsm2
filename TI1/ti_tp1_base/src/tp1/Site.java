@@ -6,16 +6,19 @@ public class Site {
 	
 	String description = null;
 	String url = null;
-    SiteDAO dao;
+    //SiteDAO dao;
+	SiteContext sc;
 	
-	public Site (SiteDAO dao) {
-        this.dao = dao;
+	public Site (SiteContext sc) {
+        //this.dao = dao;
+		this.sc = sc;
 	}
 	
-	public Site (String d, String u, SiteDAO dao) {
+	public Site (String d, String u, SiteContext sc) {
 		this.description = new String (d);
 		this.url = new String (u);
-        this.dao = dao;
+        //this.dao = dao;
+		this.sc = sc;
 	}
 
     public boolean equals(Site other) {
@@ -39,14 +42,17 @@ public class Site {
 	}
 
     public void save() {
-        dao.addSite(this);
+        //dao.addSite(this);
+    	sc.getSiteDAO().addSite(this);
     }
 
     public void delete() {
-        dao.deleteSite(this);
+        //dao.deleteSite(this);
+    	sc.getSiteDAO().deleteSite(this);
     }
 
     public ArrayList<Site> getAllSites(ArrayList<Site> liste) {
-        return dao.getAllSites(liste);
+        //return dao.getAllSites(liste);
+    	return sc.getSiteDAO().getAllSites(liste);
     }
 }

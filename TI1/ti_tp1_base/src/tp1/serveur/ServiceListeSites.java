@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import tp1.Site;
-import tp1.SiteXMLDAO;
+import tp1.SiteContext;
+//import tp1.SiteXMLDAO;
 
 /**
  * Implementation d'un service de listing des sites de l'annuaire
@@ -14,8 +15,9 @@ import tp1.SiteXMLDAO;
  */
 public class ServiceListeSites extends AbstractAnnuaire {
 
-	public ServiceListeSites(ArrayList<Site> sites, SiteXMLDAO xdao) {
-		super(sites, xdao);
+	public ServiceListeSites(ArrayList<Site> sites, SiteContext sc) {
+		//super(sites, xdao);
+		super(sites, sc);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -28,7 +30,8 @@ public class ServiceListeSites extends AbstractAnnuaire {
 
 	@Override
 	public void start() {
-		System.out.println("Service de listing des sites démarré. "+"Objet d'accès aux données: "+dao.toString());	
+		//System.out.println("Service de listing des sites démarré. "+"Objet d'accès aux données: "+dao.toString());
+		System.out.println("Service de listing des sites démarré. "+"Objet d'accès aux données: "+sc.getSiteDAO().toString());
 	}
 
 	@Override
