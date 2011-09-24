@@ -22,7 +22,7 @@ public class main {
 		// en sachant que le client, lui, ne connait que l'API
 		// du Serveur car il attend une interace. Donc il ne pourra appeler
 		// aux méthodes de l'interface.
-		Client cli = new Client(serv);
+		new Client(serv);
 		
 
 	}

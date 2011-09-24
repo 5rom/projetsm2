@@ -10,5 +10,5 @@ import java.util.HashMap;
  *
  */
 public interface Serveur {
-	public String traiteRequete(String commande, HashMap<String, String> parametres);
+	public void traiteRequete(String commande, HashMap<String, String> parametres);
 }

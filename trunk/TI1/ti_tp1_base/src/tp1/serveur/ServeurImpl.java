@@ -1,7 +1,6 @@
 package tp1.serveur;
 import java.util.ArrayList;
 import java.util.HashMap;
-import static org.picocontainer.Characteristics.SDI;
 import static org.picocontainer.Characteristics.CACHE;
 
 import org.picocontainer.*;
@@ -82,13 +81,13 @@ public class ServeurImpl implements Serveur {
 	//}
 	
 	@Override
-	public String traiteRequete(String commande, HashMap<String, String> parametres){
+	public void traiteRequete(String commande, HashMap<String, String> parametres){
 		//return annu.process(commande, parametres);
 		// Aiguillage
-		return aiguilleRequete(commande, parametres);
+		aiguilleRequete(commande, parametres);
 	}
 	
-	public String aiguilleRequete(String commande, HashMap<String, String> parametres){
+	public void aiguilleRequete(String commande, HashMap<String, String> parametres){
 		if (commande!=null){
 			if (commande.equals("addSite")){
 				serviceA.process(commande,parametres);
@@ -98,10 +97,8 @@ public class ServeurImpl implements Serveur {
 				serviceL.process(commande,parametres);
 			} else if (commande.equals("initSites")){
 				serviceI.process(commande,parametres);
-				return "";
 			}
-		}
-		return "";		
+		}	
 	}
 	
 }
