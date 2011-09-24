@@ -23,7 +23,7 @@ public class ServiceListeSites extends AbstractAnnuaire {
 	public String process(String commande, HashMap<String, String> parametres) {
 		// TODO Auto-generated method stub
 		System.out.println(listSites());
-		return "";
+		return new String();
 	}
 
 	@Override

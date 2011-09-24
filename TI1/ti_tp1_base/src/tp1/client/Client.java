@@ -2,16 +2,14 @@ package tp1.client;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
-import tp1.serveur.Annuaire;
+//import tp1.serveur.Annuaire;
 import tp1.serveur.Serveur;
-import tp1.serveur.ServeurImpl;
+//import tp1.serveur.ServeurImpl;
 
-import tp1.Site;
-import tp1.SiteXMLDAO;
+//import tp1.Site;
+//import tp1.SiteXMLDAO;
 /**
  * Classe Client
  * IHM cote client permettant l'envoi de requetes au serveur
@@ -73,7 +71,7 @@ public class Client {
 			case 3:
 				System.out.println("Sites actuellement connus :\n\n");
 				//System.out.println(annuaire.listSites());
-				System.out.println(serv.traiteRequete("listSites", null));
+				serv.traiteRequete("listSites", null);
 				break;
 
 			case 4:
@@ -120,8 +118,8 @@ public class Client {
         serv.traiteRequete("removeSite", hm);  	
     }
 
-    private String listSites() {
-        return serv.traiteRequete("listSites", null);
+    private void listSites() {
+        serv.traiteRequete("listSites", null);
     }
     
 
@@ -135,7 +133,7 @@ public class Client {
 	}
 
 //	 ---------------------------------------------
-//   Code trouvï¿½ ï¿½ l'URL : http://www.wellho.net/resources/ex.php4?item=j703/WellHouseInput.java
+//   Code trouvé à l'URL : http://www.wellho.net/resources/ex.php4?item=j703/WellHouseInput.java
 	   public static String readLine()
 	      {
 	      BufferedReader standard = new BufferedReader(
