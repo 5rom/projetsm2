@@ -32,6 +32,7 @@ public class Album {
 	/**
 	 * Le titre du cd
 	 */
+	@Column (name="TITRE")
 	private String titre;
 	
 
