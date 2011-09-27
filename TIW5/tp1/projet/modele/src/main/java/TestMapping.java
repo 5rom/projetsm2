@@ -81,22 +81,24 @@ public class TestMapping extends TestCase {
             em.getTransaction().begin();
             logger.info("Transaction qui commence");
             Album a1 = new Album("The New Eye Scream - The Very Best Of");
-            //Album a2 = new Album("Wolfmother - Wolfmother");
-            //Album a3 = new Album("The Parlor Mob - Dogs");
+            Album a2 = new Album("Wolfmother - Wolfmother");
+            Album a3 = new Album("The Parlor Mob - Dogs");
+
             a1.addPiste(new Piste("Song1", 3));
             logger.info("album crée");
             em.persist(a1);
+            em.persist(a2);
+            em.persist(a3);
             logger.info("persist ok");
             
 
 
             em.getTransaction().commit();
             logger.info("commit ok");
-            int i = em.createQuery("SELECT titre FROM Album a").getResultList().size();
-            //for (String p : lesAlbums) {
-            //	System.out.println("Nom: " + p);
-            //}
-            logger.info("Nombre d'albums : "+i);
+            List<Album> lesAlbums = em.createQuery("select a from Album a").getResultList();
+            for (Album ex : lesAlbums) {
+            	System.out.println("Nom: " + ex.getTitre());
+            }
             logger.info("fin");
             em.close();
         } catch (Exception ex) {

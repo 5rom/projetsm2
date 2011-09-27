@@ -1,5 +1,7 @@
 package tiw5.modele;
 
+import javax.persistence.Embeddable;
+
 /**
  * Classe représentant une piste. 
  * Remarque: on ne souhaite pas faire des pistes des entités à part entière.
@@ -9,6 +11,7 @@ package tiw5.modele;
 /**
  * Pas une entite car simple groupe de valeurs
  */
+@Embeddable
 public class Piste {
 
 	/**
@@ -21,6 +24,7 @@ public class Piste {
 	 */
 	private int duree;
 	
+	
 	/**
 	 * Créée une piste.
 	 * @param titre le titre de la piste.
@@ -29,6 +33,11 @@ public class Piste {
 	public Piste(String titre, int duree) {
 		this.titre = titre;
 		this.duree = duree;
+	}
+	
+	public Piste(){
+		this.titre = "vide";
+		this.duree = 0;
 	}
 
 	/**
