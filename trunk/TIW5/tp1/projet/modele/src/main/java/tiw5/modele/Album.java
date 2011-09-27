@@ -3,10 +3,14 @@ package tiw5.modele;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.SequenceGenerator;
 
 /**
@@ -21,8 +25,7 @@ public class Album {
 	 * Un identifiant unique pour chaque cd
 	 */
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seq_gen")
-	@SequenceGenerator(name="seq_gen",sequenceName="SEQ_ALBUM",allocationSize=1)	
+	@GeneratedValue
 	private long id;
 	
 	
@@ -36,7 +39,12 @@ public class Album {
 	 * La liste des plages du cd.
 	 */
 	//ArrayList plutot que liste?
-	private ArrayList<Piste> pistes;
+	  @ElementCollection
+	  @CollectionTable(
+	        name="PISTE",
+	        joinColumns=@JoinColumn(name="ALBUM_ID")
+	  )
+	private List<Piste> pistes;
 	
 	/**
 	 * Créée un nouveau cd ayant pour titre l'argument.
