@@ -3,6 +3,7 @@ package tp1.serveur;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import tp1.DaoCallerException;
 import tp1.Site;
 import tp1.SiteContext;
 import tp1.SiteXMLDAO;
@@ -29,7 +30,12 @@ public class ServiceInitSites extends AbstractAnnuaire {
         // synchronisation de la liste et du support de persistance
 		//Site temp = new Site(dao);
 		Site temp = new Site(sc);
-        sites = temp.getAllSites(sites);
+        try {
+			sites = temp.getAllSites(sites);
+		} catch (DaoCallerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 	@Override
@@ -39,7 +45,12 @@ public class ServiceInitSites extends AbstractAnnuaire {
 			initSites();
 			// Affichage des informations du serveur
 			//System.out.println("Service d'initialisation des sites démarré. "+"Objet d'accès aux données: "+dao.toString());		
-			System.out.println("Service d'initialisation des sites démarré. "+"Objet d'accès aux données: "+sc.getSiteDAO().toString());
+			try {
+				System.out.println("Service d'initialisation des sites démarré. "+"Objet d'accès aux données: "+sc.getSiteDAO().toString());
+			} catch (DaoCallerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 
 	@Override

@@ -41,17 +41,17 @@ public class Site {
 		this.url = u;
 	}
 
-    public void save() {
+    public void save() throws DaoCallerException {
         //dao.addSite(this);
     	sc.getSiteDAO().addSite(this);
     }
 
-    public void delete() {
+    public void delete() throws DaoCallerException {
         //dao.deleteSite(this);
     	sc.getSiteDAO().deleteSite(this);
     }
 
-    public ArrayList<Site> getAllSites(ArrayList<Site> liste) {
+    public ArrayList<Site> getAllSites(ArrayList<Site> liste) throws DaoCallerException {
         //return dao.getAllSites(liste);
     	return sc.getSiteDAO().getAllSites(liste);
     }

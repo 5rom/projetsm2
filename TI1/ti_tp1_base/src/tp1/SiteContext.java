@@ -9,7 +9,7 @@ package tp1;
  */
 
 public interface SiteContext {
-	public SiteDAO getSiteDAO();
+	public SiteDAO getSiteDAO() throws DaoCallerException;
 	public void setSiteDAO(SiteDAO dao);
 	
 
