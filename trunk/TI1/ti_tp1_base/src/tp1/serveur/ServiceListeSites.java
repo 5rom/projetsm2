@@ -31,7 +31,7 @@ public class ServiceListeSites extends AbstractAnnuaire {
 	@Override
 	public void start() {
 		//System.out.println("Service de listing des sites démarré. "+"Objet d'accès aux données: "+dao.toString());
-		System.out.println("Service de listing des sites démarré. "+"Objet d'accès aux données: "+sc.getSiteDAO().toString());
+		System.out.println("Service de listing des sites démarré. "+"Objet d'accès aux données: "+sc.toString());
 	}
 
 	@Override

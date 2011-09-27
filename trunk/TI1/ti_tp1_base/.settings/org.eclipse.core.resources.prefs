@@ -1,5 +1,6 @@
-#Sat Sep 24 21:42:24 CEST 2011
+#Tue Sep 27 18:53:05 CEST 2011
 eclipse.preferences.version=1
+encoding//src/tp1/DaoCallerException.java=ISO-8859-1
 encoding//src/tp1/client/Client.java=ISO-8859-1
 encoding//src/tp1/serveur/AbstractAnnuaire.java=ISO-8859-1
 encoding//src/tp1/serveur/Annuaire.java=ISO-8859-1

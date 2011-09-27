@@ -50,7 +50,7 @@ public class ServiceRemove extends AbstractAnnuaire {
 	@Override
 	public void start() {
 		//System.out.println("Service de suppression de sites démarré. "+"Objet d'accès aux données: "+dao.toString());
-		System.out.println("Service de suppression de sites démarré. "+"Objet d'accès aux données: "+sc.getSiteDAO().toString());
+		System.out.println("Service de suppression de sites démarré. "+"Objet d'accès aux données: "+sc.toString());
 	}
 
 	@Override

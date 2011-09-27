@@ -43,7 +43,7 @@ public class ServiceAdd extends AbstractAnnuaire{
 	public void start() {
 			// Affichage des informations du serveur
 			//System.out.println("Service d'ajout de sites démarré. "+"Objet d'accès aux données: "+dao.toString());
-		System.out.println("Service d'ajout de sites démarré. "+"Objet d'accès aux données: "+sc.getSiteDAO().toString());
+		System.out.println("Service d'ajout de sites démarré. "+"Objet d'accès aux données: "+sc.toString());
 	}
 
 	@Override
