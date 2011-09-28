@@ -1,6 +1,9 @@
 package tiw5.modele;
 
 import javax.persistence.Embeddable;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Classe représentant une piste. 
@@ -12,16 +15,19 @@ import javax.persistence.Embeddable;
  * Pas une entite car simple groupe de valeurs
  */
 @Embeddable
+@XmlRootElement(name="piste")
 public class Piste {
 
 	/**
 	 * Le titre de la piste.
 	 */
+	@XmlElement(name="titre")
 	private String titre;
 	
 	/**
 	 * La durée de la piste en secondes.
 	 */
+	@XmlElement(name="duree")
 	private int duree;
 	
 	
@@ -51,6 +57,7 @@ public class Piste {
 	 * Change le titre de la piste.
 	 * @param titre le nouveau titre.
 	 */
+	@XmlTransient
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
@@ -66,6 +73,7 @@ public class Piste {
 	 * Change la durée de la piste.
 	 * @param duree la nouvelle durée.
 	 */
+	@XmlTransient
 	public void setDuree(int duree) {
 		this.duree = duree;
 	}
