@@ -12,12 +12,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.SequenceGenerator;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlList;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Représente un cd avec un titre et un ensemble de pistes.
  * @author Emmanuel Coquery <emmanuel.coquery@liris.cnrs.fr>
  */
-
+@XmlRootElement(name="AlbumContent")
 @Entity
 public class Album {
 
@@ -26,6 +31,7 @@ public class Album {
 	 */
 	@Id
 	@GeneratedValue
+	@XmlAttribute(name="id")
 	private long id;
 	
 	
@@ -33,6 +39,7 @@ public class Album {
 	 * Le titre du cd
 	 */
 	@Column (name="TITRE")
+	@XmlElement(name="titre")
 	private String titre;
 	
 
@@ -45,6 +52,8 @@ public class Album {
 	        name="PISTE",
 	        joinColumns=@JoinColumn(name="ALBUM_ID")
 	  )
+	@XmlElement
+    @XmlList
 	private List<Piste> pistes;
 	
 	/**
@@ -68,6 +77,7 @@ public class Album {
 	 * Change le titre du cd
 	 * @param titre 
 	 */
+	@XmlTransient
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
@@ -85,6 +95,7 @@ public class Album {
 	 * pas d'identifiant auparavant.
 	 * @param id l'identifiant du cd
 	 */
+	@XmlTransient
 	public void setId(long id) {
 		this.id = id;
 	}
