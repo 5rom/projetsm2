@@ -74,7 +74,7 @@ public class TestMapping extends TestCase {
     /**
      * Méthode de test de la persistance des albums
      */
-    public void testPatate() {
+    public void test() {
         try {
             em.getTransaction().begin();
             logger.info("Début de la transaction...");
