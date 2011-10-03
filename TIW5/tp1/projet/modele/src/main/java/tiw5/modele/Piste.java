@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
@@ -55,11 +56,11 @@ public class Piste {
 	private int duree;
 	
 	/**
-	 * La liste des artistes de l'album.
+	 * La liste des artistes de la piste.
 	 */
 	//@ElementCollection
 	@XmlElement(name="artiste")
-	@OneToMany(cascade = { CascadeType.PERSIST })
+	@ManyToMany (cascade = { CascadeType.PERSIST })
 	private List<Artiste> artistes;		
 	
 	
