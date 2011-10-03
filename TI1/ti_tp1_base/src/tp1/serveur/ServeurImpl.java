@@ -67,10 +67,15 @@ public class ServeurImpl implements Serveur {
 	
 		
 		//initialisation de la variable dao
-		serviceI.sc.setSiteDAO(dao);
+		/*/serviceI.sc.setSiteDAO(dao);
 		serviceA.sc.setSiteDAO(dao);
 		serviceR.sc.setSiteDAO(dao);
-		serviceL.sc.setSiteDAO(dao);
+		serviceL.sc.setSiteDAO(dao);//*/
+		
+		/**/serviceI.sc.setDAO("SiteDAO",dao);
+		serviceA.sc.setDAO("SiteDAO",dao);
+		serviceR.sc.setDAO("SiteDAO",dao);
+		serviceL.sc.setDAO("SiteDAO",dao);//*/
 		
 		
 		//Appel de la méthode start() de l'annuaire

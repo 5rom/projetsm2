@@ -6,6 +6,7 @@ import java.util.HashMap;
 import tp1.DaoCallerException;
 import tp1.Site;
 import tp1.SiteContext;
+import tp1.SiteDAO;
 import tp1.SiteXMLDAO;
 
 /**
@@ -46,7 +47,9 @@ public class ServiceInitSites extends AbstractAnnuaire {
 			// Affichage des informations du serveur
 			//System.out.println("Service d'initialisation des sites démarré. "+"Objet d'accès aux données: "+dao.toString());		
 			try {
-				System.out.println("Service d'initialisation des sites démarré. "+"Objet d'accès aux données: "+sc.getSiteDAO().toString());
+				//System.out.println("Service d'initialisation des sites démarré. "+"Objet d'accès aux données: "+sc.getSiteDAO().toString());
+				System.out.println("Service d'initialisation des sites démarré. "+"Objet d'accès aux données: "+ ((SiteDAO) sc.getDAO("SiteDAO")).toString());
+				
 			} catch (DaoCallerException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

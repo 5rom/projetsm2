@@ -117,7 +117,8 @@ public class SiteXMLDAO implements SiteDAO {
     	String d = null;
     	String u = null;
     	SiteContext sc = new SiteContextImpl();
-    	sc.setSiteDAO(this);
+    	//sc.setSiteDAO(this);
+    	sc.setDAO("SiteDAO", this);
     	NodeList nl = document.getDocumentElement().getChildNodes();
     	for (int i = 0; i < nl.getLength(); i++) {
     		if (nl.item(i).getNodeType() == Node.ELEMENT_NODE) {

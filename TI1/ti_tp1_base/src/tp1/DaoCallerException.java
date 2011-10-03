@@ -21,7 +21,7 @@ public class DaoCallerException extends Exception {
 	}
 	
 	public String toString(){
-		return "Bad caller exception : " + classname + " called a DAO at " + Calendar.getInstance().getTime();
+		return "Bad caller exception : " + classname + " called a DAO at " + Calendar.getInstance().getTime() + "\n";
 	}
 	
 	

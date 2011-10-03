@@ -43,16 +43,19 @@ public class Site {
 
     public void save() throws DaoCallerException {
         //dao.addSite(this);
-    	sc.getSiteDAO().addSite(this);
+    	//sc.getSiteDAO().addSite(this);
+    	((SiteDAO) sc.getDAO("SiteDAO")).addSite(this);
     }
 
     public void delete() throws DaoCallerException {
         //dao.deleteSite(this);
-    	sc.getSiteDAO().deleteSite(this);
+    	//sc.getSiteDAO().deleteSite(this);
+    	((SiteDAO) sc.getDAO("SiteDAO")).deleteSite(this);
     }
 
     public ArrayList<Site> getAllSites(ArrayList<Site> liste) throws DaoCallerException {
         //return dao.getAllSites(liste);
-    	return sc.getSiteDAO().getAllSites(liste);
+    	//return sc.getSiteDAO().getAllSites(liste);
+    	return ((SiteDAO) sc.getDAO("SiteDAO")).getAllSites(liste);
     }
 }

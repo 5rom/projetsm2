@@ -9,8 +9,12 @@ package tp1;
  */
 
 public interface SiteContext {
+	@Deprecated
 	public SiteDAO getSiteDAO() throws DaoCallerException;
+	@Deprecated
 	public void setSiteDAO(SiteDAO dao);
 	
-
+	public Object getDAO(String name) throws DaoCallerException;
+	
+	public void setDAO(String name, Object dao);
 }
