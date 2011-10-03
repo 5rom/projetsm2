@@ -199,6 +199,17 @@ public class Album {
 	}
 	
 	/**
+	 * Le ieme artiste du cd
+	 * @param index le numéro de l'artiste sur le cd
+	 * @return l'artiste
+	 * @throws IndexOutOfBoundsException si le numéro ne correspond pas à 
+	 * un artiste.
+	 */
+	public Artiste getArtiste(int index) {
+		return artistes.get(index);
+	}	
+	
+	/**
 	 * Supprime un artiste de la liste des artistes
 	 * @param artiste
 	 */
