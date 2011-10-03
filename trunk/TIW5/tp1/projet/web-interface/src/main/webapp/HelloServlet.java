@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import tiw5.modele.Album;
+
 /**
  * Servlet implementation class HelloServlet
  */
@@ -28,11 +30,11 @@ public class HelloServlet extends HttpServlet implements Servlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String qui=request.getParameter("qui");
+		
 		PrintWriter out = response.getWriter();
 
 		
-		if (qui.equalsIgnoreCase("xml")){
+		/*if (qui.equalsIgnoreCase("xml")){
 			response.setContentType("text/xml");
 			out.println("<album id=\"0\">");
 			out.println("<titre>Mon album</titre>");
@@ -45,7 +47,37 @@ public class HelloServlet extends HttpServlet implements Servlet {
 			out.println("Titre : Mon album");
 			out.println("</body>");
 			
-		}
+		}*/
+		String format="";
+		if (request.getParameter("format").equals("1"))
+			format="xml";
+		else if (request.getParameter("format").equals("2"))
+			format="xhtml";
+		out.println("<HTML>\n<BODY>\n" +
+				"<H1>Recapitulatif des informations</H1>\n" +
+				"<UL>\n" +			   
+		"  <LI>Numéro de l'album: "
+				+ request.getParameter("noAlbum") + "\n" +
+				"  <LI>Choix: "
+				+ request.getParameter("format") + "\n" +
+				"</UL>\n" +				
+				
+		"<FORM Method=\"POST\" Action=\"index.jsp\">"+
+		"<INPUT type=submit value=Retour>"+
+		"</FORM>"+				
+				
+		"</BODY></HTML>"); 
+		
+		Album a;
+
+		/**
+		 * Ici :
+		 * -Faire ce qui est fait dans testMapping pour recuperer la liste des albums de la base.
+		 * -Parcourir la liste et chercher l'album d'id noAlbum.
+		 * -Si format = xml faire ce qui est fait dans testModSemiStruct pour marshalliser l'album choisi et afficher le xml transformé avec xslt
+		 * -Si format = xhtml, construire simplement l'affichage en html (out.println("...")).
+		 * -Mettre un bouton retour pour revenir à l'index.jsp. 
+		 */
 	}
 
 	/**
@@ -53,6 +85,8 @@ public class HelloServlet extends HttpServlet implements Servlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
+
