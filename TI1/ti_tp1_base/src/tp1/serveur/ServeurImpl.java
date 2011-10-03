@@ -29,7 +29,7 @@ public class ServeurImpl implements Serveur {
     private ServiceListeSites serviceL;	
 	
 	// Constructeur
-	public ServeurImpl(SiteDAO dao){
+	public ServeurImpl(HashMap<String,Object> listedao){
 		
 		// Instanciation du ContainerBuilder (DEPRECIE?)
 		//ContainerBuilder cB = new ContainerBuilder();
@@ -72,10 +72,10 @@ public class ServeurImpl implements Serveur {
 		serviceR.sc.setSiteDAO(dao);
 		serviceL.sc.setSiteDAO(dao);//*/
 		
-		/**/serviceI.sc.setDAO("SiteDAO",dao);
-		serviceA.sc.setDAO("SiteDAO",dao);
-		serviceR.sc.setDAO("SiteDAO",dao);
-		serviceL.sc.setDAO("SiteDAO",dao);//*/
+		/**/serviceI.sc.setDAO("SiteDAO",listedao.get("SiteDAO"));
+		serviceA.sc.setDAO("SiteDAO",listedao.get("SiteDAO"));
+		serviceR.sc.setDAO("SiteDAO",listedao.get("SiteDAO"));
+		serviceL.sc.setDAO("SiteDAO",listedao.get("SiteDAO"));//*/
 		
 		
 		//Appel de la méthode start() de l'annuaire

@@ -1,4 +1,6 @@
 package tp1;
+import java.util.HashMap;
+
 import tp1.client.Client;
 import tp1.serveur.ServeurImpl;
 
@@ -12,7 +14,9 @@ public class main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		SiteDAO dao = new SiteXMLDAO("test.xml");
-		ServeurImpl serv = new ServeurImpl(dao);
+		HashMap<String, Object> listedao = new HashMap<String,Object>(); 
+		listedao.put("SiteDAO", dao);
+		ServeurImpl serv = new ServeurImpl(listedao);
 
 		
 		// Retiré volontairement à la partie 2 car dangereux
