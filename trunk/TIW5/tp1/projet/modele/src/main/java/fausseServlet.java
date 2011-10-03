@@ -1,4 +1,3 @@
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -7,33 +6,30 @@ import java.sql.SQLException;
 import java.sql.SQLNonTransientConnectionException;
 import java.sql.Statement;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
 import org.slf4j.LoggerFactory;
 
 import tiw5.modele.Album;
 import tiw5.modele.Artiste;
 import tiw5.modele.Piste;
-
-
 import junit.framework.TestCase;
 
 
-public class TestMapping extends TestCase {
+public class fausseServlet extends TestCase {
 
     private static String dbURL = "jdbc:derby:bdtp1;create=true;";
     // jdbc Connection
     private static Connection conn = null;
     private static Statement stmt = null;
 	
-	public TestMapping(String name) {
+	public fausseServlet(String name) {
 		super(name);
 	}
 
-    final static org.slf4j.Logger logger = LoggerFactory.getLogger(TestMapping.class);
+    final static org.slf4j.Logger logger = LoggerFactory.getLogger(fausseServlet.class);
 
     private EntityManager em;
 
@@ -166,128 +162,15 @@ public class TestMapping extends TestCase {
             }            
             
             logger.info("Fin requete albums");
-            
-            /*
-            try
-            {
-            	logger.info("Liste d'albums");
-                stmt = conn.createStatement();
-                ResultSet results = stmt.executeQuery("select * from " + "Album");
-                ResultSetMetaData rsmd = results.getMetaData();
-                int numberCols = rsmd.getColumnCount();
-                String cdisp1="";
-                for (int i=1; i<=numberCols; i++)
-                {
-                    //print Column Names
-                	cdisp1+=rsmd.getColumnLabel(i)+"\t\t";
-                }
-                logger.info(cdisp1);  
-
-                logger.info("\n-------------------------------------------------");
-
-                while(results.next())
-                {
-                    int id = results.getInt(1);
-                    String titre = results.getString(2);
-                    logger.info(id + "\t\t" + titre + "\t\t");
-                }
-                results.close();
-                stmt.close();
-            }
-            catch (SQLException sqlExcept)
-            {
-                sqlExcept.printStackTrace();
-            }
-            */
-            try
-            {
-            	logger.info("Table de correspondance piste/artiste");
-                stmt = conn.createStatement();
-                ResultSet results = stmt.executeQuery("select * from " + "Piste_Artiste");
-                ResultSetMetaData rsmd = results.getMetaData();
-                int numberCols = rsmd.getColumnCount();
-                String cdisp2="";
-                for (int i=1; i<=numberCols; i++)
-                {
-                	cdisp2+=rsmd.getColumnLabel(i)+"\t\t";  
-                }
-                logger.info(cdisp2);
-                logger.info("\n-------------------------------------------------");
-
-                while(results.next())
-                {
-                    //int id = results.getInt(1);
-                    String idAlbum = results.getString(1);
-                    String idPiste = results.getString(2);
-                    logger.info(/*id + "\t\t" + */idAlbum + "\t\t"+idPiste);
-                }
-                results.close();
-                stmt.close();
-            }
-            catch (SQLException sqlExcept)
-            {
-                sqlExcept.printStackTrace();
-            }
-            try
-            {
-            	logger.info("Table de correspondance album/artiste");
-                stmt = conn.createStatement();
-                ResultSet results = stmt.executeQuery("select * from " + "Album_Artiste");
-                ResultSetMetaData rsmd = results.getMetaData();
-                int numberCols = rsmd.getColumnCount();
-                String cdisp2="";
-                for (int i=1; i<=numberCols; i++)
-                {
-                	cdisp2+=rsmd.getColumnLabel(i)+"\t\t";  
-                }
-                logger.info(cdisp2);
-                logger.info("\n-------------------------------------------------");
-
-                while(results.next())
-                {
-                    //int id = results.getInt(1);
-                    String idAlbum = results.getString(1);
-                    String idPiste = results.getString(2);
-                    logger.info(/*id + "\t\t" + */idAlbum + "\t\t"+idPiste);
-                }
-                results.close();
-                stmt.close();
-            }
-            catch (SQLException sqlExcept)
-            {
-                sqlExcept.printStackTrace();
-            }            
-            
-         
-            try
-            {
-            	logger.info("Table de correspondance album/piste");
-                stmt = conn.createStatement();
-                ResultSet results = stmt.executeQuery("select * from " + "Album_Piste");
-                ResultSetMetaData rsmd = results.getMetaData();
-                int numberCols = rsmd.getColumnCount();
-                String cdisp2="";
-                for (int i=1; i<=numberCols; i++)
-                {
-                	cdisp2+=rsmd.getColumnLabel(i)+"\t\t";  
-                }
-                logger.info(cdisp2);
-                logger.info("\n-------------------------------------------------");
-
-                while(results.next())
-                {
-                    //int id = results.getInt(1);
-                    String idAlbum = results.getString(1);
-                    String idPiste = results.getString(2);
-                    logger.info(/*id + "\t\t" + */idAlbum + "\t\t"+idPiste);
-                }
-                results.close();
-                stmt.close();
-            }
-            catch (SQLException sqlExcept)
-            {
-                sqlExcept.printStackTrace();
-            }            
+ 
+    		/**
+    		 * Ici :
+    		 * -Faire ce qui est fait dans testMapping pour recuperer la liste des albums de la base.
+    		 * -Parcourir la liste et chercher l'album d'id noAlbum.
+    		 * -Si format = xml faire ce qui est fait dans testModSemiStruct pour marshalliser l'album choisi et afficher le xml transformé avec xslt
+    		 * -Si format = xhtml, construire simplement l'affichage en html (out.println("...")).
+    		 * -Mettre un bouton retour pour revenir à l'index.jsp. 
+    		 */
             
             
         } catch (Exception ex) {
@@ -298,5 +181,4 @@ public class TestMapping extends TestCase {
             em.close();
         }
     }
-
 }

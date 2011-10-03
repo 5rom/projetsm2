@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -36,7 +37,7 @@ public class Album {
 	
 	private static long instanceCount = 0;
 
-	/** 
+	/**
 	 * Un identifiant unique pour chaque cd
 	 */
 	@Id
@@ -65,7 +66,7 @@ public class Album {
 	/**
 	 * La liste des artistes de l'album.
 	 */
-	@OneToMany(cascade = { CascadeType.PERSIST })
+	@ManyToMany(cascade = { CascadeType.PERSIST })
 	@XmlElement(name="artiste")
 	private List<Artiste> artistes;	
 	

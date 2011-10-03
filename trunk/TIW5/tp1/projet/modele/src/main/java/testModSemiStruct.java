@@ -42,26 +42,21 @@ public class testModSemiStruct extends TestCase {
 		try{
 
 			Album a2 = new Album("The Parlor Mob - Dogs",true);
-
-            /*Piste p1 = new Piste("La chanson un", 3);            
-            Piste p2 = new Piste("La chanson deux", 3);*/            
+    
             Piste p3 = new Piste("How It's Going To Be", 3, true);            
             Piste p4 = new Piste("Into The Sun", 4, true);            
             Piste p5 = new Piste("Fall Back", 3, true);            
             Piste p6 = new Piste("Pratice In Patience", 4, true);         
 
 
-            /*Artiste ar1=new Artiste("Eye", "Scream");
-            a1.addArtiste(ar1);
-            p1.addArtiste(ar1);
-            p2.addArtiste(ar1); */
+
             Artiste ar2=new Artiste("Marc", "Melicia", true);
             Artiste ar3=new Artiste("Sam", "Bey", true);
             Artiste ar4=new Artiste("Dave", "Rosen", true);
             Artiste ar5=new Artiste("Anthony", "Chick", true);
             Artiste ar6=new Artiste("Paul", "Ritchie", true);
             
-            
+
             a2.addArtiste(ar2);
             a2.addArtiste(ar3);
             a2.addArtiste(ar4);
@@ -74,20 +69,13 @@ public class testModSemiStruct extends TestCase {
             p4.addArtiste(ar4);
             p5.addArtiste(ar5);
             p6.addArtiste(ar6);
-            //ATTENTION : Pour l'instant un artiste ne peut pas être sur deux piste differentes (violation de cle dans Piste_Artiste).
-            //p6.addArtiste(ar5);
-            
-            
-            /*
-            a1.addPiste(p1);
-            a1.addPiste(p2);
-            */
+
+            p6.addArtiste(ar5);
             
             a2.addPiste(p3);
             a2.addPiste(p4);
             a2.addPiste(p5);
-            a2.addPiste(p6);			
-			
+            a2.addPiste(p6);
 
 	        // Recuperation du contexte JAXB pour l'album créé
 	        JAXBContext context = JAXBContext.newInstance(a2.getClass());
