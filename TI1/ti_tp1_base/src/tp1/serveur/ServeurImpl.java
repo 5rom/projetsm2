@@ -4,7 +4,12 @@ import java.util.HashMap;
 import static org.picocontainer.Characteristics.CACHE;
 
 import org.picocontainer.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
+import tp1.DOMUtil;
 import tp1.SiteContextImpl;
 import tp1.SiteDAO;
 import tp1.SiteXMLDAO;
@@ -29,7 +34,26 @@ public class ServeurImpl implements Serveur {
     private ServiceListeSites serviceL;	
 	
 	// Constructeur
-	public ServeurImpl(HashMap<String,Object> listedao){
+	public ServeurImpl(String fichier){
+		// Instanciation des DAO via le fichier de conf
+		HashMap<String,Object> listedao = new HashMap<String,Object>();
+		Document doc = DOMUtil.getDocumentFromFile(fichier);
+		doc.getDocumentElement().normalize();
+		NodeList nl = doc.getElementsByTagName("object");
+		// On instancie a partir du xml avec des objets génériques pour les dao inconnus et avec un sitedao si un element sitedao est précisé dans le xml
+		System.out.println("Instanciation des objets issus de "+fichier+"\n");
+		for(int i=0;i<nl.getLength();i++){
+			Element object = (Element) nl.item(i);
+			Object dao = new Object();
+			String name = object.getChildNodes().item(0).getTextContent();
+			System.out.println("Objet " + ((Integer) i).toString() + " : " + name);
+			if(new String("SiteDAO").equals(name)){
+				SiteDAO sitedao = new SiteXMLDAO(object.getChildNodes().item(1).getTextContent());
+				dao = sitedao;
+			}
+			listedao.put(name, dao);
+		}
+		System.out.println("\n");
 		
 		// Instanciation du ContainerBuilder (DEPRECIE?)
 		//ContainerBuilder cB = new ContainerBuilder();
