@@ -34,6 +34,7 @@
     		</element>    		
     	</sequence>
     	<attribute name="duree" type="positiveInteger"></attribute>
+		<attribute name="id" type="int" use="optional"></attribute>
     </complexType>    
     
     <complexType name="ArtisteContent">

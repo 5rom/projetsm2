@@ -24,23 +24,25 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-
+import java.io.InputStream;;
+import java.io.ByteArrayInputStream;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 
 import tiw5.modele.*;
 /**
- * Servlet implementation class HelloServlet
+ * Servlet implementation class ServiceServlet :
+ * Simule une service d'acces a la base de donnees 
  */
-public class HelloServlet extends HttpServlet implements Servlet {
+public class ServiceServlet extends HttpServlet implements Servlet {
 	private static final long serialVersionUID = 1L;
        
-    final static org.slf4j.Logger logger = LoggerFactory.getLogger(HelloServlet.class);	
+    final static org.slf4j.Logger logger = LoggerFactory.getLogger(ServiceServlet.class);	
 	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HelloServlet() {
+    public ServiceServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -135,7 +137,7 @@ public class HelloServlet extends HttpServlet implements Servlet {
 				 * Service de la servlet : fournir les infos de l'album demandé
 				 * -Faire ce qui est fait dans testMapping pour recuperer la liste des albums de la base.
 				 * -Parcourir la liste et chercher l'album d'id noAlbum.
-				 * -Si format = xml faire ce qui est fait dans testModSemiStruct pour marshalliser l'album choisi et afficher le xml transformé avec xslt
+				 * -Si format = xml faire ce qui est fait dans testModSemiStruct pour marshalliser l'album choisi et afficher le xml transformé avec xslt en html
 				 * -Si format = xhtml, construire simplement l'affichage en html (out.println("...")).
 				 * -Mettre un bouton retour pour revenir à l'index.jsp. 
 				 */
@@ -158,12 +160,11 @@ public class HelloServlet extends HttpServlet implements Servlet {
 		    	        StringWriter sw = new StringWriter();
 		    	   
 		    	        // marshallise l'objet vers XML
-
-		    	        marshaller.marshal(albums.get(0), new File("outAlbum.xml"));
+		    	        marshaller.marshal(albums.get(0), sw);
 		    	        
 		        		// Transformation xsl
-		    	        albumXMLToHTML("outAlbum.xml", "albumTrans.xsl", "src//main//webapp//albumTrans.html");
-		    	        response.sendRedirect("albumTrans.html" ); 
+		    	        out.println("<HTML><BODY>");
+	    	        	out.println(albumXMLToHTML(sw.toString(), "albumTrans.xsl"));		    	        
 		        	} else if (format.equals("xhtml")){
 		        		out.println("<HTML>\n<BODY>\n" +
 		        				"<H1>Infos de l'album</H1>\n" +
@@ -203,9 +204,9 @@ public class HelloServlet extends HttpServlet implements Servlet {
 
 		        	}
 		        } else {
-					logger.info("Pas d'album avec cet id");
 		        	// Pas d'album avec cet identifiant!
 					// On avertit et affiche le nombre d'albums présents toutefois
+					logger.info("Pas d'album avec cet id");
 		        	out.println("<HTML>\n<BODY>\n");
 		        	out.println("Aucun album n'a l'identifiant \""+numAlbum+"\" !\n");
 			        albums = em.createQuery("select a from Album a").getResultList();
@@ -252,26 +253,39 @@ public class HelloServlet extends HttpServlet implements Servlet {
 		doGet(request, response);
 	}
 
-    public void albumXMLToHTML(String xml, String xsl, String html) throws Exception{
+	/**
+	 * Renvoie l'album initialement en XML convertit en HTML par transformation XSLT
+	 * @param xml
+	 * @param xsl
+	 * @param html
+	 * @return
+	 * @throws Exception
+	 */
+    public String albumXMLToHTML(String xmlContentString, String xslFilePath) throws Exception{
     	// Création de la source DOM
     	DocumentBuilderFactory fabriqueD = DocumentBuilderFactory.newInstance();
     	DocumentBuilder constructeur = fabriqueD.newDocumentBuilder();
-    	File fileXml = new File(xml);
-    	Document document = constructeur.parse(fileXml);
+
+    	// Construction d'un InputStream pour ne pas avoir a creer de fichier
+    	byte[] barray = xmlContentString.getBytes();
+    	InputStream is = new ByteArrayInputStream(barray);
+    	
+    	Document document = constructeur.parse(is);
     	Source source = new DOMSource(document);
     	
     	// Création du fichier de sortie
-    	File fileHtml = new File(html);
-    	Result resultat = new StreamResult(fileHtml);
+    	StringWriter ssw = new StringWriter();
+    	Result resultat = new StreamResult(ssw);
     	
     	// Configuration du transformer
     	TransformerFactory fabriqueT = TransformerFactory.newInstance();
-    	StreamSource stylesource = new StreamSource(xsl);
+    	StreamSource stylesource = new StreamSource(xslFilePath);
     	Transformer transformer = fabriqueT.newTransformer(stylesource);
     	transformer.setOutputProperty(OutputKeys.METHOD, "html");
     	
     	// Transformation
     	transformer.transform(source, resultat);
+    	return ssw.toString();
     }	
 	
 }
