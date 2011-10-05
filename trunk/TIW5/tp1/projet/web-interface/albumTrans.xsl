@@ -40,9 +40,6 @@
 		</LI>
 		</UL>
 		<br></br>
-		<FORM Method="POST" Action="index.jsp">
-		<INPUT type="submit" value="Retour"/>
-		</FORM>		
 		<!-- 
 		</body></html> -->
 	</xsl:template>

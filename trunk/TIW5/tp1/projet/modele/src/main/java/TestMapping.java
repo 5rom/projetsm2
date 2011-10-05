@@ -7,25 +7,27 @@ import java.sql.SQLException;
 import java.sql.SQLNonTransientConnectionException;
 import java.sql.Statement;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import junit.framework.TestCase;
+
 import org.slf4j.LoggerFactory;
 
 import tiw5.modele.Album;
 import tiw5.modele.Artiste;
 import tiw5.modele.Piste;
 
-
-import junit.framework.TestCase;
-
-
+/**
+ * Test unitaire de configuration du mapping relationnel: testMapping.java
+ * Mise en persistence dans la BD derby "bdtp1" d'instances d'albums (contenant pistes et artistes).
+ * @author David CRESCENCE et Sebastien FAURE (M2TI)
+ */
 public class TestMapping extends TestCase {
 
     private static String dbURL = "jdbc:derby:bdtp1;create=true;";
-    // jdbc Connection
+    // Connexion JDBC pour s'assurer que les tables de jointure (liees aux xxxToMany sont bien crees)
     private static Connection conn = null;
     private static Statement stmt = null;
 	

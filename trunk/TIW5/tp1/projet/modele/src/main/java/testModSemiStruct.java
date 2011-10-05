@@ -1,21 +1,27 @@
 import java.io.File;
 import java.io.StringWriter;
 
-import javax.xml.XMLConstants;
-import javax.xml.bind.*;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.dom.DOMSource;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
-
-import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
-import tiw5.modele.*;
+import javax.xml.validation.Validator;
+import javax.xml.validation.ValidatorHandler;
 
 import junit.framework.TestCase;
 
+import org.slf4j.LoggerFactory;
 
+import tiw5.modele.Album;
+import tiw5.modele.Artiste;
+import tiw5.modele.Piste;
+
+/**
+ * Test unitaire modele semi structure: testModSemiStruct.java
+ * Marshalling (object->xml) d'un album en utilisant JAXB
+ * @author David CRESCENCE et Sebastien FAURE (M2TI)
+ */
 public class testModSemiStruct extends TestCase {
 
     final static org.slf4j.Logger logger = LoggerFactory.getLogger(testModSemiStruct.class);	
@@ -38,6 +44,7 @@ public class testModSemiStruct extends TestCase {
 	public void test() throws JAXBException{
 		try{
 
+			// Instanciation d'un album
 			Album a2 = new Album("The Parlor Mob - Dogs",true);
     
             Piste p3 = new Piste("How It's Going To Be", 3, true);            
@@ -77,36 +84,30 @@ public class testModSemiStruct extends TestCase {
 	        // Recuperation du contexte JAXB pour l'album créé
 	        JAXBContext context = JAXBContext.newInstance(a2.getClass());
 	   
-	        // To convert ex to XML, I need a JAXB Marshaller
+	        // Instanciation du marshaller (objet faisant la generation du XML en fonction de nos annotations dans les classes metiers)
 	        Marshaller marshaller = context.createMarshaller();
 	   
-	        // Make the output pretty
+	        // Formatage de la sortie
 	        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 	        StringWriter sw = new StringWriter();
 	   
-	        // marshall the object to XML
+	        /*// Vérification que le xml généré est valide par rapport au schéma fourni	(VentesCd.xsd)
+	        SchemaFactory sf = SchemaFactory.newInstance(javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI);
+	        Schema schema = sf.newSchema(new File("src\\main\\java\\VentesCd.xsd"));
+	        marshaller.setSchema(schema);*/
+	        
+	        // Marshalling de l'objet en XML
 	        marshaller.marshal(a2, sw);
+	        
+	        // A decommenter si on veut mettre dans un fichier xml le resultat
 	        //marshaller.marshal(a1, new File("monalbum1.xml"));
 	   
-	        // print it out for this example
+	        // Affichage du XML produit
 	        logger.info(sw.toString());
 	        
 			        
-		/**
-		 * Vérification que le xml généré est valide par rapport au schéma fourni (todo)	        
-		 */
-	        //SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-	        //Schema schema = factory.newSchema(new File("src\\main\\java\\VentesCd.xsd"));
-	        
-	        /*
-	        SchemaFactory sf = SchemaFactory.newInstance(
-	        	    javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI);
-	        Schema schema = sf.newSchema(new File("src\\main\\java\\VentesCd.xsd"));
-        	Unmarshaller unmarshaller = context.createUnmarshaller();
-        	unmarshaller.setSchema(schema);
-        	Album a2  = (Album) unmarshaller.unmarshal(new File("monalbum1.xml"));
-        	logger.info("Marshmallow : "+ a2.getTitre());
-        	*/
+
+
 	        
 	    } catch (Exception ex) {
 				logger.error("Erreur",ex);
