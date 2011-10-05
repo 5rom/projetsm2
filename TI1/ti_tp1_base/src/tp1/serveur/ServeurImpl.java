@@ -1,18 +1,12 @@
 package tp1.serveur;
-import java.util.ArrayList;
 import java.util.HashMap;
-import static org.picocontainer.Characteristics.CACHE;
-
 import org.picocontainer.*;
 import org.picocontainer.behaviors.Caching;
-import org.picocontainer.injectors.AnnotatedFieldInjection;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import tp1.DOMUtil;
-import tp1.Site;
 import tp1.SiteContextImpl;
 import tp1.SiteDAO;
 import tp1.SiteXMLDAO;

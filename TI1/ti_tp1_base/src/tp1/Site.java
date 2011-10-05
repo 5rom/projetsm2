@@ -17,18 +17,17 @@ public class Site implements Startable{
 	
 	public Site () {
         //this.dao = dao;
-		this.COUNT++;
+		COUNT++;
 	}
 	
 	public Site (String d, String u) {
 		this.description = new String (d);
 		this.url = new String (u);
-		this.COUNT++;
+		COUNT++;
 		// Changement 3.2
         //this.dao = dao;
 		// Changement 5.2
 		//this.sc = sc;
-		System.out.println(sc.toString());
 	}
 
     public boolean equals(Site other) {
