@@ -1,13 +1,11 @@
 package tp1.serveur;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.picocontainer.MutablePicoContainer;
 
 import tp1.Site;
 import tp1.SiteContext;
-import tp1.SiteXMLDAO;
 
 /**
  * Implementation d'un service d'ajout de sites a l'annuaire

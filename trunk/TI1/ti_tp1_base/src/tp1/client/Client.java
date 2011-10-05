@@ -104,20 +104,24 @@ public class Client {
 	 * Desormais le client utilise l'API du serveur
 	 * pour manipuler l'annuaire.
 	 */
-    private void addSite(String desc, String url) {
+	
+    @SuppressWarnings("unused")
+	private void addSite(String desc, String url) {
 		HashMap<String, String> hm = new HashMap<String, String>();
 		hm.put("desc", desc);
 		hm.put("url", url);	
         serv.traiteRequete("addSite", hm);
     }
-
+    
+    @SuppressWarnings("unused")
     private void removeSite(String desc, String url) {
 		HashMap<String, String> hm = new HashMap<String, String>();
 		hm.put("desc", desc);
 		hm.put("url", url);	
         serv.traiteRequete("removeSite", hm);  	
     }
-
+    
+    @SuppressWarnings("unused")
     private void listSites() {
         serv.traiteRequete("listSites", null);
     }

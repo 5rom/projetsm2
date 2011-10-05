@@ -1,6 +1,4 @@
 package tp1;
-import java.util.HashMap;
-
 import tp1.client.Client;
 import tp1.serveur.ServeurImpl;
 
@@ -11,7 +9,7 @@ public class main {
 	 * Le main du projet : Instancie Serveur et Client
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String args[]) {
 		// TODO Auto-generated method stub
 		
 		//SiteDAO dao = new SiteXMLDAO("test.xml");

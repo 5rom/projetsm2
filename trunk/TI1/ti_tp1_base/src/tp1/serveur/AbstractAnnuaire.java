@@ -1,16 +1,10 @@
 package tp1.serveur;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.picocontainer.MutablePicoContainer;
 import org.picocontainer.Startable;
-import org.picocontainer.annotations.Inject;
-
-import tp1.Site;
 import tp1.SiteContext;
-import tp1.SiteDAO;
-import tp1.SiteXMLDAO;
 
 /**
  * Classe abstraite AbstractAnnuaire
