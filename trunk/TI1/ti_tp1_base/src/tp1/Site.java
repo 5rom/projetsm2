@@ -2,23 +2,33 @@ package tp1;
 
 import java.util.ArrayList;
 
-public class Site {
+import org.picocontainer.Startable;
+import org.picocontainer.annotations.Inject;
+
+public class Site implements Startable{
 	
 	String description = null;
 	String url = null;
-    //SiteDAO dao;
-	SiteContext sc;
+    @Deprecated
+	SiteDAO dao;
+	@Inject
+	static SiteContext sc;
+	public static int COUNT;
 	
-	public Site (SiteContext sc) {
+	public Site () {
         //this.dao = dao;
-		this.sc = sc;
+		this.COUNT++;
 	}
 	
-	public Site (String d, String u, SiteContext sc) {
+	public Site (String d, String u) {
 		this.description = new String (d);
 		this.url = new String (u);
+		this.COUNT++;
+		// Changement 3.2
         //this.dao = dao;
-		this.sc = sc;
+		// Changement 5.2
+		//this.sc = sc;
+		System.out.println(sc.toString());
 	}
 
     public boolean equals(Site other) {
@@ -53,9 +63,21 @@ public class Site {
     	((SiteDAO) sc.getDAO("SiteDAO")).deleteSite(this);
     }
 
-    public ArrayList<Site> getAllSites(ArrayList<Site> liste) throws DaoCallerException {
+    public ArrayList<Site> getAllSites() throws DaoCallerException {
         //return dao.getAllSites(liste);
     	//return sc.getSiteDAO().getAllSites(liste);
-    	return ((SiteDAO) sc.getDAO("SiteDAO")).getAllSites(liste);
+    	return ((SiteDAO) sc.getDAO("SiteDAO")).getAllSites();
     }
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void stop() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -3,6 +3,8 @@ package tp1.serveur;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.picocontainer.MutablePicoContainer;
+
 import tp1.Site;
 import tp1.SiteContext;
 import tp1.SiteXMLDAO;
@@ -14,7 +16,7 @@ import tp1.SiteXMLDAO;
  */
 public class ServiceAdd extends AbstractAnnuaire{
 
-	public ServiceAdd(ArrayList<Site> sites, SiteContext sc) {
+	public ServiceAdd(MutablePicoContainer sites, SiteContext sc) {
 		//super(sites, dao);
 		super(sites, sc);
 		// TODO Auto-generated constructor stub
@@ -28,21 +30,32 @@ public class ServiceAdd extends AbstractAnnuaire{
 
     private void addSite(String desc, String url) {
         //Site s = new Site(desc, url, dao);
-    	Site s = new Site(desc, url, sc);
+    	//Site s = new Site(desc, url, sc);
+    	
         // ajout dans la liste
-        try {
+        /*try {
             s.save();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         // ajout dans le support de persistance
-        sites.add(s);
+        //sites.add(s);
+        String name = ((Integer)Site.COUNT).toString();
+        sites.addComponent(name,Site.class);
+        Site s = (Site) sites.getComponent(name);
+        s.setDescription(desc);
+        s.setURL(url);
+        try {
+        	s.save();
+    	} catch (Exception e) {
+        	e.printStackTrace();
+    	}
     }
 
 	@Override
 	public void start() {
-			// Affichage des informations du serveur
-			//System.out.println("Service d'ajout de sites démarré. "+"Objet d'accès aux données: "+dao.toString());
+		// Affichage des informations du serveur
+		//System.out.println("Service d'ajout de sites démarré. "+"Objet d'accès aux données: "+dao.toString());
 		System.out.println("Service d'ajout de sites démarré. "+"Objet d'accès aux données: "+sc.toString());
 	}
 

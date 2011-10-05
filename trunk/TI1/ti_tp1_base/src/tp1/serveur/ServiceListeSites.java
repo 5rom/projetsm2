@@ -3,6 +3,9 @@ package tp1.serveur;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+
+import org.picocontainer.MutablePicoContainer;
 
 import tp1.Site;
 import tp1.SiteContext;
@@ -15,7 +18,7 @@ import tp1.SiteContext;
  */
 public class ServiceListeSites extends AbstractAnnuaire {
 
-	public ServiceListeSites(ArrayList<Site> sites, SiteContext sc) {
+	public ServiceListeSites(MutablePicoContainer sites, SiteContext sc) {
 		//super(sites, xdao);
 		super(sites, sc);
 		// TODO Auto-generated constructor stub
@@ -41,12 +44,23 @@ public class ServiceListeSites extends AbstractAnnuaire {
 	}
 	
     private String listSites() {
-        String ls = new String();
+    	// Question 5.3
+        /*
         for (Iterator<Site> i = sites.iterator(); i.hasNext();) {
             Site s = (Site) i.next();
             ls += "Description :\t" + s.getDescription() + "\n";
             ls += "URL :\t" + s.getURL() + "\n";
-        }
+        }*/
+    	String ls = new String();
+    	List<java.lang.Object> siteslist = sites.getComponents();
+    	Site temp;
+		Iterator<java.lang.Object> it = siteslist.iterator();
+		while(it.hasNext()) {
+			System.out.println("test");
+            temp = (Site) it.next();
+            ls += "Description :\t" + temp.getDescription() + "\n";
+            ls += "URL :\t" + temp.getURL() + "\n";
+    	}
         return ls;
     }	
 

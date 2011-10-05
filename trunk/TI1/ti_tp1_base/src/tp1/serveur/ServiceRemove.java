@@ -3,6 +3,9 @@ package tp1.serveur;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+
+import org.picocontainer.MutablePicoContainer;
 
 import tp1.Site;
 import tp1.SiteContext;
@@ -15,7 +18,7 @@ import tp1.SiteXMLDAO;
  */
 public class ServiceRemove extends AbstractAnnuaire {
 
-	public ServiceRemove(ArrayList<Site> sites, SiteContext sc) {
+	public ServiceRemove(MutablePicoContainer sites, SiteContext sc) {
 		//super(sites, xdao);
 		super(sites, sc);
 		// TODO Auto-generated constructor stub
@@ -26,8 +29,10 @@ public class ServiceRemove extends AbstractAnnuaire {
 		removeSite(parametres.get("desc"), parametres.get("url"));
 		return "";
 	}
-
-    private void removeSite(String desc, String url) {
+	
+	@Deprecated
+    private void removeSiteOld(String desc, String url) {
+    	// Question 3.2
         //Site s = new Site(desc, url, dao);
     	Site s = new Site(desc, url, sc);
         // suppression dans la liste
@@ -46,6 +51,44 @@ public class ServiceRemove extends AbstractAnnuaire {
             e.printStackTrace();
         }
     }
+	
+	private int removeSite(String desc, String url){
+		Site s = new Site(desc, url);
+		int result = 0;
+
+		List<java.lang.Object> siteslist = sites.getComponents();
+		Site temp;
+		int i=0;
+
+		sites.stop();
+		try {
+			for(Iterator<java.lang.Object> iter = siteslist.iterator(); iter.hasNext() ;) {
+				temp = (Site) iter.next();
+				if (s.equals(temp)) {
+					temp.delete();
+					sites.removeComponent("Site" + i);
+					//On coupe le lien entre le conteneur et le Site
+					// Plus aucune référence n'existe sur cet objet
+					// On attend que le garbage collecting passe...
+					sites.removeComponentByInstance(temp);
+					result++;
+				} else {
+					//il faut changer les noms de référence des composants suivant ceux qu'on a enlevés,
+					//sans quoi on aura un problème pour en rajouter d'autres...
+					if (result>0) {
+						sites.addComponent("Site" + (i-result), sites.getComponent("Site"+i));
+						sites.removeComponent("Site"+i);
+					}
+				}
+		       i++;
+		    }
+		} catch (Exception e) {
+		    e.printStackTrace();
+		    result = -1;
+		}
+		sites.start();
+		return result;
+	}
 
 	@Override
 	public void start() {

@@ -3,7 +3,10 @@ package tp1.serveur;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.picocontainer.MutablePicoContainer;
 import org.picocontainer.Startable;
+import org.picocontainer.annotations.Inject;
+
 import tp1.Site;
 import tp1.SiteContext;
 import tp1.SiteDAO;
@@ -22,7 +25,9 @@ public abstract class AbstractAnnuaire implements Startable , AnnuaireInterface{
     /**
      * La liste de sites
      */
-	public ArrayList<Site> sites;
+	//public ArrayList<Site> sites;
+	// Question 5.2
+	public MutablePicoContainer sites;
 	
 	/**
 	 * Le SiteDAO (DAO = Direct Access Object)
@@ -35,7 +40,7 @@ public abstract class AbstractAnnuaire implements Startable , AnnuaireInterface{
 	public SiteContext  sc;
    
 
-    public AbstractAnnuaire(ArrayList<Site> sites, SiteContext sc) {
+    public AbstractAnnuaire(MutablePicoContainer sites, SiteContext sc) {
     	this.sc = sc;
     	this.sites = sites;
     }        
