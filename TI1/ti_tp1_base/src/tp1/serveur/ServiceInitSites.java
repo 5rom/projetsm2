@@ -2,6 +2,10 @@ package tp1.serveur;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
+import org.picocontainer.MutablePicoContainer;
 
 import tp1.DaoCallerException;
 import tp1.Site;
@@ -16,34 +20,79 @@ import tp1.SiteXMLDAO;
  */
 public class ServiceInitSites extends AbstractAnnuaire {
 	
-	public ServiceInitSites(ArrayList<Site> sites, SiteContext sc) {
+	public ServiceInitSites(MutablePicoContainer sites, SiteContext sc) {
 		//super(sites, xdao);
 		super(sites,sc);
 	}
 
 	@Override
 	public String process(String commande, HashMap<String, String> parametres) {
-		initSites();
-		return "";
-	}
-    
-	private void initSites() {
-        // synchronisation de la liste et du support de persistance
-		//Site temp = new Site(dao);
-		Site temp = new Site(sc);
-        try {
-			sites = temp.getAllSites(sites);
+		try {
+			initSites();
 		} catch (DaoCallerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return "";
+	}
+    
+	private void initSites() throws DaoCallerException {
+        // synchronisation de la liste et du support de persistance
+		// Question 3.2
+		//Site temp = new Site(dao);
+		// Question 5.2
+		//Site temp = new Site(sc);
+		
+		
+		// Question 5.2
+		/*try {
+			sites = vide.getAllSites(sites);
+		} catch (DaoCallerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		//sites.start();
+		sites.addComponent("vide", Site.class);
+		Site vide = (Site) sites.getComponent("vide");
+		List<Site> liste = vide.getAllSites();
+		System.out.println("Nombre de sites : " + liste.size());
+		/*Iterator it = liste.iterator();
+		while(it.hasNext()){
+			Site s = (Site) it.next();
+			System.out.println(s.getURL());
+		}*/
+		
+		sites.stop();
+		for(Object site: sites.getComponents()) {
+			sites.removeComponentByInstance(site);
+		}
+		
+		int i=0;
+		for(Site s:liste) {
+			String name = "Site" + i;
+			sites.addComponent(name, Site.class);
+			Site temp = (Site) sites.getComponent(name);
+			//System.err.println(s.getDescription());
+			temp.setDescription(s.getDescription());
+			temp.setURL(s.getURL());
+			i++;
+		}
+		
+		sites.start();
+		
+        
     }
 
 	@Override
 	public void start() {
 			// TODO Auto-generated method stub
 			// initSites();
-			initSites();
+			try {
+				initSites();
+			} catch (DaoCallerException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			// Affichage des informations du serveur
 			//System.out.println("Service d'initialisation des sites démarré. "+"Objet d'accès aux données: "+dao.toString());		
 			try {

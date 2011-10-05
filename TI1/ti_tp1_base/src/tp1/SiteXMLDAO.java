@@ -36,6 +36,7 @@ import javax.xml.parsers.ParserConfigurationException;
  
 import org.xml.sax.SAXException;  
 
+import org.picocontainer.MutablePicoContainer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -52,7 +53,7 @@ public class SiteXMLDAO implements SiteDAO {
     // Global value so it can be ref'd by the tree-adapter
     static Document document;
     static String filename;
-
+    
     public SiteXMLDAO(String fichier)
     {
     	filename = new String(fichier);
@@ -111,8 +112,8 @@ public class SiteXMLDAO implements SiteDAO {
     	DOMUtil.writeXmlToFile(filename, document);
     }
 
-    public ArrayList<Site> getAllSites(ArrayList<Site> liste) {
-    	liste.clear();
+    public ArrayList<Site> getAllSites() {
+    	ArrayList<Site> liste = new ArrayList<Site>();
 
     	String d = null;
     	String u = null;
@@ -124,7 +125,9 @@ public class SiteXMLDAO implements SiteDAO {
     		if (nl.item(i).getNodeType() == Node.ELEMENT_NODE) {
     			d = ((Element) nl.item(i).getChildNodes().item(0)).getTextContent();
     			u = ((Element) nl.item(i).getChildNodes().item(1)).getTextContent();
-    			liste.add(new Site (d, u, sc));
+    			// Question 5.2
+    			liste.add(new Site (d, u));
+    			
     		}
     	}
     	return liste;

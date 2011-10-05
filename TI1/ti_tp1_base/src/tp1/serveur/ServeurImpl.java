@@ -4,12 +4,15 @@ import java.util.HashMap;
 import static org.picocontainer.Characteristics.CACHE;
 
 import org.picocontainer.*;
+import org.picocontainer.behaviors.Caching;
+import org.picocontainer.injectors.AnnotatedFieldInjection;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import tp1.DOMUtil;
+import tp1.Site;
 import tp1.SiteContextImpl;
 import tp1.SiteDAO;
 import tp1.SiteXMLDAO;
@@ -51,6 +54,7 @@ public class ServeurImpl implements Serveur {
 				SiteDAO sitedao = new SiteXMLDAO(object.getChildNodes().item(1).getTextContent());
 				dao = sitedao;
 			}
+			// Si il y avait une gestion des objets autre que siteDAO, il faudrait ici mettre un case et instancier les objets avec leur constructeur via le xml
 			listedao.put(name, dao);
 		}
 		System.out.println("\n");
@@ -60,53 +64,49 @@ public class ServeurImpl implements Serveur {
 
 		// Instanciation du picocontainer
 		// DefaultPicoContainer pico = cB.build();
-		DefaultPicoContainer pico = new DefaultPicoContainer();
+		DefaultPicoContainer pico = new DefaultPicoContainer(new Caching());
 		
+		
+		SiteContextImpl sc = new SiteContextImpl();
+		sc.setDAO("SiteDAO",listedao.get("SiteDAO"));
+		pico.addComponent(sc);
+		// Injection par annotation
+		PicoBuilder builder = new PicoBuilder(pico);
+		MutablePicoContainer fils = (DefaultPicoContainer) builder.withAnnotatedFieldInjection().withCaching().build();
+		pico.addComponent(fils);
 		
 		// Ajout des quatre composants de service ayants des dependances
-		
 		pico.addComponent(ServiceAdd.class);
 		pico.addComponent(ServiceRemove.class);
 		pico.addComponent(ServiceListeSites.class);
-		pico.addComponent(ServiceInitSites.class);		
+		pico.addComponent(ServiceInitSites.class);	
 		
 		// Ajout de composants dependants de l'annuaire
 		//Annuaire retire car eclate en 4 classes
 		//pico.addComponent(Annuaire.class);
-		pico.as(CACHE).addComponent(ArrayList.class);
+		//pico.as(CACHE).addComponent(ArrayList.class);
 		//pico.as(CACHE).addComponent(SiteXMLDAO.class);
-		pico.as(CACHE).addComponent(SiteContextImpl.class);
-		
 		//pico.addComponent(new String("test.xml"));
+		
+		
+		
+		
+		
+		
 		
 		
 		// Création de l'annuaire
 		//annu = pico.getComponent(Annuaire.class);
 		
-		//Nouvelle version
-		serviceI= pico.getComponent(ServiceInitSites.class);		
+		// Nouvelle version
+		serviceI= pico.getComponent(ServiceInitSites.class);
 		serviceA= pico.getComponent(ServiceAdd.class);
 		serviceR= pico.getComponent(ServiceRemove.class);
 		serviceL= pico.getComponent(ServiceListeSites.class);
-	
 		
-		//initialisation de la variable dao
-		/*/serviceI.sc.setSiteDAO(dao);
-		serviceA.sc.setSiteDAO(dao);
-		serviceR.sc.setSiteDAO(dao);
-		serviceL.sc.setSiteDAO(dao);//*/
+		// Demarrage des services
+		pico.start();
 		
-		/**/serviceI.sc.setDAO("SiteDAO",listedao.get("SiteDAO"));
-		serviceA.sc.setDAO("SiteDAO",listedao.get("SiteDAO"));
-		serviceR.sc.setDAO("SiteDAO",listedao.get("SiteDAO"));
-		serviceL.sc.setDAO("SiteDAO",listedao.get("SiteDAO"));//*/
-		
-		
-		//Appel de la méthode start() de l'annuaire
-		serviceI.start();
-		serviceA.start();
-		serviceR.start();
-		serviceL.start();
 		
 		
 		// Ensuite l'arraylist sera remplacee par un sous conteneur.
