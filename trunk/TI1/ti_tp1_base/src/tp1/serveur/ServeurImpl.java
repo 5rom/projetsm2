@@ -25,10 +25,7 @@ public class ServeurImpl implements Serveur {
     /**
      * Dépendances vers les classes de service
      */
-    private ServiceAdd serviceA;
-    private ServiceRemove serviceR;
-    private ServiceInitSites serviceI;
-    private ServiceListeSites serviceL;	
+    private DefaultPicoContainer pico;
 	
 	// Constructeur
 	public ServeurImpl(String fichier){
@@ -58,7 +55,7 @@ public class ServeurImpl implements Serveur {
 
 		// Instanciation du picocontainer
 		// DefaultPicoContainer pico = cB.build();
-		DefaultPicoContainer pico = new DefaultPicoContainer(new Caching());
+		pico = new DefaultPicoContainer(new Caching());
 		
 		// Question 5.3
 		/*pico.addComponent(SiteContextImpl.class);
@@ -75,10 +72,10 @@ public class ServeurImpl implements Serveur {
 		
 		
 		// Ajout des quatre composants de service ayants des dependances
-		pico.addComponent(ServiceAdd.class);
-		pico.addComponent(ServiceRemove.class);
-		pico.addComponent(ServiceListeSites.class);
-		pico.addComponent(ServiceInitSites.class);	
+		pico.addComponent("addSite",ServiceAdd.class);
+		pico.addComponent("removeSite",ServiceRemove.class);
+		pico.addComponent("listSites",ServiceListeSites.class);
+		pico.addComponent("initSites",ServiceInitSites.class);	
 		
 		// Ajout de composants dependants de l'annuaire
 		//Annuaire retire car eclate en 4 classes
@@ -96,12 +93,6 @@ public class ServeurImpl implements Serveur {
 		
 		// Création de l'annuaire
 		//annu = pico.getComponent(Annuaire.class);
-		
-		// Nouvelle version
-		serviceI= pico.getComponent(ServiceInitSites.class);
-		serviceA= pico.getComponent(ServiceAdd.class);
-		serviceR= pico.getComponent(ServiceRemove.class);
-		serviceL= pico.getComponent(ServiceListeSites.class);
 		
 		// Demarrage des services
 		pico.start();
@@ -126,15 +117,7 @@ public class ServeurImpl implements Serveur {
 	
 	public void aiguilleRequete(String commande, HashMap<String, String> parametres){
 		if (commande!=null){
-			if (commande.equals("addSite")){
-				serviceA.process(commande,parametres);
-			} else if (commande.equals("removeSite")){
-				serviceR.process(commande,parametres);
-			} else if (commande.equals("listSites")){
-				serviceL.process(commande,parametres);
-			} else if (commande.equals("initSites")){
-				serviceI.process(commande,parametres);
-			}
+			((AnnuaireInterface)pico.getComponent(commande)).process(commande, parametres);
 		}	
 	}
 	

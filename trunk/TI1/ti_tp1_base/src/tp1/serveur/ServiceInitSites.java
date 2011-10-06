@@ -89,6 +89,7 @@ public class ServiceInitSites extends AbstractAnnuaire {
 		
 		sites.stop();
 		sites.clear();
+
 		
 		int i=0;
 		for(Site s:liste) {
