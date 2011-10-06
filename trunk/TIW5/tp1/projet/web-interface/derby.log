@@ -1,0 +1,16 @@
+----------------------------------------------------------------
+Thu Oct 06 17:28:15 CEST 2011:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0132-d9d9-642b-000004f2aaf0 
+on database directory C:\Users\Seb\eclipse-projects\svn\TIW5\tp1\projet\web-interface\bdtp1  with class loader WebappClassLoader
+  context: /web-interface
+  delegate: false
+  repositories:
+----------> Parent Classloader:
+ClassRealm[plugin>org.codehaus.mojo:tomcat-maven-plugin:1.1, parent: sun.misc.Launcher$AppClassLoader@12360be0]
+ 
+Loaded from file:/C:/Users/Seb/.m2/repository/org/apache/derby/derby/10.8.1.2/derby-10.8.1.2.jar
+java.vendor=Sun Microsystems Inc.
+java.runtime.version=1.6.0_23-b05
+user.dir=C:\Users\Seb\eclipse-projects\svn\TIW5\tp1\projet\web-interface
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
