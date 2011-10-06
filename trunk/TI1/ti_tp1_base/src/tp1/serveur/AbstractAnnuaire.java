@@ -21,7 +21,7 @@ public abstract class AbstractAnnuaire implements Startable , AnnuaireInterface{
      */
 	//public ArrayList<Site> sites;
 	// Question 5.2
-	public MutablePicoContainer sites;
+	public GestionnaireEntite sites;
 	
 	/**
 	 * Le SiteDAO (DAO = Direct Access Object)
@@ -34,7 +34,7 @@ public abstract class AbstractAnnuaire implements Startable , AnnuaireInterface{
 	public SiteContext  sc;
    
 
-    public AbstractAnnuaire(MutablePicoContainer sites, SiteContext sc) {
+    public AbstractAnnuaire(GestionnaireEntite sites, SiteContext sc) {
     	this.sc = sc;
     	this.sites = sites;
     }        

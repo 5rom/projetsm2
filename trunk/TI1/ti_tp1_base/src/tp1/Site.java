@@ -12,7 +12,7 @@ public class Site implements Startable{
     @Deprecated
 	SiteDAO dao;
 	@Inject
-	static SiteContext sc;
+	public static SiteContext sc;
 	public static int COUNT;
 	
 	public Site () {

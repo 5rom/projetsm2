@@ -60,14 +60,19 @@ public class ServeurImpl implements Serveur {
 		// DefaultPicoContainer pico = cB.build();
 		DefaultPicoContainer pico = new DefaultPicoContainer(new Caching());
 		
-		
-		SiteContextImpl sc = new SiteContextImpl();
-		sc.setDAO("SiteDAO",listedao.get("SiteDAO"));
-		pico.addComponent(sc);
+		// Question 5.3
+		/*pico.addComponent(SiteContextImpl.class);
+		pico.getComponent(SiteContextImpl.class).setDAO("SiteDAO",listedao.get("SiteDAO"));
 		// Injection par annotation
 		PicoBuilder builder = new PicoBuilder(pico);
-		MutablePicoContainer fils = (DefaultPicoContainer) builder.withAnnotatedFieldInjection().withCaching().build();
+		MutablePicoContainer fils = (DefaultPicoContainer) builder.withAnnotatedFieldInjection().withCaching().build();*/
+		SiteContextImpl sc = new SiteContextImpl();
+		sc.setDAO("SiteDAO", listedao.get("SiteDAO"));
+		pico.addComponent(sc);
+		GestionnaireEntite fils = new GestionnaireEntite(pico,sc);
 		pico.addComponent(fils);
+		
+		
 		
 		// Ajout des quatre composants de service ayants des dependances
 		pico.addComponent(ServiceAdd.class);

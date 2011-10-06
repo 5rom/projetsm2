@@ -14,7 +14,7 @@ import tp1.SiteContext;
  */
 public class ServiceAdd extends AbstractAnnuaire{
 
-	public ServiceAdd(MutablePicoContainer sites, SiteContext sc) {
+	public ServiceAdd(GestionnaireEntite sites, SiteContext sc) {
 		//super(sites, dao);
 		super(sites, sc);
 		// TODO Auto-generated constructor stub
@@ -25,8 +25,9 @@ public class ServiceAdd extends AbstractAnnuaire{
 		addSite(parametres.get("desc"), parametres.get("url"));
 		return "";
 	}
-
-    private void addSite(String desc, String url) {
+	
+	@Deprecated
+    private void addSiteOld(String desc, String url) {
         //Site s = new Site(desc, url, dao);
     	//Site s = new Site(desc, url, sc);
     	
@@ -48,6 +49,15 @@ public class ServiceAdd extends AbstractAnnuaire{
     	} catch (Exception e) {
         	e.printStackTrace();
     	}
+    }
+	
+	private void addSite(String desc, String url) {
+        String name = ((Integer)Site.COUNT).toString();
+        sites.addComponent(name,Site.class);
+        Site s = (Site) sites.getComponent(name);
+        s.setDescription(desc);
+        s.setURL(url);
+        sites.persist(s);
     }
 
 	@Override
