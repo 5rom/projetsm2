@@ -3,13 +3,9 @@ package tp1.serveur;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-
-import org.picocontainer.MutablePicoContainer;
-
+import tp1.DaoCallerException;
 import tp1.Site;
 import tp1.SiteContext;
-import tp1.SiteXMLDAO;
 
 /**
  * Implementation d'un service de suppression de sites a l'annuaire
@@ -18,80 +14,35 @@ import tp1.SiteXMLDAO;
  */
 public class ServiceRemove extends AbstractAnnuaire {
 
+	/**
+	 * Constructeur prenant le gestionnaire d'entité et le contexte en argument.
+	 * @param sites
+	 * @param sc
+	 */
 	public ServiceRemove(GestionnaireEntite sites, SiteContext sc) {
-		//super(sites, xdao);
 		super(sites, sc);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String process(String commande, HashMap<String, String> parametres) {
-		removeSite(parametres.get("desc"), parametres.get("url"));
+		try {
+			removeSite(parametres.get("desc"), parametres.get("url"));
+		} catch (DaoCallerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "";
 	}
 	
-	@Deprecated
-    private void removeSiteOld(String desc, String url) {
-    	// Question 3.2
-        //Site s = new Site(desc, url, dao);
-    	Site s = new Site(desc, url, sc);
-        // suppression dans la liste
-        for (Iterator<Site> i = sites.iterator(); i.hasNext();) {
-            Site temp = (Site) i.next();
-            if (temp.equals(s)) {
-                sites.remove(temp);
-                removeSite(desc, url);
-                return;
-            }
-        }
-        // suppression dans le support de persistance
-        try {
-            s.delete();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 	
-	@Deprecated
-	private int removeSiteOld1(String desc, String url){
-		Site s = new Site(desc, url);
-		int result = 0;
-
-		List<java.lang.Object> siteslist = sites.getComponents();
-		Site temp;
-		int i=0;
-
-		sites.stop();
-		try {
-			for(Iterator<java.lang.Object> iter = siteslist.iterator(); iter.hasNext() ;) {
-				temp = (Site) iter.next();
-				if (s.equals(temp)) {
-					temp.delete();
-					sites.removeComponent("Site" + i);
-					//On coupe le lien entre le conteneur et le Site
-					// Plus aucune référence n'existe sur cet objet
-					// On attend que le garbage collecting passe...
-					sites.removeComponentByInstance(temp);
-					result++;
-				} else {
-					//il faut changer les noms de référence des composants suivant ceux qu'on a enlevés,
-					//sans quoi on aura un problème pour en rajouter d'autres...
-					if (result>0) {
-						sites.addComponent("Site" + (i-result), sites.getComponent("Site"+i));
-						sites.removeComponent("Site"+i);
-					}
-				}
-		       i++;
-		    }
-		} catch (Exception e) {
-		    e.printStackTrace();
-		    result = -1;
-		}
-		sites.start();
-		return result;
-	}
-	
-	private void removeSite(String desc, String url){
+	/**
+	 * Méthode pour retirer un site, l'appel au DAO pour la presistence peut causer une erreur d'appel DAO.
+	 * @param desc
+	 * @param url
+	 * @throws DaoCallerException
+	 */
+	private void removeSite(String desc, String url) throws DaoCallerException{
 		sites.stop();
 		ArrayList<Site> liste = sites.getSitesByDescription(desc);
 		Iterator<Site> it = liste.iterator();
@@ -105,7 +56,6 @@ public class ServiceRemove extends AbstractAnnuaire {
 
 	@Override
 	public void start() {
-		//System.out.println("Service de suppression de sites démarré. "+"Objet d'accès aux données: "+dao.toString());
 		System.out.println("Service de suppression de sites démarré. "+"Objet d'accès aux données: "+sc.toString());
 	}
 

@@ -5,18 +5,21 @@ import java.util.ArrayList;
 import org.picocontainer.Startable;
 import org.picocontainer.annotations.Inject;
 
+/**
+ * Classe Site qui gère la description des sites et leur mÈéthodes associÈées.
+ * @author D. CRESCENCE et S. FAURE
+ *
+ */
+
 public class Site implements Startable{
 	
-	String description = null;
-	String url = null;
-    @Deprecated
-	SiteDAO dao;
+	String description;
+	String url;
 	@Inject
 	public static SiteContext sc;
 	public static int COUNT;
 	
 	public Site () {
-        //this.dao = dao;
 		COUNT++;
 	}
 	
@@ -24,10 +27,6 @@ public class Site implements Startable{
 		this.description = new String (d);
 		this.url = new String (u);
 		COUNT++;
-		// Changement 3.2
-        //this.dao = dao;
-		// Changement 5.2
-		//this.sc = sc;
 	}
 
     public boolean equals(Site other) {
@@ -51,21 +50,15 @@ public class Site implements Startable{
 	}
 
     public void save() throws DaoCallerException {
-        //dao.addSite(this);
-    	//sc.getSiteDAO().addSite(this);
-    	((SiteDAO) sc.getDAO("SiteDAO")).addSite(this);
+        ((SiteDAO) sc.getDAO("SiteDAO")).addSite(this);
     }
 
     public void delete() throws DaoCallerException {
-        //dao.deleteSite(this);
-    	//sc.getSiteDAO().deleteSite(this);
-    	((SiteDAO) sc.getDAO("SiteDAO")).deleteSite(this);
+        ((SiteDAO) sc.getDAO("SiteDAO")).deleteSite(this);
     }
 
     public ArrayList<Site> getAllSites() throws DaoCallerException {
-        //return dao.getAllSites(liste);
-    	//return sc.getSiteDAO().getAllSites(liste);
-    	return ((SiteDAO) sc.getDAO("SiteDAO")).getAllSites();
+        return ((SiteDAO) sc.getDAO("SiteDAO")).getAllSites();
     }
 
 	@Override

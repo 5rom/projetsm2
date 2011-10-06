@@ -2,19 +2,18 @@ package tp1.serveur;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-
 import org.picocontainer.DefaultPicoContainer;
-import org.picocontainer.annotations.Inject;
 import org.picocontainer.behaviors.Caching;
-import org.picocontainer.injectors.AnnotatedFieldInjection;
-
 import tp1.DaoCallerException;
 import tp1.Site;
-import tp1.SiteContext;
 import tp1.SiteContextImpl;
 import tp1.SiteDAO;
 
+/**
+ * Gestionnaire d'entité, hérite de la classe conteneur
+ * @author D. CRESCENCE et S. FAURE
+ *
+ */
 public class GestionnaireEntite extends DefaultPicoContainer{
 
 	/**
@@ -23,33 +22,35 @@ public class GestionnaireEntite extends DefaultPicoContainer{
 	private static final long serialVersionUID = 1L;
 	
 	
-	public GestionnaireEntite(DefaultPicoContainer pico,SiteContextImpl sc){
+	/**
+	 * Constructeur, le père est passé en paramètre pour créer ce fils.
+	 * @param pico
+	 */
+	public GestionnaireEntite(DefaultPicoContainer pico){
 		super(new Caching(),pico);
+		pico.addComponent("description",String.class);
+		pico.addComponent("url",String.class);
+		this.addComponent(Site.class);
 	}
 	
 	/**
 	 * Retourne le site correspondant a l'url
 	 * @param url
 	 * @return
+	 * @throws DaoCallerException 
 	 */
-	public Site find(String url){
-		List<Object> liste;
-		liste = this.getComponents();
-		Iterator<Object> it = liste.iterator();
+	public Site find(String url) throws DaoCallerException{
+		SiteDAO dao = ((SiteDAO)((SiteContextImpl)this.getParent().getComponent(SiteContextImpl.class)).getDAO("SiteDAO"));
+		ArrayList<Site> liste = dao.getAllSites();
+		Iterator<Site> it = liste.iterator();
 		while(it.hasNext()){
 			Site s = (Site) it.next();
 			if(url.equals(s.getURL()))
 				return s;
 		}
-		this.addComponent("vide",Site.class);
-		Site vide = (Site) this.getComponent("vide");
-		try {
-			((SiteDAO) vide.sc.getDAO("SiteDAO")).addSite(vide);
-		} catch (DaoCallerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return vide;
+		Site buffer = this.getComponent(Site.class);
+		dao.addSite(buffer);
+		return buffer;
 		
 	}
 	
@@ -57,16 +58,18 @@ public class GestionnaireEntite extends DefaultPicoContainer{
 	 * Retourne tous les sites correspondant a une description
 	 * @param description
 	 * @return
+	 * @throws DaoCallerException 
 	 */
-	public ArrayList<Site> getSitesByDescription(String description){
+	public ArrayList<Site> getSitesByDescription(String description) throws DaoCallerException{
+		SiteDAO dao = ((SiteDAO)((SiteContextImpl)this.getParent().getComponent(SiteContextImpl.class)).getDAO("SiteDAO"));
 		ArrayList<Site> res = new ArrayList<Site>();
-		List<Object> liste;
-		liste = this.getComponents();
-		Iterator<Object> it = liste.iterator();
+		ArrayList<Site> liste = dao.getAllSites();
+		Iterator<Site> it = liste.iterator();
+		Site buffer = this.getComponent(Site.class);
 		while(it.hasNext()){
-			Site s = (Site) it.next();
-			if(description.equals(s.getDescription()))
-				res.add(s);
+			buffer = (Site) it.next();
+			if(description.equals(buffer.getDescription()))
+				res.add(buffer);
 		}
 		return res;
 	}
@@ -77,7 +80,8 @@ public class GestionnaireEntite extends DefaultPicoContainer{
 	 */
 	public void persist(Site site){
 		try {
-			((SiteDAO)site.sc.getDAO("SiteDAO")).addSite(site);
+			SiteDAO dao = ((SiteDAO)((SiteContextImpl)this.getParent().getComponent(SiteContextImpl.class)).getDAO("SiteDAO"));
+			dao.addSite(site);
 		} catch (DaoCallerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -91,11 +95,13 @@ public class GestionnaireEntite extends DefaultPicoContainer{
 	 */
 	public void remove(Site site){
 		try {
-			((SiteDAO) site.sc.getDAO("SiteDAO")).deleteSite(site);
+			SiteDAO dao = ((SiteDAO)((SiteContextImpl)this.getParent().getComponent(SiteContextImpl.class)).getDAO("SiteDAO"));
+			dao.deleteSite(site);
 		} catch (DaoCallerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		this.detach(site);
 	}
 	

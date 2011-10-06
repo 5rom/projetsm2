@@ -27,7 +27,11 @@ public class ServeurImpl implements Serveur {
      */
     private DefaultPicoContainer pico;
 	
-	// Constructeur
+
+	/**
+	 * Constructeur qui prend en paramète un fichier de configuration pour l'instanciation des DAO.
+	 * @param fichier
+	 */
 	public ServeurImpl(String fichier){
 		// Instanciation des DAO via le fichier de conf
 		HashMap<String,Object> listedao = new HashMap<String,Object>();
@@ -49,50 +53,20 @@ public class ServeurImpl implements Serveur {
 			listedao.put(name, dao);
 		}
 		System.out.println("\n");
-		
-		// Instanciation du ContainerBuilder (DEPRECIE?)
-		//ContainerBuilder cB = new ContainerBuilder();
 
-		// Instanciation du picocontainer
-		// DefaultPicoContainer pico = cB.build();
 		pico = new DefaultPicoContainer(new Caching());
-		
-		// Question 5.3
-		/*pico.addComponent(SiteContextImpl.class);
-		pico.getComponent(SiteContextImpl.class).setDAO("SiteDAO",listedao.get("SiteDAO"));
-		// Injection par annotation
-		PicoBuilder builder = new PicoBuilder(pico);
-		MutablePicoContainer fils = (DefaultPicoContainer) builder.withAnnotatedFieldInjection().withCaching().build();*/
 		SiteContextImpl sc = new SiteContextImpl();
 		sc.setDAO("SiteDAO", listedao.get("SiteDAO"));
 		pico.addComponent(sc);
-		GestionnaireEntite fils = new GestionnaireEntite(pico,sc);
+		GestionnaireEntite fils = new GestionnaireEntite(pico);
 		pico.addComponent(fils);
-		
 		
 		
 		// Ajout des quatre composants de service ayants des dependances
 		pico.addComponent("addSite",ServiceAdd.class);
 		pico.addComponent("removeSite",ServiceRemove.class);
 		pico.addComponent("listSites",ServiceListeSites.class);
-		pico.addComponent("initSites",ServiceInitSites.class);	
-		
-		// Ajout de composants dependants de l'annuaire
-		//Annuaire retire car eclate en 4 classes
-		//pico.addComponent(Annuaire.class);
-		//pico.as(CACHE).addComponent(ArrayList.class);
-		//pico.as(CACHE).addComponent(SiteXMLDAO.class);
-		//pico.addComponent(new String("test.xml"));
-		
-		
-		
-		
-		
-		
-		
-		
-		// Création de l'annuaire
-		//annu = pico.getComponent(Annuaire.class);
+		pico.addComponent("initSites",ServiceInitSites.class);			
 		
 		// Demarrage des services
 		pico.start();
@@ -102,19 +76,17 @@ public class ServeurImpl implements Serveur {
 		// Ensuite l'arraylist sera remplacee par un sous conteneur.
 	}
 	
-	//@Override
-	// Accesseur sur l'annuaire
-	//public Annuaire getAnnuaire(){
-	//	return annu;
-	//}
-	
 	@Override
 	public void traiteRequete(String commande, HashMap<String, String> parametres){
-		//return annu.process(commande, parametres);
 		// Aiguillage
 		aiguilleRequete(commande, parametres);
 	}
 	
+	/**
+	 * Aiguillage d'une requête arrivant pour le serveur.
+	 * @param commande
+	 * @param parametres
+	 */
 	public void aiguilleRequete(String commande, HashMap<String, String> parametres){
 		if (commande!=null){
 			((AnnuaireInterface)pico.getComponent(commande)).process(commande, parametres);

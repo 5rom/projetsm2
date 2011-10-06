@@ -1,11 +1,17 @@
-#Wed Oct 05 16:26:12 CEST 2011
+#Thu Oct 06 20:50:43 CEST 2011
 eclipse.preferences.version=1
 encoding//src/tp1/DaoCallerException.java=ISO-8859-1
+encoding//src/tp1/Site.java=ISO-8859-1
+encoding//src/tp1/SiteContext.java=ISO-8859-1
+encoding//src/tp1/SiteContextImpl.java=ISO-8859-1
+encoding//src/tp1/SiteDAO.java=ISO-8859-1
+encoding//src/tp1/SiteXMLDAO.java=ISO-8859-1
 encoding//src/tp1/client/Client.java=ISO-8859-1
 encoding//src/tp1/main.java=ISO-8859-1
 encoding//src/tp1/serveur/AbstractAnnuaire.java=ISO-8859-1
-encoding//src/tp1/serveur/Annuaire.java=ISO-8859-1
+encoding//src/tp1/serveur/AnnuaireInterface.java=ISO-8859-1
 encoding//src/tp1/serveur/GestionnaireEntite.java=ISO-8859-1
+encoding//src/tp1/serveur/Serveur.java=ISO-8859-1
 encoding//src/tp1/serveur/ServeurImpl.java=ISO-8859-1
 encoding//src/tp1/serveur/ServiceAdd.java=ISO-8859-1
 encoding//src/tp1/serveur/ServiceInitSites.java=ISO-8859-1

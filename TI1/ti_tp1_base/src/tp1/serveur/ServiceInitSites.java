@@ -3,8 +3,6 @@ package tp1.serveur;
 import java.util.HashMap;
 import java.util.List;
 
-import org.picocontainer.MutablePicoContainer;
-
 import tp1.DaoCallerException;
 import tp1.Site;
 import tp1.SiteContext;
@@ -17,8 +15,12 @@ import tp1.SiteDAO;
  */
 public class ServiceInitSites extends AbstractAnnuaire {
 	
+	/**
+	 * Constructeur prenant le gestionnaire d'entité et le contexte en argument.
+	 * @param sites
+	 * @param sc
+	 */
 	public ServiceInitSites(GestionnaireEntite sites, SiteContext sc) {
-		//super(sites, xdao);
 		super(sites,sc);
 	}
 
@@ -32,78 +34,15 @@ public class ServiceInitSites extends AbstractAnnuaire {
 		}
 		return "";
 	}
-    
-	@Deprecated
-	private void initSitesOld() throws DaoCallerException {
-        // synchronisation de la liste et du support de persistance
-		// Question 3.2
-		//Site temp = new Site(dao);
-		// Question 5.2
-		//Site temp = new Site(sc);
-		
-		
-		// Question 5.2
-		/*try {
-			sites = vide.getAllSites(sites);
-		} catch (DaoCallerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		//sites.start();
-		sites.addComponent("vide", Site.class);
-		Site vide = (Site) sites.getComponent("vide");
-		List<Site> liste = vide.getAllSites();
-		System.out.println("Nombre de sites : " + liste.size());
-		/*Iterator it = liste.iterator();
-		while(it.hasNext()){
-			Site s = (Site) it.next();
-			System.out.println(s.getURL());
-		}*/
-		sites.remove(vide);
-		sites.stop();
-		for(Object site: sites.getComponents()) {
-			sites.removeComponentByInstance(site);
-		}
-		
-		int i=0;
-		for(Site s:liste) {
-			String name = "Site" + i;
-			sites.addComponent(name, Site.class);
-			Site temp = (Site) sites.getComponent(name);
-			temp.setDescription(s.getDescription());
-			temp.setURL(s.getURL());
-			i++;
-		}
-		
-		sites.start();
-		
-        
-    }
 	
-	@SuppressWarnings("static-access")
+	/**
+	 * Méthode d'intialisation des sits par rapport au DAO, l'accès peut renvoyer une erreur d'accès DAO.
+	 * @throws DaoCallerException
+	 */
 	private void initSites() throws DaoCallerException {
-		Site vide = new Site();
-		vide.sc = this.sc;
-		List<Site> liste = vide.getAllSites();
-		System.out.println("Nombre de sites : " + liste.size());
-		
-		sites.stop();
-		sites.clear();
-
-		
-		int i=0;
-		for(Site s:liste) {
-			String name = "Site" + i;
-			sites.addComponent(name, Site.class);
-			Site temp = (Site) sites.getComponent(name);
-			temp.setDescription(s.getDescription());
-			temp.setURL(s.getURL());
-			i++;
-		}
-		
-		sites.start();
-		
-        
+		Site buffer = sites.getComponent(Site.class);
+		List<Site> liste = buffer.getAllSites();
+		System.out.println("Nombre de sites : " + liste.size());        
     }
 
 	@Override
