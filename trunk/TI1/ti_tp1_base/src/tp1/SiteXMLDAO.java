@@ -47,6 +47,12 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 
+/**
+ * Classe de gestion SiteDAO qui gèËre les objets au format XML.
+ * @author D. CRESCENCE et S. FAURE
+ *
+ */
+
 public class SiteXMLDAO implements SiteDAO {
 
     // Global value so it can be ref'd by the tree-adapter
@@ -57,8 +63,6 @@ public class SiteXMLDAO implements SiteDAO {
     {
     	filename = new String(fichier);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        //factory.setValidating(true);   
-        //factory.setNamespaceAware(true);
         try {
            DocumentBuilder builder = factory.newDocumentBuilder();
            document = builder.parse( new File(fichier) );
@@ -117,14 +121,12 @@ public class SiteXMLDAO implements SiteDAO {
     	String d = null;
     	String u = null;
     	SiteContext sc = new SiteContextImpl();
-    	//sc.setSiteDAO(this);
     	sc.setDAO("SiteDAO", this);
     	NodeList nl = document.getDocumentElement().getChildNodes();
     	for (int i = 0; i < nl.getLength(); i++) {
     		if (nl.item(i).getNodeType() == Node.ELEMENT_NODE) {
     			d = ((Element) nl.item(i).getChildNodes().item(0)).getTextContent();
     			u = ((Element) nl.item(i).getChildNodes().item(1)).getTextContent();
-    			// Question 5.2
     			liste.add(new Site (d, u));
     			
     		}

@@ -6,10 +6,7 @@ import java.util.HashMap;
 
 //import tp1.serveur.Annuaire;
 import tp1.serveur.Serveur;
-//import tp1.serveur.ServeurImpl;
 
-//import tp1.Site;
-//import tp1.SiteXMLDAO;
 /**
  * Classe Client
  * IHM cote client permettant l'envoi de requetes au serveur
@@ -86,18 +83,6 @@ public class Client {
 		}
 		
 	}
-	
-	/**
-	 * Enlevé car le client ne doit pas avoir
-	 * accès à la référence de l'annuaire du serveur,
-	 * dangereux!
-	 * @param annuaire
-	 */
-	//Annuaire annu;
-	// Recupération de l'annuaire
-	//public void setAnnuaire(Annuaire annuaire){
-	//	this.annu=annuaire;
-	//}
 	
 	
 	/**

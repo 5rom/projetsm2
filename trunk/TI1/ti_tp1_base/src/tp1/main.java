@@ -2,7 +2,11 @@ package tp1;
 import tp1.client.Client;
 import tp1.serveur.ServeurImpl;
 
-
+/**
+ * Classe main qui lance le serveur et le client
+ * @author D. CRESCENCE et S. FAURE
+ *
+ */
 public class main {
 
 	/**

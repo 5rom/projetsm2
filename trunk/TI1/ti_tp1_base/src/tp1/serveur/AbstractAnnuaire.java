@@ -2,7 +2,6 @@ package tp1.serveur;
 
 import java.util.HashMap;
 
-import org.picocontainer.MutablePicoContainer;
 import org.picocontainer.Startable;
 import tp1.SiteContext;
 
@@ -16,17 +15,8 @@ import tp1.SiteContext;
  *
  */
 public abstract class AbstractAnnuaire implements Startable , AnnuaireInterface{
-    /**
-     * La liste de sites
-     */
-	//public ArrayList<Site> sites;
-	// Question 5.2
+    
 	public GestionnaireEntite sites;
-	
-	/**
-	 * Le SiteDAO (DAO = Direct Access Object)
-	 */
-	//SiteDAO dao;
 	
 	/**
 	 * Pattern context pour la communication avec les DAO
@@ -34,7 +24,12 @@ public abstract class AbstractAnnuaire implements Startable , AnnuaireInterface{
 	public SiteContext  sc;
    
 
-    public AbstractAnnuaire(GestionnaireEntite sites, SiteContext sc) {
+    /**
+     * Constructeur de la classe abstraite.
+     * @param sites
+     * @param sc
+     */
+    protected AbstractAnnuaire(GestionnaireEntite sites, SiteContext sc) {
     	this.sc = sc;
     	this.sites = sites;
     }        
