@@ -18,7 +18,7 @@ import tp1.SiteXMLDAO;
  */
 public class ServiceRemove extends AbstractAnnuaire {
 
-	public ServiceRemove(MutablePicoContainer sites, SiteContext sc) {
+	public ServiceRemove(GestionnaireEntite sites, SiteContext sc) {
 		//super(sites, xdao);
 		super(sites, sc);
 		// TODO Auto-generated constructor stub
@@ -52,7 +52,8 @@ public class ServiceRemove extends AbstractAnnuaire {
         }
     }
 	
-	private int removeSite(String desc, String url){
+	@Deprecated
+	private int removeSiteOld1(String desc, String url){
 		Site s = new Site(desc, url);
 		int result = 0;
 
@@ -88,6 +89,18 @@ public class ServiceRemove extends AbstractAnnuaire {
 		}
 		sites.start();
 		return result;
+	}
+	
+	private void removeSite(String desc, String url){
+		sites.stop();
+		ArrayList<Site> liste = sites.getSitesByDescription(desc);
+		Iterator<Site> it = liste.iterator();
+		while(it.hasNext()){
+			Site s = (Site) it.next();
+			if(url.equals(s.getURL()))
+				sites.remove(s);
+		}
+		sites.start();
 	}
 
 	@Override

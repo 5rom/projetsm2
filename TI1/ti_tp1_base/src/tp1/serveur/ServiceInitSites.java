@@ -17,7 +17,7 @@ import tp1.SiteDAO;
  */
 public class ServiceInitSites extends AbstractAnnuaire {
 	
-	public ServiceInitSites(MutablePicoContainer sites, SiteContext sc) {
+	public ServiceInitSites(GestionnaireEntite sites, SiteContext sc) {
 		//super(sites, xdao);
 		super(sites,sc);
 	}
@@ -33,7 +33,8 @@ public class ServiceInitSites extends AbstractAnnuaire {
 		return "";
 	}
     
-	private void initSites() throws DaoCallerException {
+	@Deprecated
+	private void initSitesOld() throws DaoCallerException {
         // synchronisation de la liste et du support de persistance
 		// Question 3.2
 		//Site temp = new Site(dao);
@@ -58,7 +59,7 @@ public class ServiceInitSites extends AbstractAnnuaire {
 			Site s = (Site) it.next();
 			System.out.println(s.getURL());
 		}*/
-		
+		sites.remove(vide);
 		sites.stop();
 		for(Object site: sites.getComponents()) {
 			sites.removeComponentByInstance(site);
@@ -69,7 +70,31 @@ public class ServiceInitSites extends AbstractAnnuaire {
 			String name = "Site" + i;
 			sites.addComponent(name, Site.class);
 			Site temp = (Site) sites.getComponent(name);
-			//System.err.println(s.getDescription());
+			temp.setDescription(s.getDescription());
+			temp.setURL(s.getURL());
+			i++;
+		}
+		
+		sites.start();
+		
+        
+    }
+	
+	@SuppressWarnings("static-access")
+	private void initSites() throws DaoCallerException {
+		Site vide = new Site();
+		vide.sc = this.sc;
+		List<Site> liste = vide.getAllSites();
+		System.out.println("Nombre de sites : " + liste.size());
+		
+		sites.stop();
+		sites.clear();
+		
+		int i=0;
+		for(Site s:liste) {
+			String name = "Site" + i;
+			sites.addComponent(name, Site.class);
+			Site temp = (Site) sites.getComponent(name);
 			temp.setDescription(s.getDescription());
 			temp.setURL(s.getURL());
 			i++;

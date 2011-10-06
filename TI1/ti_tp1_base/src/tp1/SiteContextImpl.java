@@ -43,7 +43,7 @@ public class SiteContextImpl implements SiteContext {
 		 String callerClassName = elements[1].getClassName();
 		 //System.out.println("\n"+callerClassName);
 		 
-		 if (new String("tp1.Site").equals(callerClassName))
+		 if (new String("tp1.Site").equals(callerClassName) || new String("tp1.serveur.GestionnaireEntite").equals(callerClassName))
 			 return listeobjets.get(name);
 		 else throw new DaoCallerException(callerClassName);
 	}

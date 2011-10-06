@@ -17,7 +17,7 @@ import tp1.SiteContext;
  */
 public class ServiceListeSites extends AbstractAnnuaire {
 
-	public ServiceListeSites(MutablePicoContainer sites, SiteContext sc) {
+	public ServiceListeSites(GestionnaireEntite sites, SiteContext sc) {
 		//super(sites, xdao);
 		super(sites, sc);
 		// TODO Auto-generated constructor stub
@@ -42,7 +42,8 @@ public class ServiceListeSites extends AbstractAnnuaire {
 		
 	}
 	
-    private String listSites() {
+	@Deprecated
+    private String listSitesOld() {
     	// Question 5.3
         /*
         for (Iterator<Site> i = sites.iterator(); i.hasNext();) {
@@ -55,7 +56,19 @@ public class ServiceListeSites extends AbstractAnnuaire {
     	Site temp;
 		Iterator<java.lang.Object> it = siteslist.iterator();
 		while(it.hasNext()) {
-			System.out.println("test");
+            temp = (Site) it.next();
+            ls += "Description :\t" + temp.getDescription() + "\n";
+            ls += "URL :\t" + temp.getURL() + "\n";
+    	}
+        return ls;
+	}
+	
+	private String listSites() {
+    	String ls = new String();
+    	List<java.lang.Object> siteslist = sites.getComponents();
+    	Site temp;
+		Iterator<java.lang.Object> it = siteslist.iterator();
+		while(it.hasNext()) {
             temp = (Site) it.next();
             ls += "Description :\t" + temp.getDescription() + "\n";
             ls += "URL :\t" + temp.getURL() + "\n";
