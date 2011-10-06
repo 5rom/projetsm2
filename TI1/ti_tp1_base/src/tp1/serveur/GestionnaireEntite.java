@@ -112,7 +112,9 @@ public class GestionnaireEntite extends DefaultPicoContainer{
 	 * Supprime tous les sites du conteneur
 	 */
 	public void clear(){
-		this.removeComponentByInstance(Site.class);
+		for(Object site: this.getComponents()) {
+			this.removeComponentByInstance(site);
+		}
 	}
 
 }
