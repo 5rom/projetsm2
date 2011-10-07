@@ -42,7 +42,7 @@ public class Piste {
 	/**
 	 * Le titre de la piste.
 	 */
-	@XmlElement
+	@XmlElement(namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd")
 	@Column (name="titre")
 	private String titre;
 	
@@ -57,7 +57,7 @@ public class Piste {
 	 * La liste des artistes de la piste.
 	 */
 	//@ElementCollection
-	@XmlElement(name="artiste")
+	@XmlElement(name="artiste", namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd")
 	@ManyToMany (cascade = { CascadeType.PERSIST })
 	private List<Artiste> artistes;		
 	
