@@ -32,14 +32,14 @@ public class Artiste {
 	 * Prénom de l'artiste
 	 */
 	@Column (name="prenom")
-	@XmlElement(name="prenom")
+	@XmlElement(name="prenom", namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd")
 	private String prenom;		
 	
 	/**
 	 * Nom de l'artiste
 	 */
 	@Column (name="nom")
-	@XmlElement(name="nom")
+	@XmlElement(name="nom", namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd")
 	private String nom;
 	
 	

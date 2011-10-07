@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  * Représente un cd avec un titre et un ensemble de pistes.
  * @author Emmanuel Coquery <emmanuel.coquery@liris.cnrs.fr>
  */
-@XmlRootElement
+@XmlRootElement(namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd")
 @Entity
 @XmlType(name = "", propOrder = {
         "titre",
@@ -50,7 +50,7 @@ public class Album {
 	 * Le titre du cd
 	 */
 	@Column (name="titre")
-	@XmlElement(name="titre")
+	@XmlElement(name="titre", namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd")
 	private String titre;
 	
 
@@ -59,14 +59,14 @@ public class Album {
 	 */
 	//@ElementCollection
 	@OneToMany(cascade = { CascadeType.PERSIST })
-	@XmlElement(name="piste")
+	@XmlElement(name="piste", namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd")
 	private List<Piste> pistes;
 
 	/**
 	 * La liste des artistes de l'album.
 	 */
 	@ManyToMany(cascade = { CascadeType.PERSIST })
-	@XmlElement(name="artiste")
+	@XmlElement(name="artiste", namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd")
 	private List<Artiste> artistes;	
 	
 	/**

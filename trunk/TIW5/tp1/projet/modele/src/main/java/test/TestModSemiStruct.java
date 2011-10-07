@@ -115,13 +115,15 @@ public class TestModSemiStruct extends TestCase {
 	        // Vérification que le xml généré est valide par rapport au schéma fourni	(VentesCd.xsd)
 	        logger.info("Assignation du schéma xsd...");
 	        // Premiere methode de validation : ne marche pas "Cannot find the declaration of element 'album'" (pb de targetnamespace?)
-	        /*SchemaFactory sf = SchemaFactory.newInstance(javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI);
+	        SchemaFactory sf = SchemaFactory.newInstance(javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI);
 	        Schema schema = sf.newSchema(new File("src\\main\\resources\\VentesCd.xsd"));
-	        marshaller.setSchema(schema);*/
+	        marshaller.setSchema(schema);
 	        
 	        // Marshalling de l'objet en XML
 	        logger.info("Lancement du marshalling JAXB...");
 	        marshaller.marshal(a2, sw);
+	        
+	        // Si on n'a pas d'erreur lors du marshalling c'est que le xml produit est bien valide.
 	        
 	        // A décommenter si on veut mettre dans un fichier xml le resultat
 	        //marshaller.marshal(a2, new File("monalbum.xml"));
@@ -133,46 +135,6 @@ public class TestModSemiStruct extends TestCase {
 	        
 	        logger.info("Fin du test : SUCCES");
 	        
-	        // Deuxieme methode de validation : meme erreur  "Cannot find the declaration of element 'album'
-	        
-	        /*
-	        Schema mySchema;
-	        SchemaFactory sf =
-	            SchemaFactory.newInstance( XMLConstants.W3C_XML_SCHEMA_NS_URI );
-	        try {
-	            mySchema = sf.newSchema( new File("src\\main\\resources\\VentesCd.xsd") );
-	        } catch( SAXException saxe ){
-	            // ...(error handling)
-	        	logger.info("Erreur schéma xsd");
-	            mySchema = null;
-	        }
-
-
-
-	        JAXBContext jc = JAXBContext.newInstance( a2.getClass() );
-	        Unmarshaller u = jc.createUnmarshaller();
-	        u.setSchema( mySchema );
-
-
-
-	        ValidationEventCollector vec = new ValidationEventCollector();
-	        u.setEventHandler( vec );
-
-
-
-	        if( vec != null && vec.hasEvents() ){
-	            for( ValidationEvent ve: vec.getEvents() ){
-	                String msg = ve.getMessage();
-	                ValidationEventLocator vel = ve.getLocator();
-	                int line = vel.getLineNumber();
-	                int column = vel.getColumnNumber();
-	                System.err.println( "origin:"  + line + "." +
-	                                    column + ": " + msg ); 
-	            }
-	        }
-
-	        JAXBElement<Album> a3 = (JAXBElement<Album>)u.unmarshal( new File("monalbum.xml") );
-	        */
 	        
 	    } catch (Exception ex) {
 				logger.error("Erreur",ex);
