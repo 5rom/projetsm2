@@ -1,0 +1,7 @@
+Fri Oct 07 10:38:11 CEST 2011 : Menu
+
+Fri Oct 07 10:38:11 CEST 2011 : 1)	Rajouter un site
+Fri Oct 07 10:38:11 CEST 2011 : 2)	Supprimer un site un site
+Fri Oct 07 10:38:11 CEST 2011 : 3)	Lister les sites
+Fri Oct 07 10:38:11 CEST 2011 : 4)	Reinitialiser les sites
+Fri Oct 07 10:38:11 CEST 2011 : 5)	Quitter
