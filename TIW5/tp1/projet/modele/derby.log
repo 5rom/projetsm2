@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sat Oct 08 21:24:06 CEST 2011:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0132-e4fe-08b2-0000056ef7b0 
+on database directory C:\Users\Seb\eclipse-projects\svn\TIW5\tp1\projet\modele\bdtp1  with class loader sun.misc.Launcher$AppClassLoader@35a16869 
+Loaded from file:/C:/Users/Seb/.m2/repository/org/apache/derby/derby/10.8.1.2/derby-10.8.1.2.jar
+java.vendor=Sun Microsystems Inc.
+java.runtime.version=1.6.0_23-b05
+user.dir=C:\Users\Seb\eclipse-projects\svn\TIW5\tp1\projet\modele
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat Oct 08 21:24:07 CEST 2011:
+Shutting down instance a816c00e-0132-e4fe-08b2-0000056ef7b0 on database directory C:\Users\Seb\eclipse-projects\svn\TIW5\tp1\projet\modele\bdtp1 with class loader sun.misc.Launcher$AppClassLoader@35a16869 
