@@ -22,7 +22,7 @@ public aspect ALog {
 	 * @param message
 	 *            le texte en paramètre de la méthode println
 	 */
-	pointcut affichage(Object message) : args(message) && call(void java.io.PrintStream.println(*));
+	pointcut affichage(Object message) : args(message) && call(void java.io.PrintStream.*(*)) && !within(ALog);
 
 	/**
 	 * Code advice contenant le code à exécuter lorsque l'aspect est déclenché
@@ -32,8 +32,34 @@ public aspect ALog {
 	 */
 	after(Object message) : affichage(message) {
 		try {
+			System.out.print("[logged]");
 			logFile.write(new java.util.Date().toString() + " : "
 					+ message.toString());
+			logFile.flush();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Point de coupe qui intercepte les appels à la méthode println
+	 * 
+	 * @param message
+	 *            le texte en paramètre de la méthode println
+	 */
+	pointcut lecture() : call(String java.io.BufferedReader.readLine());
+
+	/**
+	 * Code advice contenant le code à exécuter lorsque l'aspect est déclenché
+	 * 
+	 * @param message
+	 *            le message à afficher
+	 */
+	after() returning (String message) : lecture() {
+		try {
+			System.out.print("[inlogged]");
+			logFile.write(new java.util.Date().toString() + " : "
+					+ message.toString() + "\n");
 			logFile.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
