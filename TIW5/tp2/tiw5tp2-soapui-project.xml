@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" xmlns:ven="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:addAlbumDescription>
+         <!--Optional:-->
+         <arg0 id="?">
+            <!--Optional:-->
+            <ven:titre>toto</ven:titre>
+            <!--Zero or more repetitions:-->
+            <ven:piste numero="1" duree="2">
+               <!--Optional:-->
+               <ven:titre>?</ven:titre>
+               <!--Zero or more repetitions:-->
+               <ven:contributeur uri="1"/>
+            </ven:piste>
+            <!--Zero or more repetitions:-->
+            <ven:artiste uri="1"/>
+         </arg0>
+      </ser:addAlbumDescription>
+   </soapenv:Body>
+</soapenv:Envelope>
