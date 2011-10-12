@@ -19,13 +19,6 @@ public class Annuaire {
     public void addSite(String desc, String url) {
         Site s = new Site(desc, url, dao);
 
-        // ajout dans la liste
-        try {
-            s.save();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         // ajout dans le support de persistance
         sites.add(s);
     }
@@ -42,13 +35,6 @@ public class Annuaire {
                 return;
             }
         }
-
-        // suppression dans le support de persistance
-        try {
-            s.delete();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public String listSites() {
@@ -63,7 +49,7 @@ public class Annuaire {
 
     public void initSites() {
         // synchronisation de la liste et du support de persistance
-        Site temp = new Site(dao);
-        sites = temp.getAllSites(sites);
+        /*Site temp = new Site(dao);
+        sites = temp.getAllSites(sites);*/
     }
 }
