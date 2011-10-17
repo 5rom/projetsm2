@@ -1,16 +1,18 @@
 package tiw5.client;
 
 import fr.univ_lyon1.master_info.m2ti.tiw5.services.Album;
+import fr.univ_lyon1.master_info.m2ti.tiw5.services.AlbumDataPortType;
+import fr.univ_lyon1.master_info.m2ti.tiw5.services.AlbumDataService;
 
-/**
- * Hello world!
- *
- */
+
 public class App 
 {
+	
+
+	
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+
         /**
          * Ici faire:
          * Utiliser les classes Java générées pour réaliser un client en ligne de
@@ -20,6 +22,20 @@ public class App
          * xml contenant un descriptif d'album à insérer dans les données.
          */
         
-        Album a;
+        try {
+        	Integer numAlbum = Integer.parseInt(args[0]);
+        	AlbumDataService aDS=new AlbumDataService();
+        	AlbumDataPortType aDPT=aDS.getAlbumDataPort();
+        	Album a = aDPT.getAlbumDescription(numAlbum);
+        		
+        	
+        } catch (Exception e) {
+        	AlbumDataService aDS=new AlbumDataService();
+        	AlbumDataPortType aDPT=aDS.getAlbumDataPort();
+        	Album b=new Album();
+        	aDPT.addAlbumDescription(b);
+        	
+        	e.printStackTrace();
+        }
     }
 }
