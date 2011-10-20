@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="stock" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services">
+      <xsd:element name="disponible">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="disponibleResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="assureCapacite">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="assureCapaciteResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="commande">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="commandeResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="disponibleRequest">
+    <wsdl:part element="tns:disponible" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="disponibleResponse">
+    <wsdl:part element="tns:disponibleResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="assureCapaciteRequest">
+  	<wsdl:part name="parameters" element="tns:assureCapacite"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="assureCapaciteResponse">
+  	<wsdl:part name="parameters" element="tns:assureCapaciteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="commandeRequest">
+  	<wsdl:part name="parameters" element="tns:commande"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="commandeResponse">
+  	<wsdl:part name="parameters" element="tns:commandeResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="stock">
+    <wsdl:operation name="disponible">
+      <wsdl:input message="tns:disponibleRequest"/>
+      <wsdl:output message="tns:disponibleResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="assureCapacite">
+    	<wsdl:input message="tns:assureCapaciteRequest"></wsdl:input>
+    	<wsdl:output message="tns:assureCapaciteResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="commande">
+    	<wsdl:input message="tns:commandeRequest"></wsdl:input>
+    	<wsdl:output message="tns:commandeResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="stockSOAP" type="tns:stock">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="disponible">
+      <soap:operation soapAction="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/NewOperation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="stock">
+    <wsdl:port binding="tns:stockSOAP" name="stockSOAP">
+      <soap:address location="http://localhost:8080/web-interface/services/StockService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
