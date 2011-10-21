@@ -10,4 +10,7 @@
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 	<jaxws:endpoint id="album-data" implementor="tiw5.services.impl.AlbumDataService"
 		address="/AlbumDataService" />
+	<!-- Ajout du service StockService comme au-dessus -->
+	<jaxws:endpoint id="stock" implementor="tiw5.services.impl.StockService"
+		address="/StockService" />
 </beans>

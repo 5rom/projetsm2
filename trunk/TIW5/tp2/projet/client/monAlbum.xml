@@ -1,0 +1,14 @@
+<albumDescription xmlns:ns2="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd">
+    <ab id="3">
+        <ns2:titre>Bloody Bad Poule</ns2:titre>
+        <ns2:piste duree="3" numero="1">
+            <ns2:titre>La poulette</ns2:titre>
+            <ns2:contributeur uri="2"/>
+        </ns2:piste>
+        <ns2:piste duree="4" numero="2">
+            <ns2:titre>Le poulpe ahuri</ns2:titre>
+            <ns2:contributeur uri="1"/>
+        </ns2:piste>
+        <ns2:artiste uri="2"/>
+    </ab>
+</albumDescription>
