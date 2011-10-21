@@ -9,13 +9,20 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
+      <xsd:element name="disponibleResponse" type="tns:disponibleResponse"/>
+<xsd:complexType name="disponibleResponse">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="return" type="xsd:boolean"/>
+</xsd:sequence>
+
+</xsd:complexType>  <!--     
       <xsd:element name="disponibleResponse">
         <xsd:complexType>
           <xsd:sequence>
 			<xsd:element minOccurs="0" name="return" type="xsd:boolean"/>
           </xsd:sequence>
         </xsd:complexType>
-      </xsd:element>
+      </xsd:element> -->
       <xsd:element name="assureCapacite">
       	<xsd:complexType>
       		<xsd:sequence>
