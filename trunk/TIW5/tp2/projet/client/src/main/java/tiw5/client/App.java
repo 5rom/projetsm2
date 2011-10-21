@@ -62,7 +62,7 @@ public class App
 			        marshaller.marshal(aD, sw);
 			   
 			        // Affichage du XML produit
-			        log.info("Contenu XML obtenu :");
+			        log.info("Description XML de l'album "+numAlbum+":");
 			        log.info(sw.toString());        	
 	        	
 	        } catch (Exception e) {
