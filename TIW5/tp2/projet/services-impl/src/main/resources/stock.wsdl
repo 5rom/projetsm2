@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!--  Fichier de description du web service de gestion d'un stock d'albums
+
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="stock" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services">
+  <!--  Fichier de description du web service de gestion d'un stock d'albums
 Auteurs: David CRESCENCE <crescence.david@gmail.com> et Sébastien FAURE <sebastien.faure3@gmail.com>
 UCBL M2TI 2011-2012 -->
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="stock" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services">
   <wsdl:types>
     <xsd:schema targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services">
       
@@ -74,13 +75,13 @@ UCBL M2TI 2011-2012 -->
     	<wsdl:input message="tns:assureCapaciteRequest"></wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="commande">
-    	<wsdl:input message="tns:commandeRequest"></wsdl:input>
+    	<wsdl:input message="tns:commandeRequest"></wsdl:input>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="stockSOAP" type="tns:stock">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
     <wsdl:operation name="disponible">
-      <soap:operation soapAction="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/NewOperation"/>
+      <soap:operation soapAction=""/>
       <wsdl:input>
         <soap:body use="literal"/>
       </wsdl:input>
@@ -88,6 +89,19 @@ UCBL M2TI 2011-2012 -->
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="assureCapacite">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="commande">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+        
   </wsdl:binding>
   <wsdl:service name="stock">
     <wsdl:port binding="tns:stockSOAP" name="stockSOAP">
