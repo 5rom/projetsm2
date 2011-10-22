@@ -1,15 +1,10 @@
 package tiw5.services.impl;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import tiw5.modele.Album;
-import tiw5.modele.Artiste;
 
 import fr.univ_lyon1.master_info.m2ti.tiw5.services.AlbumIDQte;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services.Stock;

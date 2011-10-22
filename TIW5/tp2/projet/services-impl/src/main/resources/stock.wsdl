@@ -1,50 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--  Fichier de description du web service de gestion d'un stock d'albums
+Auteurs: David CRESCENCE <crescence.david@gmail.com> et Sébastien FAURE <sebastien.faure3@gmail.com>
+UCBL M2TI 2011-2012 -->
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="stock" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services">
   <wsdl:types>
     <xsd:schema targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services">
+      
+      <!--  Définition des trois opérations du service en explicitant le type de leurs arguments et valeurs de retour (s'il y a) -->
+      <!--  Opération "disponible" -->
       <xsd:element name="disponible">
         <xsd:complexType>
           <xsd:sequence>
+          <!--  Opération "disponible" : parametre de type simple long -->
             <xsd:element name="arg0" type="xsd:long"/>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
+                <!--  Opération "disponible" : valeur de retour de type simple booléen -->
       <xsd:element name="disponibleResponse" type="tns:disponibleResponse"/>
-<xsd:complexType name="disponibleResponse">
-<xsd:sequence>
-<xsd:element minOccurs="0" name="return" type="xsd:boolean"/>
-</xsd:sequence>
-
-</xsd:complexType>  <!--     
-      <xsd:element name="disponibleResponse">
-        <xsd:complexType>
-          <xsd:sequence>
+	<xsd:complexType name="disponibleResponse">
+		<xsd:sequence>
 			<xsd:element minOccurs="0" name="return" type="xsd:boolean"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element> -->
+		</xsd:sequence>
+	</xsd:complexType> 
+	          <!--  Opération "assureCapacite" -->
       <xsd:element name="assureCapacite">
       	<xsd:complexType>
       		<xsd:sequence>
+    		    <!--  Opération "assureCapacite" : parametre de type liste d'éléments de type complexe AlbumID_Qte -->
       			<xsd:element name="arg0" minOccurs="1" maxOccurs="unbounded" type="tns:AlbumID_Qte"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
+      	<!--  Opération "assureCapacite" : pas de valeur de retour -->
       </xsd:element>
+      <!--  Définition du type complexe AlbumID_Qte : contient un élément ID long et une quantité de cd long -->
       <xsd:complexType name="AlbumID_Qte">
 			<xsd:sequence>
 				<xsd:element name="id" type="xsd:long"/>
 				<xsd:element name="qte" type="xsd:long"/>			
 			</xsd:sequence>
 		</xsd:complexType>     
+      <!--  Opération "commande" -->
       <xsd:element name="commande">
       	<xsd:complexType>
 			<xsd:sequence>
+			<!--  Opération "commande" : parametre de type simple long -->
 				<xsd:element minOccurs="1" maxOccurs="unbounded" name="arg0" type="xsd:long"/>
 			</xsd:sequence>
 		</xsd:complexType>
+   		<!--  Opération "commande" : pas de valeur de retour -->
       </xsd:element>
     </xsd:schema>
   </wsdl:types>
+  <!-- Messages wsdl -->
   <wsdl:message name="disponibleRequest">
     <wsdl:part element="tns:disponible" name="parameters"/>
   </wsdl:message>
@@ -63,7 +71,7 @@
       <wsdl:output message="tns:disponibleResponse"/>
     </wsdl:operation>
     <wsdl:operation name="assureCapacite">
-    	<wsdl:input message="tns:assureCapaciteRequest"></wsdl:input>
+    	<wsdl:input message="tns:assureCapaciteRequest"></wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="commande">
     	<wsdl:input message="tns:commandeRequest"></wsdl:input>
