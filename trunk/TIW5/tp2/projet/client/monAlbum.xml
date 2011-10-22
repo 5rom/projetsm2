@@ -1,3 +1,6 @@
+<!--  Exemple de description d'album obtenu par le client mais aussi que l'on
+peut passé en paramètre (le chemin du fichier) au programme client pour
+demander l'ajout de cet album au service  -->
 <albumDescription xmlns:ns2="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd">
     <ab id="3">
         <ns2:titre>Bloody Bad Poule</ns2:titre>
