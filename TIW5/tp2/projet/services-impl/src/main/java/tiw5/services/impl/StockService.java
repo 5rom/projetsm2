@@ -16,7 +16,7 @@ import fr.univ_lyon1.master_info.m2ti.tiw5.services.Stock;
 
 public class StockService implements Stock {
 	
-	private static final Logger log = LoggerFactory.getLogger(Stock.class);
+	private static final Logger log = LoggerFactory.getLogger(StockService.class);
 	
 	@Override
 	public Boolean disponible(long arg0) {
