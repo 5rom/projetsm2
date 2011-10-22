@@ -88,23 +88,30 @@ public class Artiste implements Serializable {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj){
 			return true;
-		if (obj == null)
+		}
+		if (obj == null){
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()){
 			return false;
+		}
 		Artiste other = (Artiste) obj;
 		if (nom == null) {
-			if (other.nom != null)
+			if (other.nom != null){
 				return false;
-		} else if (!nom.equals(other.nom))
+			}
+		} else if (!nom.equals(other.nom)){
 			return false;
+		}
 		if (uri == null) {
-			if (other.uri != null)
+			if (other.uri != null){
 				return false;
-		} else if (!uri.equals(other.uri))
+			}
+		} else if (!uri.equals(other.uri)){
 			return false;
+		}
 		return true;
 	}
 

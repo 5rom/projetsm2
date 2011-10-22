@@ -225,15 +225,19 @@ public class Album implements Serializable, Comparable<Album>, Iterable<Piste> {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj){
 			return true;
-		if (obj == null)
+		}
+		if (obj == null){
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()){
 			return false;
+		}
 		Album other = (Album) obj;
-		if (id != other.id)
+		if (id != other.id){
 			return false;
+		}
 		return true;
 	}
 

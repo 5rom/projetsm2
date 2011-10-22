@@ -23,7 +23,7 @@ public class App
 	/**
 	 * Logger pour afficher les informations de debug
 	 */
-	private static final Logger log = LoggerFactory.getLogger(App.class);
+	private static final Logger LOG = LoggerFactory.getLogger(App.class);
 	
 	/**
      * Utilisation des classes Java générées par cxf pour réaliser
@@ -52,28 +52,28 @@ public class App
 		        	AlbumDescription aD=new AlbumDescription(a);
 			
 			        // Recuperation du contexte JAXB pour l'album créé
-		            log.info("Création du contexte JAXB...");
+		            LOG.info("Création du contexte JAXB...");
 			        JAXBContext context = JAXBContext.newInstance(aD.getClass());
 			   
 			        // Instanciation du marshaller (objet faisant la generation du XML en fonction de nos annotations dans les classes metiers)
-			        log.info("Création du marshaller JAXB...");
+			        LOG.info("Création du marshaller JAXB...");
 			        Marshaller marshaller = context.createMarshaller();
 			   
 			        // Formatage de la sortie
-			        log.info("Formatage de la sortie XML...");
+			        LOG.info("Formatage de la sortie XML...");
 			        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			        StringWriter sw = new StringWriter();
 		
 			        // Marshalling de l'objet en XML
-			        log.info("Lancement du marshalling JAXB...");
+			        LOG.info("Lancement du marshalling JAXB...");
 			        marshaller.marshal(aD, sw);
 			   
 			        // Affichage du XML produit
-			        log.info("Description XML de l'album "+numAlbum+":");
-			        log.info(sw.toString());        	
+			        LOG.info("Description XML de l'album "+numAlbum+":");
+			        LOG.info(sw.toString());        	
 	        	
 	        } catch (Exception e) {
-	        	if (e.getClass().getName()=="java.lang.NumberFormatException"){
+	        	if (e.getClass().getName().equals("java.lang.NumberFormatException")){
 		        	/*
 		        	 * Sinon c'est un chemin de fichier xml : alors on veut ajouter l'album qui y est décrit
 		        	 */
@@ -82,35 +82,35 @@ public class App
 			        	AlbumDataPortType aDPT=aDS.getAlbumDataPort();
 			        	
 				        // Recuperation du contexte JAXB pour l'album créé
-			            log.info("Création du contexte JAXB...");
+			            LOG.info("Création du contexte JAXB...");
 				        JAXBContext context = JAXBContext.newInstance(AlbumDescription.class);
 				   
 				        // Instanciation d' l'unmarshaller (objet désérialiseur construisant l'objet a partir de sa description en XML)
-				        log.info("Création du unmarshaller JAXB...");
+				        LOG.info("Création du unmarshaller JAXB...");
 				        Unmarshaller un = context.createUnmarshaller();
 		
-				        log.info("Désérialisation...");
+				        LOG.info("Désérialisation...");
 				        // Désérialisation
 			        	AlbumDescription aD = (AlbumDescription)un.unmarshal(new File(args[0]));
 		
-			        	log.info("Ajout de l'album créé dans la base...");
+			        	LOG.info("Ajout de l'album créé dans la base...");
 			        	// Demande au service AlbumService d'execution de l'opération d'ajout d'album
 			        	aDPT.addAlbumDescription(aD.getAlbum());
-			        	log.info("Album enregistré avec succès.");
+			        	LOG.info("Album enregistré avec succès.");
 		        	
 		        	} catch (Exception ex){
 		        		// Le fichier n'existe pas ou est incorrect
-		        		log.error("Erreur d'ajout d'album depuis un fichier xml!");
-		        		ex.printStackTrace();
+		        		LOG.error("Erreur d'ajout d'album depuis un fichier xml!");
+		        		//ex.printStackTrace();
 		        	}
 	        	} else {
 	        		// L'argument n'est ni un nombre ni un nom de fichier
-	        		log.error("Usage: java App [idAlbum|xmlAlbumDescriptionFilePath]");
+	        		LOG.error("Usage: java App [idAlbum|xmlAlbumDescriptionFilePath]");
 	        	}
 	        }
     	} else {
     		// On rappelle coté client comment utiliser le programme
-    		log.error("Usage: java App [idAlbum|xmlAlbumDescriptionFilePath]");
+    		LOG.error("Usage: java App [idAlbum|xmlAlbumDescriptionFilePath]");
     	}
     }
 }
