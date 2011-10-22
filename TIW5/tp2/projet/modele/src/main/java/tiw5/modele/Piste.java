@@ -179,20 +179,26 @@ public class Piste implements Serializable, Comparable<Piste> {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj){
 			return true;
-		if (obj == null)
+		}
+		if (obj == null){
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()){
 			return false;
+		}
 		Piste other = (Piste) obj;
 		if (album == null) {
-			if (other.album != null)
+			if (other.album != null){
 				return false;
-		} else if (!album.equals(other.album))
+			}
+		} else if (!album.equals(other.album)) {
 			return false;
-		if (numero != other.numero)
+		}
+		if (numero != other.numero){
 			return false;
+		}
 		return true;
 	}
 
@@ -252,20 +258,25 @@ class PistePk implements Serializable {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj){
 			return true;
-		if (obj == null)
+		}
+		if (obj == null){
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()){
 			return false;
+		}
 		PistePk other = (PistePk) obj;
 		if (album == null) {
 			if (other.album != null)
 				return false;
-		} else if (!album.equals(other.album))
+		} else if (!album.equals(other.album)){
 			return false;
-		if (numero != other.numero)
+		}
+		if (numero != other.numero){
 			return false;
+		}
 		return true;
 	}
 
