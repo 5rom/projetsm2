@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Sat Oct 22 21:24:50 CEST 2011:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0133-2d17-bc34-000005175850 
+Sun Oct 23 14:15:33 CEST 2011:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0133-30b5-155d-000005255cb0 
 on database directory C:\Users\Seb\eclipse-projects\svn\TIW5\tp2\projet\modele\target\testDB  with class loader sun.misc.Launcher$AppClassLoader@12360be0 
 Loaded from file:/C:/Users/Seb/.m2/repository/org/apache/derby/derby/10.8.1.2/derby-10.8.1.2.jar
 java.vendor=Sun Microsystems Inc.
