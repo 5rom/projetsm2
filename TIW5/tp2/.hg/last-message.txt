@@ -1,1 +1,2 @@
-Nouveau projet nettoye
+TIW5 TP2 : Ajout de commentaires dans les fichiers xml de config dans le projet
+Web-interface pour expliquer leur rôle.
