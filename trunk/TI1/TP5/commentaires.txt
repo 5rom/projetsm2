@@ -1,0 +1,1 @@
+dans le tuto 2 la compilation se fait pas car probleme avec "properties" donc mettre "null" a la place de "properties".
