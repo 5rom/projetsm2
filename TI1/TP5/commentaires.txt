@@ -1,1 +1,17 @@
 dans le tuto 2 la compilation se fait pas car probleme avec "properties" donc mettre "null" a la place de "properties".
+
+tuto2 pour compiler:
+C:\Users\Seb\eclipse-projects\svn\TI1\TP5\tutos\tuto2>javac -cp ..\..\felix-fram
+ework-4.0.1\bin\felix.jar .\tutorial\example2\*.java
+puis pour faire le jar:
+C:\Users\Seb\eclipse-projects\svn\TI1\TP5\tutos\tuto2>jar cfm example2.jar manif
+est.mf tutorial\example2
+
+
+
+Pas besoin de faire le 2b.
+
+TP à finir absolument pour dans deux semaines car prochain tp en a besoin.
+
+
+faire un projet sur eclipse pour l'exception BundleActivator.
