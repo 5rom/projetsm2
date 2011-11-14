@@ -8,12 +8,23 @@
 <!-- Fichier de description du déploiement des services web de l'application web-interface 
 Auteurs : David CRESCENCE et Sébastien FAURE 
 UCBL M2 TI 2011-2012 -->         
-		<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	
+	<!-- Ajout du handler -->
+	<bean id="logHandler" class="tiw5.services.handlers.LogHandler" />
+	
 	<jaxws:endpoint id="album-data" implementor="tiw5.services.impl.AlbumDataService"
-		address="/AlbumDataService" />
+		address="/AlbumDataService">
+		<!-- Handler du service AlbumDataService -->
+		<jaxws:handlers>
+			<ref bean="logHandler" />
+		</jaxws:handlers>
+	</jaxws:endpoint>
 	<!-- Ajout du service StockService comme au-dessus -->
 	<jaxws:endpoint id="stock" implementor="tiw5.services.impl.StockService"
 		address="/StockService" />
+		
+		
 </beans>
