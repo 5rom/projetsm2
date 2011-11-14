@@ -1,1 +1,1 @@
-TIW5 TP3 : Creation du projet en partant des sources du TP2 pour garder AlbumDataService
+TIW5 TP3 : Configuration du handler de logs pour AlbumDataService. Test avec SoapUI ok.
