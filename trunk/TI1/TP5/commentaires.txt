@@ -10,6 +10,3 @@ C:\Users\Seb\eclipse-projects\svn\TI1\TP5\tutos\tuto2>jar cfm example2.jar manif
 Pas besoin de faire le 2b.
 
 TP à finir absolument pour dans deux semaines car prochain tp en a besoin.
-
-
-faire un projet sur eclipse pour l'exception BundleActivator.
