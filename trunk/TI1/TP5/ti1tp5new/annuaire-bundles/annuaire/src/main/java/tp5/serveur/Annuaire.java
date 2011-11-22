@@ -9,6 +9,7 @@ import tp5.Site;
 import tp5.SiteDAO;
 import tp5.SiteXMLDAO;
 
+@Deprecated
 public class Annuaire {
 
     ArrayList<Site> sites = new ArrayList<Site>();
