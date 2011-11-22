@@ -58,8 +58,8 @@ public class Annuaire {
         String ls = new String();
         for (Iterator<Site> i = sites.iterator(); i.hasNext();) {
             Site s = (Site) i.next();
-            ls += "Description :\t" + s.getDescription() + "\n";
-            ls += "URL :\t" + s.getURL() + "\n";
+            ls += "Description : " + s.getDescription() + "</br>";
+            ls += "URL : " + s.getURL() + "</br></br>";
         }
         return ls;
     }
