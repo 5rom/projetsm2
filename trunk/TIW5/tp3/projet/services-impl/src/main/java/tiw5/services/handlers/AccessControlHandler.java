@@ -6,23 +6,22 @@ import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMResult;
+import javax.xml.ws.ProtocolException;
 import javax.xml.ws.handler.LogicalHandler;
 import javax.xml.ws.handler.LogicalMessageContext;
 import javax.xml.ws.handler.MessageContext;
 
-import java.util.Date;
-import java.util.logging.Logger;
-import org.w3c.dom.DocumentFragment;
 import org.w3c.dom.Document;
+import org.w3c.dom.DocumentFragment;
 import org.w3c.dom.Node;
 
-public class LogHandler implements LogicalHandler<LogicalMessageContext> {
+import tiw5.user.UtilisateurID;
+import tiw5.util.services.util.Utils;
 
-	private static Logger log = Logger.getLogger("IntercepteurDeLog");
-
+public class AccessControlHandler implements LogicalHandler<LogicalMessageContext> {
 	private Transformer copy;
 
-	public LogHandler() {
+	public AccessControlHandler() {
 		try {
 			copy = TransformerFactory.newInstance().newTransformer();
 		} catch (TransformerConfigurationException e) {
@@ -46,25 +45,37 @@ public class LogHandler implements LogicalHandler<LogicalMessageContext> {
 			}
 			return root.getNodeName();
 		}	
-
 	@Override
 	public void close(MessageContext arg0) {
 		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public boolean handleFault(LogicalMessageContext arg0) {
-		log.warning("Erreur: " + getMainMessageElement(arg0));
-		return true; // Le traitement continue
+		// TODO Auto-generated method stub
+		return true;
 	}
+
+
 
 	@Override
 	public boolean handleMessage(LogicalMessageContext arg0) {
 		boolean sortant = (Boolean) arg0.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
-		if (sortant){
-			log.info("LogHandler:"+new Date().toString()+" : Element principal du message sortant"+ ": "+ getMainMessageElement(arg0));	
-		} else {
-			log.info("LogHandler:"+new Date().toString()+" : " +"User=\""+arg0.get("user")+"\""+" , Element principal du message entrant"+ ": "+ getMainMessageElement(arg0));
+		if (!sortant){
+			if (getMainMessageElement(arg0).contains("addAlbumDescription")){
+				String userValue=(String) arg0.get("user");
+				String passwordValue=(String) arg0.get("password");
+				UtilisateurID currentUserID = new UtilisateurID(userValue, passwordValue);
+				//Ici on regarde dans le xml s'il y est
+				//S'il n'y est pas on genere l'exception ProtocolException 
+				if (Utils.checkCanEditAlbumFromXMLFile("C:\\Users\\Seb\\eclipse-projects\\svn\\TIW5\\tp3\\projet\\listeIdentifiants.xml", currentUserID)){
+					System.out.println("AccessControlHandler:L'utilisateur a le droit d'ajouter des albums!");
+				} else {
+					System.out.println("AccessControlHandler:L'utilisateur n'a pas le droit d'ajouter des albums! Erreur!");
+					throw new ProtocolException();
+				}
+			}
 		}
 		return true;
 	}
