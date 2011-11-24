@@ -10,6 +10,7 @@ import javax.xml.ws.handler.LogicalHandler;
 import javax.xml.ws.handler.LogicalMessageContext;
 import javax.xml.ws.handler.MessageContext;
 
+import java.util.Date;
 import java.util.logging.Logger;
 import org.w3c.dom.DocumentFragment;
 import org.w3c.dom.Document;
@@ -49,7 +50,6 @@ public class LogHandler implements LogicalHandler<LogicalMessageContext> {
 	@Override
 	public void close(MessageContext arg0) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class LogHandler implements LogicalHandler<LogicalMessageContext> {
 	public boolean handleMessage(LogicalMessageContext arg0) {
 		boolean sortant = (Boolean) arg0
 				.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
-		log.info("Message " + (sortant ? "sortant" : "entrant") + ": "
+		log.info(new Date().toString()+" : " +"User=\""+arg0.get("user")+"\" +Message " + (sortant ? "sortant" : "entrant") + ": "
 				+ getOp(arg0));
 		return true;
 	}
