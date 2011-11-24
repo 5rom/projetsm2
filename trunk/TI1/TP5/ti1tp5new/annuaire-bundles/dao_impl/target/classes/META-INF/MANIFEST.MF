@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Export-Package: tp5;uses:="org.osgi.framework,javax.xml.transform,java
+ x.xml.transform.stream,javax.xml.parsers,javax.xml.transform.dom,org.
+ w3c.dom,org.xml.sax";version="1.0.0.SNAPSHOT"
+Built-By: padawanchichi
+Tool: Bnd-1.43.0
+Bundle-Name: dao_impl
+Created-By: Apache Maven Bundle Plugin
+Bundle-Version: 1.0.0.SNAPSHOT
+Build-Jdk: 1.6.0_29
+Bnd-LastModified: 1322015681468
+Bundle-ManifestVersion: 2
+Bundle-Activator: tp5.Activator
+Import-Package: javax.xml.parsers,javax.xml.transform,javax.xml.transf
+ orm.dom,javax.xml.transform.stream,org.osgi.framework;version="[1.3,2
+ )",org.w3c.dom,org.xml.sax
+Bundle-SymbolicName: ti1.dao_impl
+

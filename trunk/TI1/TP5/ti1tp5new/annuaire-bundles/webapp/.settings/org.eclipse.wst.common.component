@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="webapp">
+    <wb-module deploy-name="webapp-1.0-SNAPSHOT">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <dependent-module archiveName="annuaire-1.0-SNAPSHOT.bundle" deploy-path="/WEB-INF/lib" handle="module:/resource/annuaire/annuaire">
+        <dependent-module archiveName="annuaire-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/annuaire/annuaire">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dao_impl-1.0-SNAPSHOT.bundle" deploy-path="/WEB-INF/lib" handle="module:/resource/dao_impl/dao_impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dao_interface-1.0-SNAPSHOT.bundle" deploy-path="/WEB-INF/lib" handle="module:/resource/dao_interface/dao_interface">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="webapp"/>

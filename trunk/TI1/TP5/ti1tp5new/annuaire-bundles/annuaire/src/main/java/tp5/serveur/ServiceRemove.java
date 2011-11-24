@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import tp5.Factory;
 import tp5.Site;
-import tp5.SiteXMLDAO;
+import tp5.SiteInterface;
 
 /**
  * Implementation d'un service de suppression de sites a l'annuaire
@@ -15,8 +16,8 @@ import tp5.SiteXMLDAO;
 public class ServiceRemove extends AbstractAnnuaire {
 
 
-	public ServiceRemove(ArrayList<Site> sites, SiteXMLDAO xdao){
-		super(sites, xdao);
+	public ServiceRemove(ArrayList<SiteInterface> sites, Factory factory){
+		super(sites, factory);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -27,9 +28,9 @@ public class ServiceRemove extends AbstractAnnuaire {
 	}
 
     private void removeSite(String desc, String url) {
-        Site s = new Site(desc, url, dao);
+        Site s = this.factory.getSite(desc, url);
         // suppression dans la liste
-        for (Iterator<Site> i = sites.iterator(); i.hasNext();) {
+        for (Iterator<SiteInterface> i = sites.iterator(); i.hasNext();) {
             Site temp = (Site) i.next();
             if (temp.equals(s)) {
                 sites.remove(temp);

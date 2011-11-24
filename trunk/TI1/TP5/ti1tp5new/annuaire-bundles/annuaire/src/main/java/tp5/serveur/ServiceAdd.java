@@ -3,8 +3,9 @@ package tp5.serveur;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import tp5.Factory;
 import tp5.Site;
-import tp5.SiteXMLDAO;
+import tp5.SiteInterface;
 
 /**
  * Implementation d'un service d'ajout de sites a l'annuaire
@@ -14,8 +15,8 @@ import tp5.SiteXMLDAO;
 public class ServiceAdd extends AbstractAnnuaire {
 
 
-	public ServiceAdd(ArrayList<Site> sites, SiteXMLDAO xdao){
-		super(sites, xdao);
+	public ServiceAdd(ArrayList<SiteInterface> sites, Factory factory){
+		super(sites, factory);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -26,7 +27,7 @@ public class ServiceAdd extends AbstractAnnuaire {
 	}
 
     private void addSite(String desc, String url) {
-        Site s = new Site(desc, url, dao);
+        Site s = this.factory.getSite(desc, url);
         // ajout dans la liste
         try {
             s.save();
