@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import tp5.Factory;
 import tp5.Site;
-import tp5.SiteXMLDAO;
+import tp5.SiteInterface;
 
 /**
  * Implementation d'un service de listing des sites de l'annuaire
@@ -15,8 +16,8 @@ import tp5.SiteXMLDAO;
 public class ServiceListeSites extends AbstractAnnuaire {
 
 
-	public ServiceListeSites(ArrayList<Site> sites, SiteXMLDAO xdao){
-		super(sites, xdao);
+	public ServiceListeSites(ArrayList<SiteInterface> sites, Factory factory){
+		super(sites, factory);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -30,7 +31,7 @@ public class ServiceListeSites extends AbstractAnnuaire {
 	
     private String listSites() {
         String ls = new String();
-        for (Iterator<Site> i = sites.iterator(); i.hasNext();) {
+        for (Iterator<SiteInterface> i = sites.iterator(); i.hasNext();) {
             Site s = (Site) i.next();
             ls += "Description : " + s.getDescription() + "</br>";
             ls += "URL : " + s.getURL() + "</br></br>";

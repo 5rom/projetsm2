@@ -25,5 +25,7 @@
 	<modules>
 		<module>annuaire</module>
 		<module>webapp</module>
+		<module>dao_interface</module>
+		<module>dao_impl</module>
 	</modules>
 </project>

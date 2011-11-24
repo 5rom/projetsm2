@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Export-Package: tp5;version="1.0.0.SNAPSHOT"
+Built-By: padawanchichi
+Build-Jdk: 1.6.0_29
+Bundle-Version: 1.0.0.SNAPSHOT
+Tool: Bnd-1.43.0
+Bundle-Name: dao_interface
+Bnd-LastModified: 1322015678814
+Created-By: Apache Maven Bundle Plugin
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: ti1.dao_interface
+

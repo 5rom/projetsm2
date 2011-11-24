@@ -3,11 +3,10 @@ package tp5.serveur;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.picocontainer.Startable;
 
+import tp5.Factory;
 import tp5.Site;
-import tp5.SiteDAO;
-import tp5.SiteXMLDAO;
+import tp5.SiteInterface;
 
 /**
  * Classe abstraite AbstractAnnuaire
@@ -23,16 +22,13 @@ public abstract class AbstractAnnuaire implements AnnuaireInterface{
 	/**
      * La liste de sites
      */
-	ArrayList<Site> sites;
-	
-	/**
-	 * Le SiteDAO (DAO = Direct Access Object)
-	 */
-    SiteDAO dao;
+	ArrayList<SiteInterface> sites;
+    
+    Factory factory;
    
 
-    public AbstractAnnuaire(ArrayList<Site> sites, SiteXMLDAO xdao){
-    	dao = xdao;
+    public AbstractAnnuaire(ArrayList<SiteInterface> sites, Factory factory){
+    	this.factory = factory;
     	this.sites = sites;
     }        
     

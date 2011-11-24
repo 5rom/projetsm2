@@ -3,8 +3,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
+import tp5.Factory;
 import tp5.Site;
-import tp5.SiteXMLDAO;
+import tp5.SiteInterface;
 
 /**
  * Classe Serveur
@@ -15,22 +16,23 @@ import tp5.SiteXMLDAO;
 public class ServeurImpl implements Serveur {
 
 	// L'annuaire du serveur
+	public Factory factory;
 	private ServiceAdd addSite;
 	private ServiceRemove removeSite;
 	private ServiceListeSites listSites;
 	private ServiceInitSites initSites;
 	
 	// Constructeur
-	public ServeurImpl(){		
+	public ServeurImpl(Factory factory){		
 		
 		// Création de l'annuaire
-		SiteXMLDAO xdao = new SiteXMLDAO("test.xml");
-		ArrayList<Site> sites = new ArrayList<Site>();
+		this.factory = factory;
+		ArrayList<SiteInterface> sites = new ArrayList<SiteInterface>();
 		//annu = new Annuaire(sites, xdao);
-		initSites = new ServiceInitSites(sites,xdao);
-		listSites = new ServiceListeSites(sites,xdao);
-		addSite = new ServiceAdd(sites,xdao);
-		removeSite = new ServiceRemove(sites,xdao);
+		initSites = new ServiceInitSites(sites,factory);
+		listSites = new ServiceListeSites(sites,factory);
+		addSite = new ServiceAdd(sites,factory);
+		removeSite = new ServiceRemove(sites,factory);
 		
 	}
 	
