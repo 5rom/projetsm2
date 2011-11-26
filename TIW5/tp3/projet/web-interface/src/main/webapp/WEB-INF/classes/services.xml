@@ -1,10 +1,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
 	xsi:schemaLocation="
          http://www.springframework.org/schema/beans
          http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
          http://cxf.apache.org/jaxws
-         http://cxf.apache.org/schemas/jaxws.xsd">
+         http://cxf.apache.org/schemas/jaxws.xsd
+         http://cxf.apache.org/jaxrs
+         http://cxf.apache.org/schemas/jaxrs.xsd">
 <!-- Fichier de description du déploiement des services web de l'application web-interface 
 Auteurs : David CRESCENCE et Sébastien FAURE 
 UCBL M2 TI 2011-2012 -->         
@@ -20,7 +22,7 @@ UCBL M2 TI 2011-2012 -->
 	
 	<jaxws:endpoint id="album-data" implementor="tiw5.services.impl.AlbumDataService"
 		address="/AlbumDataService">
-		<!-- Handlers du service AlbumDataService 
+		<!--Handlers du service AlbumDataService 
 		L'ordre est important!
 		entrants:userHandler, authHandler, accesCtrlHandler puis logHandler.
 		sortants: c'est l'inverse
@@ -30,11 +32,17 @@ UCBL M2 TI 2011-2012 -->
 			<ref bean="accessControlHandler" />				
 			<ref bean="authHandler" />
 			<ref bean="userHandler" />
-		
-
 		</jaxws:handlers>
 	</jaxws:endpoint>
-	
+ 
+  <bean id="albumDataBean" class="tiw5.services.impl.AlbumDataService" />
+  <jaxrs:server id="album-datarest" address="/AlbumDataServiceRest">
+    <jaxrs:serviceBeans>
+      <ref bean="albumDataBean" />
+    </jaxrs:serviceBeans>
+  </jaxrs:server>
+
+
 	<!-- Ajout du service StockService comme au-dessus -->
 	<jaxws:endpoint id="stock" implementor="tiw5.services.impl.StockService"
 		address="/StockService" />

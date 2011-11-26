@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="resttp3" soapui-version="4.0.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" wadlVersion="http://wadl.dev.java.net/2009/02" name="resttp3" type="rest" basePath="/web-interface/services/AlbumDataServiceRest" definitionUrl="http://localhost:8080/web-interface/services/AlbumDataServiceRest?_wadl&amp;_type=xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/web-interface/services/AlbumDataServiceRest?_wadl&amp;_type=xml"><con:part><con:url>http://localhost:8080/web-interface/services/AlbumDataServiceRest?_wadl&amp;_type=xml</con:url><con:content><![CDATA[<application xmlns="http://wadl.dev.java.net/2009/02" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:prefix1="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd">
+  <grammars>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" xmlns:ns1="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd">
+      <xs:import namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd"/>
+      <xs:complexType name="album">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns1:titre"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" ref="ns1:piste"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" ref="ns1:artiste"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:long" use="required"/>
+      </xs:complexType>
+      <xs:complexType name="piste">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns1:titre"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" ref="ns1:contributeur"/>
+        </xs:sequence>
+        <xs:attribute name="numero" type="xs:int" use="required"/>
+        <xs:attribute name="duree" type="xs:int" use="required"/>
+      </xs:complexType>
+      <xs:complexType name="artisteRef">
+        <xs:sequence/>
+        <xs:attribute name="uri" type="xs:string"/>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd" xmlns="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd">
+      <xs:import namespace=""/>
+      <xs:element name="album" type="album"/>
+      <xs:element name="artiste" type="artisteRef"/>
+      <xs:element name="contributeur" type="artisteRef"/>
+      <xs:element name="piste" type="piste"/>
+      <xs:element name="titre" type="xs:string"/>
+    </xs:schema>
+  </grammars>
+  <resources base="http://localhost:8080/web-interface/services/AlbumDataServiceRest">
+    <resource path="/AlbumDataServiceRest">
+      <resource path="/addalbum/{album}">
+        <method name="PUT">
+          <request>
+            <representation mediaType="application/xml" element="prefix1:album"/>
+          </request>
+          <response status="204"/>
+        </method>
+      </resource>
+      <resource path="/getalbum/{id}">
+        <param name="id" style="template" type="xs:long"/>
+        <method name="GET">
+          <request/>
+          <response>
+            <representation mediaType="application/xml" element="prefix1:album"/>
+          </response>
+        </method>
+      </resource>
+    </resource>
+  </resources>
+</application>]]></con:content><con:type>http://wadl.dev.java.net/2009/02</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080</con:endpoint></con:endpoints><con:resource name="/AlbumDataServiceRest" path="/AlbumDataServiceRest"><con:settings/><con:parameters/><con:resource name="/addalbum/{album}" path="/addalbum/{album}"><con:settings/><con:parameters/><con:method name="PUT" method="PUT"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xmlns:ven="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd">ven:album</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/xml" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>      
+&lt;m:album xmlns:m="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd" id="23">
+	&lt;m:titre>album23-2&lt;/m:titre>
+&lt;/m:album></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="/getalbum/{id}" path="/getalbum/{id}"><con:settings/><con:parameters><con:parameter><con:name>id</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xmlns:ven="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd">ven:album</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1"><con:settings/><con:endpoint>http://localhost:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource></con:resource></con:interface><con:properties/><con:wssContainer/></con:soapui-project>
