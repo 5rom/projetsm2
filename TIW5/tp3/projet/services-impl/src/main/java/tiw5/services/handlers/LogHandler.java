@@ -16,12 +16,28 @@ import org.w3c.dom.DocumentFragment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
+/**
+ * Classe LogHandler
+ * Intercepteur logique de log.
+ * Affiche l'element principal des messages reçus et envoyes ainsi que la date.
+ * @author David CRESCENCE <crescence.david@gmail.com> et Sébastien FAURE <sebastien.faure3@gmail.com>
+ * UCBL M2TI 2011-2012 
+ */
 public class LogHandler implements LogicalHandler<LogicalMessageContext> {
 
-	private static Logger log = Logger.getLogger("IntercepteurDeLog");
+	/**
+	 * Logger
+	 */
+	private static Logger log = Logger.getLogger("LogHandler");
 
+	/**
+	 * Transformer pour le message en XML
+	 */	
 	private Transformer copy;
 
+	/**
+	 * Constructeur
+	 */
 	public LogHandler() {
 		try {
 			copy = TransformerFactory.newInstance().newTransformer();
@@ -30,6 +46,12 @@ public class LogHandler implements LogicalHandler<LogicalMessageContext> {
 		}
 	}
 	
+	/**
+	 * Methode getMainMessageElement:
+	 * Permet de recuperer l'element principal du message en XML
+	 * @param arg0 Le contexte du message
+	 * @return String Le nom de l'element principal du message
+	 */
 	public String getMainMessageElement(LogicalMessageContext arg0) {
 			Source payload = arg0.getMessage().getPayload();
 			DOMResult dom = new DOMResult();
@@ -47,25 +69,43 @@ public class LogHandler implements LogicalHandler<LogicalMessageContext> {
 			return root.getNodeName();
 		}	
 
+	/**
+	 * Methode close
+	 * Appelee a la fin d'un echange de message
+	 */
 	@Override
 	public void close(MessageContext arg0) {
-		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * Methode handleFault
+	 * Appelee en cas d'erreur de traitement d'un message
+	 */
 	@Override
 	public boolean handleFault(LogicalMessageContext arg0) {
-		log.warning("Erreur: " + getMainMessageElement(arg0));
-		return true; // Le traitement continue
+		log.warning("LogHandler: Erreur rencontrée: " + getMainMessageElement(arg0));
+		// Le traitement continue
+		return true;
 	}
 
+	/**
+	 * Methode handleMessage
+	 * Traitement d'un message : affichage de la date et de l'element 
+	 * principal du message (avec en plus le login de l'utilisateur 
+	 * si c'est un message entrant)
+	 */	
 	@Override
 	public boolean handleMessage(LogicalMessageContext arg0) {
 		boolean sortant = (Boolean) arg0.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
 		if (sortant){
+			// Message sortant
 			log.info("LogHandler:"+new Date().toString()+" : Element principal du message sortant"+ ": "+ getMainMessageElement(arg0));	
 		} else {
+			// Message entrant : on affiche en plus le nom de l'utilisateur car il a été ajouté au contexte par le handler SOAP userHandler
 			log.info("LogHandler:"+new Date().toString()+" : " +"User=\""+arg0.get("user")+"\""+" , Element principal du message entrant"+ ": "+ getMainMessageElement(arg0));
 		}
+		
+		// On continue le traitement des messages
 		return true;
 	}
 

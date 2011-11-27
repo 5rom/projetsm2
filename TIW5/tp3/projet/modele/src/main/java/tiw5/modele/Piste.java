@@ -269,8 +269,9 @@ class PistePk implements Serializable {
 		}
 		PistePk other = (PistePk) obj;
 		if (album == null) {
-			if (other.album != null)
+			if (other.album != null){
 				return false;
+			}
 		} else if (!album.equals(other.album)){
 			return false;
 		}
