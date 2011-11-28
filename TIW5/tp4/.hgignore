@@ -1,0 +1,9 @@
+
+syntax: regexp
+^projet/modele/target$
+syntax: regexp
+^projet/web-interface/target$
+syntax: regexp
+^projet/client/target$
+syntax: glob
+target
