@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/banque" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BanqueClient" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/banque">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/banque">
+      <xsd:element name="confirmOp">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="transaction-id"
+      				type="xsd:string">
+      			</xsd:element>
+      			<xsd:element name="valeur" type="xsd:double"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="confirmOpRequest">
+    <wsdl:part element="tns:confirmOp" name="parameters" />
+  </wsdl:message>
+  <wsdl:portType name="BanqueClient">
+    <wsdl:operation name="confirmOp">
+      <wsdl:input message="tns:confirmOpRequest"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BanqueClientSOAP" type="tns:BanqueClient">
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="confirmOp">
+  		<soap:operation
+  			soapAction="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/banque/confirmOp" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BanqueClient">
+    <wsdl:port binding="tns:BanqueClientSOAP" name="BanqueClientSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
