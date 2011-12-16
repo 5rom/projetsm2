@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+        <artifactId>projet</artifactId>
+        <groupId>tiw5</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>..</relativePath>
+  </parent>
+  <artifactId>smix</artifactId>
+  <packaging>pom</packaging>
+  <name>SMIX</name>
+  <modules>
+    <module>smix-file-poller</module>
+    <module>smix-file-sender</module>
+    <module>smix-sa</module>
+    <module>smix-jms</module>
+    <module>smix-camel</module>
+    <module>smix-cxf-bc</module>
+    <module>smix-cxf-se</module>
+  </modules>
+</project>

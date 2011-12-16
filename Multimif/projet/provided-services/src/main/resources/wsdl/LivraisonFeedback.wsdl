@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/livraison/feedback" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LivraisonFeedback" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/livraison/feedback">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/livraison/feedback">
+      <xsd:element name="livraisonEffectuee">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="idCommande" type="xsd:string"></xsd:element>
+          	<xsd:element name="date" type="xsd:date" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InformePriseEnCompte">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="idCommande" type="xsd:string"></xsd:element>
+      			<xsd:element name="date" type="xsd:date"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="InformeLivraisonOpRequest">
+    <wsdl:part element="tns:livraisonEffectuee" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="InformePriseEnCompteOpRequest">
+  	<wsdl:part name="parameters" element="tns:InformePriseEnCompte"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="LivraisonFeedback">
+    <wsdl:operation name="InformeLivraisonOp">
+      <wsdl:input message="tns:InformeLivraisonOpRequest"/>
+    </wsdl:operation>
+    <wsdl:operation name="InformePriseEnCompteOp">
+    	<wsdl:input message="tns:InformePriseEnCompteOpRequest"></wsdl:input>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LivraisonFeedbackSOAP"
+  	type="tns:LivraisonFeedback">
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="InformeLivraisonOp">
+  		<soap:operation
+  			soapAction="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/livraison/feedback/InformeLivraisonOp" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LivraisonFeedback">
+    <wsdl:port binding="tns:LivraisonFeedbackSOAP" name="LivraisonFeedbackSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

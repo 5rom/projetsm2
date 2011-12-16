@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="TestProvidedServices" soapui-version="4.0.1.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="parisSoapBinding" type="wsdl" bindingName="{http://master-info.univ-lyon1.fr/M2TI/TIW5/services/entrepot}parisSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8085/provided-services/services/entrepot/EntrepotServiceParis?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8085/provided-services/services/entrepot/EntrepotServiceParis?wsdl"><con:part><con:url>http://localhost:8085/provided-services/services/entrepot/EntrepotServiceParis?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="paris" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/entrepot" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/entrepot" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/entrepot" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="commande" type="tns:commande"/>
+      <xs:element name="disponibilite" type="tns:disponibilite"/>
+      <xs:element name="disponibiliteInfo" type="tns:disponibiliteInfo"/>
+      <xs:element name="emplacement" type="tns:emplacement"/>
+      <xs:element name="getEmplacement" type="tns:getEmplacement"/>
+      <xs:element name="id" type="tns:id"/>
+      <xs:complexType name="getEmplacement">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="emplacement">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="ville" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="commande">
+        <xs:sequence>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="cd" type="tns:quantiteCd"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="quantiteCd">
+        <xs:sequence>
+          <xs:element name="quantite" type="xs:int"/>
+          <xs:element name="idCd" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="id">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="disponibilite">
+        <xs:sequence>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="cd" type="tns:quantiteCd"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="disponibiliteInfo">
+        <xs:sequence>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="cd" type="tns:dispoCd"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="dispoCd">
+        <xs:complexContent>
+          <xs:extension base="tns:quantiteCd">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="dateDispo" type="xs:dateTime"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="NonDisponibleException" type="tns:NonDisponibleException"/>
+      <xs:complexType name="NonDisponibleException">
+        <xs:sequence>
+          <xs:element name="nonDisponible" nillable="true" type="tns:quantiteCd"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="emplacementResponse">
+    <wsdl:part element="tns:emplacement" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="disponibilite">
+    <wsdl:part element="tns:disponibilite" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NonDisponibleException">
+    <wsdl:part element="tns:NonDisponibleException" name="NonDisponibleException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="commande">
+    <wsdl:part element="tns:commande" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="commandeResponse">
+    <wsdl:part element="tns:id" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="emplacement">
+    <wsdl:part element="tns:getEmplacement" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="disponibiliteResponse">
+    <wsdl:part element="tns:disponibiliteInfo" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EntrepotInterface">
+    <wsdl:operation name="emplacement">
+      <wsdl:input message="tns:emplacement" name="emplacement"></wsdl:input>
+      <wsdl:output message="tns:emplacementResponse" name="emplacementResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="commande">
+      <wsdl:input message="tns:commande" name="commande"></wsdl:input>
+      <wsdl:output message="tns:commandeResponse" name="commandeResponse"></wsdl:output>
+      <wsdl:fault message="tns:NonDisponibleException" name="NonDisponibleException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="disponibilite">
+      <wsdl:input message="tns:disponibilite" name="disponibilite"></wsdl:input>
+      <wsdl:output message="tns:disponibiliteResponse" name="disponibiliteResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="parisSoapBinding" type="tns:EntrepotInterface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="emplacement">
+      <soap:operation soapAction="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/entrepot/commande" style="document"/>
+      <wsdl:input name="emplacement">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="emplacementResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="commande">
+      <soap:operation soapAction="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/entrepot/commande" style="document"/>
+      <wsdl:input name="commande">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="commandeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NonDisponibleException">
+        <soap:fault name="NonDisponibleException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="disponibilite">
+      <soap:operation soapAction="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/entrepot/disponibilite" style="document"/>
+      <wsdl:input name="disponibilite">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="disponibiliteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="paris">
+    <wsdl:port binding="tns:parisSoapBinding" name="EntrepotServicePort">
+      <soap:address location="http://localhost:8085/provided-services/services/entrepot/EntrepotServiceParis"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8085/provided-services/services/entrepot/EntrepotServiceParis</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/entrepot/commande" name="commande" bindingOperationName="commande" type="Request-Response" outputName="commandeResponse" inputName="commande" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/provided-services/services/entrepot/EntrepotServiceParis</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ent="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/entrepot">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ent:commande>
+         <!--Zero or more repetitions:-->
+         <ent:cd>
+            <quantite>5</quantite>
+            <idCd>1234</idCd>
+         </ent:cd>
+      </ent:commande>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/entrepot/commande"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/entrepot/disponibilite" name="disponibilite" bindingOperationName="disponibilite" type="Request-Response" outputName="disponibiliteResponse" inputName="disponibilite" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/provided-services/services/entrepot/EntrepotServiceParis</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ent="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/entrepot">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ent:disponibilite>
+         <!--Zero or more repetitions:-->
+         <ent:cd>
+            <quantite>12</quantite>
+            <idCd>12345</idCd>
+         </ent:cd>
+      </ent:disponibilite>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/entrepot/disponibilite"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/entrepot/commande" name="emplacement" bindingOperationName="emplacement" type="Request-Response" outputName="emplacementResponse" inputName="emplacement" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/provided-services/services/entrepot/EntrepotServiceParis</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ent="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/entrepot">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ent:getEmplacement/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/entrepot/commande"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="lyonSoapBinding" type="wsdl" bindingName="{http://master-info.univ-lyon1.fr/M2TI/TIW5/services/livraison}lyonSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8085/provided-services/services/livraison/LivraisonServiceLyon?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8085/provided-services/services/livraison/LivraisonServiceLyon?wsdl"><con:part><con:url>http://localhost:8085/provided-services/services/livraison/LivraisonServiceLyon?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="lyon" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/livraison" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/livraison" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/livraison" version="1.0" xmlns:ns1="http://www.w3.org/2005/08/addressing" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.w3.org/2005/08/addressing" schemaLocation="http://www.w3.org/2006/03/addressing/ws-addr.xsd"/>
+      <xs:element name="demande" type="tns:demande"/>
+      <xs:element name="infosLivraison" type="tns:infosLivraison"/>
+      <xs:element name="tarif" type="tns:tarif"/>
+      <xs:element name="tarifInfo" type="tns:tarifInfo"/>
+      <xs:complexType name="demande">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="adresseFeedback" type="ns1:EndpointReferenceType"/>
+          <xs:element form="qualified" minOccurs="0" name="depuis" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="vers" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="idCommande" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="infosLivraison">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="datePrevue" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tarif">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="depuis" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="vers" type="xs:string"/>
+          <xs:element form="qualified" name="quantite" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tarifInfo">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="valeur" type="xs:double"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="demandeLivraisonResponse">
+    <wsdl:part element="tns:infosLivraison" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="tarif">
+    <wsdl:part element="tns:tarif" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="tarifResponse">
+    <wsdl:part element="tns:tarifInfo" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="demandeLivraison">
+    <wsdl:part element="tns:demande" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="LivraisonInterface">
+    <wsdl:operation name="demandeLivraison">
+      <wsdl:input message="tns:demandeLivraison" name="demandeLivraison"></wsdl:input>
+      <wsdl:output message="tns:demandeLivraisonResponse" name="demandeLivraisonResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tarif">
+      <wsdl:input message="tns:tarif" name="tarif"></wsdl:input>
+      <wsdl:output message="tns:tarifResponse" name="tarifResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="lyonSoapBinding" type="tns:LivraisonInterface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="demandeLivraison">
+      <soap:operation soapAction="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/livraison/demande" style="document"/>
+      <wsdl:input name="demandeLivraison">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="demandeLivraisonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tarif">
+      <soap:operation soapAction="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/livraison/tarif" style="document"/>
+      <wsdl:input name="tarif">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="tarifResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="lyon">
+    <wsdl:port binding="tns:lyonSoapBinding" name="LivraisonServicePort">
+      <soap:address location="http://localhost:8085/provided-services/services/livraison/LivraisonServiceLyon"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://www.w3.org/2006/03/addressing/ws-addr.xsd</con:url><con:content><![CDATA[<!--W3C XML Schema defined in the Web Services Addressing 1.0 specification
+    http://www.w3.org/TR/ws-addr-core
+
+   Copyright © 2005 World Wide Web Consortium,
+
+   (Massachusetts Institute of Technology, European Research Consortium for
+   Informatics and Mathematics, Keio University). All Rights Reserved. This
+   work is distributed under the W3C® Software License [1] in the hope that
+   it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+   warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+   [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+
+   $Id: ws-addr.xsd,v 1.2 2008/07/23 13:38:16 plehegar Exp $-->
+<xs:schema targetNamespace="http://www.w3.org/2005/08/addressing" blockDefault="#all" elementFormDefault="qualified" finalDefault="" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.w3.org/2005/08/addressing">
+  <!--Constructs from the WS-Addressing Core-->
+  <xs:element name="EndpointReference" type="tns:EndpointReferenceType"/>
+  <xs:complexType name="EndpointReferenceType" mixed="false">
+    <xs:sequence>
+      <xs:element name="Address" type="tns:AttributedURIType"/>
+      <xs:element ref="tns:ReferenceParameters" minOccurs="0"/>
+      <xs:element ref="tns:Metadata" minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:complexType>
+  <xs:element name="ReferenceParameters" type="tns:ReferenceParametersType"/>
+  <xs:complexType name="ReferenceParametersType" mixed="false">
+    <xs:sequence>
+      <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:complexType>
+  <xs:element name="Metadata" type="tns:MetadataType"/>
+  <xs:complexType name="MetadataType" mixed="false">
+    <xs:sequence>
+      <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:complexType>
+  <xs:element name="MessageID" type="tns:AttributedURIType"/>
+  <xs:element name="RelatesTo" type="tns:RelatesToType"/>
+  <xs:complexType name="RelatesToType" mixed="false">
+    <xs:simpleContent>
+      <xs:extension base="xs:anyURI">
+        <xs:attribute name="RelationshipType" type="tns:RelationshipTypeOpenEnum" use="optional" default="http://www.w3.org/2005/08/addressing/reply"/>
+        <xs:anyAttribute namespace="##other" processContents="lax"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="RelationshipTypeOpenEnum">
+    <xs:union memberTypes="tns:RelationshipType xs:anyURI"/>
+  </xs:simpleType>
+  <xs:simpleType name="RelationshipType">
+    <xs:restriction base="xs:anyURI">
+      <xs:enumeration value="http://www.w3.org/2005/08/addressing/reply"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ReplyTo" type="tns:EndpointReferenceType"/>
+  <xs:element name="From" type="tns:EndpointReferenceType"/>
+  <xs:element name="FaultTo" type="tns:EndpointReferenceType"/>
+  <xs:element name="To" type="tns:AttributedURIType"/>
+  <xs:element name="Action" type="tns:AttributedURIType"/>
+  <xs:complexType name="AttributedURIType" mixed="false">
+    <xs:simpleContent>
+      <xs:extension base="xs:anyURI">
+        <xs:anyAttribute namespace="##other" processContents="lax"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <!--Constructs from the WS-Addressing SOAP binding-->
+  <xs:attribute name="IsReferenceParameter" type="xs:boolean"/>
+  <xs:simpleType name="FaultCodesOpenEnumType">
+    <xs:union memberTypes="tns:FaultCodesType xs:QName"/>
+  </xs:simpleType>
+  <xs:simpleType name="FaultCodesType">
+    <xs:restriction base="xs:QName">
+      <xs:enumeration value="tns:InvalidAddressingHeader"/>
+      <xs:enumeration value="tns:InvalidAddress"/>
+      <xs:enumeration value="tns:InvalidEPR"/>
+      <xs:enumeration value="tns:InvalidCardinality"/>
+      <xs:enumeration value="tns:MissingAddressInEPR"/>
+      <xs:enumeration value="tns:DuplicateMessageID"/>
+      <xs:enumeration value="tns:ActionMismatch"/>
+      <xs:enumeration value="tns:MessageAddressingHeaderRequired"/>
+      <xs:enumeration value="tns:DestinationUnreachable"/>
+      <xs:enumeration value="tns:ActionNotSupported"/>
+      <xs:enumeration value="tns:EndpointUnavailable"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RetryAfter" type="tns:AttributedUnsignedLongType"/>
+  <xs:complexType name="AttributedUnsignedLongType" mixed="false">
+    <xs:simpleContent>
+      <xs:extension base="xs:unsignedLong">
+        <xs:anyAttribute namespace="##other" processContents="lax"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:element name="ProblemHeaderQName" type="tns:AttributedQNameType"/>
+  <xs:complexType name="AttributedQNameType" mixed="false">
+    <xs:simpleContent>
+      <xs:extension base="xs:QName">
+        <xs:anyAttribute namespace="##other" processContents="lax"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:element name="ProblemIRI" type="tns:AttributedURIType"/>
+  <xs:element name="ProblemAction" type="tns:ProblemActionType"/>
+  <xs:complexType name="ProblemActionType" mixed="false">
+    <xs:sequence>
+      <xs:element ref="tns:Action" minOccurs="0"/>
+      <xs:element name="SoapAction" minOccurs="0" type="xs:anyURI"/>
+    </xs:sequence>
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8085/provided-services/services/livraison/LivraisonServiceLyon</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/livraison/demande" name="demandeLivraison" bindingOperationName="demandeLivraison" type="Request-Response" outputName="demandeLivraisonResponse" inputName="demandeLivraison" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/provided-services/services/livraison/LivraisonServiceLyon</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/livraison" xmlns:add="http://www.w3.org/2005/08/addressing">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:demande>
+         <liv:adresseFeedback>
+            <add:Address>http://localhost:8085/provided-services/services/livraison/DummyFeedback</add:Address>
+         </liv:adresseFeedback>
+         <liv:depuis>Lyon</liv:depuis>
+         <liv:vers>Lille</liv:vers>
+         <liv:idCommande>1234-5678</liv:idCommande>
+      </liv:demande>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/livraison/demande"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/livraison/tarif" name="tarif" bindingOperationName="tarif" type="Request-Response" outputName="tarifResponse" inputName="tarif" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/provided-services/services/livraison/LivraisonServiceLyon</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/livraison">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:tarif>
+         <!--Optional:-->
+         <liv:depuis>Lyon</liv:depuis>
+         <!--Optional:-->
+         <liv:vers>Lille</liv:vers>
+         <liv:quantite>28</liv:quantite>
+      </liv:tarif>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://master-info.univ-lyon1.fr/M2TI/TIW5/services/livraison/tarif"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>
