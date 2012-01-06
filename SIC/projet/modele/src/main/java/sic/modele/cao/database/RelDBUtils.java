@@ -2,7 +2,10 @@ package sic.modele.cao.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
+
+import oracle.jdbc.pool.OracleDataSource;
 
 /**
  * Class DBConnexion.java
@@ -28,26 +31,45 @@ public class RelDBUtils {
 
 	    private Connection conn;
 
+	    OracleDataSource ods;	    
+	    
 	   public RelDBUtils (){
-	        try {
-	            if (getOs.isWindows()) {
-	                nomDeLaBase = "jdbc:sqlite:data\\des.db";
-	            } else {
-	                nomDeLaBase = "jdbc:sqlite:data/des.db";
-	            }
-	            Class.forName("org.sqlite.JDBC");
-	            this.conn = DriverManager.getConnection(nomDeLaBase);
-	            Statement stat = conn.createStatement();
-	            // stat.executeUpdate("create table if not exists entries (question, reponse,instant);");
-	            stat.executeUpdate("create table if not exists entries (question,reponse,instant,session,screenshot,idreponse,regles);");
-	            stat.executeUpdate("create table if not exists session (idsession,datedebut,datefin,active,nom,dateexport,timetolive,questionsperhour);");
-	        } catch (SQLException ex) {
-	            Logger.getLogger(DBConnexion.class.getName()).log(Level.SEVERE, null, ex);
-	        } catch (ClassNotFoundException ex) {
-	            Logger.getLogger(DBConnexion.class.getName()).log(Level.SEVERE, null, ex);
-	        }
+
+		try {
+			ods = new OracleDataSource();
+			
+			  
+		       // type de pilote oracle
+		       ods.setDriverType("thin"); 
+
+		       // nom de la machine sur laquelle se trouve la base
+		       ods.setServerName("pedagowin710.univ-lyon1.fr"); 
+
+		       // numero du port pour se connecter à la base
+		       ods.setPortNumber(1521);
+
+		       // nom de la base
+		       ods.setDatabaseName("orapeda1");
+
+		       // Pour ouvrir une session (représentée par l'objet connect
+		       Connection connect = ods.getConnection("M1IF029","M1IF029");
+
+		       // Travail sur la base
+		       // Ici, on écrira du code pour, par exemple, interroger la base
+
+		       // Ne pas oublier de fermer la session quand on a fini de manipuler la base
+		       connect.close();	   
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	     
 	    }
 
+	   
+
+
+	   
 	    /**
 	     * METHODES PROPRES
 	     */
