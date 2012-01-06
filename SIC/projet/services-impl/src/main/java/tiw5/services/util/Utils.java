@@ -1,12 +1,15 @@
-package tiw5.util.services.util;
+package tiw5.services.util;
 
 import java.io.File;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
-import tiw5.user.ListeUtilisateurID;
-import tiw5.user.UtilisateurID;
 
-public class Utils {
+
+
+
+
+public class Utils {/*
 	public static Boolean checkAuthenticationFromXMLFile(String filePath, UtilisateurID userID){
 		Boolean found=false;
 		try {
@@ -52,5 +55,5 @@ public class Utils {
     		ex.printStackTrace();
     	}
     	return canEdit;
-	}		
+	}		*/
 }
