@@ -46,6 +46,9 @@ UCBL M2 TI 2011-2012 -->
 	<!-- Ajout du service StockService comme au-dessus -->
 	<jaxws:endpoint id="stock" implementor="tiw5.services.impl.StockService"
 		address="/StockService" />
-		
+
+	<!-- Ajout du service CAODataBaseService comme au-dessus -->
+	<jaxws:endpoint id="CAODataBase" implementor="sic.services.impl.CAODataBaseService"
+		address="/CAODataBaseService" />		
 		
 </beans>

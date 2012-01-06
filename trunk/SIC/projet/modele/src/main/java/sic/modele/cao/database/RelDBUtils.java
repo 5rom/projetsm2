@@ -29,25 +29,41 @@ public class RelDBUtils {
 	    /**
 	     * Ã©lÃ©ment de paramÃ¨tres statiques
 	     */
-	    private static String nomDeLaBase = "orapeda1";
+	    private String nomDeLaBase = "orapeda1";
 
 	    /**
-	     * Server
+	     * Server : sur un reseau prive apres avoir ouvert un tunnel ssh (port 1521) vers l'université
 	     */
-	    private static String nomDeServeur = "pedagowin710.univ-lyon1.fr";
+	    private String nomDeServeur = "localhost";
 
 	    /**
-	     * Server
+	     * Server : sur le réseau de l'université
 	     */
-	    private static int port = 1521;
+	    //private static String nomDeServeur = "pedagowin710.univ-lyon1.fr";
 	    
-	    private Connection conn;
+	    /**
+	     * Port
+	     */
+	    private int port = 1521;
+	    
+	    /**
+	     * Login d'accès à la base
+	     */
+	    private String login = "M1IF029";
+	    
+	    /**
+	     * Mot de passe d'accès à la base
+	     */	    
+	    private String pwd = "M1IF029";
+	    
+	    private Connection connect;
 
 	    OracleDataSource ods;	    
 	    
 	   public RelDBUtils (){
 
 		try {
+		       System.out.println("Instanciation de la connexion");
 			ods = new OracleDataSource();
 			
 			  
@@ -64,21 +80,19 @@ public class RelDBUtils {
 		       ods.setDatabaseName(nomDeLaBase);
 
 		       // Pour ouvrir une session (représentée par l'objet connect
-		       Connection connect = ods.getConnection("M1IF029","M1IF029");
+		       connect = ods.getConnection(login,pwd);
 
 		       // Travail sur la base
 		       // Ici, on écrira du code pour, par exemple, interroger la base
 		       // Test 
 		       Statement stat = connect.createStatement();
+		       System.out.println("Affichage du contenu");
 		       ResultSet rs = stat.executeQuery("SELECT * FROM PRODUIT");
-		       System.out.println("Select");
+
 		       while(rs.next()) {
 		         System.out.println(rs.getInt("Pnum")+" - "+ rs.getString("Pnom"));
 		       }
-		       System.out.println("Fin du select");
-		       
-		       // Ne pas oublier de fermer la session quand on a fini de manipuler la base
-		       connect.close();	   
+		       System.out.println("Fin instanciation");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -87,13 +101,6 @@ public class RelDBUtils {
 	    }
 
 	   
-
-
-	   
-	    /**
-	     * METHODES PROPRES
-	     */
-
 	    /**
 	     * To get the unique instance of DB Connexion
 	     * @return unique DB Connexion instance
@@ -105,35 +112,14 @@ public class RelDBUtils {
 	        return instance;
 	    }
 
-	    
 
-		String database=null;
-		String login=null;
-		String pwd=null;
-		Connection connexion = null;
 
 		public RelDBUtils(String database, String login, String pwd ){
-			this.database = database;
+			this.nomDeLaBase = database;
 			this.login = login;
 			this.pwd = pwd;
 		}
 		
-		
-		/**
-		 * Ouvre une connexion � la base
-		 * 
-		 * @throws SQLException
-		 */
-	public void openConnection() throws SQLException {
-	        
-	        OracleDataSource ods = new OracleDataSource();
-	        ods.setDriverType("thin");
-	        //ods.setServerName("pedagowin710");  //@univ
-	        ods.setServerName("pedagowin710");     //@home
-	        ods.setPortNumber(1521);
-	        ods.setDatabaseName(this.database);
-	        this.connexion = ods.getConnection(this.login , this.pwd);
-	} 
 	       
 	/**
 	 * retourne la connexion courante
@@ -142,7 +128,7 @@ public class RelDBUtils {
 	 */
 	public Connection getConnection() {
 
-	   return this.connexion;
+	   return this.connect;
 	       
 	}
 
@@ -153,7 +139,7 @@ public class RelDBUtils {
 	 */
 	public void close() throws SQLException {
 
-	    this.connexion.close();
+	    this.connect.close();
 	}
 
 
@@ -168,7 +154,7 @@ public class RelDBUtils {
 		 
 
 	try{
-		this.openConnection() ;
+//		this.openConnection() ;
 		Statement st = this.getConnection().createStatement();
 		ResultSet res = st.executeQuery(  query  );
 		ResultSetMetaData resmd = res.getMetaData(); 
