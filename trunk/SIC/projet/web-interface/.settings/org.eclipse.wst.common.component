@@ -7,6 +7,9 @@
         <dependent-module archiveName="modele-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/modele/modele">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="client-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/client/client">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="services-impl-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/services-impl/services-impl">
             <dependency-type>uses</dependency-type>
         </dependent-module>
