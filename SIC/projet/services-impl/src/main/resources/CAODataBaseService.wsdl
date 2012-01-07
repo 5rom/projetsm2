@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="caodatabase.services.sic" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CAODataBaseService" targetNamespace="caodatabase.services.sic">
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="caodatabaseservice.services.sic" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CAODataBaseService" targetNamespace="caodatabaseservice.services.sic">
   <wsdl:types>
-    <xsd:schema targetNamespace="caodatabase.services.sic">
+    <xsd:schema targetNamespace="caodatabaseservice.services.sic">
       <!--  Définition des trois opérations du service en explicitant le type de leurs arguments et valeurs de retour (s'il y a) -->
       <!--  Opération "disponible" -->
       <xsd:element name="addProduit">
