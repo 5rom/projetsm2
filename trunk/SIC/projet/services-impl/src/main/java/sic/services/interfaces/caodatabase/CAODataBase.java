@@ -1,4 +1,4 @@
-package fr.univ_lyon1.master_info.m2ti.tiw5.services;
+package sic.services.interfaces.caodatabase;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;

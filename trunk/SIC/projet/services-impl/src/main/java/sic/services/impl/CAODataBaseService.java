@@ -9,9 +9,9 @@ import java.sql.Statement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import fr.univ_lyon1.master_info.m2ti.tiw5.services.CAODataBase;
-
 import sic.modele.cao.database.RelDBUtils;
+import sic.services.interfaces.caodatabase.CAODataBase;
+
 
 //import fr.univ_lyon1.master_info.m2ti.tiw5.services.CAODataBase;
 
@@ -33,7 +33,6 @@ public class CAODataBaseService implements CAODataBase{
 
 	@Override
 	public Boolean addProduit(long pnum, String pnom) {
-		// TODO Auto-generated method stub
 		RelDBUtils r = new RelDBUtils();
 		Statement st=null;
 		Boolean success=false;

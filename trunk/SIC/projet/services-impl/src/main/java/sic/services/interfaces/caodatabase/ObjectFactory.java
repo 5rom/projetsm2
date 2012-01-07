@@ -1,5 +1,5 @@
 
-package fr.univ_lyon1.master_info.m2ti.tiw5.services;
+package sic.services.interfaces.caodatabase;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
