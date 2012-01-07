@@ -24,7 +24,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _DisponibleResponse_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "disponibleResponse");
+    private final static QName _AddProduitResponse_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "addProduitResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: fr.univ_lyon1.master_info.m2ti.tiw5.services
@@ -34,52 +34,28 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AssureCapacite }
+     * Create an instance of {@link AddProduit }
      * 
      */
-    public AssureCapacite createAssureCapacite() {
-        return new AssureCapacite();
+    public AddProduit createAddProduit() {
+        return new AddProduit();
     }
 
     /**
-     * Create an instance of {@link Disponible }
+     * Create an instance of {@link AddProduitResponse }
      * 
      */
-    public Disponible createDisponible() {
-        return new Disponible();
+    public AddProduitResponse createAddProduitResponse() {
+        return new AddProduitResponse();
     }
 
     /**
-     * Create an instance of {@link AlbumIDQte }
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddProduitResponse }{@code >}}
      * 
      */
-    public AlbumIDQte createAlbumIDQte() {
-        return new AlbumIDQte();
-    }
-
-    /**
-     * Create an instance of {@link DisponibleResponse }
-     * 
-     */
-    public DisponibleResponse createDisponibleResponse() {
-        return new DisponibleResponse();
-    }
-
-    /**
-     * Create an instance of {@link Commande }
-     * 
-     */
-    public Commande createCommande() {
-        return new Commande();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DisponibleResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://master-info.univ-lyon1.fr/M2TI/TIW5/services", name = "disponibleResponse")
-    public JAXBElement<DisponibleResponse> createDisponibleResponse(DisponibleResponse value) {
-        return new JAXBElement<DisponibleResponse>(_DisponibleResponse_QNAME, DisponibleResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://master-info.univ-lyon1.fr/M2TI/TIW5/services", name = "addProduitResponse")
+    public JAXBElement<AddProduitResponse> createAddProduitResponse(AddProduitResponse value) {
+        return new JAXBElement<AddProduitResponse>(_AddProduitResponse_QNAME, AddProduitResponse.class, null, value);
     }
 
 }
