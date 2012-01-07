@@ -26,4 +26,12 @@ UCBL M2 TI 2011-2012 -->
 		<servlet-name>CXFServlet</servlet-name>
 		<url-pattern>/services/*</url-pattern>
 	</servlet-mapping>
+    <servlet>
+        <servlet-name>ServletDBCAO</servlet-name>
+        <servlet-class>ServletDBCAO</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletDBCAO</servlet-name>
+        <url-pattern>/ServletDBCAO</url-pattern>
+    </servlet-mapping>	
 </web-app>
