@@ -17,8 +17,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.DocumentFragment;
 import org.w3c.dom.Node;
 
-import tiw5.modele.user.UtilisateurID;
-import tiw5.services.util.Utils;
+
 
 /**
  * Classe AccessControlHandler
@@ -109,7 +108,7 @@ public class AccessControlHandler implements LogicalHandler<LogicalMessageContex
 			// Récupération de l'utilisateur depuis le contexte
 			String userValue=(String) arg0.get("user");
 			String passwordValue=(String) arg0.get("password");
-			UtilisateurID currentUserID = new UtilisateurID(userValue, passwordValue);
+		/*	UtilisateurID currentUserID = new UtilisateurID(userValue, passwordValue);
 		 
 			// Contrôle d'accès pour cet utilisateur
 			if (Utils.checkCanEditAlbumFromXMLFile("C:\\Users\\Seb\\eclipse-projects\\svn\\TIW5\\tp3\\projet\\listeIdentifiants.xml", currentUserID)){
@@ -117,7 +116,7 @@ public class AccessControlHandler implements LogicalHandler<LogicalMessageContex
 			} else {
 				log.warning("AccessControlHandler:L'utilisateur n'a pas le droit d'ajouter/modifier des albums! Erreur!");
 				throw new ProtocolException();
-			}
+			}*/
 		}
 		
 		// On continue de traiter les messages
