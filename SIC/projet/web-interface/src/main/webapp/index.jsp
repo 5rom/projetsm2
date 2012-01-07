@@ -1,9 +1,13 @@
 <html>
 <body>
-<h2>Page d'accueil intercface web!</h2>
+<h2>Page d'accueil interface web!</h2>
 <br>
 <a href="http://localhost:8080/web-interface/services">La liste des services</a>
 <br>
+<h2>Produits de la base</h2>
+<br><form action="ServletDBCAO" method="post">
+<input type="submit" name="bouton" value="Afficher les produits de la base">
+</form>
 <h2>Ajout d'un produit</h2>
 <br>
 <!--  Formulaire de saisie du numéro d'album recherché. -->
@@ -13,7 +17,7 @@ Numéro de produit: <input type="text" name="pnum" />
 Nom de produit: <input type="text" name="pnom" />
 <br>
 <br>
-<input type="submit" name="bouton" value="Ajouter le produit">
+<input type="submit" name="bouton" value="Ajouter le produit dans la base">
 </form>
 </body>
 </html>
