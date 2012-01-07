@@ -49,8 +49,7 @@
 						<sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
 						<wsdlOptions>
 							<wsdlOption>
-								<!-- <wsdl>${basedir}/src/main/resources/stock.wsdl</wsdl> -->
-								<wsdl>${basedir}/src/main/resources/CAODataBaseService.wsdl</wsdl>
+								<wsdl>${basedir}/src/main/resources/stock.wsdl</wsdl>
 				                <!-- <extraargs>
 				                    <extraarg>-server</extraarg>
 				                    <extraarg>-verbose</extraarg>
