@@ -7,8 +7,7 @@ import javax.xml.ws.handler.LogicalHandler;
 import javax.xml.ws.handler.LogicalMessageContext;
 import javax.xml.ws.handler.MessageContext;
 
-import tiw5.modele.user.UtilisateurID;
-import tiw5.services.util.Utils;
+
 
 /**
  * Classe AuthHandler
@@ -60,7 +59,7 @@ public class AuthHandler  implements LogicalHandler<LogicalMessageContext> {
 		if (!sortant){
 			String userValue=(String) arg0.get("user");
 			String passwordValue=(String) arg0.get("password");
-			UtilisateurID currentUserID = new UtilisateurID(userValue, passwordValue);
+	/*		UtilisateurID currentUserID = new UtilisateurID(userValue, passwordValue);
 			//Ici on regarde dans le xml s'il y est
 			//S'il n'y est pas on genere l'exception ProtocolException 
 			if (Utils.checkAuthenticationFromXMLFile("C:\\Users\\Seb\\eclipse-projects\\svn\\TIW5\\tp3\\projet\\listeIdentifiants.xml", currentUserID)){
@@ -68,7 +67,7 @@ public class AuthHandler  implements LogicalHandler<LogicalMessageContext> {
 			} else {
 				log.warning("AuthHandler: Utilisateur non trouvé! Authentification echouée!");
 				throw new ProtocolException();
-			}
+			}*/
 		}
 		
 		// On continue le traitement des messages

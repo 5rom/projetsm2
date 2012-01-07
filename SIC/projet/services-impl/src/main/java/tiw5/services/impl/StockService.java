@@ -6,8 +6,8 @@ import javax.persistence.Persistence;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import fr.univ_lyon1.master_info.m2ti.tiw5.services.AlbumIDQte;
-import fr.univ_lyon1.master_info.m2ti.tiw5.services.Stock;
+//import fr.univ_lyon1.master_info.m2ti.tiw5.services.AlbumIDQte;
+//import fr.univ_lyon1.master_info.m2ti.tiw5.services.Stock;
 
 /**
  * Classe StockService
@@ -19,7 +19,7 @@ import fr.univ_lyon1.master_info.m2ti.tiw5.services.Stock;
  * @author David CRESCENCE <crescence.david@gmail.com> et Sébastien FAURE <sebastien.faure3@gmail.com>
  * UCBL M2TI 2011-2012 
  */
-public class StockService implements Stock {
+public class StockService{// implements Stock {
 	/**
 	 * Le logger
 	 */
@@ -35,7 +35,7 @@ public class StockService implements Stock {
 	 * @return true si l'album dont l'id est passé en paramètre en disponible
 	 * false sinon
 	 */
-	@Override
+	//@Override
 	public Boolean disponible(long arg0) {
 		Boolean dispo=false;
 		EntityManager em = Persistence.createEntityManagerFactory("etudiant")
@@ -65,7 +65,7 @@ public class StockService implements Stock {
 	 * ce dernier avec la quantité de 0.
 	 * @param liste de numéros d'albums
 	 */
-	@Override
+	//@Override
 	public void commande(List<Long> arg0) {
 		EntityManager em = Persistence.createEntityManagerFactory("etudiant")
 		.createEntityManager();
@@ -95,7 +95,7 @@ public class StockService implements Stock {
 	 * ce dernier avec la quantité donnée.
 	 * @param liste de couples (numéro d'album, quantité)
 	 */
-	@Override
+	/*@Override
 	public void assureCapacite(List<AlbumIDQte> arg0) {
 		EntityManager em = Persistence.createEntityManagerFactory("etudiant")
 		.createEntityManager();
@@ -117,7 +117,7 @@ public class StockService implements Stock {
 			em.getTransaction().commit();			
 		}
 		em.close();
-	}
+	}*/
 
 
 
