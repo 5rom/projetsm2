@@ -1,5 +1,5 @@
 
-package fr.univ_lyon1.master_info.m2ti.tiw5.services;
+package sic.services.caodatabase;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for addAlbumDescription complex type.
+ * <p>Java class for addProduitResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="addAlbumDescription">
+ * &lt;complexType name="addProduitResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{http://master-info.univ-lyon1.fr/M2TI/TIW5/services}album" minOccurs="0"/>
+ *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,36 +27,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "addAlbumDescription", propOrder = {
-    "arg0"
+@XmlType(name = "addProduitResponse", propOrder = {
+    "_return"
 })
-public class AddAlbumDescription {
+public class AddProduitResponse {
 
-    @XmlElement(namespace = "")
-    protected Album arg0;
+    @XmlElement(name = "return")
+    protected Boolean _return;
 
     /**
-     * Gets the value of the arg0 property.
+     * Gets the value of the return property.
      * 
      * @return
      *     possible object is
-     *     {@link Album }
+     *     {@link Boolean }
      *     
      */
-    public Album getArg0() {
-        return arg0;
+    public Boolean isReturn() {
+        return _return;
     }
 
     /**
-     * Sets the value of the arg0 property.
+     * Sets the value of the return property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Album }
+     *     {@link Boolean }
      *     
      */
-    public void setArg0(Album value) {
-        this.arg0 = value;
+    public void setReturn(Boolean value) {
+        this._return = value;
     }
 
 }
