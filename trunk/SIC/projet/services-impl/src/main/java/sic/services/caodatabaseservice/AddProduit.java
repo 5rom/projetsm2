@@ -1,5 +1,5 @@
 
-package sic.services.caodatabase;
+package sic.services.caodatabaseservice;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

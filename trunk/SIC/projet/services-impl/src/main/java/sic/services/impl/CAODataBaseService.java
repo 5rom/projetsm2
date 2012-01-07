@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import sic.modele.cao.database.RelDBUtils;
-import sic.services.interfaces.caodatabase.CAODataBase;
+import sic.services.caodatabase.CAODataBase;
 
 /**
  * Classe d'implementation du service CAODataBaseService
