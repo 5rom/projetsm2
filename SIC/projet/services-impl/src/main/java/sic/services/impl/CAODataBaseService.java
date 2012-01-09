@@ -1,13 +1,21 @@
 package sic.services.impl;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.ws.Holder;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import sic.services.utils.cao.RelDBUtils;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services.CAODataBase;
+import fr.univ_lyon1.master_info.m2ti.tiw5.services.GetProduitListResponse;
+import fr.univ_lyon1.master_info.m2ti.tiw5.services.PnumPnom;
 
 
 
@@ -48,7 +56,37 @@ public class CAODataBaseService implements CAODataBase{
 		}
 		return success;
 	}
- 
+
+	@Override
+	public List<PnumPnom> getProduitList() {
+		ArrayList<PnumPnom> list = new ArrayList<PnumPnom>();
+		RelDBUtils r = new RelDBUtils();
+		Statement st=null;
+		
+		try {
+			st = r.getConnection().createStatement();
+			ResultSet rs=st.executeQuery("SELECT * FROM PRODUIT ORDER BY Pnum");	
+
+            // On parcourt les enregistrements de Produit
+            while (rs.next()){
+            		PnumPnom pN = new PnumPnom();
+            		pN.setPnum(Long.parseLong(rs.getString("Pnum")));
+            		pN.setPnom(rs.getString("Pnom"));
+            		list.add(pN);
+            }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			r.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 }
 

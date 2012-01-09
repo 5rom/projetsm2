@@ -1,6 +1,8 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.univ_lyon1.master_info.m2ti.tiw5.services.CAODataBase;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services.CAODataBase_Service;
+import fr.univ_lyon1.master_info.m2ti.tiw5.services.PnumPnom;
 
 
 
@@ -49,8 +52,12 @@ public class ServletDBCAO extends HttpServlet {
 	        		"<th>Pnum</th>\n"+
 	        		"<th>Pnom</th>\n"+
 	        		"</tr>\n");
-			//for chaque element de la liste de cAODB.getProductLists()
+			//for chaque element de la liste de cAODB.getProductList()
 			//faire out.println(out.println("<tr><td>"+albums.get(0).getPiste(i).getTitre()+"</td><td>"+albums.get(0).getPiste(i).getDuree()+" min</td></tr>\n");
+           List<PnumPnom> aLPN = cAODB.getProduitList();
+           for (int i=0; i<aLPN.size();i++){
+        	   out.println("<tr><td>"+aLPN.get(i).getPnum()+"</td><td>"+aLPN.get(i).getPnom()+"</td></tr>\n");
+           }
             
             out.println("</table>\n");
             
