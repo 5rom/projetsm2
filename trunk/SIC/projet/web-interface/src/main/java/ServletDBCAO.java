@@ -106,7 +106,7 @@ public class ServletDBCAO extends HttpServlet {
 			CAODataBase cAODB = cAODBS.getCAODataBaseSOAP();
 			
     		if (cAODB.deleteProduit(pnum)){
-    			out.println("<HTML><BODY><br><br><h2>Suppression du produit "+pnum+" effectu&eacute; avec succ&egrave;s</h2><br><br>");
+    			out.println("<HTML><BODY><br><br><h2>Suppression du produit "+pnum+" effectu&eacute;e avec succ&egrave;s</h2><br><br>");
     		} else {
     			out.println("<HTML><BODY><br><br><h2>Erreur lors de la suppression du produit "+pnum+". Veuillez vérifier que ce produit existe bien et qu'il n'est pas dans la table de composition!</h2><br><br>");
     		}
@@ -116,6 +116,59 @@ public class ServletDBCAO extends HttpServlet {
 			"</FORM>"+				
 					
 			"</BODY></HTML>");			
+			
+		} else if (bouton.equals("Ajouter la composition dans la base")){
+			Long pmajeur = Long.parseLong(request.getParameter("pmajeur"));
+			Long pmineur = Long.parseLong(request.getParameter("pmineur"));
+			CAODataBase_Service cAODBS= new CAODataBase_Service();
+			CAODataBase cAODB = cAODBS.getCAODataBaseSOAP();
+			
+    		if (cAODB.addComposition(pmajeur, pmineur)){
+    			out.println("<HTML><BODY><br><br><h2>Ajout de la composition "+pmajeur+" - "+pmineur+" effectu&eacute; avec succ&egrave;s</h2><br><br>");
+    		} else {
+    			out.println("<HTML><BODY><br><br><h2>Erreur lors de l'ajout de la composition "+pmajeur+" - "+pmineur+". Veuillez vérifier que cette composition n'existe pas déjà!</h2><br><br>");
+    		}
+	        //Bouton retour
+			out.println("<FORM Method=\"POST\" Action=\"index.jsp\">"+
+			"<INPUT type=\"submit\" value=\"Retour\">"+
+			"</FORM>"+				
+					
+			"</BODY></HTML>");
+		} else if (bouton.equals("Supprimer la composition de la base")){
+			Long pmajeur = Long.parseLong(request.getParameter("pmajeur"));
+			Long pmineur = Long.parseLong(request.getParameter("pmineur"));
+			CAODataBase_Service cAODBS= new CAODataBase_Service();
+			CAODataBase cAODB = cAODBS.getCAODataBaseSOAP();
+			
+    		if (cAODB.deleteComposition(pmajeur, pmineur)){
+    			out.println("<HTML><BODY><br><br><h2>Suppression de la composition "+pmajeur+" - "+pmineur+" effectu&eacute; avec succ&egrave;s</h2><br><br>");
+    		} else {
+    			out.println("<HTML><BODY><br><br><h2>Erreur lors de la suppression de la composition "+pmajeur+" - "+pmineur+". Veuillez vérifier que cette composition existe!</h2><br><br>");
+    		}
+	        //Bouton retour
+			out.println("<FORM Method=\"POST\" Action=\"index.jsp\">"+
+			"<INPUT type=\"submit\" value=\"Retour\">"+
+			"</FORM>"+				
+					
+			"</BODY></HTML>");			
+
+		} else if (bouton.equals("Mettre à jour le nom du produit dans la base")){
+			Long pnum = Long.parseLong(request.getParameter("pnum"));
+			String pnom = request.getParameter("pnom");
+			CAODataBase_Service cAODBS= new CAODataBase_Service();
+			CAODataBase cAODB = cAODBS.getCAODataBaseSOAP();
+			
+    		if (cAODB.updateProduit(pnum, pnom)){
+    			out.println("<HTML><BODY><br><br><h2>Mise à jour du produit "+pnum+" - "+pnom+" effectu&eacute;e avec succ&egrave;s</h2><br><br>");
+    		} else {
+    			out.println("<HTML><BODY><br><br><h2>Erreur lors de la mise à jour du produit. Veuillez vérifier que ce produit existe bien : "+pnum+"</h2><br><br>");
+    		}
+	        //Bouton retour
+			out.println("<FORM Method=\"POST\" Action=\"index.jsp\">"+
+			"<INPUT type=\"submit\" value=\"Retour\">"+
+			"</FORM>"+				
+					
+			"</BODY></HTML>");
 		}
 		
 		

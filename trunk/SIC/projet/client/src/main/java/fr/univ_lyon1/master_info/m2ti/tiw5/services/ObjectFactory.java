@@ -28,6 +28,9 @@ public class ObjectFactory {
     private final static QName _GetProduitListResponse_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "getProduitListResponse");
     private final static QName _DeleteProduitResponse_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "deleteProduitResponse");
     private final static QName _GetCompositionListResponse_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "getCompositionListResponse");
+    private final static QName _AddCompositionResponse_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "addCompositionResponse");
+    private final static QName _UpdateProduitResponse_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "updateProduitResponse");
+    private final static QName _DeleteCompositionResponse_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "deleteCompositionResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: fr.univ_lyon1.master_info.m2ti.tiw5.services
@@ -37,19 +40,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddProduit }
+     * Create an instance of {@link GetCompositionList }
      * 
      */
-    public AddProduit createAddProduit() {
-        return new AddProduit();
+    public GetCompositionList createGetCompositionList() {
+        return new GetCompositionList();
     }
 
     /**
-     * Create an instance of {@link GetProduitListResponse }
+     * Create an instance of {@link DeleteProduit }
      * 
      */
-    public GetProduitListResponse createGetProduitListResponse() {
-        return new GetProduitListResponse();
+    public DeleteProduit createDeleteProduit() {
+        return new DeleteProduit();
+    }
+
+    /**
+     * Create an instance of {@link DeleteCompositionResponse }
+     * 
+     */
+    public DeleteCompositionResponse createDeleteCompositionResponse() {
+        return new DeleteCompositionResponse();
+    }
+
+    /**
+     * Create an instance of {@link PnumPnom }
+     * 
+     */
+    public PnumPnom createPnumPnom() {
+        return new PnumPnom();
     }
 
     /**
@@ -69,19 +88,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetCompositionList }
+     * Create an instance of {@link DeleteComposition }
      * 
      */
-    public GetCompositionList createGetCompositionList() {
-        return new GetCompositionList();
+    public DeleteComposition createDeleteComposition() {
+        return new DeleteComposition();
     }
 
     /**
-     * Create an instance of {@link PnumPnom }
+     * Create an instance of {@link AddCompositionResponse }
      * 
      */
-    public PnumPnom createPnumPnom() {
-        return new PnumPnom();
+    public AddCompositionResponse createAddCompositionResponse() {
+        return new AddCompositionResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateProduit }
+     * 
+     */
+    public UpdateProduit createUpdateProduit() {
+        return new UpdateProduit();
+    }
+
+    /**
+     * Create an instance of {@link AddProduit }
+     * 
+     */
+    public AddProduit createAddProduit() {
+        return new AddProduit();
+    }
+
+    /**
+     * Create an instance of {@link PmajeurPmineur }
+     * 
+     */
+    public PmajeurPmineur createPmajeurPmineur() {
+        return new PmajeurPmineur();
+    }
+
+    /**
+     * Create an instance of {@link GetProduitListResponse }
+     * 
+     */
+    public GetProduitListResponse createGetProduitListResponse() {
+        return new GetProduitListResponse();
     }
 
     /**
@@ -93,11 +144,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeleteProduit }
+     * Create an instance of {@link UpdateProduitResponse }
      * 
      */
-    public DeleteProduit createDeleteProduit() {
-        return new DeleteProduit();
+    public UpdateProduitResponse createUpdateProduitResponse() {
+        return new UpdateProduitResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddComposition }
+     * 
+     */
+    public AddComposition createAddComposition() {
+        return new AddComposition();
     }
 
     /**
@@ -106,14 +165,6 @@ public class ObjectFactory {
      */
     public DeleteProduitResponse createDeleteProduitResponse() {
         return new DeleteProduitResponse();
-    }
-
-    /**
-     * Create an instance of {@link PmajeurPmineur }
-     * 
-     */
-    public PmajeurPmineur createPmajeurPmineur() {
-        return new PmajeurPmineur();
     }
 
     /**
@@ -150,6 +201,33 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://master-info.univ-lyon1.fr/M2TI/TIW5/services", name = "getCompositionListResponse")
     public JAXBElement<GetCompositionListResponse> createGetCompositionListResponse(GetCompositionListResponse value) {
         return new JAXBElement<GetCompositionListResponse>(_GetCompositionListResponse_QNAME, GetCompositionListResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddCompositionResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://master-info.univ-lyon1.fr/M2TI/TIW5/services", name = "addCompositionResponse")
+    public JAXBElement<AddCompositionResponse> createAddCompositionResponse(AddCompositionResponse value) {
+        return new JAXBElement<AddCompositionResponse>(_AddCompositionResponse_QNAME, AddCompositionResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateProduitResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://master-info.univ-lyon1.fr/M2TI/TIW5/services", name = "updateProduitResponse")
+    public JAXBElement<UpdateProduitResponse> createUpdateProduitResponse(UpdateProduitResponse value) {
+        return new JAXBElement<UpdateProduitResponse>(_UpdateProduitResponse_QNAME, UpdateProduitResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteCompositionResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://master-info.univ-lyon1.fr/M2TI/TIW5/services", name = "deleteCompositionResponse")
+    public JAXBElement<DeleteCompositionResponse> createDeleteCompositionResponse(DeleteCompositionResponse value) {
+        return new JAXBElement<DeleteCompositionResponse>(_DeleteCompositionResponse_QNAME, DeleteCompositionResponse.class, null, value);
     }
 
 }

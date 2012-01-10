@@ -12,6 +12,17 @@
 			</xsd:sequence>
 		</xsd:complexType>
       </xsd:element>
+      
+      <!--  Opération "addComposition" -->
+      <xsd:element name="addComposition">
+      <xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="pmajeur" minOccurs="1" maxOccurs="1" type="xsd:long"/>
+				<xsd:element name="pmineur" minOccurs="1" maxOccurs="1" type="xsd:long"/>			
+			</xsd:sequence>
+		</xsd:complexType>
+      </xsd:element>
+      
       <!--  Opération "getProduitList" -->
       <xsd:element name="getProduitList">
       <xsd:complexType>
@@ -38,6 +49,26 @@
 		</xsd:complexType>
       </xsd:element>      
       
+      <!--  Opération "deleteComposition" -->
+      <xsd:element name="deleteComposition">
+      <xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="pmajeur" minOccurs="1" maxOccurs="1" type="xsd:long"/>
+				<xsd:element name="pmineur" minOccurs="1" maxOccurs="1" type="xsd:long"/>			
+			</xsd:sequence>
+		</xsd:complexType>
+      </xsd:element>    
+      
+      <!--  Opération "updateProduit" -->
+      <xsd:element name="updateProduit">
+      <xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="pnum" minOccurs="1" maxOccurs="1" type="xsd:long"/>
+				<xsd:element name="pnom" minOccurs="1" maxOccurs="1" type="xsd:string"/>			
+			</xsd:sequence>
+		</xsd:complexType>
+      </xsd:element>             
+      
       <!--  Opération "addProduit" : valeur de retour de type simple booléen -->
       <xsd:element name="addProduitResponse" type="tns:addProduitResponse"/>
 	<xsd:complexType name="addProduitResponse">
@@ -45,6 +76,14 @@
 			<xsd:element minOccurs="0" name="return" type="xsd:boolean"/>
 		</xsd:sequence>
 	</xsd:complexType>
+	
+     <!--  Opération "addComposition" : valeur de retour de type simple booléen -->
+      <xsd:element name="addCompositionResponse" type="tns:addCompositionResponse"/>
+	<xsd:complexType name="addCompositionResponse">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="return" type="xsd:boolean"/>
+		</xsd:sequence>
+	</xsd:complexType>		
 	
      <!--  Opération "getProduitList" : valeur de retour de type complexe liste de  -->
       <xsd:element name="getProduitListResponse" type="tns:getProduitListResponse"/>
@@ -86,6 +125,23 @@
 			<xsd:element minOccurs="0" name="return" type="xsd:boolean"/>
 		</xsd:sequence>
 	</xsd:complexType>			
+	
+      <!--  Opération "deleteComposition" : valeur de retour de type simple booléen -->
+      <xsd:element name="deleteCompositionResponse" type="tns:deleteCompositionResponse"/>
+	<xsd:complexType name="deleteCompositionResponse">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="return" type="xsd:boolean"/>
+		</xsd:sequence>
+	</xsd:complexType>		
+								
+      <!--  Opération "updateProduit" : valeur de retour de type simple booléen -->
+      <xsd:element name="updateProduitResponse" type="tns:updateProduitResponse"/>
+	<xsd:complexType name="updateProduitResponse">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="return" type="xsd:boolean"/>
+		</xsd:sequence>
+	</xsd:complexType>			
+			
 			
     </xsd:schema>
   </wsdl:types>
@@ -96,6 +152,13 @@
   <wsdl:message name="addProduitResponse">
     <wsdl:part element="tns:addProduitResponse" name="parameters"/>
   </wsdl:message>
+  
+  <wsdl:message name="addCompositionRequest">
+    <wsdl:part element="tns:addComposition" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="addCompositionResponse">
+    <wsdl:part element="tns:addCompositionResponse" name="parameters"/>
+  </wsdl:message>  
   
     <wsdl:message name="getProduitListRequest">
     <wsdl:part element="tns:getProduitList" name="parameters"/>
@@ -118,12 +181,30 @@
     <wsdl:part element="tns:deleteProduitResponse" name="parameters"/>
   </wsdl:message>  
   
+  <wsdl:message name="deleteCompositionRequest">
+    <wsdl:part element="tns:deleteComposition" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="deleteCompositionResponse">
+    <wsdl:part element="tns:deleteCompositionResponse" name="parameters"/>
+  </wsdl:message>    
+  
+  <wsdl:message name="updateProduitRequest">
+    <wsdl:part element="tns:updateProduit" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="updateProduitResponse">
+    <wsdl:part element="tns:updateProduitResponse" name="parameters"/>
+  </wsdl:message>  
   
   <wsdl:portType name="CAODataBase">
     <wsdl:operation name="addProduit">
       <wsdl:input message="tns:addProduitRequest"/>
       <wsdl:output message="tns:addProduitResponse"/>
     </wsdl:operation>
+    
+    <wsdl:operation name="addComposition">
+      <wsdl:input message="tns:addCompositionRequest"/>
+      <wsdl:output message="tns:addCompositionResponse"/>
+    </wsdl:operation>    
     
     <wsdl:operation name="getProduitList">
       <wsdl:input message="tns:getProduitListRequest"/>
@@ -138,7 +219,17 @@
     <wsdl:operation name="deleteProduit">
       <wsdl:input message="tns:deleteProduitRequest"/>
       <wsdl:output message="tns:deleteProduitResponse"/>
-    </wsdl:operation>    
+    </wsdl:operation>
+    
+    <wsdl:operation name="deleteComposition">
+      <wsdl:input message="tns:deleteCompositionRequest"/>
+      <wsdl:output message="tns:deleteCompositionResponse"/>
+    </wsdl:operation>
+     
+    <wsdl:operation name="updateProduit">
+      <wsdl:input message="tns:updateProduitRequest"/>
+      <wsdl:output message="tns:updateProduitResponse"/>
+    </wsdl:operation>
     
   </wsdl:portType>
   <wsdl:binding name="CAODataBaseSOAP" type="tns:CAODataBase">
@@ -152,6 +243,15 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="addComposition">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>     
     <wsdl:operation name="getProduitList">
       <soap:operation soapAction=""/>
       <wsdl:input>
@@ -179,6 +279,24 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="deleteComposition">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>    
+    <wsdl:operation name="updateProduit">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>        
         
   </wsdl:binding>
   <wsdl:service name="CAODataBase">

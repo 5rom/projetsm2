@@ -148,6 +148,83 @@ public class CAODataBaseService implements CAODataBase{
 		return success;
 	}
 
+	@Override
+	public Boolean deleteComposition(long pmajeur, long pmineur) {
+		RelDBUtils r = new RelDBUtils();
+		Statement st=null;
+		Boolean success=false;
+		try {
+			st = r.getConnection().createStatement();
+			// Suppression de la composition correspondante
+			int res=st.executeUpdate("DELETE FROM COMPOSITION WHERE Pmajeur="+pmajeur+" AND Pmineur="+pmineur);
+			if (res>0){
+				success=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			r.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return success;
+	}
+
+	@Override
+	public Boolean addComposition(long pmajeur, long pmineur) {
+		RelDBUtils r = new RelDBUtils();
+		Statement st=null;
+		Boolean success=false;
+		try {
+			st = r.getConnection().createStatement();
+			st.executeUpdate("INSERT INTO COMPOSITION (Pmajeur,Pmineur) VALUES("+pmajeur+",'"+pmineur+"')");	
+			success=true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			r.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return success;
+	}
+
+
+
+	@Override
+	public Boolean updateProduit(long pnum, String pnom) {
+		RelDBUtils r = new RelDBUtils();
+		Statement st=null;
+		Boolean success=false;
+		try {
+			st = r.getConnection().createStatement();
+			// Mise à jour du produit
+			int res=st.executeUpdate("UPDATE PRODUIT SET Pnom='"+pnom+"' WHERE Pnum="+pnum);
+			if (res>0){
+				success=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			r.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return success;
+	}
+
 }
 
 
