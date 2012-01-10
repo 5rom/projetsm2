@@ -19,5 +19,14 @@ Nom de produit: <input type="text" name="pnom" />
 <br>
 <input type="submit" name="bouton" value="Ajouter le produit dans la base">
 </form>
+<h2>Suppression d'un produit</h2>
+<br>
+<!--  Formulaire de saisie du numéro d'album recherché. -->
+<form action="ServletDBCAO" method="post">
+Numéro du produit: <input type="text" name="pnum" />
+<br>
+<br>
+<input type="submit" name="bouton" value="Supprimer le produit de la base">
+</form>
 </body>
 </html>

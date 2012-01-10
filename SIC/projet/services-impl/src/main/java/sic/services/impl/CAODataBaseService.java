@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import sic.services.utils.cao.RelDBUtils;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services.CAODataBase;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services.GetProduitListResponse;
+import fr.univ_lyon1.master_info.m2ti.tiw5.services.PmajeurPmineur;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services.PnumPnom;
 
 
@@ -32,7 +33,7 @@ public class CAODataBaseService implements CAODataBase{
 	/**
 	 * Le logger
 	 */
-	private static final Logger log = LoggerFactory.getLogger(CAODataBaseService.class);
+	//private static final Logger log = LoggerFactory.getLogger(CAODataBaseService.class);
 
 	@Override
 	public Boolean addProduit(long pnum, String pnom) {
@@ -86,6 +87,65 @@ public class CAODataBaseService implements CAODataBase{
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public List<PmajeurPmineur> getCompositionList() {
+		ArrayList<PmajeurPmineur> list = new ArrayList<PmajeurPmineur>();
+		RelDBUtils r = new RelDBUtils();
+		Statement st=null;
+		
+		try {
+			st = r.getConnection().createStatement();
+			ResultSet rs=st.executeQuery("SELECT * FROM COMPOSITION ORDER BY Pmajeur");	
+
+            // On parcourt les enregistrements de Produit
+            while (rs.next()){
+            	PmajeurPmineur pM = new PmajeurPmineur();
+            	pM.setPmajeur(Long.parseLong(rs.getString("Pmajeur")));
+            	pM.setPmineur(Long.parseLong(rs.getString("Pmineur")));
+        		list.add(pM);
+            }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			r.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public Boolean deleteProduit(long pnum) {
+		RelDBUtils r = new RelDBUtils();
+		Statement st=null;
+		Boolean success=false;
+		try {
+			st = r.getConnection().createStatement();
+			// Suppression des compositions qui portent sur ce produit
+			st.executeUpdate("DELETE FROM COMPOSITION WHERE Pmajeur="+pnum+" OR Pmineur="+pnum);
+			// Suppression du produit lui-même
+			int res=st.executeUpdate("DELETE FROM PRODUIT WHERE Pnum="+pnum);
+			if (res>0){
+				success=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			r.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return success;
 	}
 
 }

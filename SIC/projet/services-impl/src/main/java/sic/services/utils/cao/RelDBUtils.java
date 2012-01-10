@@ -63,8 +63,9 @@ public class RelDBUtils {
 	   public RelDBUtils (){
 
 		try {
-		       System.out.println("Instanciation de la connexion");
-			ods = new OracleDataSource();
+				
+				// Source de données Oracle
+				ods = new OracleDataSource();
 			
 			  
 		       // type de pilote oracle
@@ -82,18 +83,7 @@ public class RelDBUtils {
 		       // Pour ouvrir une session (représentée par l'objet connect
 		       connect = ods.getConnection(login,pwd);
 
-		       // Travail sur la base
-		       // Ici, on écrira du code pour, par exemple, interroger la base
-		       // Test 
-		       Statement stat = connect.createStatement();
-		       System.out.println("Affichage du contenu");
-		       ResultSet rs = stat.executeQuery("SELECT * FROM PRODUIT");
-
-		       while(rs.next()) {
-		         System.out.println(rs.getInt("Pnum")+" - "+ rs.getString("Pnom"));
-		       }
-		       System.out.println("Fin instanciation");
-		} catch (SQLException e) {
+			} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
