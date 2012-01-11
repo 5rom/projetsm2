@@ -29,8 +29,9 @@ public class RelDBUtils {
 	    /**
 	     * Ã©lÃ©ment de paramÃ¨tres statiques
 	     */
-	    private String nomDeLaBase = "orapeda1";
-
+	    //private String nomDeLaBase = "orapeda1";
+	    private String nomDeLaBase = "xe";
+	    
 	    /**
 	     * Server : sur un reseau prive apres avoir ouvert un tunnel ssh (port 1521) vers l'université
 	     */
@@ -49,12 +50,14 @@ public class RelDBUtils {
 	    /**
 	     * Login d'accès à la base
 	     */
-	    private String login = "M1IF029";
+	    //private String login = "M1IF029";
+	    private String login = "SIC";
 	    
 	    /**
 	     * Mot de passe d'accès à la base
 	     */	    
-	    private String pwd = "M1IF029";
+	    //private String pwd = "admin";
+	    private String pwd = "admin";
 	    
 	    private Connection connect;
 
