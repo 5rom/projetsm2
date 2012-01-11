@@ -9,5 +9,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/Seb/eclipse-projects/svn/SIC/lib/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Seb/eclipse-projects/svn/SIC/lib/owlapi-bin.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
