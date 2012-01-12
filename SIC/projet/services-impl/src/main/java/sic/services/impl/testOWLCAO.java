@@ -90,6 +90,15 @@ public class testOWLCAO {
 	                OWLClassAssertionAxiom classAssertion = factory.getOWLClassAssertionAxiom(factory.getOWLClass(":Stylo",pm), bic);
 	                manager.addAxiom(ontology, classAssertion);
 	                
+	                OWLNamedIndividual bouchonBleu = factory.getOWLNamedIndividual(":bouchonBleu", pm);
+	                OWLClassAssertionAxiom classAssertion2 = factory.getOWLClassAssertionAxiom(factory.getOWLClass(":Bouchon",pm), bouchonBleu);
+	                manager.addAxiom(ontology, classAssertion2);
+	                
+	                
+	                OWLObjectPropertyAssertionAxiom assertion = factory.getOWLObjectPropertyAssertionAxiom(manager.getOWLDataFactory().getOWLObjectProperty(IRI.create(ontologyIRI +"#estComposeDe")), bic, bouchonBleu);	                
+	                AddAxiom addAxiomChange = new AddAxiom(ontology, assertion);
+	                manager.applyChange(addAxiomChange);
+	                
 	                manager.saveOntology(ontology);
 	                
 	    		} catch (SQLException e) {
