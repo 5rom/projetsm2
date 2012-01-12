@@ -1,8 +1,10 @@
 package sic.services.impl;
 
+import org.coode.owlapi.obo.parser.OWLOBOParser;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.*;
 import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.util.DefaultPrefixManager;
 import org.semanticweb.owlapi.util.SimpleIRIMapper;
 
 import sic.modele.Produit;
@@ -27,36 +29,18 @@ public class testOWLCAO {
   	     try {
 	            // Create the manager that we will use to load ontologies.
 	            OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-	            IRI ontologyIRI = IRI.create("http://master.info.univ-lyon1.fr/ontologies/StyloCAO");
+	            IRI ontologyIRI = IRI.create("http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO");
 	            // Create the document IRI for our ontology
 	            IRI documentIRI = IRI.create("file:/tmp/StyloCAO.owl");	            
 	            // Set up a mapping, which maps the ontology to the document IRI
 	            SimpleIRIMapper mapper = new SimpleIRIMapper(ontologyIRI, documentIRI);
 	            manager.addIRIMapper(mapper);
 
-	            // Now create the ontology - we use the ontology IRI (not the physical URI)
-	            OWLOntology ontology = manager.createOntology(ontologyIRI);
-	            // Now we want to specify that A is a subclass of B.  To do this, we add a subclass
-	            // axiom.  A subclass axiom is simply an object that specifies that one class is a
-	            // subclass of another class.
-	            // We need a data factory to create various object from.  Each manager has a reference
-	            // to a data factory that we can use.
 	            OWLDataFactory factory = manager.getOWLDataFactory();
-	            // Get hold of references to class A and class B.  Note that the ontology does not
-	            // contain class A or classB, we simply get references to objects from a data factory that represent
-	            // class A and class B
-	            OWLClass clsA = factory.getOWLClass(IRI.create(ontologyIRI + "#Stylo"));
-	            OWLClass clsB = factory.getOWLClass(IRI.create(ontologyIRI + "#Capuchon"));
-	            OWLClass clsC = factory.getOWLClass(IRI.create(ontologyIRI + "#Corps"));
 	            
-	            //OWLIndividual bic = factory.getOWLNamedIndividual(IRI.create(ontologyIRI + "#bic"));
+	            OWLOntology ontology = manager.createOntology(IRI.create("http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO"));
 	            
-	            OWLObjectProperty estComposeDe = manager.getOWLDataFactory().getOWLObjectProperty(IRI.create(ontologyIRI +"#estComposeDe"));
-	            ////OWLObjectPropertyAssertionAxiom assertion = factory.getOWLObjectPropertyAssertionAxiom(estComposeDe, matthew, peter);
-	            //OWLClassAssertionAxiom ax = factory.getOWLClassAssertionAxiom(clsA, bic);
-	            //manager.addAxiom(ontology, ax);
-	            manager.saveOntology(ontology, documentIRI);
-	            
+	            PrefixManager pm = new DefaultPrefixManager("http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#");
 	            
 	            //ArrayList<PnumPnom> list = new ArrayList<PnumPnom>();
 	            RelDBUtils r = new RelDBUtils();
@@ -73,25 +57,34 @@ public class testOWLCAO {
 	    			
 	                // On parcourt les enregistrements de Produit
 	                while (rs.next()){
-	                		/*OWLClass clsProduit = factory.getOWLClass(IRI.create(ontologyIRI + "#Stylo"));
-	                		manager.l
-	                		OWLOntology ow=manager.createOntology();
-	                		OWLDataFactory a= manager.getOWLDataFactory();
-	                		OW
-	                		PnumPnom pN = new PnumPnom();*/
-	                		aP.add(new Produit(Long.parseLong(rs.getString("Pnum")), rs.getString("Pnom")));
-	                		hmProduit.put(Long.parseLong(rs.getString("Pnum")), rs.getString("Pnom"));
-	                		/*pN.setPnum(Long.parseLong(rs.getString("Pnum")));
-	                		pN.setPnom(rs.getString("Pnom"));
-	                		list.add(pN);*/
+	                		aP.add(new Produit(Long.parseLong(rs.getString("Pnum")), rs.getString("Pnom").replaceAll(" ", "_").replaceAll("'", "")));
+	                		hmProduit.put(Long.parseLong(rs.getString("Pnum")), rs.getString("Pnom").replaceAll(" ", "_").replaceAll("'", ""));
 	                }
 	                
 	                // on parcourt l'arraylist et on requete composition sur le pnum courant
 	                for (int i=0;i<aP.size();i++){
+	                	OWLClass clsProduit = factory.getOWLClass(":"+aP.get(i).getPnom(), pm);
+	                	//OWLClass clsProduit = factory.getOWLClass(IRI.create(ontologyIRI + "#"+aP.get(i).getPnom()));
+	                	OWLDeclarationAxiom declarationAxiom = factory.getOWLDeclarationAxiom(clsProduit);
+	                	manager.addAxiom(ontology, declarationAxiom);
 		    			st = r.getConnection().createStatement();
-		    			ResultSet rs2=st.executeQuery("SELECT * FROM COMPOSITION ORDER BY Pmineur WHERE Pmajeur="+aP.get(i).getPnum());	
+		    			ResultSet rs2=st.executeQuery("SELECT * FROM COMPOSITION WHERE Pmajeur="+aP.get(i).getPnum()+" ORDER BY Pmineur" );
+		                // On parcourt les composants
+		                while (rs2.next()){
+		                		OWLClass clsComposant =  factory.getOWLClass(":"+hmProduit.get(Long.parseLong(rs2.getString("Pmineur"))), pm);
+		                		//OWLClass clsComposant = factory.getOWLClass(IRI.create(ontologyIRI + "#"+hmProduit.get(Long.parseLong(rs2.getString("Pmineur")))));
+		        	            OWLDeclarationAxiom declarationAxiom2 = factory.getOWLDeclarationAxiom(clsComposant);
+		        	            manager.addAxiom(ontology, declarationAxiom2);
+		        	            OWLObjectProperty estComposeDe = manager.getOWLDataFactory().getOWLObjectProperty(IRI.create(ontologyIRI +"#estComposeDe"));
+		        	            /*OWLObjectPropertyDomainAxiom oPDA= factory.getOWLObjectPropertyDomainAxiom(estComposeDe, clsProduit);
+		        	            manager.addAxiom(ontology, oPDA);
+		        	            OWLObjectPropertyRangeAxiom oPRA= factory.getOWLObjectPropertyRangeAxiom(estComposeDe, clsComposant);
+		        	            manager.addAxiom(ontology, oPRA);*/
+		        	            OWLDeclarationAxiom declarationAxiom3 = factory.getOWLDeclarationAxiom(estComposeDe);
+		        	            manager.addAxiom(ontology, declarationAxiom3);
+		                }
 	                }
-	                
+	                manager.saveOntology(ontology);
 	                
 	    		} catch (SQLException e) {
 	    			// TODO Auto-generated catch block
