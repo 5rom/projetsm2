@@ -5,6 +5,7 @@ import org.semanticweb.owlapi.io.*;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.util.SimpleIRIMapper;
 
+import sic.modele.Produit;
 import sic.services.utils.cao.RelDBUtils;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services.PnumPnom;
 
@@ -17,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -57,25 +59,40 @@ public class testOWLCAO {
 	            
 	            
 	            //ArrayList<PnumPnom> list = new ArrayList<PnumPnom>();
-	            /*RelDBUtils r = new RelDBUtils();
+	            RelDBUtils r = new RelDBUtils();
 	    		Statement st=null;
 	    		
 	    		try {
 	    			st = r.getConnection().createStatement();
 	    			ResultSet rs=st.executeQuery("SELECT * FROM PRODUIT ORDER BY Pnum");	
 
+	    			HashMap<Long, String> hmProduit = new HashMap<Long, String>();
+	    			//HashMap<Long, Long> hmComposition = new HashMap<Long, Long>();
+	    			ArrayList<Produit> aP = new ArrayList<Produit>();
+	    			
+	    			
 	                // On parcourt les enregistrements de Produit
 	                while (rs.next()){
-	                		OWLClass clsProduit = factory.getOWLClass(IRI.create(ontologyIRI + "#Stylo"));
+	                		/*OWLClass clsProduit = factory.getOWLClass(IRI.create(ontologyIRI + "#Stylo"));
 	                		manager.l
 	                		OWLOntology ow=manager.createOntology();
 	                		OWLDataFactory a= manager.getOWLDataFactory();
 	                		OW
-	                		PnumPnom pN = new PnumPnom();
-	                		pN.setPnum(Long.parseLong(rs.getString("Pnum")));
+	                		PnumPnom pN = new PnumPnom();*/
+	                		aP.add(new Produit(Long.parseLong(rs.getString("Pnum")), rs.getString("Pnom")));
+	                		hmProduit.put(Long.parseLong(rs.getString("Pnum")), rs.getString("Pnom"));
+	                		/*pN.setPnum(Long.parseLong(rs.getString("Pnum")));
 	                		pN.setPnom(rs.getString("Pnom"));
-	                		list.add(pN);
+	                		list.add(pN);*/
 	                }
+	                
+	                // on parcourt l'arraylist et on requete composition sur le pnum courant
+	                for (int i=0;i<aP.size();i++){
+		    			st = r.getConnection().createStatement();
+		    			ResultSet rs2=st.executeQuery("SELECT * FROM COMPOSITION ORDER BY Pmineur WHERE Pmajeur="+aP.get(i).getPnum());	
+	                }
+	                
+	                
 	    		} catch (SQLException e) {
 	    			// TODO Auto-generated catch block
 	    			e.printStackTrace();
@@ -87,7 +104,7 @@ public class testOWLCAO {
 	    			// TODO Auto-generated catch block
 	    			e.printStackTrace();
 	    		}	        	
-	        	*/
+	    		/**/
 	       
 	    		
 	    		
