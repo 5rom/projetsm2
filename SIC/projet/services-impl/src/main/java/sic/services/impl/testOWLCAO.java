@@ -84,6 +84,12 @@ public class testOWLCAO {
 		        	            manager.addAxiom(ontology, declarationAxiom3);
 		                }
 	                }
+	                
+	                // Création d'une instance de Stylo : bic
+	                OWLNamedIndividual bic = factory.getOWLNamedIndividual(":bic", pm);
+	                OWLClassAssertionAxiom classAssertion = factory.getOWLClassAssertionAxiom(factory.getOWLClass(":Stylo",pm), bic);
+	                manager.addAxiom(ontology, classAssertion);
+	                
 	                manager.saveOntology(ontology);
 	                
 	    		} catch (SQLException e) {
