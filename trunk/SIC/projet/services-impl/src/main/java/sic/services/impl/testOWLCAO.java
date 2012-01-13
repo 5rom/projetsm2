@@ -62,7 +62,7 @@ public class testOWLCAO {
 	                }
 	                
 	                
-	                OWLClass clsProduit = factory.getOWLClass(":Produit", pm);
+	                OWLClass clsProduit = factory.getOWLClass(":ProduitCAO", pm);
 	                OWLDeclarationAxiom declarationAxiom = factory.getOWLDeclarationAxiom(clsProduit);
                 	manager.addAxiom(ontology, declarationAxiom);
                 	// on parcourt l'arraylist et on requete composition sur le pnum courant
@@ -85,13 +85,7 @@ public class testOWLCAO {
 		                		//OWLClass clsComposant = factory.getOWLClass(IRI.create(ontologyIRI + "#"+hmProduit.get(Long.parseLong(rs2.getString("Pmineur")))));
 		        	            OWLDeclarationAxiom declarationAxiom2 = factory.getOWLDeclarationAxiom(clsComposant);
 		        	            manager.addAxiom(ontology, declarationAxiom2);
-		        	            /*OWLObjectProperty estComposeDe = manager.getOWLDataFactory().getOWLObjectProperty(IRI.create(ontologyIRI +"#estComposeDe"));*/
-		        	            /*OWLObjectPropertyDomainAxiom oPDA= factory.getOWLObjectPropertyDomainAxiom(estComposeDe, clsProduit);
-		        	            manager.addAxiom(ontology, oPDA);
-		        	            OWLObjectPropertyRangeAxiom oPRA= factory.getOWLObjectPropertyRangeAxiom(estComposeDe, clsComposant);
-		        	            manager.addAxiom(ontology, oPRA);*/
-		        	            //OWLDeclarationAxiom declarationAxiom3 = factory.getOWLDeclarationAxiom(estComposeDe);
-		        	            //manager.addAxiom(ontology, declarationAxiom3);
+
 		        	            
 		        	            //Propriete de composition, utiliser Restriction
 		        	            OWLObjectProperty estComposeDe = factory.getOWLObjectProperty(IRI.create(ontologyIRI +"#estComposeDe"));
