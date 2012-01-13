@@ -50,7 +50,8 @@
 						<wsdlOptions>
 							<wsdlOption>
 								<!--<wsdl>${basedir}/src/main/resources/stock.wsdl</wsdl> -->
-								<wsdl>${basedir}/src/main/resources/CAODataBaseService.wsdl</wsdl>
+								<!--<wsdl>${basedir}/src/main/resources/CAODataBaseService.wsdl</wsdl>-->
+								<wsdl>${basedir}/src/main/resources/FAODataBaseService.wsdl</wsdl>
 				                <!-- <extraargs>
 				                    <extraarg>-server</extraarg>
 				                    <extraarg>-verbose</extraarg>
