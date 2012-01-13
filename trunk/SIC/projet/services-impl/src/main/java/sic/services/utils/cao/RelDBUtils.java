@@ -63,7 +63,7 @@ public class RelDBUtils {
 
 	    OracleDataSource ods;	    
 	    
-	   public RelDBUtils (){
+	   private RelDBUtils (){
 
 		try {
 				
