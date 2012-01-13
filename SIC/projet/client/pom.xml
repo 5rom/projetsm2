@@ -43,7 +43,8 @@
 						<wsdlOptions>
 							<wsdlOption>
 								<!--<wsdl>${basedir}/src/main/resources/album-data.wsdl</wsdl>-->
-								<wsdl>${basedir}/src/main/resources/CAODataBaseService.wsdl</wsdl>
+								<!--<wsdl>${basedir}/src/main/resources/CAODataBaseService.wsdl</wsdl>-->
+				                <wsdl>${basedir}/src/main/resources/FAODataBaseService.wsdl</wsdl>
 				                <extraargs>
 				                    <extraarg>-client</extraarg>
 				                    <extraarg>-verbose</extraarg>

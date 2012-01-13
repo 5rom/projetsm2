@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/services_fao" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FAODataBaseService" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services_fao">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services_fao">
+      <!--  Définition des trois opérations du service en explicitant le type de leurs arguments et valeurs de retour (s'il y a) -->
+      <!--  Opération "addProduit" -->
+      <xsd:element name="addProduit">
+      <xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="pnum" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+				<xsd:element name="pnom" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+				<xsd:element name="composants" minOccurs="0" maxOccurs="unbounded" type="xsd:string"/>			
+			</xsd:sequence>
+		</xsd:complexType>
+      </xsd:element>
+      
+      <!--  Opération "getProduitList" -->
+      <xsd:element name="getProduitList">
+      <xsd:complexType>
+			<xsd:sequence>	
+			</xsd:sequence>
+		</xsd:complexType>
+      </xsd:element>
+      
+      <!--  Opération "getCompositionList" -->
+      <xsd:element name="getCompositionList">
+      <xsd:complexType>
+			<xsd:sequence>	
+			</xsd:sequence>
+		</xsd:complexType>
+      </xsd:element>      
+      
+      
+      <!--  Opération "deleteProduit" -->
+      <xsd:element name="deleteProduit">
+      <xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="pnum" minOccurs="1" maxOccurs="1" type="xsd:string"/>		
+			</xsd:sequence>
+		</xsd:complexType>
+      </xsd:element>      
+      
+      <!--  Opération "deleteComposition" -->
+      <xsd:element name="deleteComposition">
+      <xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="pmajeur" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+				<xsd:element name="pmineur" minOccurs="1" maxOccurs="1" type="xsd:string"/>			
+			</xsd:sequence>
+		</xsd:complexType>
+      </xsd:element>    
+      
+      <!--  Opération "updateProduit" -->
+      <xsd:element name="updateProduit">
+      <xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="pnum" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+				<xsd:element name="pnom" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+				<xsd:element name="composants" minOccurs="0" maxOccurs="unbounded" type="xsd:string"/>			
+			</xsd:sequence>
+		</xsd:complexType>
+      </xsd:element>             
+      
+      <!--  Opération "addProduit" : valeur de retour de type simple booléen -->
+      <xsd:element name="addProduitResponse" type="tns:addProduitResponse"/>
+	<xsd:complexType name="addProduitResponse">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="return" type="xsd:boolean"/>
+		</xsd:sequence>
+	</xsd:complexType>
+		
+     <!--  Opération "getProduitList" : valeur de retour de type complexe liste de  -->
+      <xsd:element name="getProduitListResponse" type="tns:getProduitListResponse"/>
+	<xsd:complexType name="getProduitListResponse">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" maxOccurs="unbounded" name="produitList" type="tns:Pnum_Pnom"/>
+		</xsd:sequence>
+	</xsd:complexType> 
+
+      <!--  Définition du type complexe Pnum_Pnom : contient un élément pnum string et un pnom string -->
+      <xsd:complexType name="Pnum_Pnom">
+			<xsd:sequence>
+				<xsd:element name="pnum" type="xsd:string"/>
+				<xsd:element name="pnom" type="xsd:string"/>			
+			</xsd:sequence>
+		</xsd:complexType>
+		
+     <!--  Opération "getProduitList" : valeur de retour de type complexe liste de  -->
+      <xsd:element name="getCompositionListResponse" type="tns:getCompositionListResponse"/>
+	<xsd:complexType name="getCompositionListResponse">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" maxOccurs="unbounded" name="compositionList" type="tns:Pmajeur_Pmineur"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+      <!--  Définition du type complexe Pnum_Pnum : contient un élément pnum string et un pnom string -->
+      <xsd:complexType name="Pmajeur_Pmineur">
+			<xsd:sequence>
+				<xsd:element name="Pmajeur" type="xsd:string"/>
+				<xsd:element name="Pmineur" type="xsd:string"/>			
+			</xsd:sequence>
+		</xsd:complexType>		 
+			
+			
+      <!--  Opération "deleteProduit" : valeur de retour de type simple booléen -->
+      <xsd:element name="deleteProduitResponse" type="tns:deleteProduitResponse"/>
+	<xsd:complexType name="deleteProduitResponse">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="return" type="xsd:boolean"/>
+		</xsd:sequence>
+	</xsd:complexType>			
+	
+      <!--  Opération "deleteComposition" : valeur de retour de type simple booléen -->
+      <xsd:element name="deleteCompositionResponse" type="tns:deleteCompositionResponse"/>
+	<xsd:complexType name="deleteCompositionResponse">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="return" type="xsd:boolean"/>
+		</xsd:sequence>
+	</xsd:complexType>		
+								
+      <!--  Opération "updateProduit" : valeur de retour de type simple booléen -->
+      <xsd:element name="updateProduitResponse" type="tns:updateProduitResponse"/>
+	<xsd:complexType name="updateProduitResponse">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="return" type="xsd:boolean"/>
+		</xsd:sequence>
+	</xsd:complexType>			
+			
+			
+    </xsd:schema>
+  </wsdl:types>
+  <!-- Messages wsdl -->
+  <wsdl:message name="addProduitRequest">
+    <wsdl:part element="tns:addProduit" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="addProduitResponse">
+    <wsdl:part element="tns:addProduitResponse" name="parameters"/>
+  </wsdl:message>
+    
+  
+    <wsdl:message name="getProduitListRequest">
+    <wsdl:part element="tns:getProduitList" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getProduitListResponse">
+    <wsdl:part element="tns:getProduitListResponse" name="parameters"/>
+  </wsdl:message>
+  
+    <wsdl:message name="getCompositionListRequest">
+    <wsdl:part element="tns:getCompositionList" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getCompositionListResponse">
+    <wsdl:part element="tns:getCompositionListResponse" name="parameters"/>
+  </wsdl:message>
+  
+  <wsdl:message name="deleteProduitRequest">
+    <wsdl:part element="tns:deleteProduit" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="deleteProduitResponse">
+    <wsdl:part element="tns:deleteProduitResponse" name="parameters"/>
+  </wsdl:message>  
+  
+  <wsdl:message name="deleteCompositionRequest">
+    <wsdl:part element="tns:deleteComposition" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="deleteCompositionResponse">
+    <wsdl:part element="tns:deleteCompositionResponse" name="parameters"/>
+  </wsdl:message>    
+  
+  <wsdl:message name="updateProduitRequest">
+    <wsdl:part element="tns:updateProduit" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="updateProduitResponse">
+    <wsdl:part element="tns:updateProduitResponse" name="parameters"/>
+  </wsdl:message>  
+  
+  <wsdl:portType name="FAODataBase">
+    <wsdl:operation name="addProduit">
+      <wsdl:input message="tns:addProduitRequest"/>
+      <wsdl:output message="tns:addProduitResponse"/>
+    </wsdl:operation>
+    
+    <wsdl:operation name="getProduitList">
+      <wsdl:input message="tns:getProduitListRequest"/>
+      <wsdl:output message="tns:getProduitListResponse"/>
+    </wsdl:operation>
+    
+    <wsdl:operation name="getCompositionList">
+      <wsdl:input message="tns:getCompositionListRequest"/>
+      <wsdl:output message="tns:getCompositionListResponse"/>
+    </wsdl:operation>        
+    
+    <wsdl:operation name="deleteProduit">
+      <wsdl:input message="tns:deleteProduitRequest"/>
+      <wsdl:output message="tns:deleteProduitResponse"/>
+    </wsdl:operation>
+    
+    <wsdl:operation name="deleteComposition">
+      <wsdl:input message="tns:deleteCompositionRequest"/>
+      <wsdl:output message="tns:deleteCompositionResponse"/>
+    </wsdl:operation>
+     
+    <wsdl:operation name="updateProduit">
+      <wsdl:input message="tns:updateProduitRequest"/>
+      <wsdl:output message="tns:updateProduitResponse"/>
+    </wsdl:operation>
+    
+  </wsdl:portType>
+  <wsdl:binding name="FAODataBaseSOAP" type="tns:FAODataBase">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addProduit">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>   
+    <wsdl:operation name="getProduitList">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompositionList">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteProduit">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteComposition">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>    
+    <wsdl:operation name="updateProduit">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>        
+        
+  </wsdl:binding>
+  <wsdl:service name="FAODataBase">
+    <wsdl:port binding="tns:FAODataBaseSOAP" name="FAODataBaseSOAP">
+      <soap:address location="http://localhost:8080/web-interface/services/FAODataBaseService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
