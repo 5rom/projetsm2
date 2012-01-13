@@ -33,5 +33,13 @@ UCBL M2 TI 2011-2012 -->
     <servlet-mapping>
         <servlet-name>ServletDBCAO</servlet-name>
         <url-pattern>/ServletDBCAO</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ServletExpressFAO</servlet-name>
+        <servlet-class>ServletExpressFAO</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletExpressFAO</servlet-name>
+        <url-pattern>/ServletExpressFAO</url-pattern>
     </servlet-mapping>	
 </web-app>
