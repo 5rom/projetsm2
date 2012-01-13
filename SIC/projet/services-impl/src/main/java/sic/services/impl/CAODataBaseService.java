@@ -37,7 +37,7 @@ public class CAODataBaseService implements CAODataBase{
 
 	@Override
 	public Boolean addProduit(long pnum, String pnom) {
-		RelDBUtils r = new RelDBUtils();
+		RelDBUtils r = RelDBUtils.getConnexion();
 		Statement st=null;
 		Boolean success=false;
 		try {
@@ -61,7 +61,7 @@ public class CAODataBaseService implements CAODataBase{
 	@Override
 	public List<PnumPnom> getProduitList() {
 		ArrayList<PnumPnom> list = new ArrayList<PnumPnom>();
-		RelDBUtils r = new RelDBUtils();
+		RelDBUtils r = RelDBUtils.getConnexion();
 		Statement st=null;
 		
 		try {
@@ -92,7 +92,7 @@ public class CAODataBaseService implements CAODataBase{
 	@Override
 	public List<PmajeurPmineur> getCompositionList() {
 		ArrayList<PmajeurPmineur> list = new ArrayList<PmajeurPmineur>();
-		RelDBUtils r = new RelDBUtils();
+		RelDBUtils r = RelDBUtils.getConnexion();
 		Statement st=null;
 		
 		try {
@@ -122,7 +122,7 @@ public class CAODataBaseService implements CAODataBase{
 
 	@Override
 	public Boolean deleteProduit(long pnum) {
-		RelDBUtils r = new RelDBUtils();
+		RelDBUtils r = RelDBUtils.getConnexion();
 		Statement st=null;
 		Boolean success=false;
 		try {
@@ -150,7 +150,7 @@ public class CAODataBaseService implements CAODataBase{
 
 	@Override
 	public Boolean deleteComposition(long pmajeur, long pmineur) {
-		RelDBUtils r = new RelDBUtils();
+		RelDBUtils r = RelDBUtils.getConnexion();
 		Statement st=null;
 		Boolean success=false;
 		try {
@@ -176,7 +176,7 @@ public class CAODataBaseService implements CAODataBase{
 
 	@Override
 	public Boolean addComposition(long pmajeur, long pmineur) {
-		RelDBUtils r = new RelDBUtils();
+		RelDBUtils r = RelDBUtils.getConnexion();
 		Statement st=null;
 		Boolean success=false;
 		try {
@@ -201,7 +201,7 @@ public class CAODataBaseService implements CAODataBase{
 
 	@Override
 	public Boolean updateProduit(long pnum, String pnom) {
-		RelDBUtils r = new RelDBUtils();
+		RelDBUtils r = RelDBUtils.getConnexion();
 		Statement st=null;
 		Boolean success=false;
 		try {
