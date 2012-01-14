@@ -46,11 +46,17 @@
             pojoService             : specifies the servicemodel service name generated from the POJO
             pojoEndpoint            : specifies the servicemodel endpoint name generated from the POJO                                                                                                                                                        
     -->
-    <cxfse:endpoint>
+     <cxfse:endpoint>
         <cxfse:pojo>
           <bean class="tiw5.services.impl.AlbumDataService" />
         </cxfse:pojo>
     </cxfse:endpoint>
+    
+    <cxfse:endpoint>
+        <cxfse:pojo>
+          <bean class="tiw5.services.impl.CDCatalogueService" />
+        </cxfse:pojo>
+    </cxfse:endpoint>    
     <!-- END SNIPPET: cxfse-pojo -->
 
 </beans>

@@ -34,7 +34,7 @@ import org.hibernate.annotations.SortType;
  */
 @Entity
 @XmlRootElement(name = "album", namespace = ModeleConstants.NS)
-@XmlType(propOrder = { "id", "titre", "prix", "listePistes", "artistes" })
+@XmlType(propOrder = { "id", "titre", "prix", "maisondisque", "genre", "listePistes", "artistes" })
 public class Album implements Serializable, Comparable<Album>, Iterable<Piste> {
 
 	public static class RefAdapter extends XmlAdapter<AlbumRef, Album> {
@@ -83,6 +83,18 @@ public class Album implements Serializable, Comparable<Album>, Iterable<Piste> {
 	private double prix;	
 	
 	/**
+	 * La maison de disque
+	 */
+	@XmlElement(name = "maisondisque", namespace = ModeleConstants.NS)
+	private String maisondisque;	
+
+	/**
+	 * Le genre de musique
+	 */
+	@XmlElement(name = "genre", namespace = ModeleConstants.NS)
+	private String genre;		
+	
+	/**
 	 * La liste des plages du cd.
 	 */
 	@MapKey(name = "numero")
@@ -112,6 +124,8 @@ public class Album implements Serializable, Comparable<Album>, Iterable<Piste> {
 		this.titre = titre;
 		this.pistes = new TreeMap<Integer, Piste>();
 		this.artistes = new HashSet<Artiste>();
+		this.maisondisque="";
+		this.genre="";
 	}
 
 	/**
@@ -152,6 +166,44 @@ public class Album implements Serializable, Comparable<Album>, Iterable<Piste> {
 		this.prix = prix;
 	}	
 
+	/**
+	 * La maison de disque
+	 * 
+	 * @return La maison de disque
+	 */
+	@XmlTransient
+	public String getMaisonDisque() {
+		return maisondisque;
+	}
+
+	/**
+	 * Change la maison de disque
+	 * 
+	 * @param maisondisque
+	 */
+	public void setMaisonDisque(String maison) {
+		this.maisondisque = maison;
+	}	
+
+	/**
+	 * Le genre de musique
+	 * 
+	 * @return Le genre de musique
+	 */
+	@XmlTransient
+	public String getGenre() {
+		return genre;
+	}
+
+	/**
+	 * Change le genre de musique
+	 * 
+	 * @param genre
+	 */
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}		
+	
 	/**
 	 * L'identifiant du cd.
 	 * 

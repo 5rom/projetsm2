@@ -9,6 +9,8 @@
 <xs:element name="piste" type="ns1:piste"/>
 <xs:element name="titre" type="xs:string"/>
 <xs:element name="prix" type="xs:double"/>
+<xs:element name="maisondisque" type="xs:string"/>
+<xs:element name="genre" type="xs:string"/>
 
 </xs:schema>
 <xs:schema elementFormDefault="unqualified" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" version="1.0" xmlns:ns1="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" xmlns:xs="http://www.w3.org/2001/XMLSchema">
@@ -25,6 +27,8 @@
     <xs:sequence>
       <xs:element minOccurs="0" ref="ns1:titre"/>
       <xs:element minOccurs="0" ref="ns1:prix"/>
+      <xs:element minOccurs="0" ref="ns1:maisondisque"/>
+      <xs:element minOccurs="0" ref="ns1:genre"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" ref="ns1:piste"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" ref="ns1:artiste"/>
     </xs:sequence>
