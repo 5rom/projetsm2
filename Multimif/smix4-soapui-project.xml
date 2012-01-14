@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="smix4" soapui-version="4.0.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="MesServicesSOAP" type="wsdl" bindingName="{http://master-info.univ-lyon1.fr/M2TI/TIW5/bc}MesServicesSOAP" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/CDCatalogueService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://localhost:8080/test-service</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://master-info.univ-lyon1.fr/M2TI/TIW5/bc/TestOperation" name="TestOperation" bindingOperationName="TestOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/test-service</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bc="http://master-info.univ-lyon1.fr/M2TI/TIW5/bc">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <bc:test>
+         <in>?</in>
+      </bc:test>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://master-info.univ-lyon1.fr/M2TI/TIW5/bc/TestOperation"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="AlbumDataServiceSoapBinding" type="wsdl" bindingName="{http://master-info.univ-lyon1.fr/M2TI/TIW5/services}AlbumDataServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/CDCatalogueService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://localhost:8080/AlbumDataService</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="addAlbumDescription" bindingOperationName="addAlbumDescription" type="One-Way" inputName="addAlbumDescription" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/AlbumDataService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" xmlns:ven="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:addAlbumDescription>
+         <!--Optional:-->
+         <arg0 id="?">
+            <!--Optional:-->
+            <ven:titre>?</ven:titre>
+            <!--Optional:-->
+            <ven:prix>?</ven:prix>
+            <!--Optional:-->
+            <ven:maisondisque>?</ven:maisondisque>
+            <!--Optional:-->
+            <ven:genre>?</ven:genre>
+            <!--Zero or more repetitions:-->
+            <ven:piste numero="?" duree="?">
+               <!--Optional:-->
+               <ven:titre>?</ven:titre>
+               <!--Zero or more repetitions:-->
+               <ven:contributeur uri="?"/>
+            </ven:piste>
+            <!--Zero or more repetitions:-->
+            <ven:artiste uri="?"/>
+         </arg0>
+      </ser:addAlbumDescription>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://master-info.univ-lyon1.fr/M2TI/TIW5/bc/AlbumDataPortType/addAlbumDescription"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getAlbumDescription" bindingOperationName="getAlbumDescription" type="Request-Response" outputName="getAlbumDescriptionResponse" inputName="getAlbumDescription" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/AlbumDataService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://master-info.univ-lyon1.fr/M2TI/TIW5/services">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:getAlbumDescription>
+         <arg0>?</arg0>
+      </ser:getAlbumDescription>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://master-info.univ-lyon1.fr/M2TI/TIW5/bc/AlbumDataPortType/getAlbumDescription"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="CDCatalogueServiceSoapBinding" type="wsdl" bindingName="{http://master-info.univ-lyon1.fr/M2TI/TIW5/services}CDCatalogueServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/CDCatalogueService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/CDCatalogueService?wsdl"><con:part><con:url>http://localhost:8080/CDCatalogueService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="MesServices" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/bc" xmlns:albumds="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/bc" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:import location="http://localhost:8080/CDCatalogueService?wsdl=AlbumDataService.wsdl" namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services"></wsdl:import>
+  <wsdl:import location="http://localhost:8080/CDCatalogueService?wsdl=CDCatalogueService.wsdl" namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services"></wsdl:import>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/bc">
+      <xsd:element name="test">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="testResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="TestOperationRequest">
+    <wsdl:part element="tns:test" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="TestOperationResponse">
+    <wsdl:part element="tns:testResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="TestServicePortType">
+    <wsdl:operation name="TestOperation">
+      <wsdl:input message="tns:TestOperationRequest"></wsdl:input>
+      <wsdl:output message="tns:TestOperationResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MesServicesSOAP" type="tns:TestServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="TestOperation">
+      <soap:operation soapAction="http://master-info.univ-lyon1.fr/M2TI/TIW5/bc/TestOperation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TestService">
+    <wsdl:port binding="tns:MesServicesSOAP" name="TestServiceSOAP">
+      <soap:address location="http://localhost:8080/test-service"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="AlbumDataServiceBC">
+    <wsdl:port binding="albumds:AlbumDataServiceSoapBinding" name="AlbumDataPortBC">
+      <soap:address location="http://localhost:8080/AlbumDataService"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="CDCatalogueServiceBC">
+    <wsdl:port binding="albumds:CDCatalogueServiceSoapBinding" name="CDCataloguePortBC">
+      <soap:address location="http://localhost:8080/CDCatalogueService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/CDCatalogueService?wsdl=AlbumDataService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="AlbumDataService" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd" version="1.0" xmlns:ns1="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services"/>
+      <xs:element name="album" type="ns1:album"/>
+      <xs:element name="artiste" type="ns1:artisteRef"/>
+      <xs:element name="contributeur" type="ns1:artisteRef"/>
+      <xs:element name="piste" type="ns1:piste"/>
+      <xs:element name="titre" type="xs:string"/>
+      <xs:element name="prix" type="xs:double"/>
+      <xs:element name="maisondisque" type="xs:string"/>
+      <xs:element name="genre" type="xs:string"/>
+    </xs:schema>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" version="1.0" xmlns:ns1="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd"/>
+      <xs:element name="addAlbumDescription" type="tns:addAlbumDescription"/>
+      <xs:element name="getAlbumDescription" type="tns:getAlbumDescription"/>
+      <xs:element name="getAlbumDescriptionResponse" type="tns:getAlbumDescriptionResponse"/>
+      <xs:complexType name="addAlbumDescription">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:album"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="album">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns1:titre"/>
+          <xs:element minOccurs="0" ref="ns1:prix"/>
+          <xs:element minOccurs="0" ref="ns1:maisondisque"/>
+          <xs:element minOccurs="0" ref="ns1:genre"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" ref="ns1:piste"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" ref="ns1:artiste"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:long" use="required"/>
+      </xs:complexType>
+      <xs:complexType name="piste">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns1:titre"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" ref="ns1:contributeur"/>
+        </xs:sequence>
+        <xs:attribute name="numero" type="xs:int" use="required"/>
+        <xs:attribute name="duree" type="xs:int" use="required"/>
+      </xs:complexType>
+      <xs:complexType name="artisteRef">
+        <xs:sequence/>
+        <xs:attribute name="uri" type="xs:string"/>
+      </xs:complexType>
+      <xs:complexType name="getAlbumDescription">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAlbumDescriptionResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:album"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Test">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="in" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="out" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="TestResponse">
+    <wsdl:part element="tns:TestResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAlbumDescription">
+    <wsdl:part element="tns:getAlbumDescription" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="TestRequest">
+    <wsdl:part element="tns:Test" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addAlbumDescription">
+    <wsdl:part element="tns:addAlbumDescription" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAlbumDescriptionResponse">
+    <wsdl:part element="tns:getAlbumDescriptionResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AlbumDataPortType">
+    <wsdl:operation name="addAlbumDescription">
+      <wsdl:input message="tns:addAlbumDescription" name="addAlbumDescription"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getAlbumDescription">
+      <wsdl:input message="tns:getAlbumDescription" name="getAlbumDescription"></wsdl:input>
+      <wsdl:output message="tns:getAlbumDescriptionResponse" name="getAlbumDescriptionResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AlbumDataServiceSoapBinding" type="tns:AlbumDataPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addAlbumDescription">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addAlbumDescription">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getAlbumDescription">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAlbumDescription">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAlbumDescriptionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AlbumDataService">
+    <wsdl:port binding="tns:AlbumDataServiceSoapBinding" name="AlbumDataPort">
+      <soap:address location="http://localhost:8080/AlbumDataService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/CDCatalogueService?wsdl=CDCatalogueService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="CDCatalogueService" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd" version="1.0" xmlns:ns1="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services"/>
+      <xs:element name="album" type="ns1:album"/>
+      <xs:element name="artiste" type="ns1:artisteRef"/>
+      <xs:element name="contributeur" type="ns1:artisteRef"/>
+      <xs:element name="piste" type="ns1:piste"/>
+      <xs:element name="titre" type="xs:string"/>
+      <xs:element name="prix" type="xs:double"/>
+      <xs:element name="maisondisque" type="xs:string"/>
+      <xs:element name="genre" type="xs:string"/>
+    </xs:schema>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" version="1.0" xmlns:ns1="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd"/>
+      <xs:element name="addAlbumDescription" type="tns:addAlbumDescription"/>
+      <xs:element name="getAlbumDescription" type="tns:getAlbumDescription"/>
+      <xs:element name="getAlbumDescriptionResponse" type="tns:getAlbumDescriptionResponse"/>
+      <xs:complexType name="addAlbumDescription">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:album"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="album">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns1:titre"/>
+          <xs:element minOccurs="0" ref="ns1:prix"/>
+          <xs:element minOccurs="0" ref="ns1:maisondisque"/>
+          <xs:element minOccurs="0" ref="ns1:genre"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" ref="ns1:piste"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" ref="ns1:artiste"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:long" use="required"/>
+      </xs:complexType>
+      <xs:complexType name="piste">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns1:titre"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" ref="ns1:contributeur"/>
+        </xs:sequence>
+        <xs:attribute name="numero" type="xs:int" use="required"/>
+        <xs:attribute name="duree" type="xs:int" use="required"/>
+      </xs:complexType>
+      <xs:complexType name="artisteRef">
+        <xs:sequence/>
+        <xs:attribute name="uri" type="xs:string"/>
+      </xs:complexType>
+      <xs:complexType name="getAlbumDescription">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAlbumDescriptionResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:album"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Test">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="in" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="out" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="TestResponse">
+    <wsdl:part element="tns:TestResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAlbumDescription">
+    <wsdl:part element="tns:getAlbumDescription" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="TestRequest">
+    <wsdl:part element="tns:Test" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addAlbumDescription">
+    <wsdl:part element="tns:addAlbumDescription" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAlbumDescriptionResponse">
+    <wsdl:part element="tns:getAlbumDescriptionResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CDCataloguePortType">
+    <wsdl:operation name="addAlbumDescription">
+      <wsdl:input message="tns:addAlbumDescription" name="addAlbumDescription"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getAlbumDescription">
+      <wsdl:input message="tns:getAlbumDescription" name="getAlbumDescription"></wsdl:input>
+      <wsdl:output message="tns:getAlbumDescriptionResponse" name="getAlbumDescriptionResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CDCatalogueServiceSoapBinding" type="tns:CDCataloguePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addAlbumDescription">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addAlbumDescription">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getAlbumDescription">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAlbumDescription">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAlbumDescriptionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CDCatalogueService">
+    <wsdl:port binding="tns:CDCatalogueServiceSoapBinding" name="CDCataloguePort">
+      <soap:address location="http://localhost:8080/CDCatalogueService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/CDCatalogueService</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="addAlbumDescription" bindingOperationName="addAlbumDescription" type="One-Way" inputName="addAlbumDescription" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/CDCatalogueService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" xmlns:ven="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:addAlbumDescription>
+         <!--Optional:-->
+         <arg0 id="2">
+            <!--Optional:-->
+            <ven:titre>Les moufles</ven:titre>
+            <!--Optional:-->
+            <ven:prix>9.99</ven:prix>
+            <!--Optional:-->
+            <ven:maisondisque>Maison du café</ven:maisondisque>
+            <!--Optional:-->
+            <ven:genre>Disco</ven:genre>
+            <!--Zero or more repetitions:-->
+            <ven:piste numero="1" duree="7">
+               <!--Optional:-->
+               <ven:titre>Avenir à venir</ven:titre>
+               <!--Zero or more repetitions:-->
+               <ven:contributeur uri="2"/>
+            </ven:piste>
+            <ven:piste numero="2" duree="3">
+               <!--Optional:-->
+               <ven:titre>Fin d'intestin</ven:titre>
+               <!--Zero or more repetitions:-->
+               <ven:contributeur uri="2"/>
+            </ven:piste>
+
+            <!--Zero or more repetitions:-->
+            <ven:artiste uri="2"/>
+         </arg0>
+      </ser:addAlbumDescription>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://master-info.univ-lyon1.fr/M2TI/TIW5/bc/CDCataloguePortType/addAlbumDescription"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getAlbumDescription" bindingOperationName="getAlbumDescription" type="Request-Response" outputName="getAlbumDescriptionResponse" inputName="getAlbumDescription" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/CDCatalogueService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://master-info.univ-lyon1.fr/M2TI/TIW5/services">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:getAlbumDescription>
+         <arg0>2</arg0>
+      </ser:getAlbumDescription>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://master-info.univ-lyon1.fr/M2TI/TIW5/bc/CDCataloguePortType/getAlbumDescription"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

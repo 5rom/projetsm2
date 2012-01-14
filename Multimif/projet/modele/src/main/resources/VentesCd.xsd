@@ -7,6 +7,8 @@
 		<sequence>
 			<element name="titre" type="string"></element>
 			<element name="prix" type="double"></element>
+			<element name="maisondisque" type="string"></element>
+			<element name="genre" type="string"></element>
 			<element name="piste" type="tns:PisteContent" maxOccurs="unbounded"
 				minOccurs="1">
 			</element>
