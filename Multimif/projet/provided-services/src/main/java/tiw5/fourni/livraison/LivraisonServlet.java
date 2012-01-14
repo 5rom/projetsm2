@@ -47,7 +47,7 @@ public class LivraisonServlet extends HttpServlet {
 		ServletOutputStream out = response.getOutputStream();
 		out.println("<html><head><title>Actions livraisons</title></head><body>");
 		out.println("<h1>Livraisons disponibles</h1>");
-		out.println("<p><a href=\"\">Rafra”chir</a></p>");
+		out.println("<p><a href=\"\">Rafraichir</a></p>");
 		out.println("<table>");
 		out.println("<tr><th>Action</th><th>etat</th><th>de</th>"
 				+ "<th>vers</th><th>id</th><th>cmdId</th><th>date</th><th>info</th></tr>");

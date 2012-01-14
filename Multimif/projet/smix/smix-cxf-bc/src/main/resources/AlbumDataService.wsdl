@@ -8,6 +8,7 @@
 <xs:element name="contributeur" type="ns1:artisteRef"/>
 <xs:element name="piste" type="ns1:piste"/>
 <xs:element name="titre" type="xs:string"/>
+<xs:element name="prix" type="xs:double"/>
 
 </xs:schema>
 <xs:schema elementFormDefault="unqualified" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" version="1.0" xmlns:ns1="http://master-info.univ-lyon1.fr/M2TI/TIW5/ventecd" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" xmlns:xs="http://www.w3.org/2001/XMLSchema">
@@ -23,6 +24,7 @@
 <xs:complexType name="album">
     <xs:sequence>
       <xs:element minOccurs="0" ref="ns1:titre"/>
+      <xs:element minOccurs="0" ref="ns1:prix"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" ref="ns1:piste"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" ref="ns1:artiste"/>
     </xs:sequence>
@@ -116,7 +118,7 @@
   </wsdl:binding>
   <wsdl:service name="AlbumDataService">
     <wsdl:port binding="tns:AlbumDataServiceSoapBinding" name="AlbumDataPort">
-      <soap:address location="http://localhost:8080/web-interface/services/AlbumDataService"/>
+      <soap:address location="http://localhost:8080/AlbumDataService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

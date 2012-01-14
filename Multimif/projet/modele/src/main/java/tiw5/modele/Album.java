@@ -34,7 +34,7 @@ import org.hibernate.annotations.SortType;
  */
 @Entity
 @XmlRootElement(name = "album", namespace = ModeleConstants.NS)
-@XmlType(propOrder = { "id", "titre", "listePistes", "artistes" })
+@XmlType(propOrder = { "id", "titre", "prix", "listePistes", "artistes" })
 public class Album implements Serializable, Comparable<Album>, Iterable<Piste> {
 
 	public static class RefAdapter extends XmlAdapter<AlbumRef, Album> {
@@ -76,6 +76,12 @@ public class Album implements Serializable, Comparable<Album>, Iterable<Piste> {
 	@XmlElement(name = "titre", namespace = ModeleConstants.NS)
 	private String titre;
 
+	/**
+	 * Le prix du cd
+	 */
+	@XmlElement(name = "prix", namespace = ModeleConstants.NS)
+	private double prix;	
+	
 	/**
 	 * La liste des plages du cd.
 	 */
@@ -126,6 +132,25 @@ public class Album implements Serializable, Comparable<Album>, Iterable<Piste> {
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
+	
+	/**
+	 * Le prix du cd.
+	 * 
+	 * @return Le prix du cd.
+	 */
+	@XmlTransient
+	public double getPrix() {
+		return prix;
+	}
+
+	/**
+	 * Change le prix du cd
+	 * 
+	 * @param prix
+	 */
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}	
 
 	/**
 	 * L'identifiant du cd.
