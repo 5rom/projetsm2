@@ -4,8 +4,8 @@
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/bc"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:albumds="http://master-info.univ-lyon1.fr/M2TI/TIW5/services">
-	<wsdl:import location="AlbumDataService.wsdl"
-		namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services"></wsdl:import> 
+	<!-- <wsdl:import location="AlbumDataService.wsdl"
+		namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services"></wsdl:import> --> 
 	<wsdl:import location="CDCatalogueService.wsdl"
 		namespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services"></wsdl:import>		
 	<wsdl:types>
@@ -57,11 +57,11 @@
 			<soap:address location="http://localhost:8080/test-service-dans-wsdl" />
 		</wsdl:port>
 	</wsdl:service>
-	 <wsdl:service name="AlbumDataServiceBC">
+	 <!-- <wsdl:service name="AlbumDataServiceBC">
 		<wsdl:port name="AlbumDataPortBC" binding="albumds:AlbumDataServiceSoapBinding">
 			<soap:address location="http://localhost:8080/AlbumDataPort" />
 		</wsdl:port>
-	</wsdl:service>	 
+	</wsdl:service>	 -->
 	
 	<wsdl:service name="CDCatalogueServiceBC">
 		<wsdl:port name="CDCataloguePortBC" binding="albumds:CDCatalogueServiceSoapBinding">
