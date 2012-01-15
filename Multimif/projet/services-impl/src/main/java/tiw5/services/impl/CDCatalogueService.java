@@ -1,5 +1,8 @@
 package tiw5.services.impl;
  
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.jws.Oneway;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -27,6 +30,23 @@ public class CDCatalogueService {
 		Album album = em.find(Album.class, albumId);
 		return album;
 	}
+	
+	@WebMethod
+	public List<Album> getAlbumsFromCatalogue() {
+		EntityManager em = Persistence.createEntityManagerFactory("etudiant")
+				.createEntityManager();
+		ArrayList<Album> list = (ArrayList<Album>) em.createQuery("SELECT a FROM Album a order by a.id").getResultList();
+		return list;
+	}
+	
+	@WebMethod
+	public List<Album> getAlbumsFromCatalogueForArtist(String uri) {
+		EntityManager em = Persistence.createEntityManagerFactory("etudiant")
+				.createEntityManager();
+		ArrayList<Album> list = (ArrayList<Album>) em.createQuery("SELECT a FROM Album a, IN (a.artistes) b where b.uri='"+uri+"' order by a.id").getResultList();
+		return list;
+	}
+	
  
 	@Oneway
 	@WebMethod

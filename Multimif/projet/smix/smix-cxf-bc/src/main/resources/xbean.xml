@@ -61,12 +61,12 @@
         locationURI="http://localhost:8080/test-service" />
         
     
-    <cxfbc:consumer 
+    <!-- <cxfbc:consumer 
     	wsdl="classpath:MesServices.wsdl"
     	service="tiw5bc:AlbumDataServiceBC"
         targetService="tiw5serv:AlbumDataService"
         targetEndpoint="AlbumDataPort"
-        locationURI="http://localhost:8080/AlbumDataService" /> 
+        locationURI="http://localhost:8080/AlbumDataService" /> --> 
         
    <cxfbc:consumer 
     	wsdl="classpath:MesServices.wsdl"
