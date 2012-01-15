@@ -1,5 +1,16 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<!-- Fichier de description du déploiement de l'application web web-interface 
+Auteurs : David CRESCENCE et Sébastien FAURE 
+UCBL M2 TI 2011-2012 -->	
 
+    <servlet>
+        <servlet-name>MenuServlet</servlet-name>
+        <servlet-class>MenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MenuServlet</servlet-name>
+        <url-pattern>/MenuServlet</url-pattern>
+    </servlet-mapping>	
 </web-app>
