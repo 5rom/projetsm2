@@ -42,10 +42,10 @@
 						<sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
 						<wsdlOptions>
 							<wsdlOption>
-								<!--<wsdl>${basedir}/src/main/resources/album-data.wsdl</wsdl>-->
-								<!--<wsdl>${basedir}/src/main/resources/CAODataBaseService.wsdl</wsdl>-->
+								<!-- <wsdl>${basedir}/src/main/resources/CAODataBaseService.wsdl</wsdl> -->
 				                <!--<wsdl>${basedir}/src/main/resources/FAODataBaseService.wsdl</wsdl>-->
-				                <wsdl>${basedir}/src/main/resources/FAOOwlService.wsdl</wsdl>
+				                <!-- <wsdl>${basedir}/src/main/resources/FAOOwlService.wsdl</wsdl> -->
+				                <wsdl>${basedir}/src/main/resources/CAOOwlService.wsdl</wsdl>
 				                <extraargs>
 				                    <extraarg>-client</extraarg>
 				                    <extraarg>-verbose</extraarg>

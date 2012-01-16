@@ -49,5 +49,13 @@ UCBL M2 TI 2011-2012 -->
     <servlet-mapping>
         <servlet-name>ServletOWLFAO</servlet-name>
         <url-pattern>/ServletOWLFAO</url-pattern>
-    </servlet-mapping>	
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ServletOWLCAO</servlet-name>
+        <servlet-class>ServletOWLCAO</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletOWLCAO</servlet-name>
+        <url-pattern>/ServletOWLCAO</url-pattern>
+    </servlet-mapping>    
 </web-app>

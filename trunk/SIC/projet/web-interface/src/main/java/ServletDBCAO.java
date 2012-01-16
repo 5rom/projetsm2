@@ -1,7 +1,6 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,10 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.univ_lyon1.master_info.m2ti.tiw5.services.CAODataBase;
-import fr.univ_lyon1.master_info.m2ti.tiw5.services.CAODataBase_Service;
-import fr.univ_lyon1.master_info.m2ti.tiw5.services.PmajeurPmineur;
-import fr.univ_lyon1.master_info.m2ti.tiw5.services.PnumPnom;
+import fr.univ_lyon1.master_info.m2ti.tiw5.services_cao.*;
+
+
 
 
 
