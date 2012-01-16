@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CAODataBaseService" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services">
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/services_cao" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CAODataBaseService" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services_cao">
   <wsdl:types>
-    <xsd:schema targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services">
+    <xsd:schema targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services_cao">
       <!--  Définition des trois opérations du service en explicitant le type de leurs arguments et valeurs de retour (s'il y a) -->
       <!--  Opération "addProduit" -->
       <xsd:element name="addProduit">

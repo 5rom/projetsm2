@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/services_cao/owl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CAOOwlService" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services_cao/owl">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services_cao/owl">
+      <!--  Operation "parseOWL" -->
+      <xsd:element name="parseOWL">
+      <xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="filepath" minOccurs="1" maxOccurs="1" type="xsd:string"/>			
+			</xsd:sequence>
+		</xsd:complexType>
+      </xsd:element>             
+      
+      <!--  Operation "parseOWL" : valeur de retour de type simple booleen -->
+      <xsd:element name="parseOWLResponse" type="tns:parseOWLResponse"/>
+	<xsd:complexType name="parseOWLResponse">
+		<xsd:sequence>
+			<xsd:element name="filepath_response" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>			
+			
+    </xsd:schema>
+  </wsdl:types>
+  <!-- Messages wsdl -->
+  <wsdl:message name="parseOWLRequest">
+    <wsdl:part element="tns:parseOWL" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="parseOWLResponse">
+    <wsdl:part element="tns:parseOWLResponse" name="parameters"/>
+  </wsdl:message>
+    
+  <wsdl:portType name="CAOOwl">
+    <wsdl:operation name="parseOWL">
+      <wsdl:input message="tns:parseOWLRequest"/>
+      <wsdl:output message="tns:parseOWLResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CAOOwlSOAP" type="tns:CAOOwl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="parseOWL">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>       
+  </wsdl:binding>
+  <wsdl:service name="CAOOwl">
+    <wsdl:port binding="tns:CAOOwlSOAP" name="CAOOwlSOAP">
+      <soap:address location="http://localhost:8080/web-interface/services/CAOOwlService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

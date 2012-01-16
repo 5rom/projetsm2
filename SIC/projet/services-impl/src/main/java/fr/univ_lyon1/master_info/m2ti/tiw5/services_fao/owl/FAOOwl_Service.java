@@ -15,7 +15,7 @@ import javax.xml.ws.Service;
  * 
  */
 @WebServiceClient(name = "FAOOwl", 
-                  wsdlLocation = "file:/Users/padawanchichi/Documents/divers/Cours/TIW3/projet/services-impl/src/main/resources/FAOOwlService.wsdl",
+                  wsdlLocation = "file:/C:/Users/Seb/eclipse-projects/svn/SIC/projet/client/src/main/resources/FAOOwlService.wsdl",
                   targetNamespace = "http://master-info.univ-lyon1.fr/M2TI/TIW5/services_fao/owl") 
 public class FAOOwl_Service extends Service {
 
@@ -26,11 +26,11 @@ public class FAOOwl_Service extends Service {
     static {
         URL url = null;
         try {
-            url = new URL("file:/Users/padawanchichi/Documents/divers/Cours/TIW3/projet/services-impl/src/main/resources/FAOOwlService.wsdl");
+            url = new URL("file:/C:/Users/Seb/eclipse-projects/svn/SIC/projet/client/src/main/resources/FAOOwlService.wsdl");
         } catch (MalformedURLException e) {
             java.util.logging.Logger.getLogger(FAOOwl_Service.class.getName())
                 .log(java.util.logging.Level.INFO, 
-                     "Can not initialize the default wsdl from {0}", "file:/Users/padawanchichi/Documents/divers/Cours/TIW3/projet/services-impl/src/main/resources/FAOOwlService.wsdl");
+                     "Can not initialize the default wsdl from {0}", "file:/C:/Users/Seb/eclipse-projects/svn/SIC/projet/client/src/main/resources/FAOOwlService.wsdl");
         }
         WSDL_LOCATION = url;
     }
