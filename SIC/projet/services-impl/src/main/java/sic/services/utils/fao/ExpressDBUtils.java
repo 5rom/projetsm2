@@ -13,8 +13,17 @@ public class ExpressDBUtils {
     static protected ExpressDBUtils instance = null;
     
     private String filepath;
+    /**
+     * Contient les pnum et les pname
+     */
     private HashMap<String,String> produits;
+	/**
+	 * Contient les relations indexees par les indices express (#1,#2,...)
+	 */
 	private HashMap<String,String[]> relations_line;
+	/**
+	 * Contient la correspondance index/pnum
+	 */
 	private HashMap<String,String> line_name;
 
     

@@ -12,6 +12,6 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Seb/eclipse-projects/svn/SIC/lib/owlapi-bin.jar"/>
+	<classpathentry kind="lib" path="/Users/padawanchichi/Documents/divers/Cours/TIW3/lib/owlapi-bin.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

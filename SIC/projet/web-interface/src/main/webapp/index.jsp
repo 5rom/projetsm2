@@ -64,7 +64,7 @@ Nouveau nom: <input type="text" name="pnom" />
 <input type="submit" name="bouton" value="Mettre à jour le nom du produit dans la base">
 </form>
 <br>
-<h2>Produits de la base</h2>
+<h2>Produits de la base Express</h2>
 <!--  Formulaire de consultation de la base -->
 <br>
 <form action="ServletExpressFAO" method="post">
