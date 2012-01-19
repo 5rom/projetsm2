@@ -1,0 +1,10 @@
+CAO:Stylo = FAO:Stylo
+CAO:Capuchon = FAO:Capuchon
+CAO:Corps = FAO:Bouchon + FAO:Tube_cylindrique + FAO:Cartouche
+CAO:Tube = FAO:Tube_cylindrique
+CAO:Recharge = FAO:Cartouche
+CAO:Bouchon = FAO:Bouchon
+CAO:Tete d_ecriture = FAO:Objet_conique + FAO:Bille
+FAO:Objet_conique = CAO:Support_de_tete + CAO:Tete
+CAO:Reservoir = FAO:Mine
+CAO:Bille = FAO:Bille
