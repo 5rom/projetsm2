@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_cao.owl.CAOOWL;
-import fr.univ_lyon1.master_info.m2ti.tiw5.services_cao.owl.CAOOWLService;
+import fr.univ_lyon1.master_info.m2ti.tiw5.services_cao.owl.CAOOWL_Service;
 
 
 public class ServletOWLCAO extends HttpServlet {
@@ -32,10 +32,10 @@ private static final long serialVersionUID = 1L;
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CAOOWLService a = new CAOOWLService();
-		CAOOWL b = a.getCAOOWLSOAP();
+		CAOOWL_Service c = new CAOOWL_Service();
+		CAOOWL f = c.getCAOOWLSOAP();
 		
-		out.println("<html><body><h2>"+b.parseOWL("b")+"</h2></body></html>");
+		out.println("<html><body><h2>"+f.parseOWL("b")+"</h2></body></html>");
 	}
 	
 	/**
