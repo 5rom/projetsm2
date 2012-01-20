@@ -51,7 +51,7 @@ UCBL M2 TI 2011-2012 -->
 	<jaxws:endpoint id="FAODataBase" implementor="sic.services.impl.FAODataBaseService" address="/FAODataBaseService" />	
 	
 	<!-- Ajout du service FAODataBaseService comme au-dessus -->
-	<!-- <jaxws:endpoint id="FAOOwl" implementor="sic.services.impl.FAOOwlService" address="/FAOOwlService" /> -->	
+	<jaxws:endpoint id="FAOOwl" implementor="sic.services.impl.FAOOwlService" address="/FAOOwlService" />
 
 	<!-- Ajout du service CAOOwlService comme au-dessus -->
 	<jaxws:endpoint id="CAOOwl" implementor="sic.services.impl.CAOOWLService" address="/CAOOWLService" />		

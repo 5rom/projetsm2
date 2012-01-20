@@ -70,6 +70,13 @@ Nouveau nom: <input type="text" name="pnom" />
 <form action="ServletExpressFAO" method="post">
 <input type="submit" name="bouton" value="Afficher les produits de la base">
 </form>
+<br>
+<h2>Traduction BD FAO vers OWL</h2>
+<!--  Formulaire de consultation de la base -->
+<br>
+<form action="ServletOWLFAO" method="post">
+<input type="submit" name="bouton" value="Trad">
+</form>
 <h2>Traduction BD CAO vers OWL</h2>
 <!--  Formulaire de consultation de la base -->
 <br>
