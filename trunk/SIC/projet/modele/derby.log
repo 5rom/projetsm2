@@ -1,10 +1,10 @@
 ----------------------------------------------------------------
-Mon Jan 16 21:41:59 CET 2012:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0134-e841-47ab-000005243dd0 
-on database directory C:\Users\Seb\eclipse-projects\svn\SIC\projet\modele\target\testDB  with class loader sun.misc.Launcher$AppClassLoader@12360be0 
-Loaded from file:/C:/Users/Seb/.m2/repository/org/apache/derby/derby/10.8.1.2/derby-10.8.1.2.jar
-java.vendor=Sun Microsystems Inc.
-java.runtime.version=1.6.0_23-b05
-user.dir=C:\Users\Seb\eclipse-projects\svn\SIC\projet\modele
+Fri Jan 20 10:52:58 CET 2012:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0134-fa88-8436-000004a73430 
+on database directory /Users/padawanchichi/Documents/divers/Cours/TIW3/projet/modele/target/testDB  with class loader sun.misc.Launcher$AppClassLoader@37b90b39 
+Loaded from file:/Users/padawanchichi/.m2/repository/org/apache/derby/derby/10.8.1.2/derby-10.8.1.2.jar
+java.vendor=Apple Inc.
+java.runtime.version=1.6.0_29-b11-402-11M3527
+user.dir=/Users/padawanchichi/Documents/divers/Cours/TIW3/projet/modele
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://master-info.univ-lyon1.fr/M2TI/TIW5/services_owl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="OWLMappingService" targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services_owl">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://master-info.univ-lyon1.fr/M2TI/TIW5/services_owl">
+      <!--  Définition des trois opérations du service en explicitant le type de leurs arguments et valeurs de retour (s'il y a) -->
+      <!--  Opération "mapOWL" -->
+      <xsd:element name="mapOWL">
+      <xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="filepath1" minOccurs="1" maxOccurs="1" type="xsd:string"/>			
+			</xsd:sequence>
+		</xsd:complexType>
+      </xsd:element>             
+      
+      <!--  Opération "mapOWL" : valeur de retour de type simple booléen -->
+      <xsd:element name="mapOWLResponse" type="tns:mapOWLResponse"/>
+	<xsd:complexType name="mapOWLResponse">
+		<xsd:sequence>
+			<xsd:element name="target" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>			
+			
+    </xsd:schema>
+  </wsdl:types>
+  <!-- Messages wsdl -->
+  <wsdl:message name="mapOWLRequest">
+    <wsdl:part element="tns:mapOWL" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="mapOWLResponse">
+    <wsdl:part element="tns:mapOWLResponse" name="parameters"/>
+  </wsdl:message>
+    
+  <wsdl:portType name="OWLMapping">
+    <wsdl:operation name="mapOWL">
+      <wsdl:input message="tns:mapOWLRequest"/>
+      <wsdl:output message="tns:mapOWLResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OWLMappingSOAP" type="tns:OWLMapping">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="mapOWL">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>       
+  </wsdl:binding>
+  <wsdl:service name="OWLMapping">
+    <wsdl:port binding="tns:OWLMappingSOAP" name="OWLMappingSOAP">
+      <soap:address location="http://localhost:8080/web-interface/services/OWLMappingService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

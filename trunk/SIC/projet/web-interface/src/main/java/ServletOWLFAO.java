@@ -32,9 +32,12 @@ private static final long serialVersionUID = 1L;
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		out = response.getWriter();
 		FAOOwl_Service f=new FAOOwl_Service();
 		FAOOwl fa = f.getFAOOwlSOAP();
-		out.println(fa.parseOWL("a"));
+		String s = fa.parseOWL("bd.exp");
+		out.println("<html><body><h1>Conversion du fichier express en fichier OWL</h1>" +
+				"<p>URL du fichier OWL : <a href='" + s +"'> Ouvrir le fichier</url></p></body></html>");
 	}
 	
 	/**
