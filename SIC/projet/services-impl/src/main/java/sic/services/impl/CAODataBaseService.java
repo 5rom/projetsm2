@@ -1,16 +1,22 @@
 package sic.services.impl;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.ws.Holder;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import sic.services.utils.cao.RelDBUtils;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_cao.CAODataBase;
+import fr.univ_lyon1.master_info.m2ti.tiw5.services_cao.GetProduitListResponse;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_cao.PmajeurPmineur;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_cao.PnumPnom;
-
 
 
 
@@ -42,14 +48,13 @@ public class CAODataBaseService implements CAODataBase{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-/*
+
 		try {
 			r.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-*/		
 		return success;
 	}
 
@@ -74,14 +79,13 @@ public class CAODataBaseService implements CAODataBase{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-/*
+
 		try {
 			r.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-*/
 		return list;
 	}
 
@@ -106,14 +110,13 @@ public class CAODataBaseService implements CAODataBase{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-/*
+
 		try {
 			r.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-*/
 		return list;
 	}
 
@@ -135,14 +138,13 @@ public class CAODataBaseService implements CAODataBase{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-/*
+
 		try {
 			r.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-*/		
 		return success;
 	}
 
@@ -162,14 +164,13 @@ public class CAODataBaseService implements CAODataBase{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-/*
+
 		try {
 			r.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-*/		
 		return success;
 	}
 
@@ -186,14 +187,13 @@ public class CAODataBaseService implements CAODataBase{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-/*
+
 		try {
 			r.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-*/
 		return success;
 	}
 
@@ -215,16 +215,14 @@ public class CAODataBaseService implements CAODataBase{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-/*
+
 		try {
 			r.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
 		return success;
-
 	}
 
 }
