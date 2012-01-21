@@ -10,13 +10,7 @@
 <form action="MenuServlet" method="post">
 <input type="submit" name="bouton" value="Afficher les produits de la base">
 </form>
-<h2>Remplir le panier</h2>
-<!--  Formulaire de consultation de la base -->
-<br>
-<FORM METHOD=POST ACTION="testPanier.jsp">
-Which album? <INPUT TYPE=TEXT NAME=album SIZE=20>
-<P><INPUT TYPE=SUBMIT>
-</FORM>
+
 
 <br>
 <%@page import="panier.Panier" %>
@@ -27,8 +21,8 @@ if (session.getAttribute( "panier" )==null){
 	%><h1>test</h1><%
 	 
 } else {
-	%><h1>Deja dans la session</h1><%
-    out.println("<html><body>  Albums du panier\n<br>"+
+	
+    out.println("Contenu du panier\n<br>"+
     		"<table border=\"1\">\n"+
     		"<tr>\n"+
     		"<th>AlbumID</th>\n"+
@@ -44,10 +38,19 @@ if (session.getAttribute( "panier" )==null){
     out.println("</table><br>\n");
     
     // Pour valider la commande on parcourera le panier et pour chaque id Album on fait qte * prix de getAlbumDescription.
-}
-
-
-%>
+    %>
+	<!--  Formulaire de validation de la commande -->
+	<br>
+	<form action="http://localhost:8085/provided-services/banque.jsp" method="post">
+	<input type="hidden" name="redirectURL" value="http://localhost:8086/web-interface/index.jsp">
+	<input type="hidden" name="confirmeA" value="English">
+	<input type="hidden" name="combien" value="<%out.println(p2.getPricePanier());%>">
+	<input type="submit" name="bouton" value="Valider la commande">
+	</form>    
+    <%
+	}
+	%>
+<br>
 
 
 <br>
