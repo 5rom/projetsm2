@@ -9,10 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.univ_lyon1.master_info.m2ti.tiw5.services.Album;
+import panier.Panier;
 
+import fr.univ_lyon1.master_info.m2ti.tiw5.services.Album;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services.CDCataloguePortType;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services.CDCatalogueService;
+
 
 
 
@@ -64,6 +66,7 @@ public class MenuServlet extends HttpServlet {
 			
 			CDCatalogueService cDCS= new CDCatalogueService();
 			CDCataloguePortType cDCPT = cDCS.getCDCataloguePort();
+			Panier p = (Panier)request.getSession().getAttribute("panier");
             out.println("<html><body>  Albums de la base\n<br>"+
 	        		"<table border=\"1\">\n"+
 	        		"<tr>\n"+
@@ -75,6 +78,7 @@ public class MenuServlet extends HttpServlet {
            List<Album> albums = cDCPT.getAlbumsFromCatalogue();
            for (int i=0; i<albums.size();i++){
         	   out.println("<tr><td>"+albums.get(i).getTitre()+"</td></tr>\n");
+        	   p.addAlbumPanier(albums.get(i).getId(), 1);
            }			
             
             out.println("</table><br>\n");   
