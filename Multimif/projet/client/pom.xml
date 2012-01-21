@@ -32,7 +32,7 @@
 					<id>generate-sources</id>
 					<phase>generate-sources</phase>
 					<configuration>
-						<sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
+						<sourceRoot>src/main/java</sourceRoot>
 						<wsdlOptions>
 							<wsdlOption>
 								<!--<wsdl>${basedir}/src/main/resources/album-data.wsdl</wsdl>-->
