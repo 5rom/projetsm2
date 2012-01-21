@@ -40,35 +40,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddAlbumDescription }
+     * Create an instance of {@link GetAlbumsFromCatalogueResponse }
      * 
      */
-    public AddAlbumDescription createAddAlbumDescription() {
-        return new AddAlbumDescription();
-    }
-
-    /**
-     * Create an instance of {@link GetAlbumsFromCatalogue }
-     * 
-     */
-    public GetAlbumsFromCatalogue createGetAlbumsFromCatalogue() {
-        return new GetAlbumsFromCatalogue();
-    }
-
-    /**
-     * Create an instance of {@link Album }
-     * 
-     */
-    public Album createAlbum() {
-        return new Album();
-    }
-
-    /**
-     * Create an instance of {@link GetAlbumDescription }
-     * 
-     */
-    public GetAlbumDescription createGetAlbumDescription() {
-        return new GetAlbumDescription();
+    public GetAlbumsFromCatalogueResponse createGetAlbumsFromCatalogueResponse() {
+        return new GetAlbumsFromCatalogueResponse();
     }
 
     /**
@@ -80,11 +56,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAlbumsFromCatalogueForArtist }
+     * Create an instance of {@link Piste }
      * 
      */
-    public GetAlbumsFromCatalogueForArtist createGetAlbumsFromCatalogueForArtist() {
-        return new GetAlbumsFromCatalogueForArtist();
+    public Piste createPiste() {
+        return new Piste();
     }
 
     /**
@@ -96,19 +72,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAlbumsFromCatalogueResponse }
+     * Create an instance of {@link GetAlbumsFromCatalogue }
      * 
      */
-    public GetAlbumsFromCatalogueResponse createGetAlbumsFromCatalogueResponse() {
-        return new GetAlbumsFromCatalogueResponse();
+    public GetAlbumsFromCatalogue createGetAlbumsFromCatalogue() {
+        return new GetAlbumsFromCatalogue();
     }
 
     /**
-     * Create an instance of {@link Test }
+     * Create an instance of {@link GetAlbumDescription }
      * 
      */
-    public Test createTest() {
-        return new Test();
+    public GetAlbumDescription createGetAlbumDescription() {
+        return new GetAlbumDescription();
+    }
+
+    /**
+     * Create an instance of {@link GetAlbumsFromCatalogueForArtist }
+     * 
+     */
+    public GetAlbumsFromCatalogueForArtist createGetAlbumsFromCatalogueForArtist() {
+        return new GetAlbumsFromCatalogueForArtist();
+    }
+
+    /**
+     * Create an instance of {@link Album }
+     * 
+     */
+    public Album createAlbum() {
+        return new Album();
+    }
+
+    /**
+     * Create an instance of {@link AddAlbumDescription }
+     * 
+     */
+    public AddAlbumDescription createAddAlbumDescription() {
+        return new AddAlbumDescription();
     }
 
     /**
@@ -128,11 +128,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Piste }
+     * Create an instance of {@link Test }
      * 
      */
-    public Piste createPiste() {
-        return new Piste();
+    public Test createTest() {
+        return new Test();
     }
 
     /**

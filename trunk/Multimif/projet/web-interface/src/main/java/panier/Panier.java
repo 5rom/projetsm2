@@ -52,7 +52,6 @@ public class Panier {
 			CDCataloguePortType cDCPT = cDCS.getCDCataloguePort();
 			total=total+(cDCPT.getAlbumDescription(mapKey).getPrix()*listeAlbumsQte.get(mapKey));
 		}
-		
 		return total;
 	}
     

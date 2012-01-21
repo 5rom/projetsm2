@@ -43,7 +43,7 @@ public class MessageActionServlet extends HttpServlet {
 		ServletOutputStream out = response.getOutputStream();
 		out.println("<html><head><title>Actions banque</title></head><body>");
 		out.println("<h1>Actions disponibles</h1>");
-		out.println("<p><a href=\"\">Rafra”chir</a></p>");
+		out.println("<p><a href=\"\">Rafraichir</a></p>");
 		out.println("<table>");
 		for (MessageAction ma : dao.getAllActions()) {
 			out.println("<tr>");
@@ -51,7 +51,7 @@ public class MessageActionServlet extends HttpServlet {
 					+ "<input type=\"hidden\" name=\"id\" value=\""
 					+ ma.getId()
 					+ "\"/>"
-					+ "<input type=\"submit\" value=\"DŽclencher\" name=\"confirm\"/></form></td>");
+					+ "<input type=\"submit\" value=\"Declencher\" name=\"confirm\"/></form></td>");
 			out.println("<td>" + ma.getTransactionId() + "</td>");
 			out.println("<td>vers: "
 					+ ma.getAdresseXMLAsString().replaceAll("<", "&lt;")
