@@ -36,7 +36,7 @@ public class MessageActionDAO {
 		} catch (WebServiceException e) {
 			log.error("erreur lors de l'envoi du message", e);
 		}
-		log.info("Message envoyé à {}", action.getAdresseXMLAsString());
+		log.info("Message envoye a {}", action.getAdresseXMLAsString());
 		em.remove(action);
 	}
 

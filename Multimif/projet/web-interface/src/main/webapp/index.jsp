@@ -18,7 +18,7 @@
 if (session.getAttribute( "panier" )==null){
 	Panier p = new Panier();	
 	session.setAttribute( "panier", p );
-	%><h1>test</h1><%
+	%><h1>Panier créé</h1><%
 	 
 } else {
 	
@@ -39,14 +39,36 @@ if (session.getAttribute( "panier" )==null){
     
     // Pour valider la commande on parcourera le panier et pour chaque id Album on fait qte * prix de getAlbumDescription.
     %>
+    <%@page import="javax.xml.soap.*" import="javax.xml.namespace.QName" import="java.net.URL" %>
+    <%
+		MessageFactory factory = MessageFactory.newInstance();
+		SOAPMessage message = factory.createMessage();
+		SOAPPart soapPart = message.getSOAPPart();
+		SOAPBody body = message.getSOAPBody();
+		QName bodyName = new QName("http://wombat.ztrade.com",
+		"GetLastTradePrice", "m");
+		SOAPBodyElement bodyElement =
+		body.addBodyElement(bodyName);
+		// bodyElement est utilisable comment un Element DOM    
+		SOAPConnectionFactory
+		soapConnectionFactory =
+		SOAPConnectionFactory.newInstance();
+		SOAPConnection connection =
+		soapConnectionFactory.createConnection();
+		java.net.URL endpoint = new URL("http://wombat.ztrade.com/quotes");
+		/*SOAPMessage resp = connection.call(message, endpoint);
+		connection.close();*/
+
+    %>
+    Prix total : <%out.println(p2.getPricePanier());%>
 	<!--  Formulaire de validation de la commande -->
 	<br>
 	<form action="http://localhost:8085/provided-services/banque.jsp" method="post">
-	<input type="hidden" name="redirectURL" value="http://localhost:8086/web-interface/index.jsp">
-	<input type="hidden" name="confirmeA" value="English">
+	<input type="hidden" name="redirectUrl" value="http://localhost:8081/web-interface/index.jsp">
+	<input type="hidden" name="confirmeA" value="<%//out.println(endpoint.getRef());%>">
 	<input type="hidden" name="combien" value="<%out.println(p2.getPricePanier());%>">
 	<input type="submit" name="bouton" value="Valider la commande">
-	</form>    
+	</form>
     <%
 	}
 	%>

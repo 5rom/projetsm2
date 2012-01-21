@@ -55,12 +55,12 @@ public class BanqueService {
 		if (c == null) {
 			c = new Compte(numero);
 			em.persist(c);
-			log.info("Compte {} créé", numero);
+			log.info("Compte {} cree", numero);
 		}
 		c.setValeur(c.getValeur() - combien);
 		MessageAction msgAction = new MessageAction(confirmeA, combien);
 		em.persist(msgAction);
-		log.info("Action {} ajoutée",msgAction.getId());
+		log.info("Action {} ajoutee",msgAction.getId());
 		log.info("Redirection vers {}",redirectTo);
 		return new RedirectBean(redirectTo,c,msgAction.getTransactionId());
 	}

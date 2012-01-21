@@ -13,7 +13,7 @@ public class DummyClient implements BanqueClient {
 	private static final Logger log = LoggerFactory.getLogger(DummyClient.class);
 	
 	public void confirmOp(String transactionId, double valeur) {
-		log.info("Confirmation reçue par le faux client: {} (valeur: {})", transactionId, valeur);
+		log.info("Confirmation recue par le faux client: {} (valeur: {})", transactionId, valeur);
 	}
 
 }
