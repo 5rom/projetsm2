@@ -1,11 +1,14 @@
 package panier;
 import java.util.HashMap;
 
+import fr.univ_lyon1.master_info.m2ti.tiw5.services.CDCataloguePortType;
+import fr.univ_lyon1.master_info.m2ti.tiw5.services.CDCatalogueService;
+
 
 public class Panier {
 
 	// Liste de couples AlbumID, Qte
-    HashMap<Long,Integer> listeAlbumsQte;
+    private HashMap<Long,Integer> listeAlbumsQte;
 
 
 	public Panier(HashMap<Long, Integer> listeAlbumsQte) {
@@ -37,5 +40,20 @@ public class Panier {
 	public void emptyPanier(){
 		this.listeAlbumsQte.clear();
 	}		
+	
+	/**
+	 * Prix total du panier
+	 * @return
+	 */
+	public double getPricePanier(){
+		double total=0;
+		for (long mapKey : listeAlbumsQte.keySet()) {
+			CDCatalogueService cDCS= new CDCatalogueService();
+			CDCataloguePortType cDCPT = cDCS.getCDCataloguePort();
+			total=total+(cDCPT.getAlbumDescription(mapKey).getPrix()*listeAlbumsQte.get(mapKey));
+		}
+		
+		return total;
+	}
     
 }
