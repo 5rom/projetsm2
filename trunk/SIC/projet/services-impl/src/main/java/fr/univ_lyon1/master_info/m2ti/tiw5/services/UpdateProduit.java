@@ -1,5 +1,5 @@
 
-package fr.univ_lyon1.master_info.m2ti.tiw5.services_owl;
+package fr.univ_lyon1.master_info.m2ti.tiw5.services;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -18,7 +18,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="filepath1" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="pnum" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="pnom" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,36 +30,54 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "filepath1"
+    "pnum",
+    "pnom"
 })
-@XmlRootElement(name = "mapOWL")
-public class MapOWL {
+@XmlRootElement(name = "updateProduit")
+public class UpdateProduit {
 
+    protected long pnum;
     @XmlElement(required = true)
-    protected String filepath1;
+    protected String pnom;
 
     /**
-     * Gets the value of the filepath1 property.
+     * Gets the value of the pnum property.
+     * 
+     */
+    public long getPnum() {
+        return pnum;
+    }
+
+    /**
+     * Sets the value of the pnum property.
+     * 
+     */
+    public void setPnum(long value) {
+        this.pnum = value;
+    }
+
+    /**
+     * Gets the value of the pnom property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getFilepath1() {
-        return filepath1;
+    public String getPnom() {
+        return pnom;
     }
 
     /**
-     * Sets the value of the filepath1 property.
+     * Sets the value of the pnom property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setFilepath1(String value) {
-        this.filepath1 = value;
+    public void setPnom(String value) {
+        this.pnom = value;
     }
 
 }

@@ -32,7 +32,7 @@ public class FAOOwlService implements FAOOwl{
 	@Override
 	public String parseOWL(String filepath) {
 		// TODO Auto-generated method stub
-		String targeturl = new String("file:/Users/padawanchichi/Documents/divers/Cours/TIW3/projet/StyloFAO.owl");
+		String targeturl = new String("file:/tmp/StyloFAO.owl");
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
         IRI ontologyIRI = IRI.create("http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO");
         // Create the document IRI for our ontology

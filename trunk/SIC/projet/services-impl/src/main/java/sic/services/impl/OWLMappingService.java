@@ -13,7 +13,7 @@ import fr.univ_lyon1.master_info.m2ti.tiw5.services_owl.OWLMapping;
 
 public class OWLMappingService implements OWLMapping {
 
-	@Override
+	//@Override ???
 	public String mapOWL(String filepath1, String filepath2) {
 		// TODO Auto-generated method stub
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
@@ -27,6 +27,12 @@ public class OWLMappingService implements OWLMapping {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
+	}
+
+	@Override
+	public String mapOWL(String filepath1) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
