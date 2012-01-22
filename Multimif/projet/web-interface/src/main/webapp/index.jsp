@@ -4,13 +4,21 @@
 <br>
 <a href="http://localhost:8080">La liste des services</a>
 <br>
-<h2>Albums de la base</h2>
+<h2>Tous les albums de la base</h2>
 <!--  Formulaire de consultation de la base -->
 <br>
 <form action="MenuServlet" method="post">
-<input type="submit" name="bouton" value="Afficher les produits de la base">
+<input type="submit" name="bouton" value="Afficher les albums de la base">
 </form>
 
+<br>
+<h2>Tous les albums d'un artiste</h2>
+<!--  Formulaire de consultation de la base -->
+<br>
+<form action="MenuServlet" method="post">
+Nom de l'artiste: <input type="text" name="artiste">
+<input type="submit" name="bouton" value="Afficher les albums de l'artiste">
+</form>
 
 <br>
 <%@page import="panier.Panier" %>
@@ -50,22 +58,22 @@ if (session.getAttribute( "panier" )==null){
 		SOAPBodyElement bodyElement =
 		body.addBodyElement(bodyName);
 		// bodyElement est utilisable comment un Element DOM    
-		SOAPConnectionFactory
-		soapConnectionFactory =
+		SOAPConnectionFactory soapConnectionFactory =
 		SOAPConnectionFactory.newInstance();
 		SOAPConnection connection =
 		soapConnectionFactory.createConnection();
-		java.net.URL endpoint = new URL("http://wombat.ztrade.com/quotes");
+		//URL endpoint = new URL("http://localhost:8085/provided-services/services/banque/DummyClient");
 		/*SOAPMessage resp = connection.call(message, endpoint);
 		connection.close();*/
-
+		
+		//String endpoint ="<EndpointReference xmlns=\"http://www.w3.org/2005/08/addressing\"><Address>http://localhost:8085/provided-services/services/banque/DummyClient</Address></EndpointReference>";
     %>
     Prix total : <%out.println(p2.getPricePanier());%>
 	<!--  Formulaire de validation de la commande -->
 	<br>
 	<form action="http://localhost:8085/provided-services/banque.jsp" method="post">
-	<input type="hidden" name="redirectUrl" value="http://localhost:8081/web-interface/index.jsp">
-	<input type="hidden" name="confirmeA" value="<%//out.println(endpoint.getRef());%>">
+	<input type="hidden" name="redirectUrl" value="http://localhost:8086/web-interface/index.jsp">
+	<input type="hidden" name="confirmeA" value="<%//out.println(endpoint);%>">
 	<input type="hidden" name="combien" value="<%out.println(p2.getPricePanier());%>">
 	<input type="submit" name="bouton" value="Valider la commande">
 	</form>
