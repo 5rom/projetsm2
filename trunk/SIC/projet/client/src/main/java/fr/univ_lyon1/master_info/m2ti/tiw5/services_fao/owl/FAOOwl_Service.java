@@ -46,7 +46,7 @@ public class FAOOwl_Service extends Service {
     public FAOOwl_Service() {
         super(WSDL_LOCATION, SERVICE);
     }
-    
+
 
     /**
      *
