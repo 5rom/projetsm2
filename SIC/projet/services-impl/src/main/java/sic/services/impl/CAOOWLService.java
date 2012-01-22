@@ -23,20 +23,23 @@ import org.semanticweb.owlapi.model.PrefixManager;
 import org.semanticweb.owlapi.util.DefaultPrefixManager;
 import org.semanticweb.owlapi.util.SimpleIRIMapper;
 
+
 import sic.modele.Produit;
 import sic.services.utils.cao.RelDBUtils;
-import fr.univ_lyon1.master_info.m2ti.tiw5.services_cao.owl.CAOOwl;
+import fr.univ_lyon1.master_info.m2ti.tiw5.services_cao.owl.CAOOWL;
 
-public class CAOOWLService implements CAOOwl {
+public class CAOOWLService implements CAOOWL {
 
 	@Override
 	public String parseOWL(String filepath) {
- 	     try {
+		try {
+				return "toto";
+				/*String targeturl = new String("file:/tmp/StyloFAO.owl");
 	            // Create the manager that we will use to load ontologies.
 	            OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 	            IRI ontologyIRI = IRI.create("http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO");
 	            // Create the document IRI for our ontology
-	            IRI documentIRI = IRI.create("file:/tmp/StyloCAO.owl");	            
+	            IRI documentIRI = IRI.create(targeturl);	            
 	            // Set up a mapping, which maps the ontology to the document IRI
 	            SimpleIRIMapper mapper = new SimpleIRIMapper(ontologyIRI, documentIRI);
 	            manager.addIRIMapper(mapper);
@@ -104,26 +107,21 @@ public class CAOOWLService implements CAOOwl {
 	                }
 	               
 	                manager.saveOntology(ontology);
-	                
+	                System.out.println("fp1:"+filepath);
+	                return filepath;
 	    		} catch (SQLException e) {
 	    			// TODO Auto-generated catch block
 	    			e.printStackTrace();
 	    		}
-
-	    		try {
-	    			r.close();
-	    		} catch (SQLException e) {
-	    			// TODO Auto-generated catch block
-	    			e.printStackTrace();
-	    		}	        	
-
+     	
+*/
 	    	        }
 	    	        catch (Exception e) {
 	    	            e.printStackTrace();
 	    	        }
-
+	    	        System.out.println("fp2:"+filepath);
 	    	        //TODO
-	    	        return "toto";
+	    	        return filepath;
 
 	}
 
