@@ -40,35 +40,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAlbumsFromCatalogueResponse }
+     * Create an instance of {@link GetAlbumDescriptionResponse }
      * 
      */
-    public GetAlbumsFromCatalogueResponse createGetAlbumsFromCatalogueResponse() {
-        return new GetAlbumsFromCatalogueResponse();
-    }
-
-    /**
-     * Create an instance of {@link TestResponse }
-     * 
-     */
-    public TestResponse createTestResponse() {
-        return new TestResponse();
-    }
-
-    /**
-     * Create an instance of {@link Piste }
-     * 
-     */
-    public Piste createPiste() {
-        return new Piste();
-    }
-
-    /**
-     * Create an instance of {@link ArtisteRef }
-     * 
-     */
-    public ArtisteRef createArtisteRef() {
-        return new ArtisteRef();
+    public GetAlbumDescriptionResponse createGetAlbumDescriptionResponse() {
+        return new GetAlbumDescriptionResponse();
     }
 
     /**
@@ -80,27 +56,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAlbumDescription }
+     * Create an instance of {@link Piste }
      * 
      */
-    public GetAlbumDescription createGetAlbumDescription() {
-        return new GetAlbumDescription();
-    }
-
-    /**
-     * Create an instance of {@link GetAlbumsFromCatalogueForArtist }
-     * 
-     */
-    public GetAlbumsFromCatalogueForArtist createGetAlbumsFromCatalogueForArtist() {
-        return new GetAlbumsFromCatalogueForArtist();
-    }
-
-    /**
-     * Create an instance of {@link Album }
-     * 
-     */
-    public Album createAlbum() {
-        return new Album();
+    public Piste createPiste() {
+        return new Piste();
     }
 
     /**
@@ -112,14 +72,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAlbumDescriptionResponse }
-     * 
-     */
-    public GetAlbumDescriptionResponse createGetAlbumDescriptionResponse() {
-        return new GetAlbumDescriptionResponse();
-    }
-
-    /**
      * Create an instance of {@link GetAlbumsFromCatalogueForArtistResponse }
      * 
      */
@@ -128,11 +80,59 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAlbumDescription }
+     * 
+     */
+    public GetAlbumDescription createGetAlbumDescription() {
+        return new GetAlbumDescription();
+    }
+
+    /**
+     * Create an instance of {@link GetAlbumsFromCatalogueResponse }
+     * 
+     */
+    public GetAlbumsFromCatalogueResponse createGetAlbumsFromCatalogueResponse() {
+        return new GetAlbumsFromCatalogueResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAlbumsFromCatalogueForArtist }
+     * 
+     */
+    public GetAlbumsFromCatalogueForArtist createGetAlbumsFromCatalogueForArtist() {
+        return new GetAlbumsFromCatalogueForArtist();
+    }
+
+    /**
      * Create an instance of {@link Test }
      * 
      */
     public Test createTest() {
         return new Test();
+    }
+
+    /**
+     * Create an instance of {@link TestResponse }
+     * 
+     */
+    public TestResponse createTestResponse() {
+        return new TestResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArtisteRef }
+     * 
+     */
+    public ArtisteRef createArtisteRef() {
+        return new ArtisteRef();
+    }
+
+    /**
+     * Create an instance of {@link Album }
+     * 
+     */
+    public Album createAlbum() {
+        return new Album();
     }
 
     /**

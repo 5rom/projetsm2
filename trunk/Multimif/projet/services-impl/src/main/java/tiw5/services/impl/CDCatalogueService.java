@@ -43,7 +43,8 @@ public class CDCatalogueService {
 	public List<Album> getAlbumsFromCatalogueForArtist(String uri) {
 		EntityManager em = Persistence.createEntityManagerFactory("etudiant")
 				.createEntityManager();
-		ArrayList<Album> list = (ArrayList<Album>) em.createQuery("SELECT a FROM Album a, IN (a.artistes) b where b.uri='"+uri+"' order by a.id").getResultList();
+		//ArrayList<Album> list = (ArrayList<Album>) em.createQuery("SELECT a FROM Album a, IN (a.artistes) b where b.uri='"+uri+"' order by a.id").getResultList();
+		ArrayList<Album> list = (ArrayList<Album>) em.createQuery("SELECT a FROM Album a, IN (a.artistes) b where b.uri like '%"+uri+"%' order by a.id").getResultList();
 		return list;
 	}
 	

@@ -47,7 +47,8 @@ public class MenuServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		out = response.getWriter();
 		String bouton=request.getParameter("bouton");
-		if (bouton.equals("Afficher les produits de la base")){
+		Panier p = (Panier)request.getSession().getAttribute("panier");
+		if (bouton.equals("Afficher les albums de la base")){
 			/*CAODataBase_Service cAODBS= new CAODataBase_Service();
 			CAODataBase cAODB = cAODBS.getCAODataBaseSOAP();
             out.println("<html><body>  Produits de la base\n<br>"+
@@ -66,19 +67,61 @@ public class MenuServlet extends HttpServlet {
 			
 			CDCatalogueService cDCS= new CDCatalogueService();
 			CDCataloguePortType cDCPT = cDCS.getCDCataloguePort();
-			Panier p = (Panier)request.getSession().getAttribute("panier");
-            out.println("<html><body>  Albums de la base\n<br>"+
+			List<Album> albums = cDCPT.getAlbumsFromCatalogue();
+			out.println("<html><body>  <h2>Albums de la base<h2>\n<br>"+
 	        		"<table border=\"1\">\n"+
 	        		"<tr>\n"+
+	        		"<th>Artiste</th>\n"+	        		
 	        		"<th>Titre</th>\n"+
-	        		//"<th>Pnom</th>\n"+
+	        		"<th>Genre</th>\n"+	        		
+	        		"<th>Prix</th>\n"+
 	        		"</tr>\n");
-			//for chaque element de la liste de cAODB.getProductList()
-			//faire out.println(out.println("<tr><td>"+albums.get(0).getPiste(i).getTitre()+"</td><td>"+albums.get(0).getPiste(i).getDuree()+" min</td></tr>\n");
-           List<Album> albums = cDCPT.getAlbumsFromCatalogue();
+
+          for (int i=0; i<albums.size();i++){
+       	   String artistesListe ="";
+       	   for (int j=0;j<albums.get(i).getArtiste().size();j++){
+       		   artistesListe+=albums.get(i).getArtiste().get(j).getUri()+"; ";
+       	   }
+	       	   out.println("<tr><td>"+artistesListe+"</td>\n");
+	       	   out.println("<td>"+albums.get(i).getTitre()+"</td>\n");
+	       	   out.println("<td>"+albums.get(i).getGenre()+"</td>\n");
+	       	   out.println("<td>"+albums.get(i).getPrix()+"</td></tr>\n");
+	       	   p.addAlbumPanier(albums.get(i).getId(), 1);
+          }           
+           
+            out.println("</table><br>\n");   
+            
+	        //Bouton retour
+			out.println("<FORM Method=\"POST\" Action=\"index.jsp\">"+
+			"<INPUT type=\"submit\" value=\"Retour\">"+
+			"</FORM>"+				
+					
+			"</BODY></HTML>");            
+		} else 	if (bouton.equals("Afficher les albums de l'artiste")){
+			
+			String artiste =request.getParameter("artiste");
+			CDCatalogueService cDCS= new CDCatalogueService();
+			CDCataloguePortType cDCPT = cDCS.getCDCataloguePort();
+            out.println("<html><body>  <h2>Albums des artistes trouvés proches de '"+artiste+"' <h2>\n<br>"+
+	        		"<table border=\"1\">\n"+
+	        		"<tr>\n"+
+	        		"<th>Artiste</th>\n"+	        		
+	        		"<th>Titre</th>\n"+
+	        		"<th>Genre</th>\n"+	        		
+	        		"<th>Prix</th>\n"+
+	        		"</tr>\n");
+
+           List<Album> albums = cDCPT.getAlbumsFromCatalogueForArtist(artiste);
            for (int i=0; i<albums.size();i++){
-        	   out.println("<tr><td>"+albums.get(i).getTitre()+"</td></tr>\n");
-        	   p.addAlbumPanier(albums.get(i).getId(), 1);
+        	   String artistesListe ="";
+        	   for (int j=0;j<albums.get(i).getArtiste().size();j++){
+        		   artistesListe+=albums.get(i).getArtiste().get(j).getUri()+"; ";
+        	   }
+        	   out.println("<tr><td>"+artistesListe+"</td>\n");
+        	   out.println("<td>"+albums.get(i).getTitre()+"</td>\n");
+        	   out.println("<td>"+albums.get(i).getGenre()+"</td>\n");
+        	   out.println("<td>"+albums.get(i).getPrix()+"</td></tr>\n");
+        	   
            }			
             
             out.println("</table><br>\n");   
