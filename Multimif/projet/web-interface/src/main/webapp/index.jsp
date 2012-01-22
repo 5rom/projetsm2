@@ -77,6 +77,9 @@ if (session.getAttribute( "panier" )==null){
 	<input type="hidden" name="combien" value="<%out.println(p2.getPricePanier());%>">
 	<input type="submit" name="bouton" value="Valider la commande">
 	</form>
+	<form action="MenuServlet" method="post">
+	<input type="submit" name="bouton" value="Vider le panier">
+	</form>
     <%
 	}
 	%>

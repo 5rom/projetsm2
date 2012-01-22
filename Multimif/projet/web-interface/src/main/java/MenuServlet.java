@@ -83,10 +83,9 @@ public class MenuServlet extends HttpServlet {
        		   artistesListe+=albums.get(i).getArtiste().get(j).getUri()+"; ";
        	   }
 	       	   out.println("<tr><td>"+artistesListe+"</td>\n");
-	       	   out.println("<td>"+albums.get(i).getTitre()+"</td>\n");
+	       	   out.println("<td><a href=\"http://localhost:8086/web-interface/AlbumServlet?id="+albums.get(i).getId()+"\">"+albums.get(i).getTitre()+"</a></td>\n");
 	       	   out.println("<td>"+albums.get(i).getGenre()+"</td>\n");
 	       	   out.println("<td>"+albums.get(i).getPrix()+"</td></tr>\n");
-	       	   p.addAlbumPanier(albums.get(i).getId(), 1);
           }           
            
             out.println("</table><br>\n");   
@@ -117,10 +116,10 @@ public class MenuServlet extends HttpServlet {
         	   for (int j=0;j<albums.get(i).getArtiste().size();j++){
         		   artistesListe+=albums.get(i).getArtiste().get(j).getUri()+"; ";
         	   }
-        	   out.println("<tr><td>"+artistesListe+"</td>\n");
-        	   out.println("<td>"+albums.get(i).getTitre()+"</td>\n");
-        	   out.println("<td>"+albums.get(i).getGenre()+"</td>\n");
-        	   out.println("<td>"+albums.get(i).getPrix()+"</td></tr>\n");
+	       	   out.println("<tr><td>"+artistesListe+"</td>\n");
+	       	   out.println("<td><a href=\"http://localhost:8086/web-interface/AlbumServlet?id="+albums.get(i).getId()+"\">"+albums.get(i).getTitre()+"</a></td>\n");
+	       	   out.println("<td>"+albums.get(i).getGenre()+"</td>\n");
+	       	   out.println("<td>"+albums.get(i).getPrix()+"</td></tr>\n");
         	   
            }			
             
@@ -130,8 +129,17 @@ public class MenuServlet extends HttpServlet {
 			out.println("<FORM Method=\"POST\" Action=\"index.jsp\">"+
 			"<INPUT type=\"submit\" value=\"Retour\">"+
 			"</FORM>"+				
-					
 			"</BODY></HTML>");            
+		} else 	if (bouton.equals("Vider le panier")){
+			
+			p.emptyPanier();
+
+            out.println("<HTML><BODY><h2>Panier vid&eacute; avec succes<h2>\n<br>"); 
+	        //Bouton retour
+			out.println("<FORM Method=\"POST\" Action=\"index.jsp\">"+
+			"<INPUT type=\"submit\" value=\"Retour\">"+
+			"</FORM>"+				
+			"</BODY></HTML>");  
 		} 
 		
 	}
