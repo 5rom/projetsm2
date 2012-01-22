@@ -59,13 +59,14 @@
 					<id>generate-sources</id>
 					<phase>generate-sources</phase>
 					<configuration>
-						<sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
+						<sourceRoot>src/main/java</sourceRoot>
 						<wsdlOptions>
 							<wsdlOption>
-								<!--<wsdl>${basedir}/src/main/resources/CAODataBaseService.wsdl</wsdl> -->
+								<!-- <wsdl>${basedir}/src/main/resources/CAODataBaseService.wsdl</wsdl> -->
 								<!-- <wsdl>${basedir}/src/main/resources/FAODataBaseService.wsdl</wsdl> -->
 				                <!-- <wsdl>${basedir}/src/main/resources/FAOOwlService.wsdl</wsdl> -->
-				                <wsdl>${basedir}/src/main/resources/CAOOwlService.wsdl</wsdl>
+				                <!-- <wsdl>${basedir}/src/main/resources/CAOOwlService.wsdl</wsdl> -->
+				                <wsdl>${basedir}/src/main/resources/OWLMappingService.wsdl</wsdl>
 				               	<!-- <extraargs>
 				                    <extraarg>-server</extraarg>
 				                    <extraarg>-verbose</extraarg>

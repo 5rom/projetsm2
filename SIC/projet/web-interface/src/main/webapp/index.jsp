@@ -83,6 +83,6 @@ Nouveau nom: <input type="text" name="pnom" />
 <form action="ServletOWLCAO" method="post">
 <input type="submit" name="bouton" value="Traduire">
 </form>
-
+<!-- Voir comment envoyer un fichier dans le form -->
 </body>
 </html>

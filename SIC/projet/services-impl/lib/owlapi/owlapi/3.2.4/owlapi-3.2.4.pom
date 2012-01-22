@@ -1,0 +1,15 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>owlapi</groupId>
+  <artifactId>owlapi</artifactId>
+  <packaging>jar</packaging>
+  <name>OWLAPI</name>
+  <version>3.2.4</version>
+  <url>http://owlapi.sourceforge.net/</url>
+  <description>Java interface and implementation for the Web Ontology Language OWL</description>
+  <scm>
+    <url>http://sourceforge.net/svn/?group_id=90989</url>
+  </scm>
+  <dependencies>
+  </dependencies>
+</project>
