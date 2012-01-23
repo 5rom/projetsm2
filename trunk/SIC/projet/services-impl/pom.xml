@@ -29,7 +29,12 @@
 		<artifactId>owlapi</artifactId>
 		<version>3.2.4</version>
 	</dependency>
-    <dependency>
+	<dependency>
+		<groupId>ojdbc</groupId>
+		<artifactId>ojdbc</artifactId>
+		<version>1.4.0</version>
+	</dependency>
+    <dependency>    
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
