@@ -34,19 +34,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MapOWLResponse }
-     * 
-     */
-    public MapOWLResponse createMapOWLResponse() {
-        return new MapOWLResponse();
-    }
-
-    /**
      * Create an instance of {@link MapOWL }
      * 
      */
     public MapOWL createMapOWL() {
         return new MapOWL();
+    }
+
+    /**
+     * Create an instance of {@link MapOWLResponse }
+     * 
+     */
+    public MapOWLResponse createMapOWLResponse() {
+        return new MapOWLResponse();
     }
 
     /**

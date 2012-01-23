@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://masterinfo.univ-lyon1.fr/ontologies/Stylo#"
+     xml:base="http://masterinfo.univ-lyon1.fr/ontologies/Stylo"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:StyloFAO="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:StyloCAO="http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#">
+    <owl:Ontology rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/Stylo"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Bille -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Bille">
+        <owl:equivalentClass rdf:resource="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Bille"/>
+    </owl:Class>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Bouchon -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Bouchon">
+        <owl:equivalentClass rdf:resource="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Bouchon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Capuchon -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Capuchon">
+        <owl:equivalentClass rdf:resource="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Capuchon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Corps -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Corps"/>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Recharge -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Recharge">
+        <owl:equivalentClass rdf:resource="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Cartouche"/>
+    </owl:Class>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Reservoir -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Reservoir">
+        <owl:equivalentClass rdf:resource="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Mine"/>
+    </owl:Class>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Stylo -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Stylo">
+        <owl:equivalentClass rdf:resource="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Stylo"/>
+    </owl:Class>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Support_de_tete -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Support_de_tete">
+        <rdfs:subClassOf rdf:resource="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Objet_conique"/>
+    </owl:Class>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Tete -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Tete">
+        <rdfs:subClassOf rdf:resource="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Objet_conique"/>
+    </owl:Class>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Teted_ecriture -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Teted_ecriture"/>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Tube -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Tube">
+        <owl:equivalentClass rdf:resource="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Tube_cylindrique"/>
+    </owl:Class>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Bille -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Bille">
+        <rdfs:subClassOf rdf:resource="http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Teted_ecriture"/>
+    </owl:Class>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Bouchon -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Bouchon">
+        <rdfs:subClassOf rdf:resource="http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Corps"/>
+    </owl:Class>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Capuchon -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Capuchon"/>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Cartouche -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Cartouche">
+        <rdfs:subClassOf rdf:resource="http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Corps"/>
+    </owl:Class>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Mine -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Mine"/>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Objet_conique -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Objet_conique">
+        <rdfs:subClassOf rdf:resource="http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Teted_ecriture"/>
+    </owl:Class>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Stylo -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Stylo"/>
+    
+
+
+    <!-- http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Tube_cylindrique -->
+
+    <owl:Class rdf:about="http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO#Tube_cylindrique">
+        <rdfs:subClassOf rdf:resource="http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO#Corps"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.4.1806) http://owlapi.sourceforge.net -->
+
