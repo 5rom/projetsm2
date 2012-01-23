@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "TestResponse")
 public class TestResponse {
 
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     protected String out;
 
     /**

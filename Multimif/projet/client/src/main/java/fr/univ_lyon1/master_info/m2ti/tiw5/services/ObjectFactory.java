@@ -24,13 +24,17 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _GetAlbumsFromCatalogueForTitle_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "getAlbumsFromCatalogueForTitle");
+    private final static QName _GetAlbumsFromCatalogueForTitleResponse_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "getAlbumsFromCatalogueForTitleResponse");
+    private final static QName _GetAlbumsFromCatalogueForGenreResponse_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "getAlbumsFromCatalogueForGenreResponse");
     private final static QName _GetAlbumsFromCatalogueResponse_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "getAlbumsFromCatalogueResponse");
     private final static QName _GetAlbumDescription_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "getAlbumDescription");
     private final static QName _GetAlbumDescriptionResponse_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "getAlbumDescriptionResponse");
-    private final static QName _GetAlbumsFromCatalogueForArtistResponse_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "getAlbumsFromCatalogueForArtistResponse");
+    private final static QName _GetAlbumsFromCatalogueForGenre_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "getAlbumsFromCatalogueForGenre");
     private final static QName _GetAlbumsFromCatalogueForArtist_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "getAlbumsFromCatalogueForArtist");
-    private final static QName _GetAlbumsFromCatalogue_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "getAlbumsFromCatalogue");
+    private final static QName _GetAlbumsFromCatalogueForArtistResponse_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "getAlbumsFromCatalogueForArtistResponse");
     private final static QName _AddAlbumDescription_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "addAlbumDescription");
+    private final static QName _GetAlbumsFromCatalogue_QNAME = new QName("http://master-info.univ-lyon1.fr/M2TI/TIW5/services", "getAlbumsFromCatalogue");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: fr.univ_lyon1.master_info.m2ti.tiw5.services
@@ -40,27 +44,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAlbumDescriptionResponse }
+     * Create an instance of {@link GetAlbumsFromCatalogueForGenre }
      * 
      */
-    public GetAlbumDescriptionResponse createGetAlbumDescriptionResponse() {
-        return new GetAlbumDescriptionResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetAlbumsFromCatalogue }
-     * 
-     */
-    public GetAlbumsFromCatalogue createGetAlbumsFromCatalogue() {
-        return new GetAlbumsFromCatalogue();
-    }
-
-    /**
-     * Create an instance of {@link Piste }
-     * 
-     */
-    public Piste createPiste() {
-        return new Piste();
+    public GetAlbumsFromCatalogueForGenre createGetAlbumsFromCatalogueForGenre() {
+        return new GetAlbumsFromCatalogueForGenre();
     }
 
     /**
@@ -69,6 +57,22 @@ public class ObjectFactory {
      */
     public AddAlbumDescription createAddAlbumDescription() {
         return new AddAlbumDescription();
+    }
+
+    /**
+     * Create an instance of {@link GetAlbumsFromCatalogueForTitleResponse }
+     * 
+     */
+    public GetAlbumsFromCatalogueForTitleResponse createGetAlbumsFromCatalogueForTitleResponse() {
+        return new GetAlbumsFromCatalogueForTitleResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAlbumsFromCatalogueForGenreResponse }
+     * 
+     */
+    public GetAlbumsFromCatalogueForGenreResponse createGetAlbumsFromCatalogueForGenreResponse() {
+        return new GetAlbumsFromCatalogueForGenreResponse();
     }
 
     /**
@@ -88,11 +92,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAlbumsFromCatalogueResponse }
+     * Create an instance of {@link Piste }
      * 
      */
-    public GetAlbumsFromCatalogueResponse createGetAlbumsFromCatalogueResponse() {
-        return new GetAlbumsFromCatalogueResponse();
+    public Piste createPiste() {
+        return new Piste();
+    }
+
+    /**
+     * Create an instance of {@link GetAlbumsFromCatalogue }
+     * 
+     */
+    public GetAlbumsFromCatalogue createGetAlbumsFromCatalogue() {
+        return new GetAlbumsFromCatalogue();
     }
 
     /**
@@ -112,11 +124,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TestResponse }
+     * Create an instance of {@link GetAlbumsFromCatalogueResponse }
      * 
      */
-    public TestResponse createTestResponse() {
-        return new TestResponse();
+    public GetAlbumsFromCatalogueResponse createGetAlbumsFromCatalogueResponse() {
+        return new GetAlbumsFromCatalogueResponse();
     }
 
     /**
@@ -128,11 +140,62 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAlbumsFromCatalogueForTitle }
+     * 
+     */
+    public GetAlbumsFromCatalogueForTitle createGetAlbumsFromCatalogueForTitle() {
+        return new GetAlbumsFromCatalogueForTitle();
+    }
+
+    /**
+     * Create an instance of {@link TestResponse }
+     * 
+     */
+    public TestResponse createTestResponse() {
+        return new TestResponse();
+    }
+
+    /**
      * Create an instance of {@link Album }
      * 
      */
     public Album createAlbum() {
         return new Album();
+    }
+
+    /**
+     * Create an instance of {@link GetAlbumDescriptionResponse }
+     * 
+     */
+    public GetAlbumDescriptionResponse createGetAlbumDescriptionResponse() {
+        return new GetAlbumDescriptionResponse();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAlbumsFromCatalogueForTitle }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://master-info.univ-lyon1.fr/M2TI/TIW5/services", name = "getAlbumsFromCatalogueForTitle")
+    public JAXBElement<GetAlbumsFromCatalogueForTitle> createGetAlbumsFromCatalogueForTitle(GetAlbumsFromCatalogueForTitle value) {
+        return new JAXBElement<GetAlbumsFromCatalogueForTitle>(_GetAlbumsFromCatalogueForTitle_QNAME, GetAlbumsFromCatalogueForTitle.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAlbumsFromCatalogueForTitleResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://master-info.univ-lyon1.fr/M2TI/TIW5/services", name = "getAlbumsFromCatalogueForTitleResponse")
+    public JAXBElement<GetAlbumsFromCatalogueForTitleResponse> createGetAlbumsFromCatalogueForTitleResponse(GetAlbumsFromCatalogueForTitleResponse value) {
+        return new JAXBElement<GetAlbumsFromCatalogueForTitleResponse>(_GetAlbumsFromCatalogueForTitleResponse_QNAME, GetAlbumsFromCatalogueForTitleResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAlbumsFromCatalogueForGenreResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://master-info.univ-lyon1.fr/M2TI/TIW5/services", name = "getAlbumsFromCatalogueForGenreResponse")
+    public JAXBElement<GetAlbumsFromCatalogueForGenreResponse> createGetAlbumsFromCatalogueForGenreResponse(GetAlbumsFromCatalogueForGenreResponse value) {
+        return new JAXBElement<GetAlbumsFromCatalogueForGenreResponse>(_GetAlbumsFromCatalogueForGenreResponse_QNAME, GetAlbumsFromCatalogueForGenreResponse.class, null, value);
     }
 
     /**
@@ -163,12 +226,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetAlbumsFromCatalogueForArtistResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAlbumsFromCatalogueForGenre }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://master-info.univ-lyon1.fr/M2TI/TIW5/services", name = "getAlbumsFromCatalogueForArtistResponse")
-    public JAXBElement<GetAlbumsFromCatalogueForArtistResponse> createGetAlbumsFromCatalogueForArtistResponse(GetAlbumsFromCatalogueForArtistResponse value) {
-        return new JAXBElement<GetAlbumsFromCatalogueForArtistResponse>(_GetAlbumsFromCatalogueForArtistResponse_QNAME, GetAlbumsFromCatalogueForArtistResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://master-info.univ-lyon1.fr/M2TI/TIW5/services", name = "getAlbumsFromCatalogueForGenre")
+    public JAXBElement<GetAlbumsFromCatalogueForGenre> createGetAlbumsFromCatalogueForGenre(GetAlbumsFromCatalogueForGenre value) {
+        return new JAXBElement<GetAlbumsFromCatalogueForGenre>(_GetAlbumsFromCatalogueForGenre_QNAME, GetAlbumsFromCatalogueForGenre.class, null, value);
     }
 
     /**
@@ -181,12 +244,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetAlbumsFromCatalogue }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAlbumsFromCatalogueForArtistResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://master-info.univ-lyon1.fr/M2TI/TIW5/services", name = "getAlbumsFromCatalogue")
-    public JAXBElement<GetAlbumsFromCatalogue> createGetAlbumsFromCatalogue(GetAlbumsFromCatalogue value) {
-        return new JAXBElement<GetAlbumsFromCatalogue>(_GetAlbumsFromCatalogue_QNAME, GetAlbumsFromCatalogue.class, null, value);
+    @XmlElementDecl(namespace = "http://master-info.univ-lyon1.fr/M2TI/TIW5/services", name = "getAlbumsFromCatalogueForArtistResponse")
+    public JAXBElement<GetAlbumsFromCatalogueForArtistResponse> createGetAlbumsFromCatalogueForArtistResponse(GetAlbumsFromCatalogueForArtistResponse value) {
+        return new JAXBElement<GetAlbumsFromCatalogueForArtistResponse>(_GetAlbumsFromCatalogueForArtistResponse_QNAME, GetAlbumsFromCatalogueForArtistResponse.class, null, value);
     }
 
     /**
@@ -196,6 +259,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://master-info.univ-lyon1.fr/M2TI/TIW5/services", name = "addAlbumDescription")
     public JAXBElement<AddAlbumDescription> createAddAlbumDescription(AddAlbumDescription value) {
         return new JAXBElement<AddAlbumDescription>(_AddAlbumDescription_QNAME, AddAlbumDescription.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAlbumsFromCatalogue }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://master-info.univ-lyon1.fr/M2TI/TIW5/services", name = "getAlbumsFromCatalogue")
+    public JAXBElement<GetAlbumsFromCatalogue> createGetAlbumsFromCatalogue(GetAlbumsFromCatalogue value) {
+        return new JAXBElement<GetAlbumsFromCatalogue>(_GetAlbumsFromCatalogue_QNAME, GetAlbumsFromCatalogue.class, null, value);
     }
 
 }

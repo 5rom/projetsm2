@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class GetAlbumDescriptionResponse {
 
-    @XmlElement(name = "return", namespace = "")
+    @XmlElement(name = "return")
     protected Album _return;
 
     /**

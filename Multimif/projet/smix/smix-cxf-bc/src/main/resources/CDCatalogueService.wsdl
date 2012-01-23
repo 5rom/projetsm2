@@ -22,6 +22,10 @@
 <xs:element name="getAlbumsFromCatalogueResponse" type="tns:getAlbumsFromCatalogueResponse"/>
 <xs:element name="getAlbumsFromCatalogueForArtist" type="tns:getAlbumsFromCatalogueForArtist"/>
 <xs:element name="getAlbumsFromCatalogueForArtistResponse" type="tns:getAlbumsFromCatalogueForArtistResponse"/>
+<xs:element name="getAlbumsFromCatalogueForGenre" type="tns:getAlbumsFromCatalogueForGenre"/>
+<xs:element name="getAlbumsFromCatalogueForGenreResponse" type="tns:getAlbumsFromCatalogueForGenreResponse"/>
+<xs:element name="getAlbumsFromCatalogueForTitle" type="tns:getAlbumsFromCatalogueForTitle"/>
+<xs:element name="getAlbumsFromCatalogueForTitleResponse" type="tns:getAlbumsFromCatalogueForTitleResponse"/>
 <xs:complexType name="addAlbumDescription">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="tns:album"/>
@@ -94,7 +98,29 @@
       <xs:element minOccurs="0" maxOccurs="unbounded"  name="return" type="tns:album"/>
     </xs:sequence>
   </xs:complexType>                        
-            
+
+<xs:complexType name="getAlbumsFromCatalogueForGenre">
+    <xs:sequence>
+          <xs:element name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getAlbumsFromCatalogueForGenreResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded"  name="return" type="tns:album"/>
+    </xs:sequence>
+  </xs:complexType>       
+     
+<xs:complexType name="getAlbumsFromCatalogueForTitle">
+    <xs:sequence>
+          <xs:element name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getAlbumsFromCatalogueForTitleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded"  name="return" type="tns:album"/>
+    </xs:sequence>
+  </xs:complexType>      
+       
 </xs:schema>
   </wsdl:types>
   <wsdl:message name="getAlbumDescription">
@@ -109,6 +135,15 @@
     <wsdl:part element="tns:getAlbumsFromCatalogueForArtist" name="parameters">
     </wsdl:part>
   </wsdl:message>  
+  <wsdl:message name="getAlbumsFromCatalogueForGenre">
+    <wsdl:part element="tns:getAlbumsFromCatalogueForGenre" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAlbumsFromCatalogueForTitle">
+    <wsdl:part element="tns:getAlbumsFromCatalogueForTitle" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  
   <wsdl:message name="addAlbumDescription">
     <wsdl:part element="tns:addAlbumDescription" name="parameters">
     </wsdl:part>
@@ -125,6 +160,14 @@
     <wsdl:part element="tns:getAlbumsFromCatalogueForArtistResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>    
+  <wsdl:message name="getAlbumsFromCatalogueForGenreResponse">
+    <wsdl:part element="tns:getAlbumsFromCatalogueForGenreResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>   
+  <wsdl:message name="getAlbumsFromCatalogueForTitleResponse">
+    <wsdl:part element="tns:getAlbumsFromCatalogueForTitleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>         
   <wsdl:message name="TestRequest">
   	<wsdl:part name="parameters" element="tns:Test"></wsdl:part>
   </wsdl:message>
@@ -154,7 +197,18 @@
       <wsdl:output message="tns:getAlbumsFromCatalogueForArtistResponse" name="getAlbumsFromCatalogueForArtistResponse">
     </wsdl:output>
     </wsdl:operation>    
-    
+    <wsdl:operation name="getAlbumsFromCatalogueForGenre">
+      <wsdl:input message="tns:getAlbumsFromCatalogueForGenre" name="getAlbumsFromCatalogueForGenre">
+    </wsdl:input>
+      <wsdl:output message="tns:getAlbumsFromCatalogueForGenreResponse" name="getAlbumsFromCatalogueForGenreResponse">
+    </wsdl:output>
+    </wsdl:operation> 
+    <wsdl:operation name="getAlbumsFromCatalogueForTitle">
+      <wsdl:input message="tns:getAlbumsFromCatalogueForTitle" name="getAlbumsFromCatalogueForTitle">
+    </wsdl:input>
+      <wsdl:output message="tns:getAlbumsFromCatalogueForTitleResponse" name="getAlbumsFromCatalogueForTitleResponse">
+    </wsdl:output>
+    </wsdl:operation>                       
   </wsdl:portType>
   <wsdl:binding name="CDCatalogueServiceSoapBinding" type="tns:CDCataloguePortType">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -191,6 +245,27 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>        
+    
+    <wsdl:operation name="getAlbumsFromCatalogueForGenre">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAlbumsFromCatalogueForGenre">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAlbumsFromCatalogueForGenreResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>     
+    
+    <wsdl:operation name="getAlbumsFromCatalogueForTitle">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAlbumsFromCatalogueForTitle">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAlbumsFromCatalogueForTitleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>         
+    
   </wsdl:binding>
   <wsdl:service name="CDCatalogueService">
     <wsdl:port binding="tns:CDCatalogueServiceSoapBinding" name="CDCataloguePort">
