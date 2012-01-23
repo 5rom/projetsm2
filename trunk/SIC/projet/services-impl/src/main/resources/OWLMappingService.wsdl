@@ -7,7 +7,8 @@
       <xsd:element name="mapOWL">
       <xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="filepath1" minOccurs="1" maxOccurs="1" type="xsd:string"/>			
+				<xsd:element name="filepath1" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+				<xsd:element name="filepath2" minOccurs="1" maxOccurs="1" type="xsd:string"/>				
 			</xsd:sequence>
 		</xsd:complexType>
       </xsd:element>             

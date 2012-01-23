@@ -54,6 +54,8 @@ UCBL M2 TI 2011-2012 -->
 	<jaxws:endpoint id="FAOOwl" implementor="sic.services.impl.FAOOwlService" address="/FAOOwlService" />
 
 	<!-- Ajout du service CAOOwlService comme au-dessus -->
-	<jaxws:endpoint id="CAOOwl" implementor="sic.services.impl.CAOOWLService" address="/CAOOWLService" />		
+	<jaxws:endpoint id="CAOOwl" implementor="sic.services.impl.CAOOWLService" address="/CAOOWLService" />
+	
+	<jaxws:endpoint id="OWLMapping" implementor="sic.services.impl.OWLMappingService" address="/OWLMappingService" />		
 		
 </beans>
