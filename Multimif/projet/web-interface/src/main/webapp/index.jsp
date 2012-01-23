@@ -1,6 +1,8 @@
 <html>
+<head><title>Mazeek</title></head>
 <body>
-<h2>Page d'accueil interface web!</h2>
+<h2>Mazeek.com</h2>
+<h4>Consultez, commandez, ecoutez!</h4>
 <br>
 <a href="http://localhost:8080">La liste des services</a>
 <br>
