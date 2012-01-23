@@ -48,6 +48,21 @@ public class CDCatalogueService {
 		return list;
 	}
 	
+	@WebMethod
+	public List<Album> getAlbumsFromCatalogueForGenre(String genre) {
+		EntityManager em = Persistence.createEntityManagerFactory("etudiant")
+				.createEntityManager();
+		ArrayList<Album> list = (ArrayList<Album>) em.createQuery("SELECT a FROM Album a where a.genre like '%"+genre+"%' order by a.id").getResultList();
+		return list;
+	}	
+	
+	@WebMethod
+	public List<Album> getAlbumsFromCatalogueForTitle(String title) {
+		EntityManager em = Persistence.createEntityManagerFactory("etudiant")
+				.createEntityManager();
+		ArrayList<Album> list = (ArrayList<Album>) em.createQuery("SELECT a FROM Album a where a.titre like '%"+title+"%' order by a.id").getResultList();
+		return list;
+	}		
  
 	@Oneway
 	@WebMethod

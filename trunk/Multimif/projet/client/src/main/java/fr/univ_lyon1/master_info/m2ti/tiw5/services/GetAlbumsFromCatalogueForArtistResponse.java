@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class GetAlbumsFromCatalogueForArtistResponse {
 
-    @XmlElement(name = "return", namespace = "")
+    @XmlElement(name = "return")
     protected List<Album> _return;
 
     /**
