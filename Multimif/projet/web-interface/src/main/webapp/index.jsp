@@ -7,20 +7,35 @@
 <a href="http://localhost:8080">La liste des services</a>
 <br>
 <h2>Tous les albums de la base</h2>
-<!--  Formulaire de consultation de la base -->
 <br>
 <form action="MenuServlet" method="post">
-<input type="submit" name="bouton" value="Afficher les albums de la base">
+<input type="submit" name="bouton" value="Afficher tous les albums du catalogue">
 </form>
 
 <br>
 <h2>Tous les albums d'un artiste</h2>
-<!--  Formulaire de consultation de la base -->
 <br>
 <form action="MenuServlet" method="post">
 Nom de l'artiste: <input type="text" name="artiste">
 <input type="submit" name="bouton" value="Afficher les albums de l'artiste">
 </form>
+
+<br>
+<h2>Tous les albums d'un genre</h2>
+<br>
+<form action="MenuServlet" method="post">
+Genre de l'album: <input type="text" name="genre">
+<input type="submit" name="bouton" value="Afficher les albums de ce genre">
+</form>
+
+<br>
+<h2>Trouver un album avec le titre</h2>
+<br>
+<form action="MenuServlet" method="post">
+Titre de l'album: <input type="text" name="titre">
+<input type="submit" name="bouton" value="Afficher les albums avec ce titre">
+</form>
+
 
 <br>
 <%@page import="panier.Panier" %>

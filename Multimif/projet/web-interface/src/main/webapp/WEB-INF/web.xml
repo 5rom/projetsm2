@@ -29,5 +29,13 @@ UCBL M2 TI 2011-2012 -->
         <servlet-name>AjoutPanierServlet</servlet-name>
         <url-pattern>/AjoutPanierServlet</url-pattern>
     </servlet-mapping>	        
+    <servlet>
+        <servlet-name>ArtisteServlet</servlet-name>
+        <servlet-class>ArtisteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ArtisteServlet</servlet-name>
+        <url-pattern>/ArtisteServlet</url-pattern>
+    </servlet-mapping>	            
     
 </web-app>
