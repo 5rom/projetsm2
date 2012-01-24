@@ -40,99 +40,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeleteProduit }
-     * 
-     */
-    public DeleteProduit createDeleteProduit() {
-        return new DeleteProduit();
-    }
-
-    /**
-     * Create an instance of {@link DeleteProduitResponse }
-     * 
-     */
-    public DeleteProduitResponse createDeleteProduitResponse() {
-        return new DeleteProduitResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteComposition }
-     * 
-     */
-    public DeleteComposition createDeleteComposition() {
-        return new DeleteComposition();
-    }
-
-    /**
-     * Create an instance of {@link AddProduitResponse }
-     * 
-     */
-    public AddProduitResponse createAddProduitResponse() {
-        return new AddProduitResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetCompositionList }
-     * 
-     */
-    public GetCompositionList createGetCompositionList() {
-        return new GetCompositionList();
-    }
-
-    /**
-     * Create an instance of {@link UpdateProduit }
-     * 
-     */
-    public UpdateProduit createUpdateProduit() {
-        return new UpdateProduit();
-    }
-
-    /**
-     * Create an instance of {@link GetCompositionListResponse }
-     * 
-     */
-    public GetCompositionListResponse createGetCompositionListResponse() {
-        return new GetCompositionListResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddProduit }
-     * 
-     */
-    public AddProduit createAddProduit() {
-        return new AddProduit();
-    }
-
-    /**
      * Create an instance of {@link PmajeurPmineur }
      * 
      */
     public PmajeurPmineur createPmajeurPmineur() {
         return new PmajeurPmineur();
-    }
-
-    /**
-     * Create an instance of {@link AddComposition }
-     * 
-     */
-    public AddComposition createAddComposition() {
-        return new AddComposition();
-    }
-
-    /**
-     * Create an instance of {@link GetProduitListResponse }
-     * 
-     */
-    public GetProduitListResponse createGetProduitListResponse() {
-        return new GetProduitListResponse();
-    }
-
-    /**
-     * Create an instance of {@link PnumPnom }
-     * 
-     */
-    public PnumPnom createPnumPnom() {
-        return new PnumPnom();
     }
 
     /**
@@ -144,11 +56,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetProduitList }
+     * Create an instance of {@link PnumPnom }
      * 
      */
-    public GetProduitList createGetProduitList() {
-        return new GetProduitList();
+    public PnumPnom createPnumPnom() {
+        return new PnumPnom();
+    }
+
+    /**
+     * Create an instance of {@link UpdateProduit }
+     * 
+     */
+    public UpdateProduit createUpdateProduit() {
+        return new UpdateProduit();
+    }
+
+    /**
+     * Create an instance of {@link AddProduit }
+     * 
+     */
+    public AddProduit createAddProduit() {
+        return new AddProduit();
+    }
+
+    /**
+     * Create an instance of {@link AddProduitResponse }
+     * 
+     */
+    public AddProduitResponse createAddProduitResponse() {
+        return new AddProduitResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetCompositionListResponse }
+     * 
+     */
+    public GetCompositionListResponse createGetCompositionListResponse() {
+        return new GetCompositionListResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddComposition }
+     * 
+     */
+    public AddComposition createAddComposition() {
+        return new AddComposition();
     }
 
     /**
@@ -157,6 +109,54 @@ public class ObjectFactory {
      */
     public DeleteCompositionResponse createDeleteCompositionResponse() {
         return new DeleteCompositionResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetProduitListResponse }
+     * 
+     */
+    public GetProduitListResponse createGetProduitListResponse() {
+        return new GetProduitListResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteProduitResponse }
+     * 
+     */
+    public DeleteProduitResponse createDeleteProduitResponse() {
+        return new DeleteProduitResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetCompositionList }
+     * 
+     */
+    public GetCompositionList createGetCompositionList() {
+        return new GetCompositionList();
+    }
+
+    /**
+     * Create an instance of {@link DeleteComposition }
+     * 
+     */
+    public DeleteComposition createDeleteComposition() {
+        return new DeleteComposition();
+    }
+
+    /**
+     * Create an instance of {@link GetProduitList }
+     * 
+     */
+    public GetProduitList createGetProduitList() {
+        return new GetProduitList();
+    }
+
+    /**
+     * Create an instance of {@link DeleteProduit }
+     * 
+     */
+    public DeleteProduit createDeleteProduit() {
+        return new DeleteProduit();
     }
 
     /**

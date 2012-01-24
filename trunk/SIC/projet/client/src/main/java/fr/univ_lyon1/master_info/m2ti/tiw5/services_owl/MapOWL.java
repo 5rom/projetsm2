@@ -1,24 +1,25 @@
 
-package fr.univ_lyon1.master_info.m2ti.tiw5.services_fao;
+package fr.univ_lyon1.master_info.m2ti.tiw5.services_owl;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Pnum_Pnom complex type.
+ * <p>Java class for anonymous complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Pnum_Pnom">
+ * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="pnum" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="pnom" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="filepath1" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="filepath2" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,63 +29,64 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Pnum_Pnom", propOrder = {
-    "pnum",
-    "pnom"
+@XmlType(name = "", propOrder = {
+    "filepath1",
+    "filepath2"
 })
-public class PnumPnom {
+@XmlRootElement(name = "mapOWL")
+public class MapOWL {
 
     @XmlElement(required = true)
-    protected String pnum;
+    protected String filepath1;
     @XmlElement(required = true)
-    protected String pnom;
+    protected String filepath2;
 
     /**
-     * Gets the value of the pnum property.
+     * Gets the value of the filepath1 property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getPnum() {
-        return pnum;
+    public String getFilepath1() {
+        return filepath1;
     }
 
     /**
-     * Sets the value of the pnum property.
+     * Sets the value of the filepath1 property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setPnum(String value) {
-        this.pnum = value;
+    public void setFilepath1(String value) {
+        this.filepath1 = value;
     }
 
     /**
-     * Gets the value of the pnom property.
+     * Gets the value of the filepath2 property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getPnom() {
-        return pnom;
+    public String getFilepath2() {
+        return filepath2;
     }
 
     /**
-     * Sets the value of the pnom property.
+     * Sets the value of the filepath2 property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setPnom(String value) {
-        this.pnom = value;
+    public void setFilepath2(String value) {
+        this.filepath2 = value;
     }
 
 }

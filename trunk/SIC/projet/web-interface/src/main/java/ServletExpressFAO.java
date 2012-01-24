@@ -37,6 +37,7 @@ public class ServletExpressFAO extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		out = response.getWriter();
 		String bouton=request.getParameter("bouton");
+		
 		if (bouton.equals("Afficher les produits de la base")){
 			FAODataBase_Service fao_service= new FAODataBase_Service();
 			FAODataBase fao_express = fao_service.getFAODataBaseSOAP();
