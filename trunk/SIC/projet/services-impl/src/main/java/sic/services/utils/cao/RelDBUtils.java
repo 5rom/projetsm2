@@ -29,7 +29,7 @@ public class RelDBUtils {
 	    /**
 	     * Ã©lÃ©ment de paramÃ¨tres statiques
 	     */
-	    //private String nomDeLaBase = "orapeda1";
+	    //private String nomDeLaBase = "orapeda1"; // Reseau universite
 	    private String nomDeLaBase = "xe";
 	    
 	    /**
@@ -40,7 +40,7 @@ public class RelDBUtils {
 	    /**
 	     * Server : sur le réseau de l'université
 	     */
-	    //private static String nomDeServeur = "pedagowin710.univ-lyon1.fr";
+	    //private static String nomDeServeur = "pedagowin710.univ-lyon1.fr"; // Reseau universite
 	    
 	    /**
 	     * Port
@@ -50,13 +50,13 @@ public class RelDBUtils {
 	    /**
 	     * Login d'accès à la base
 	     */
-	    //private String login = "M1IF029";
+	    //private String login = "M2TIW15"; // Reseau universite
 	    private String login = "SIC";
 	    
 	    /**
 	     * Mot de passe d'accès à la base
 	     */	    
-	    //private String pwd = "admin";
+	    //private String pwd = "M2TIW15"; // Reseau universite
 	    private String pwd = "admin";
 	    
 	    private Connection connect;
