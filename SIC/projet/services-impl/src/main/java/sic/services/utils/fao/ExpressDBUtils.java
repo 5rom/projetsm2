@@ -47,8 +47,9 @@ public class ExpressDBUtils {
     }
     
     public static ExpressDBUtils getParser(String filepath,HashMap<String,String> produits, HashMap<String,String[]> relations_line, HashMap<String,String> line_name){
-    	if(instance == null)
+//    	if(instance == null){
     		instance = new ExpressDBUtils(filepath,produits,relations_line,line_name);
+
     	return instance;
     }
     
@@ -81,7 +82,7 @@ public class ExpressDBUtils {
 			  }
 			  in.close();
 		}catch (Exception e){
-			  System.err.println("Error: " + e.getMessage());
+			  System.err.println("Error parsing: " + e.getMessage());
 		}
     }
 
