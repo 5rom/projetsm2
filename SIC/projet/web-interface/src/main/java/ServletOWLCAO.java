@@ -35,9 +35,14 @@ private static final long serialVersionUID = 1L;
 		out = response.getWriter();
 		CAOOWL_Service c = new CAOOWL_Service();
 		CAOOWL f = c.getCAOOWLSOAP();
-		String s = new String(""+f.parseOWL("StyloCAO.owl"));
-		System.out.println(s);
-		//out.println("<html><body>"+s+"</body></html>");
+		String s = new String(""+f.parseOWL("/tmp/StyloCAO.owl"));
+		out.println("<html><body><h1>Traduction de la BD relationnelle en ontologie OWL</h1>" +
+				"<p>URL du fichier OWL : <a href='" + s.replace("file:", "") +"'> "+s.replace("file:", "")+"</a></p><br>");
+        //Bouton retour
+		out.println("<FORM Method=\"POST\" Action=\"menucao.jsp\">"+
+		"<INPUT type=\"submit\" value=\"Retour\">"+
+		"</FORM>");            
+		out.println("</body></html>");
 	}
 	
 	/**
