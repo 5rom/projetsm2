@@ -49,12 +49,6 @@ public class CAODataBaseService implements CAODataBase{
 			e.printStackTrace();
 		}
 
-		try {
-			r.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return success;
 	}
 
@@ -80,12 +74,6 @@ public class CAODataBaseService implements CAODataBase{
 			e.printStackTrace();
 		}
 
-		try {
-			r.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return list;
 	}
 
@@ -111,12 +99,6 @@ public class CAODataBaseService implements CAODataBase{
 			e.printStackTrace();
 		}
 
-		try {
-			r.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return list;
 	}
 
@@ -139,12 +121,6 @@ public class CAODataBaseService implements CAODataBase{
 			e.printStackTrace();
 		}
 
-		try {
-			r.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return success;
 	}
 
@@ -165,12 +141,6 @@ public class CAODataBaseService implements CAODataBase{
 			e.printStackTrace();
 		}
 
-		try {
-			r.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return success;
 	}
 
@@ -188,12 +158,6 @@ public class CAODataBaseService implements CAODataBase{
 			e.printStackTrace();
 		}
 
-		try {
-			r.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return success;
 	}
 
@@ -216,12 +180,6 @@ public class CAODataBaseService implements CAODataBase{
 			e.printStackTrace();
 		}
 
-		try {
-			r.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return success;
 	}
 
