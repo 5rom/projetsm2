@@ -38,7 +38,7 @@ public class ServletExpressFAO extends HttpServlet {
 		out = response.getWriter();
 		String bouton=request.getParameter("bouton");
 		
-		if (bouton.equals("Afficher les produits de la base")){
+		if (bouton.equals("Afficher les produits chargés du fichier EXPRESS")){
 			FAODataBase_Service fao_service= new FAODataBase_Service();
 			FAODataBase fao_express = fao_service.getFAODataBaseSOAP();
 			out.println("<html><body>  Produits de la base\n<br>"+
@@ -68,7 +68,7 @@ public class ServletExpressFAO extends HttpServlet {
             out.println("</table>\n");            
             
 	        //Bouton retour
-			out.println("<FORM Method=\"POST\" Action=\"index.jsp\">"+
+			out.println("<FORM Method=\"POST\" Action=\"menufao.jsp\">"+
 			"<INPUT type=\"submit\" value=\"Retour\">"+
 			"</FORM>"+				
 					

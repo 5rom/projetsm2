@@ -76,7 +76,7 @@ public class ServletDBCAO extends HttpServlet {
             out.println("</table>\n");            
             
 	        //Bouton retour
-			out.println("<FORM Method=\"POST\" Action=\"index.jsp\">"+
+			out.println("<FORM Method=\"POST\" Action=\"menucao.jsp\">"+
 			"<INPUT type=\"submit\" value=\"Retour\">"+
 			"</FORM>"+				
 					
@@ -93,7 +93,7 @@ public class ServletDBCAO extends HttpServlet {
     			out.println("<HTML><BODY><br><br><h2>Erreur lors de l'ajout du produit. Veuillez vérifier que ce produit n'existe pas déjà : "+pnum+" - "+pnom+"</h2><br><br>");
     		}
 	        //Bouton retour
-			out.println("<FORM Method=\"POST\" Action=\"index.jsp\">"+
+			out.println("<FORM Method=\"POST\" Action=\"menucao.jsp\">"+
 			"<INPUT type=\"submit\" value=\"Retour\">"+
 			"</FORM>"+				
 					
@@ -109,7 +109,7 @@ public class ServletDBCAO extends HttpServlet {
     			out.println("<HTML><BODY><br><br><h2>Erreur lors de la suppression du produit "+pnum+". Veuillez vérifier que ce produit existe bien et qu'il n'est pas dans la table de composition!</h2><br><br>");
     		}
 	        //Bouton retour
-			out.println("<FORM Method=\"POST\" Action=\"index.jsp\">"+
+			out.println("<FORM Method=\"POST\" Action=\"menucao.jsp\">"+
 			"<INPUT type=\"submit\" value=\"Retour\">"+
 			"</FORM>"+				
 					
@@ -127,7 +127,7 @@ public class ServletDBCAO extends HttpServlet {
     			out.println("<HTML><BODY><br><br><h2>Erreur lors de l'ajout de la composition "+pmajeur+" - "+pmineur+". Veuillez vérifier que cette composition n'existe pas déjà!</h2><br><br>");
     		}
 	        //Bouton retour
-			out.println("<FORM Method=\"POST\" Action=\"index.jsp\">"+
+			out.println("<FORM Method=\"POST\" Action=\"menucao.jsp\">"+
 			"<INPUT type=\"submit\" value=\"Retour\">"+
 			"</FORM>"+				
 					
@@ -144,7 +144,7 @@ public class ServletDBCAO extends HttpServlet {
     			out.println("<HTML><BODY><br><br><h2>Erreur lors de la suppression de la composition "+pmajeur+" - "+pmineur+". Veuillez vérifier que cette composition existe!</h2><br><br>");
     		}
 	        //Bouton retour
-			out.println("<FORM Method=\"POST\" Action=\"index.jsp\">"+
+			out.println("<FORM Method=\"POST\" Action=\"menucao.jsp\">"+
 			"<INPUT type=\"submit\" value=\"Retour\">"+
 			"</FORM>"+				
 					
@@ -162,7 +162,7 @@ public class ServletDBCAO extends HttpServlet {
     			out.println("<HTML><BODY><br><br><h2>Erreur lors de la mise à jour du produit. Veuillez vérifier que ce produit existe bien : "+pnum+"</h2><br><br>");
     		}
 	        //Bouton retour
-			out.println("<FORM Method=\"POST\" Action=\"index.jsp\">"+
+			out.println("<FORM Method=\"POST\" Action=\"menucao.jsp\">"+
 			"<INPUT type=\"submit\" value=\"Retour\">"+
 			"</FORM>"+				
 					
