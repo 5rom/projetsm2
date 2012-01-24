@@ -33,8 +33,7 @@ public class CAOOWLService implements CAOOWL {
 	@Override
 	public String parseOWL(String filepath) {
 		try {
-				return "toto";
-				/*String targeturl = new String("file:/tmp/StyloFAO.owl");
+				String targeturl = new String("file:"+filepath);
 	            // Create the manager that we will use to load ontologies.
 	            OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 	            IRI ontologyIRI = IRI.create("http://masterinfo.univ-lyon1.fr/ontologies/StyloCAO");
@@ -107,20 +106,18 @@ public class CAOOWLService implements CAOOWL {
 	                }
 	               
 	                manager.saveOntology(ontology);
-	                System.out.println("fp1:"+filepath);
+
 	                return filepath;
 	    		} catch (SQLException e) {
 	    			// TODO Auto-generated catch block
 	    			e.printStackTrace();
 	    		}
-     	
-*/
+
 	    	        }
 	    	        catch (Exception e) {
 	    	            e.printStackTrace();
 	    	        }
-	    	        System.out.println("fp2:"+filepath);
-	    	        //TODO
+
 	    	        return filepath;
 
 	}
