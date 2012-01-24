@@ -1,5 +1,5 @@
 
-package fr.univ_lyon1.master_info.m2ti.tiw5.services_fao;
+package fr.univ_lyon1.master_info.m2ti.tiw5.services_owl;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for deleteProduitResponse complex type.
+ * <p>Java class for mapOWLResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="deleteProduitResponse">
+ * &lt;complexType name="mapOWLResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="target" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,36 +27,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "deleteProduitResponse", propOrder = {
-    "_return"
+@XmlType(name = "mapOWLResponse", propOrder = {
+    "target"
 })
-public class DeleteProduitResponse {
+public class MapOWLResponse {
 
-    @XmlElement(name = "return")
-    protected Boolean _return;
+    @XmlElement(required = true)
+    protected String target;
 
     /**
-     * Gets the value of the return property.
+     * Gets the value of the target property.
      * 
      * @return
      *     possible object is
-     *     {@link Boolean }
+     *     {@link String }
      *     
      */
-    public Boolean isReturn() {
-        return _return;
+    public String getTarget() {
+        return target;
     }
 
     /**
-     * Sets the value of the return property.
+     * Sets the value of the target property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Boolean }
+     *     {@link String }
      *     
      */
-    public void setReturn(Boolean value) {
-        this._return = value;
+    public void setTarget(String value) {
+        this.target = value;
     }
 
 }

@@ -13,39 +13,9 @@ UCBL M2 TI 2011-2012 -->
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
-	
-	<!-- Ajout des handlers -->
-	<!-- <bean id="userHandler" class="tiw5.services.handlers.UserHandler" />
-	<bean id="logHandler" class="tiw5.services.handlers.LogHandler" />
-	<bean id="authHandler" class="tiw5.services.handlers.AuthHandler" />	
-	<bean id="accessControlHandler" class="tiw5.services.handlers.AccessControlHandler" />	
-	
-	<jaxws:endpoint id="album-data" implementor="tiw5.services.impl.AlbumDataService"
-		address="/AlbumDataService"> -->
-		<!--Handlers du service AlbumDataService 
-		L'ordre est important!
-		entrants:userHandler, authHandler, accesCtrlHandler puis logHandler.
-		sortants: c'est l'inverse
-		-->
-		<!-- <jaxws:handlers>
-			<ref bean="logHandler" />
-			<ref bean="accessControlHandler" />				
-			<ref bean="authHandler" />
-			<ref bean="userHandler" />
-		</jaxws:handlers>
-	</jaxws:endpoint>
- 
-  <bean id="albumDataBean" class="tiw5.services.impl.AlbumDataService" />
-  <jaxrs:server id="album-datarest" address="/AlbumDataServiceRest">
-    <jaxrs:serviceBeans>
-      <ref bean="albumDataBean" />
-    </jaxrs:serviceBeans>
-  </jaxrs:server> -->
-
 
 	<!-- Ajout du service CAODataBaseService comme au-dessus -->
-	<jaxws:endpoint id="CAODataBase" implementor="sic.services.impl.CAODataBaseService"
-		address="/CAODataBaseService" />	
+	<jaxws:endpoint id="CAODataBase" implementor="sic.services.impl.CAODataBaseService" address="/CAODataBaseService" />	
 		
 	<!-- Ajout du service FAODataBaseService comme au-dessus -->
 	<jaxws:endpoint id="FAODataBase" implementor="sic.services.impl.FAODataBaseService" address="/FAODataBaseService" />	
@@ -56,6 +26,7 @@ UCBL M2 TI 2011-2012 -->
 	<!-- Ajout du service CAOOwlService comme au-dessus -->
 	<jaxws:endpoint id="CAOOwl" implementor="sic.services.impl.CAOOWLService" address="/CAOOWLService" />
 	
+	<!-- Ajout du service CAOOwlService comme au-dessus -->
 	<jaxws:endpoint id="OWLMapping" implementor="sic.services.impl.OWLMappingService" address="/OWLMappingService" />		
 		
 </beans>

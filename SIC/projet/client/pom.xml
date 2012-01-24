@@ -42,24 +42,32 @@
 						<sourceRoot>src/main/java</sourceRoot>
 						<wsdlOptions>
 							<wsdlOption>
-								<!-- <wsdl>${basedir}/src/main/resources/CAODataBaseService.wsdl</wsdl> -->
-				                <!--<wsdl>${basedir}/src/main/resources/FAODataBaseService.wsdl</wsdl>-->
-				                <!-- <wsdl>${basedir}/src/main/resources/FAOOwlService.wsdl</wsdl> -->
-				                <wsdl>${basedir}/src/main/resources/CAOOwlService.wsdl</wsdl>
-				                <extraargs>
-				                    <extraarg>-client</extraarg>
-				                    <extraarg>-verbose</extraarg>
-				                </extraargs>
+				                <wsdl>${basedir}/src/main/resources/OWLMappingService.wsdl</wsdl>
 							</wsdlOption>
+							<wsdlOption>
+				                <wsdl>${basedir}/src/main/resources/CAOOwlService.wsdl</wsdl>
+							</wsdlOption>
+							<wsdlOption>
+				                <wsdl>${basedir}/src/main/resources/FAOOwlService.wsdl</wsdl>
+							</wsdlOption>
+							<wsdlOption>
+				                <wsdl>${basedir}/src/main/resources/FAODataBaseService.wsdl</wsdl>
+			                </wsdlOption>
+							<wsdlOption>
+								<wsdl>${basedir}/src/main/resources/CAODataBaseService.wsdl</wsdl>
+			                </wsdlOption>			                												
 						</wsdlOptions>
 					</configuration>
 					<goals>
 						<goal>wsdl2java</goal>
 					</goals>
 				</execution>
-			</executions>  			
+			</executions>
   		</plugin>
+	
+  		
   	</plugins>
+  	
   	<pluginManagement>
   		<plugins>
   			<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->

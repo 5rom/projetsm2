@@ -34,19 +34,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ParseOWLResponse }
-     * 
-     */
-    public ParseOWLResponse createParseOWLResponse() {
-        return new ParseOWLResponse();
-    }
-
-    /**
      * Create an instance of {@link ParseOWL }
      * 
      */
     public ParseOWL createParseOWL() {
         return new ParseOWL();
+    }
+
+    /**
+     * Create an instance of {@link ParseOWLResponse }
+     * 
+     */
+    public ParseOWLResponse createParseOWLResponse() {
+        return new ParseOWLResponse();
     }
 
     /**
