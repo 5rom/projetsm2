@@ -40,10 +40,17 @@ private static final long serialVersionUID = 1L;
 		out = response.getWriter();
 		FAOOwl_Service f=new FAOOwl_Service();
 		FAOOwl fa = f.getFAOOwlSOAP();
-		String s = fa.parseOWL("bd.exp");
-		out.println("<html><body><h1>Conversion du fichier express en fichier OWL</h1>" +
-				"<p>URL du fichier OWL : <a href='" + s +"'> Ouvrir le fichier</a></p><br>");
-        //Bouton retour
+		String fichier=request.getParameter("filepath");
+		if ((fichier!=null) && (!fichier.equals(""))){
+			String s = fa.parseOWL(fichier);
+			//String s = fa.parseOWL("bd.exp");
+			out.println("<html><body><h1>Conversion du fichier express en fichier OWL</h1>" +
+					"<p>URL du fichier OWL : <a href='" + s +"'>"+s+"</a></p><br>");
+		} else {
+			out.println("<html><body><h1>Veuillez renseigner le fichier express</h1>");
+		}
+		//Bouton retour
+		
 		out.println("<FORM Method=\"POST\" Action=\"menufao.jsp\">"+
 		"<INPUT type=\"submit\" value=\"Retour\">"+
 		"</FORM>");            

@@ -40,9 +40,12 @@ public class ServletOWLMapping extends HttpServlet {
 			out = response.getWriter();
 			OWLMapping_Service oMS = new OWLMapping_Service();
 			OWLMapping oMP = oMS.getOWLMappingSOAP();
-			String s=oMP.mapOWL("/tmp/mapping.txt", "/tmp/resmapping.txt");
+			String fpath1 = request.getParameter("filepath1");
+			String fpath2 = request.getParameter("filepath2");
+			//String s=oMP.mapOWL("/tmp/mapping.txt", "/tmp/resmapping.txt");
+			String s=oMP.mapOWL(fpath1, fpath2);
 			out.println("<html><body><h1>Fichier de mapping OWL obtenu</h1>" +
-					"<p>URL du fichier OWL : <a href='" + s +"'> Ouvrir le fichier</a></p><br>");
+					"<p>URL du fichier OWL : <a href='" + s +"'> "+"file:"+fpath2+"</a></p><br>");
 			//Bouton retour
 			out.println("<FORM Method=\"POST\" Action=\"index.jsp\">"+
 			"<INPUT type=\"submit\" value=\"Retour\">"+

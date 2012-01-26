@@ -44,7 +44,7 @@ private static final long serialVersionUID = 1L;
 		//String s = new String(""+f.parseOWL(request.getParameter("file")));
 		f.parseOWL(request.getParameter("file"));
 		out.println("<html><body><h1>Traduction de la BD relationnelle en ontologie OWL</h1>" +
-				"<p>URL du fichier OWL : <a href=\"file:"+request.getParameter("file")+"\">Fichier</a></p><br>");
+				"<p>URL du fichier OWL : <a href=\"file:"+request.getParameter("file")+"\">"+request.getParameter("file")+"</a></p><br>");
         //Bouton retour
 		out.println("<FORM Method=\"POST\" Action=\"menucao.jsp\">"+
 		"<INPUT type=\"submit\" value=\"Retour\">"+

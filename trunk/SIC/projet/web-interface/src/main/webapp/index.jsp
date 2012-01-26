@@ -29,6 +29,8 @@
 <!--  Menu FAO -->
 <br>
 <form action="ServletOWLMapping" method="post">
+<input type="text" name="filepath1" value="mapping.txt"> : Fichier de correspondance entre ontologies (ex: /tmp/mapping.txt, ne pas mettre la lettre du disque!) <br>
+<input type="text" name="filepath2" value="/tmp/resmapping.owl"> : Fichier de destination du résultat du mapping (ex: /tmp/resmapping.owl, ne pas mettre la lettre du disque!) <br>
 <input type="submit" name="bouton" value="Lancer le mapping CAO FAO des ontologies">
 </form>
 <br>

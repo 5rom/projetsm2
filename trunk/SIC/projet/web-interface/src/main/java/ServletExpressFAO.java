@@ -41,43 +41,55 @@ public class ServletExpressFAO extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		out = response.getWriter();
 		String bouton=request.getParameter("bouton");
-		
-		if (bouton.equals("Afficher les produits chargés du fichier EXPRESS")){
-			FAODataBase_Service fao_service= new FAODataBase_Service();
-			FAODataBase fao_express = fao_service.getFAODataBaseSOAP();
-			out.println("<html><body>  Produits de la base\n<br>"+
-	        		"<table border=\"1\">\n"+
-	        		"<tr>\n"+
-	        		"<th>Pnum</th>\n"+
-	        		"<th>Pnom</th>\n"+
-	        		"</tr>\n");
-           List<PnumPnom> aLPN = fao_express.getProduitList();
-           for (int i=0; i<aLPN.size();i++){
-        	   out.println("<tr><td>"+aLPN.get(i).getPnum()+"</td><td>"+aLPN.get(i).getPnom()+"</td></tr>\n");
-           }
-            
-            out.println("</table><br>\n");
-            
-            out.println("Relations entre les produits du fichier express\n<br>"+
-	        		"<table border=\"1\">\n"+
-	        		"<tr>\n"+
-	        		"<th>Element</th>\n"+
-	        		"<th>Lié à</th>\n"+
-	        		"</tr>\n");
-           List<PmajeurPmineur> aLPM = fao_express.getCompositionList();
-           for (int i=0; i<aLPM.size();i++){
-        	   out.println("<tr><td>"+aLPM.get(i).getPmajeur()+"</td><td>"+aLPM.get(i).getPmineur()+"</td></tr>\n");
-           }
-            
-            out.println("</table>\n");            
-            
+		//String fichier=request.getParameter("filepath");
+		//if (fichier!=null){
+			if (bouton.equals("Afficher les produits chargés du fichier EXPRESS")){
+				FAODataBase_Service fao_service= new FAODataBase_Service();
+				FAODataBase fao_express = fao_service.getFAODataBaseSOAP();
+				
+				
+				out.println("<html><body><p>Contenu du fichier EXPRESS bd.exp</p> <p>Produits de la base</p>\n<br>"+
+		        		"<table border=\"1\">\n"+
+		        		"<tr>\n"+
+		        		"<th>Pnum</th>\n"+
+		        		"<th>Pnom</th>\n"+
+		        		"</tr>\n");
+	           List<PnumPnom> aLPN = fao_express.getProduitList();
+	           for (int i=0; i<aLPN.size();i++){
+	        	   out.println("<tr><td>"+aLPN.get(i).getPnum()+"</td><td>"+aLPN.get(i).getPnom()+"</td></tr>\n");
+	           }
+	            
+	            out.println("</table><br>\n");
+	            
+	            out.println("Relations entre les produits du fichier EXPRESS bd.exp\n<br>"+
+		        		"<table border=\"1\">\n"+
+		        		"<tr>\n"+
+		        		"<th>Element</th>\n"+
+		        		"<th>Lié à</th>\n"+
+		        		"</tr>\n");
+	           List<PmajeurPmineur> aLPM = fao_express.getCompositionList();
+	           for (int i=0; i<aLPM.size();i++){
+	        	   out.println("<tr><td>"+aLPM.get(i).getPmajeur()+"</td><td>"+aLPM.get(i).getPmineur()+"</td></tr>\n");
+	           }
+	            
+	            out.println("</table>\n");            
+	            
+		        //Bouton retour
+				out.println("<FORM Method=\"POST\" Action=\"menufao.jsp\">"+
+				"<INPUT type=\"submit\" value=\"Retour\">"+
+				"</FORM>"+				
+						
+				"</BODY></HTML>");
+			}
+		/*} else {
+			out.println("<html><body> <p>Il faut renseigner un fichier express!<p>");
 	        //Bouton retour
 			out.println("<FORM Method=\"POST\" Action=\"menufao.jsp\">"+
 			"<INPUT type=\"submit\" value=\"Retour\">"+
 			"</FORM>"+				
 					
 			"</BODY></HTML>");
-		}
+		}*/
 	
 	}
 	
