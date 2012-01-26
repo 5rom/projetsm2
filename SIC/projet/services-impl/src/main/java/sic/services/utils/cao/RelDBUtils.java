@@ -11,10 +11,12 @@ import java.util.ArrayList;
 import oracle.jdbc.pool.OracleDataSource;
 
 /**
- * Class DBConnexion.java
- * @description SQLite database management
- * @author SÃ©bastien Faure  <sebastien.faure3@gmail.com>
-  * @version 2011-07-18
+ * Classe RelDBUtils
+ * Classe utilitaire de connexion à la base de données
+ * Les identifiants de connexion à la base sont paramétrables et par défaut pour une base Oracle 11g xe
+ * Créée par Sébastien Faure et David Crescence
+ * @author David CRESCENCE <crescence.david@gmail.com> et Sébastien FAURE <sebastien.faure3@gmail.com>
+ * UCBL M2TI 2011-2012 
  */
 public class RelDBUtils {
 
@@ -22,6 +24,9 @@ public class RelDBUtils {
 	     * ATTRIBUTS
 	     */
 
+		/**
+		 * --- Paramètres : identifiants de la base ---
+		 */
 	    /**
 	     * instance du singleton
 	     */
@@ -58,11 +63,24 @@ public class RelDBUtils {
 	     */	    
 	    //private String pwd = "M2TIW15"; // Reseau universite
 	    private String pwd = "admin";
+
+		/**
+		 * --- Fin paramètres : identifiants de la base ---
+		 */
 	    
+	    /**
+	     * La connection
+	     */
 	    private Connection connect;
 
+	    /**
+	     * La source de données Oracle
+	     */
 	    OracleDataSource ods;	    
-	    
+	   
+	   /**
+	    * Constructeur
+	    */
 	   private RelDBUtils (){
 
 		try {
@@ -95,8 +113,8 @@ public class RelDBUtils {
 
 	   
 	    /**
-	     * To get the unique instance of DB Connexion
-	     * @return unique DB Connexion instance
+	     * Retourne l'unique instance de connexion
+	     * @return instance unique de connexion
 	     */
 	    public static RelDBUtils getConnexion() {
 	        if (instance == null) {
@@ -107,6 +125,12 @@ public class RelDBUtils {
 
 
 
+	    /**
+	     * Constructeur
+	     * @param database la base de données
+	     * @param login le mot de passe
+	     * @param pwd le login
+	     */
 		public RelDBUtils(String database, String login, String pwd ){
 			this.nomDeLaBase = database;
 			this.login = login;
@@ -137,17 +161,15 @@ public class RelDBUtils {
 
 
 	/**
-	 * retourne la liste de tuples r�pondant � la requ�te query
-	 * @param query
-	 * @return
+	 * retourne la liste de tuples repondant a la requete query
+	 * @param query requete SQL
+	 * @return les tuples
 	 * @throws SQLException
 	 */
 	public ArrayList<String> getTuples(String query ) throws SQLException {
 		 ArrayList<String> resultat = new ArrayList<String>();
 		 
-
 	try{
-//		this.openConnection() ;
 		Statement st = this.getConnection().createStatement();
 		ResultSet res = st.executeQuery(  query  );
 		ResultSetMetaData resmd = res.getMetaData(); 

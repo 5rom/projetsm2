@@ -27,17 +27,28 @@ import sic.services.utils.fao.ExpressDBUtils;
 
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_fao.owl.FAOOwl;
 
+/**
+ * Classe d'implementation du service FAOOwlService
+ * Permet de traduire un fichier EXPRESS de produits en un fichier d'ontologie OWL 
+ * Créée par Sébastien Faure et David Crescence
+ * @author David CRESCENCE <crescence.david@gmail.com> et Sébastien FAURE <sebastien.faure3@gmail.com>
+ * UCBL M2TI 2011-2012 
+ */
 public class FAOOwlService implements FAOOwl{
 
+	/**
+	 * Methode de traduction du fichier EXPRESS en ontologie OWL
+	 * @param filepath le chemin du fichier EXPRESS à traduire
+	 * @return le chemin du fichier OWL créé
+	 */
 	@Override
 	public String parseOWL(String filepath) {
-		// TODO Auto-generated method stub
 		String targeturl = new String("file:/tmp/StyloFAO.owl");
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
         IRI ontologyIRI = IRI.create("http://masterinfo.univ-lyon1.fr/ontologies/StyloFAO");
-        // Create the document IRI for our ontology
+
         IRI documentIRI = IRI.create(targeturl);	            
-        // Set up a mapping, which maps the ontology to the document IRI
+
         SimpleIRIMapper mapper = new SimpleIRIMapper(ontologyIRI, documentIRI);
         manager.addIRIMapper(mapper);
 
@@ -108,10 +119,8 @@ public class FAOOwlService implements FAOOwl{
 	    	
 	    	
 		} catch (OWLOntologyCreationException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 		} catch (OWLOntologyStorageException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         

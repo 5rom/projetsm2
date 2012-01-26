@@ -5,7 +5,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 
-
+/**
+ * Classe ExpressDBUtils
+ * Classe utilitaire de manipulation d'un fichier EXPRESS
+ * Créée par Sébastien Faure et David Crescence
+ * @author David CRESCENCE <crescence.david@gmail.com> et Sébastien FAURE <sebastien.faure3@gmail.com>
+ * UCBL M2TI 2011-2012 
+ */
 public class ExpressDBUtils {
 	/**
      * instance du singleton
@@ -26,19 +32,37 @@ public class ExpressDBUtils {
 	 */
 	private HashMap<String,String> line_name;
 
-    
+    /**
+     * Getter de la liste de produits
+     * @return liste de produits du fichier
+     */
     public HashMap<String, String> getProduits() {
 		return produits;
 	}
 
+    /**
+     * Getter des relations indexees
+     * @return les relations
+     */
 	public HashMap<String, String[]> getRelations_line() {
 		return relations_line;
 	}
 
+	/**
+	 * Getter sur les correspondances index/pnum
+	 * @return les correspondances index/pnum
+	 */
 	public HashMap<String, String> getLine_name() {
 		return line_name;
 	}
 
+	/**
+	 * Constructeur
+	 * @param filepath chemin du fichier EXPRESS
+	 * @param produits liste de produits
+	 * @param relations_line liste de relations
+	 * @param line_name liste de correspondances
+	 */
 	private ExpressDBUtils(String filepath,HashMap<String,String> produits, HashMap<String,String[]> relations_line, HashMap<String,String> line_name){
     	this.filepath = filepath;
     	this.produits = produits;
@@ -46,6 +70,14 @@ public class ExpressDBUtils {
     	this.line_name = line_name;
     }
     
+	/**
+	 * Recupération de l'instance unique du parser
+	 * @param filepath chemin du fichier EXPRESS
+	 * @param produits liste de produits
+	 * @param relations_line liste de relations
+	 * @param line_name liste de correspondances
+	 * @return
+	 */
     public static ExpressDBUtils getParser(String filepath,HashMap<String,String> produits, HashMap<String,String[]> relations_line, HashMap<String,String> line_name){
 //    	if(instance == null){
     		instance = new ExpressDBUtils(filepath,produits,relations_line,line_name);
@@ -53,11 +85,12 @@ public class ExpressDBUtils {
     	return instance;
     }
     
+    /**
+     * Methode de parsing du fichier
+     * Remplit les tables de produits, relations et correspondances
+     */
     public void parseFichier(){
     	try{
-			  // A remettre avec un bouton "parcourir..."
-			  //FileInputStream fstream = new FileInputStream("bd.exp");
-			  //DataInputStream in = new DataInputStream(fstream);
 			  InputStream in = getClass().getResourceAsStream(filepath);
 			  BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			  String strLine;

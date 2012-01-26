@@ -9,7 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_fao.owl.FAOOwl;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_fao.owl.FAOOwl_Service;
 
-
+/**
+ * Classe Servlet ServletOWLFAO
+ * Appelle le service FAOOwlService pour traduire le fichier EXPRESS en OWL
+ * Créée par Sébastien Faure et David Crescence
+ * @author David CRESCENCE <crescence.david@gmail.com> et Sébastien FAURE <sebastien.faure3@gmail.com>
+ * UCBL M2TI 2011-2012 
+ */
 public class ServletOWLFAO extends HttpServlet {
 	
 private static final long serialVersionUID = 1L;
@@ -25,7 +31,6 @@ private static final long serialVersionUID = 1L;
      */
 	public ServletOWLFAO() {
         super();
-        // TODO Auto-generated constructor stub
     }
 	
 	/**

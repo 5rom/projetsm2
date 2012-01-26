@@ -9,7 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_cao.owl.CAOOWL;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_cao.owl.CAOOWL_Service;
 
-
+/**
+ * Classe Servlet ServletOWLCAO
+ * Appelle le service CAOOWLService pour traduire la BDR de l'expert CAO en OWL
+ * Créée par Sébastien Faure et David Crescence
+ * @author David CRESCENCE <crescence.david@gmail.com> et Sébastien FAURE <sebastien.faure3@gmail.com>
+ * UCBL M2TI 2011-2012 
+ */
 public class ServletOWLCAO extends HttpServlet {
 	
 private static final long serialVersionUID = 1L;
@@ -35,9 +41,10 @@ private static final long serialVersionUID = 1L;
 		out = response.getWriter();
 		CAOOWL_Service c = new CAOOWL_Service();
 		CAOOWL f = c.getCAOOWLSOAP();
-		String s = new String(""+f.parseOWL("/tmp/StyloCAO.owl"));
+		//String s = new String(""+f.parseOWL(request.getParameter("file")));
+		f.parseOWL(request.getParameter("file"));
 		out.println("<html><body><h1>Traduction de la BD relationnelle en ontologie OWL</h1>" +
-				"<p>URL du fichier OWL : <a href='" + s.replace("file:", "") +"'> "+s.replace("file:", "")+"</a></p><br>");
+				"<p>URL du fichier OWL : <a href=\"file:"+request.getParameter("file")+"\">Fichier</a></p><br>");
         //Bouton retour
 		out.println("<FORM Method=\"POST\" Action=\"menucao.jsp\">"+
 		"<INPUT type=\"submit\" value=\"Retour\">"+

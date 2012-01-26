@@ -1,40 +1,29 @@
 package sic.services.impl;
 
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.xml.ws.Holder;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import sic.services.utils.cao.RelDBUtils;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_cao.CAODataBase;
-import fr.univ_lyon1.master_info.m2ti.tiw5.services_cao.GetProduitListResponse;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_cao.PmajeurPmineur;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_cao.PnumPnom;
 
-
-
-
 /**
  * Classe d'implementation du service CAODataBaseService
- * Créée par Sébastien Faure et David Crescence pour publication.
+ * Créée par Sébastien Faure et David Crescence
  * @author David CRESCENCE <crescence.david@gmail.com> et Sébastien FAURE <sebastien.faure3@gmail.com>
  * UCBL M2TI 2011-2012 
  */
-
 public class CAODataBaseService implements CAODataBase{
 
 	/**
-	 * Le logger
+	 * Methode d'ajout d'un produit dans la base de données
+	 * @param pnum l'id du nouveau produit
+	 * @param pnom le nom du nouveau produit
+	 * @return vrai si l'operation a marche, faux sinon
 	 */
-	//private static final Logger log = LoggerFactory.getLogger(CAODataBaseService.class);
-
 	@Override
 	public Boolean addProduit(long pnum, String pnom) {
 		RelDBUtils r = RelDBUtils.getConnexion();
@@ -45,13 +34,16 @@ public class CAODataBaseService implements CAODataBase{
 			st.executeUpdate("INSERT INTO PRODUIT (Pnum,Pnom) VALUES("+pnum+",'"+pnom+"')");	
 			success=true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		return success;
 	}
 
+	/**
+	 * Methode de consultation des produits de la base de données
+	 * @return la liste des produits de la base (couples id-nom)
+	 */
 	@Override
 	public List<PnumPnom> getProduitList() {
 		ArrayList<PnumPnom> list = new ArrayList<PnumPnom>();
@@ -70,13 +62,16 @@ public class CAODataBaseService implements CAODataBase{
             		list.add(pN);
             }
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		return list;
 	}
 
+	/**
+	 * Methode de consultation des compositions de la base de données
+	 * @return la liste des compositions de la base (couples Pmajeur-Pmineur)
+	 */
 	@Override
 	public List<PmajeurPmineur> getCompositionList() {
 		ArrayList<PmajeurPmineur> list = new ArrayList<PmajeurPmineur>();
@@ -102,6 +97,11 @@ public class CAODataBaseService implements CAODataBase{
 		return list;
 	}
 
+	/**
+	 * Methode de suppression d'un produit dans la base de données
+	 * @param pnum l'id du produit
+	 * @return vrai si l'operation a marche, faux sinon
+	 */
 	@Override
 	public Boolean deleteProduit(long pnum) {
 		RelDBUtils r = RelDBUtils.getConnexion();
@@ -124,6 +124,12 @@ public class CAODataBaseService implements CAODataBase{
 		return success;
 	}
 
+	/**
+	 * Methode de suppression d'une composition dans la base de données
+	 * @param pmajeur l'id de pmajeur
+	 * @param pmnieur l'id de pmineur
+	 * @return vrai si l'operation a marche, faux sinon
+	 */	
 	@Override
 	public Boolean deleteComposition(long pmajeur, long pmineur) {
 		RelDBUtils r = RelDBUtils.getConnexion();
@@ -144,6 +150,12 @@ public class CAODataBaseService implements CAODataBase{
 		return success;
 	}
 
+	/**
+	 * Methode d'ajout d'une composition dans la base de données
+	 * @param pmajeur l'id du produit majeur
+	 * @param pmineur l'id du produit mineur
+	 * @return vrai si l'operation a marche, faux sinon
+	 */
 	@Override
 	public Boolean addComposition(long pmajeur, long pmineur) {
 		RelDBUtils r = RelDBUtils.getConnexion();
@@ -162,7 +174,12 @@ public class CAODataBaseService implements CAODataBase{
 	}
 
 
-
+	/**
+	 * Methode de mise à jour d'un produit dans la base de données
+	 * @param pnum l'id du produit
+	 * @param pnom le nouveau nom du produit
+	 * @return vrai si l'operation a marche, faux sinon
+	 */
 	@Override
 	public Boolean updateProduit(long pnum, String pnom) {
 		RelDBUtils r = RelDBUtils.getConnexion();

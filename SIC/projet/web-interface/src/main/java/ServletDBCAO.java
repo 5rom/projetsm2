@@ -10,15 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_cao.*;
 
-
-
-
-
-
-
-
 /**
- * Servlet implementation class ServletDBCAO
+ * Classe Servlet ServletDBCAO
+ * Appelle le service CAODataBaseService pour manipuler la base de données relationnelle de l'expert CAO
+ * Créée par Sébastien Faure et David Crescence
+ * @author David CRESCENCE <crescence.david@gmail.com> et Sébastien FAURE <sebastien.faure3@gmail.com>
+ * UCBL M2TI 2011-2012 
  */
 public class ServletDBCAO extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,7 +30,6 @@ public class ServletDBCAO extends HttpServlet {
      */
     public ServletDBCAO() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -51,8 +47,7 @@ public class ServletDBCAO extends HttpServlet {
 	        		"<th>Pnum</th>\n"+
 	        		"<th>Pnom</th>\n"+
 	        		"</tr>\n");
-			//for chaque element de la liste de cAODB.getProductList()
-			//faire out.println(out.println("<tr><td>"+albums.get(0).getPiste(i).getTitre()+"</td><td>"+albums.get(0).getPiste(i).getDuree()+" min</td></tr>\n");
+           // Affichage des produits
            List<PnumPnom> aLPN = cAODB.getProduitList();
            for (int i=0; i<aLPN.size();i++){
         	   out.println("<tr><td>"+aLPN.get(i).getPnum()+"</td><td>"+aLPN.get(i).getPnom()+"</td></tr>\n");
@@ -66,8 +61,7 @@ public class ServletDBCAO extends HttpServlet {
 	        		"<th>Pmajeur</th>\n"+
 	        		"<th>Pmineur</th>\n"+
 	        		"</tr>\n");
-			//for chaque element de la liste de cAODB.getProductList()
-			//faire out.println(out.println("<tr><td>"+albums.get(0).getPiste(i).getTitre()+"</td><td>"+albums.get(0).getPiste(i).getDuree()+" min</td></tr>\n");
+            // Affichage des compositions
            List<PmajeurPmineur> aLPM = cAODB.getCompositionList();
            for (int i=0; i<aLPM.size();i++){
         	   out.println("<tr><td>"+aLPM.get(i).getPmajeur()+"</td><td>"+aLPM.get(i).getPmineur()+"</td></tr>\n");

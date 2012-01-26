@@ -1,11 +1,8 @@
 package sic.services.impl;
 
-
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.util.List;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.AddAxiom;
@@ -13,17 +10,29 @@ import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.util.SimpleIRIMapper;
 
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_owl.OWLMapping;
 
+/**
+ * Classe d'implementation du service OWLMappingService
+ * Permet de faire le mapping entre deux ontologies de produits
+ * Créée par Sébastien Faure et David Crescence
+ * @author David CRESCENCE <crescence.david@gmail.com> et Sébastien FAURE <sebastien.faure3@gmail.com>
+ * UCBL M2TI 2011-2012 
+ */
 public class OWLMappingService implements OWLMapping {
 	
+	/**
+	 * Methode de mapping de deux ontologies
+	 * @param filepath1 le chemin du fichier de description du mapping (equivalence, composition) entre ontologies
+	 * @param filepath2 le chemin du fichier OWL à créer
+	 * @return le chemin du fichier OWL créé
+	 * TODO: AJOUTER LA PROPRIETE ESTCOMPOSEDE!!!!!!
+	 */		
 	@Override
 	public String mapOWL(String filepath1,String filepath2) {
-		// TODO Auto-generated method stub
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		try {
 			String namespace = "http://masterinfo.univ-lyon1.fr/ontologies/Stylo";
@@ -57,7 +66,6 @@ public class OWLMappingService implements OWLMapping {
 					classeComp = factory.getOWLClass(IRI.create(namespace+type_equivalent+"#"+nom_equivalent));
 					AddAxiom axiom = new AddAxiom(styloOntology, factory.getOWLEquivalentClassesAxiom(classeAssoc, classeComp));
 					manager.applyChange(axiom);
-					
 				}
 				else {
 					for(int i=0;i<nbcomposant.length;i++){
@@ -67,12 +75,8 @@ public class OWLMappingService implements OWLMapping {
 						classeComp = factory.getOWLClass(IRI.create(namespace+type_composant+"#"+nom_composant));
 						AddAxiom axiom = new AddAxiom(styloOntology, factory.getOWLSubClassOfAxiom(classeComp, classeAssoc));
 						manager.applyChange(axiom);
-
 					}
-					
 				}
-				
-				
 				
 			}
 			br.close();

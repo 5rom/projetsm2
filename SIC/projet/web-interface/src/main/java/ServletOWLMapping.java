@@ -6,12 +6,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.univ_lyon1.master_info.m2ti.tiw5.services_fao.owl.FAOOwl;
-import fr.univ_lyon1.master_info.m2ti.tiw5.services_fao.owl.FAOOwl_Service;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_owl.OWLMapping;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_owl.OWLMapping_Service;
 
-
+/**
+ * Classe Servlet ServletOWLMapping
+ * Appelle le service OWLMappingService pour réaliser le mapping entre les ontologies StyloCAO et StyloFAO
+ * Créée par Sébastien Faure et David Crescence
+ * @author David CRESCENCE <crescence.david@gmail.com> et Sébastien FAURE <sebastien.faure3@gmail.com>
+ * UCBL M2TI 2011-2012 
+ */
 public class ServletOWLMapping extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -27,7 +31,6 @@ public class ServletOWLMapping extends HttpServlet {
 	     */
 		public ServletOWLMapping() {
 	        super();
-	        // TODO Auto-generated constructor stub
 	    }
 		
 		/**
