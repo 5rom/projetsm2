@@ -8,12 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_fao.FAODataBase;
+import fr.univ_lyon1.master_info.m2ti.tiw5.services_fao.FAODataBase_Service;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_fao.PmajeurPmineur;
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_fao.PnumPnom;
-import fr.univ_lyon1.master_info.m2ti.tiw5.services_fao.FAODataBase;
-import fr.univ_lyon1.master_info.m2ti.tiw5.services_fao.FAODataBase_Service;
 
-
+/**
+ * Classe Servlet ServletExpressFAO
+ * Appelle le service FAODataBaseService pour manipuler le fichier EXPRESS de produits
+ * Créée par Sébastien Faure et David Crescence
+ * @author David CRESCENCE <crescence.david@gmail.com> et Sébastien FAURE <sebastien.faure3@gmail.com>
+ * UCBL M2TI 2011-2012 
+ */
 public class ServletExpressFAO extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -28,7 +33,6 @@ public class ServletExpressFAO extends HttpServlet {
      */
 	public ServletExpressFAO() {
         super();
-        // TODO Auto-generated constructor stub
     }
 	
 	/**

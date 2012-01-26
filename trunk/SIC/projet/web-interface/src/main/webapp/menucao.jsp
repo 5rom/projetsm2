@@ -78,6 +78,7 @@ Nouveau nom: <input type="text" name="pnom" />
 <!--  Formulaire de consultation de la base -->
 <br>
 <form action="ServletOWLCAO" method="post">
+<input type="text" name="file" value="/tmp/StyloCAO.owl"> : Fichier de destination owl qui sera créé (ex: /tmp/StyloCAO.owl, ne pas mettre la lettre du disque!) <br>
 <input type="submit" name="bouton" value="Traduire">
 </form>
 <br><br>
