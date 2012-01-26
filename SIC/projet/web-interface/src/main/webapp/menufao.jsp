@@ -13,6 +13,7 @@
 <!--  Formulaire de consultation de la base -->
 <br>
 <form action="ServletExpressFAO" method="post">
+<!-- <input type="text" name="filepath" value="bd.exp"> : Fichier EXPRESS à charger (ex: /tmp/bd.exp, ne pas mettre la lettre du disque!) <br> -->
 <input type="submit" name="bouton" value="Afficher les produits chargés du fichier EXPRESS">
 </form>
 <br><br>
@@ -20,6 +21,7 @@
 <!--  Formulaire de consultation de la base -->
 <br>
 <form action="ServletOWLFAO" method="post">
+<input type="text" name="filepath" value="bd.exp"> : Fichier à créer pour mettre l'ontologie (ex: bd.exp) <br>
 <input type="submit" name="bouton" value="Traduire en fichier OWL">
 </form>
 
