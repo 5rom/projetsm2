@@ -8,9 +8,13 @@ import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.AddAxiom;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLDeclarationAxiom;
+import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.model.OWLSubClassOfAxiom;
 import org.semanticweb.owlapi.util.SimpleIRIMapper;
 
 import fr.univ_lyon1.master_info.m2ti.tiw5.services_owl.OWLMapping;
@@ -66,17 +70,36 @@ public class OWLMappingService implements OWLMapping {
 					classeComp = factory.getOWLClass(IRI.create(namespace+type_equivalent+"#"+nom_equivalent));
 					AddAxiom axiom = new AddAxiom(styloOntology, factory.getOWLEquivalentClassesAxiom(classeAssoc, classeComp));
 					manager.applyChange(axiom);
+					
 				}
 				else {
 					for(int i=0;i<nbcomposant.length;i++){
 						String type_composant = nbcomposant[i].split(":")[0].replace(" ", "");
 						String nom_composant = nbcomposant[i].split(":")[1].replace(" ", "");
 						classeAssoc = factory.getOWLClass(IRI.create(namespace+type_compose+"#"+nom_compose));
-						classeComp = factory.getOWLClass(IRI.create(namespace+type_composant+"#"+nom_composant));
+						/*classeComp = factory.getOWLClass(IRI.create(namespace+type_composant+"#"+nom_composant));
 						AddAxiom axiom = new AddAxiom(styloOntology, factory.getOWLSubClassOfAxiom(classeComp, classeAssoc));
-						manager.applyChange(axiom);
+						manager.applyChange(axiom);*/
+						
+						//
+						classeComp =  factory.getOWLClass(IRI.create(namespace+type_composant+"#"+nom_composant));
+        	            OWLDeclarationAxiom declarationAxiom2 = factory.getOWLDeclarationAxiom(classeComp);
+        	            manager.addAxiom(styloOntology, declarationAxiom2);
+        	            
+        	            //Propriete de composition, utiliser Restriction
+        	            OWLObjectProperty estComposeDe = factory.getOWLObjectProperty(IRI.create(ontologyIRI + "#estComposeDe"));
+        	            // Subpropertyof
+        	            OWLClassExpression hasPartSomeProduit = factory.getOWLObjectSomeValuesFrom(estComposeDe, classeComp);
+        	            OWLSubClassOfAxiom ax = factory.getOWLSubClassOfAxiom(classeAssoc, hasPartSomeProduit);
+        	            
+        	            AddAxiom addAx = new AddAxiom(styloOntology, ax);
+        	            manager.applyChange(addAx);
+
 					}
+					
 				}
+				
+				
 				
 			}
 			br.close();
@@ -86,7 +109,7 @@ public class OWLMappingService implements OWLMapping {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return filepath2;
 	}
 	
 }
