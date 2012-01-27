@@ -26,7 +26,7 @@ public class FAODataBaseService implements FAODataBase{
 	 * @return vrai si cela a marché, faux sinon
 	 */
 	@Override
-	public Boolean deleteProduit(String pnum) {
+	public Boolean deleteProduit(String pnum, String expressfile) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -36,7 +36,7 @@ public class FAODataBaseService implements FAODataBase{
 	 * @return vrai si cela a marché, faux sinon
 	 */
 	@Override
-	public Boolean deleteComposition(String pmajeur, String pmineur) {
+	public Boolean deleteComposition(String pmajeur, String pmineur, String expressfile) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -46,13 +46,13 @@ public class FAODataBaseService implements FAODataBase{
 	 * @return la liste des produits
 	 */	
 	@Override
-	public List<PnumPnom> getProduitList() {
+	public List<PnumPnom> getProduitList(String expressfile) {
 		HashMap<String,String> produits = new HashMap<String,String>();
 		HashMap<String,String[]> relations_line = new HashMap<String,String[]>();
 		HashMap<String,String> line_name = new HashMap<String,String>();
 
 		ArrayList<PnumPnom> list = new ArrayList<PnumPnom>();
-		ExpressDBUtils parser = ExpressDBUtils.getParser("bd.exp", produits, relations_line, line_name);
+		ExpressDBUtils parser = ExpressDBUtils.getParser(expressfile, produits, relations_line, line_name);
 		parser.parseFichier();
 		
 		Set<Entry<String,String>> pnumpnom = parser.getProduits().entrySet();
@@ -73,13 +73,13 @@ public class FAODataBaseService implements FAODataBase{
 	 * @return la liste des compositions de produits
 	 */
 	@Override
-	public List<PmajeurPmineur> getCompositionList() {
+	public List<PmajeurPmineur> getCompositionList(String expressfile) {
 		HashMap<String,String> produits = new HashMap<String,String>();
 		HashMap<String,String[]> relations_line = new HashMap<String,String[]>();
 		HashMap<String,String> line_name = new HashMap<String,String>();
 		
 		ArrayList<PmajeurPmineur> list = new ArrayList<PmajeurPmineur>();
-		ExpressDBUtils parser = ExpressDBUtils.getParser("bd.exp", produits, relations_line, line_name);
+		ExpressDBUtils parser = ExpressDBUtils.getParser(expressfile, produits, relations_line, line_name);
 		parser.parseFichier();
 		
 		Set<Entry<String,String[]>> rel_line = parser.getRelations_line().entrySet();
@@ -102,7 +102,7 @@ public class FAODataBaseService implements FAODataBase{
 	 * @return vrai si cela a marche, faux sinon
 	 */
 	@Override
-	public Boolean addProduit(String pnum, String pnom, List<String> composants) {
+	public Boolean addProduit(String pnum, String pnom, List<String> composants, String expressfile) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -113,7 +113,7 @@ public class FAODataBaseService implements FAODataBase{
 	 */
 	@Override
 	public Boolean updateProduit(String pnum, String pnom,
-			List<String> composants) {
+			List<String> composants, String expressfile) {
 		// TODO Auto-generated method stub
 		return null;
 	}
